@@ -10,16 +10,16 @@ Les tables d’un lakehouse Microsoft Fabric sont basées sur le format de fich
 
 Cet exercice devrait prendre environ **40** minutes.
 
-> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite, consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Pour cela, vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou ultérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
-Avant de travailler avec des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
+Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com`, puis sélectionnez **Power BI**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône est similaire à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Quand votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
+1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
+2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+3. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
 
     ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
 
@@ -33,7 +33,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de passer à
 
     Au bout d’une minute environ, un nouveau lakehouse vide est créé. Vous devez ingérer certaines données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de faire cela mais dans cet exercice, vous allez simplement télécharger un fichier texte sur votre ordinateur local (ou sur votre machine virtuelle de labo le cas échéant), puis le charger dans votre lakehouse.
 
-3. Téléchargez le fichier de données pour cet exercice depuis [https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv), et enregistrez-le en tant que **products.csv** sur votre ordinateur local (ou votre machine virtuelle de labo le cas échéant).
+3. Téléchargez le fichier de données pour cet exercice depuis `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv`, et enregistrez-le en tant que **products.csv** sur votre ordinateur local (ou votre machine virtuelle de labo le cas échéant).
 
 4. Retournez à l’onglet du navigateur web contenant votre lakehouse et, dans le menu  **...** du dossier **Fichiers** dans le volet **Explorateur**, sélectionnez **Nouveau sous-dossier**, puis créez un sous-dossier nommé **products**.
 
@@ -183,7 +183,7 @@ L’historique des transactions pour les tables delta est stocké dans des fichi
 
 1. Ajoutez une nouvelle cellule de code au notebook, puis exécutez le code suivant :
 
-    ```Python
+    ```sql
    %%sql
 
    UPDATE products
@@ -320,6 +320,6 @@ Dans cet exercice, vous avez découvert comment travailler avec des tables delta
 
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
-1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour visualiser tous les éléments qu’il contient.
+2. Dans le menu  **…** de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
