@@ -10,7 +10,7 @@ Dans ce labo, nous allons utiliser Microsoft Fabric pour créer un notebook et e
 
 Ce labo prend environ **45** minutes.
 
-> **Remarque** : Vous aurez besoin d’une licence Microsoft Fabric pour effectuer cet exercice. Pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite, consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous aurez besoin d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -77,13 +77,13 @@ Vous êtes maintenant prêt à exécuter du code pour préparer des données et 
    display(df)
     ```
 
-    > **Conseil** : Vous pouvez masquer le volet contenant les fichiers à gauche à l’aide de son icône **<<** . Cela vous aidera à vous concentrer sur le notebook.
+    > **Conseil** : Vous pouvez masquer le volet contenant les fichiers à gauche en utilisant son icône **<<** . Cela vous aidera à vous concentrer sur le notebook.
 
 1. Utilisez le bouton **&#9655; Exécuter la cellule** à gauche de la cellule pour l’exécuter.
 
     > **Remarque** : Comme c’est la première fois que vous exécutez du code Spark dans cette session, le pool Spark doit être démarré. Cela signifie que la première exécution dans la session peut prendre environ une minute. Les exécutions suivantes seront plus rapides.
 
-1. Une fois la commande de cellule exécutée, passez en revue la sortie sous la cellule, qui doit ressembler à ceci :
+1. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
 
     |Index|CustomerID|years_with_company|total_day_calls|total_eve_calls|total_night_calls|total_intl_calls|average_call_minutes|total_customer_service_calls|age|churn|
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -209,8 +209,8 @@ Une fois que vous avez entraîné et suivi des modèles avec MLflow, vous pouvez
 
 Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de les explorer visuellement.
 
-1. Accédez à la page d’accueil **Science des données**.
-1. Sélectionnez l’expérience `experiment-churn` pour l’ouvrir.
+1. Dans le volet gauche, accédez à votre espace de travail.
+1. Sélectionnez l’expérience `experiment-churn` dans la liste.
 
     > **Conseil :** Si vous ne voyez aucune exécution d’expérience journalisée, actualisez la page.
 
