@@ -10,9 +10,9 @@ Dans ce labo, vous allez créer un notebook Microsoft Fabric et utiliser PySpark
 
 Ce labo prend environ **30** minutes.
 
-Pour cette expérience, nous allons générer le code sur plusieurs cellules de code de notebook, ce qui peut ne pas refléter la façon dont vous allez procéder dans votre environnement. Toutefois, cela peut être utile pour le débogage.
+Pour cette expérience, vous allez générer le code sur plusieurs cellules de code de notebook, ce qui peut ne pas refléter la façon dont vous allez procéder dans votre environnement ; toutefois, il peut être utile pour le débogage.
 
-Étant donné que nous travaillons également avec un exemple de jeu de données, l’optimisation ne reflète pas ce que vous pouvez voir en production à grande échelle. Cependant, vous pouvez tout de même constater des améliorations et l’optimisation est fondamentale quand chaque milliseconde compte.
+Étant donné que vous travaillez également avec un exemple de jeu de données, l’optimisation ne reflète pas ce que vous pouvez voir en production à grande échelle ; toutefois, vous pouvez toujours voir des améliorations et lorsque chaque milliseconde compte, l’optimisation est la clé.
 
 > **Note** : vous devez disposer d’une **licence Microsoft Fabric** pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite.
 >
@@ -22,7 +22,7 @@ Pour cette expérience, nous allons générer le code sur plusieurs cellules de 
 
 Commencez par créer un espace de travail avec la version d’essai Fabric activée, un nouveau lakehouse et un dossier de destination dans le lakehouse.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez l’expérience **Engineering données Synapse**.
+1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez l’expérience **Engineering données**.
 
     ![Capture d’écran de l’expérience Engineering données Synapse](Images/data-engineering-home.png)
 
@@ -36,7 +36,7 @@ Commencez par créer un espace de travail avec la version d’essai Fabric activ
 
 1. Dans votre espace de travail, sélectionnez **+ Nouveau > Lakehouse**, fournissez un nom, puis appuyez sur **Créer**.
 
-    > :memo: **Note :** la création d’un lakehouse sans **tables** ou **fichiers** peut prendre quelques minutes.
+    > **Note :** la création d’un lakehouse sans **tables** ou **fichiers** peut prendre quelques minutes.
 
     ![Capture d’écran d’un nouveau lakehouse](Images/new-lakehouse.png)
 
@@ -54,14 +54,14 @@ Créez un nouveau notebook Fabric et connectez-vous à une source de données ex
 
 1. Dans le menu supérieur du lakehouse, sélectionnez **Ouvrir le notebook > Nouveau notebook**. Celui-ci s’ouvrira une fois créé.
 
-    > :bulb: **Conseil :** vous avez accès à l’explorateur Lakehouse à partir de ce notebook et vous pouvez actualiser pour voir la progression à mesure que vous accomplissez cet exercice.
+    >  **Conseil :** vous avez accès à l’explorateur Lakehouse à partir de ce notebook et vous pouvez actualiser pour voir la progression à mesure que vous accomplissez cet exercice.
 
 1. Dans la cellule par défaut, notez que le code est défini sur **PySpark (Python)** .
 
 1. Insérez le code suivant dans la cellule de code, ce qui permet les actions suivantes :
-    1. Déclarer les paramètres pour la chaîne de connexion
-    1. Générer la chaîne de connexion
-    1. Lire les données dans un DataFrame
+    - Déclarer les paramètres pour la chaîne de connexion
+    - Générer la chaîne de connexion
+    - Lire les données dans un DataFrame
 
     ```Python
     # Azure Blob Storage access info
@@ -81,7 +81,7 @@ Créez un nouveau notebook Fabric et connectez-vous à une source de données ex
 
     **Résultat attendu :** votre commande doit réussir et imprimer `wasbs://nyctlc@azureopendatastorage.blob.core.windows.net/yellow`
 
-    > :memo: **Note :** une session Spark démarre à la première exécution de code. Son exécution peut donc prendre plus de temps.
+    > **Note:** Une session Spark démarre à la première exécution de code, ce qui peut prendre plus de temps.
 
 1. Pour écrire les données dans un fichier, vous avez maintenant besoin de ce **chemin ABFS** pour votre dossier **RawData**.
 
@@ -99,9 +99,9 @@ Créez un nouveau notebook Fabric et connectez-vous à une source de données ex
         blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
     ```
 
-1. Votre **output_parquet_path** doit ressembler à :  `abfss://Spark@onelake.dfs.fabric.microsoft.com/DPDemo.Lakehouse/Files/RawData/yellow_taxi`
+1. Ajoutez votre chemin **RawData** ABFS et sélectionnez **&#9655; cellule d’exécution** pour écrire 1000 lignes dans un fichier yellow_taxi.parquet.
 
-1. Sélectionnez **&#9655; Run Cell** à côté de la cellule de code pour écrire 1 000 lignes dans un fichier yellow_taxi.parquet.
+1. Votre **output_parquet_path** doit ressembler à :  `abfss://Spark@onelake.dfs.fabric.microsoft.com/DPDemo.Lakehouse/Files/RawData/yellow_taxi`
 
 1. Pour confirmer le chargement des données à partir de l’explorateur Lakehouse, sélectionnez **Fichiers > ... > Actualiser**.
 
@@ -115,6 +115,9 @@ Il est probable que votre tâche d’ingestion de données ne se termine pas par
 
     ```python
     from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
+    
+    # Read the parquet data from the specified path
+    raw_df = spark.read.parquet(output_parquet_path)   
     
     # Add dataload_datetime column with current timestamp
     filtered_df = raw_df.withColumn("dataload_datetime", current_timestamp())
@@ -132,10 +135,10 @@ Il est probable que votre tâche d’ingestion de données ne se termine pas par
 
 1. Sélectionnez **&#9655; Run Cell** à côté de la cellule de code.
 
-    * Cela ajoute une colonne timestamp **dataload_datetime** pour journaliser le moment auquel les données ont été chargées dans une table Delta
-    * Filtrer les valeurs NULL dans **storeAndFwdFlag**
-    * Charger des données filtrées dans une table Delta
-    * Afficher une seule ligne pour la validation
+    - Cela ajoute une colonne timestamp **dataload_datetime** pour journaliser le moment auquel les données ont été chargées dans une table Delta
+    - Filtrer les valeurs NULL dans **storeAndFwdFlag**
+    - Charger des données filtrées dans une table Delta
+    - Afficher une seule ligne pour la validation
 
 1. Passez en revue et confirmez les résultats affichés, qui ressemblent à l’image suivante :
 
@@ -151,10 +154,10 @@ Vous utilisez probablement le Big Data dans votre organisation et c’est pourqu
 
     ```python
     from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
-    
+ 
     # Read the parquet data from the specified path
-    raw_df = spark.read.parquet("**InsertYourABFSPathHere**")
-    
+    raw_df = spark.read.parquet(output_parquet_path)    
+
     # Add dataload_datetime column with current timestamp
     opt_df = raw_df.withColumn("dataload_datetime", current_timestamp())
     
@@ -174,8 +177,6 @@ Vous utilisez probablement le Big Data dans votre organisation et c’est pourqu
     # Display results
     display(opt_df.limit(1))
     ```
-
-1. Récupérez à nouveau votre **chemin ABFS** et mettez à jour le code dans le bloc **avant** d’exécuter la cellule.
 
 1. Vérifiez que vous avez les mêmes résultats qu’avant le code d’optimisation.
 
@@ -216,29 +217,16 @@ Ce labo est axé sur l’ingestion des données, ce qui explique surtout le proc
     opttable_df = spark.sql('SELECT * FROM yellow_taxi_opt')
     
     # Display results
-    display(opttable_df.limit(3))
+    display(opttable_df.limit(10))
     ```
 
-1. Maintenant, sélectionnez **Tout exécuter** dans la barre de menus supérieure.
+1. Maintenant, sélectionnez la flèche &#9660; en regard du bouton **Exécuter la cellule** pour la première de ces deux requêtes, puis, dans la liste déroulante, sélectionnez **Exécuter cette cellule, puis ci-dessous**.
 
-Cela exécute toutes les cellules de code et vous permet de voir le processus complet du début à la fin. Vous pourrez voir les temps d’exécution entre les blocs de code optimisés et non optimisés.
+    Les deux dernières cellules de code sont alors exécutées. Notez la différence de temps d’exécution entre l’interrogation de la table avec des données non optimisées et une table avec des données optimisées.
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez découvert comment créer :
-
-* Espaces de travail
-* Des Lakehouses
-* Des notebooks Fabric
-* Du code PySpark pour :
-  * Se connecter à des sources de données externes
-  * Lire les données dans un DataFrame
-  * Écrire des données DataFrame dans un fichier Parquet
-  * Lire les données d'un fichier Parquet
-  * Transformer des données dans un DataFrame
-  * Charger des données DataFrame dans une table Delta
-  * Optimiser les écritures de tables Delta
-  * Interroger des données de table Delta avec SQL
+Dans cet exercice, vous avez utilisé des notebooks avec PySpark dans Fabric pour charger des données et les enregistrer dans Parquet. Vous avez ensuite utilisé ce fichier Parquet pour transformer davantage les données et optimiser les écritures de table Delta. Enfin, vous avez utilisé SQL pour interroger les tables Delta.
 
 Une fois que vous avez fini d’explorer, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
