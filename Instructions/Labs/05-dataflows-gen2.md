@@ -10,7 +10,7 @@ Dans Microsoft Fabric, les flux de données (Gen2) se connectent à différentes
 
 Ce labo est conçu pour présenter les différents éléments des flux de données (Gen2) et non pour créer une solution complexe qui peut exister dans une entreprise. Ce labo prend **environ 30 minutes**.
 
-> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Pour cela, vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -18,10 +18,10 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
 2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Quand votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
+3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI](./Images/new-workspace.png)
+    ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
 
 ## Créer un lakehouse.
 
@@ -54,17 +54,21 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
 
  ![Requête dans l’éditeur Power Query](./Images/power-query.png)
 
-4. Dans le ruban de la barre d’outils, sélectionnez l’onglet **Ajouter une colonne**. Sélectionnez ensuite **Colonne personnalisée** et créez une nouvelle colonne nommée **MonthNo** qui contient un nombre basé sur la formule `Date.Month([OrderDate])`, comme indiqué ici :
+4. Dans le ruban de la barre d’outils, sélectionnez l’onglet **Ajouter une colonne**. Sélectionnez ensuite **Colonne personnalisée** et créez une nouvelle colonne.
+
+5. Définissez le *nouveau nom de colonne* sur `MonthNo`, définissez le *type de données* sur **Nombre entier**, puis ajoutez la formule suivante `Date.Month([OrderDate])` – tel qu’illustré ici :
 
  ![Colonne personnalisée dans l’éditeur Power Query](./Images/custom-column.png)
 
- L’étape permettant d’ajouter la colonne personnalisée est ajoutée à la requête et la colonne résultante s’affiche dans le volet de données :
+6. Sélectionnez **OK** pour créer la colonne et remarquez que l’étape de l’ajout de la colonne personnalisée est ajoutée à la requête. La colonne résultante s’affiche dans le volet Données :
 
  ![Requête avec une étape de colonne personnalisée](./Images/custom-column-added.png)
 
 > **Conseil :** Dans le volet Paramètres de la requête sur le côté droit, notez que les **étapes appliquées** incluent chaque étape de transformation. En bas, vous pouvez également activer le bouton **Flux de diagramme** pour activer le diagramme visuel des étapes.
 >
 > Les étapes peuvent être déplacées vers le haut ou vers le bas, modifiées en sélectionnant l’icône d’engrenage, et vous pouvez sélectionner chaque étape pour voir les transformations s’appliquer dans le volet d’aperçu.
+
+7. Vérifiez et confirmez que le type de données de la colonne **OrderDate** est défini sur **Date** et celui la colonne nouvellement créée **MonthNo** sur **Nombre entier**.
 
 ## Ajouter une destination de données pour le flux de données
 
@@ -80,24 +84,18 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
 
    ![Page de configuration de la destination des données](./Images/data-destination-target.png)
 
-   > **Remarque :** Dans la page **Paramètres de destination**, notez que OrderDate et MonthNo ne sont pas sélectionnés dans le mappage de colonne et qu’il existe un message d’information : *Passer à la date/heure*.
+4. Dans la page **Choisir les paramètres de destination**, sélectionnez **Ajouter**, puis **Enregistrez les paramètres**.
+    > **Remarque :** Nous recommandons l’utilisation de l’éditeur *Power Query* pour mettre à jour les types de données, mais vous pouvez également le faire à partir de cette page.
 
-   ![Page des paramètres de destination des données](./Images/destination-settings.png)
+    ![Page des paramètres de destination des données](./Images/destination-settings.png)
 
-1. Annulez cette action, puis revenez aux colonnes OrderDate et MonthNo dans Power Query Online. Cliquez avec le bouton droit sur l’en-tête de colonne et cliquez sur **Modifier le type**.
-
-    - OrderDate = Date/Heure
-    - MonthNo = Nombre entier
-
-1. Répétez maintenant le processus décrit précédemment pour ajouter une destination lakehouse.
-
-8. Dans la page **Paramètres de destination**, sélectionnez **Ajouter**, puis enregistrez les paramètres.  La destination **Lakehouse** est indiquée sous forme d’icône dans la requête dans l’éditeur Power Query.
+5. Dans la barre de menus, ouvrez **Affichage** et sélectionnez **Vue en diagramme**. Vous remarquez la destination **Lakehouse** indiquée sous forme d’icône dans la requête de l’éditeur Power Query.
 
    ![Requête avec une destination lakehouse](./Images/lakehouse-destination.png)
 
-9. Sélectionnez **Publier** pour publier le flux de données. Attendez ensuite que le flux de données **Dataflow 1** soit créé dans votre espace de travail.
+6. Sélectionnez **Publier** pour publier le flux de données. Attendez ensuite que le flux de données **Dataflow 1** soit créé dans votre espace de travail.
 
-1. Une fois publié, vous pouvez cliquer avec le bouton droit sur le flux de données dans votre espace de travail, sélectionner **Propriétés** et renommer votre flux de données.
+7. Une fois publié, vous pouvez cliquer avec le bouton droit sur le flux de données dans votre espace de travail, sélectionner **Propriétés** et renommer votre flux de données.
 
 ## Ajouter un flux de données à un pipeline
 
@@ -139,6 +137,6 @@ Si vous avez terminé d’explorer les flux de données dans Microsoft Fabric, v
 
 1. Accédez à Microsoft Fabric dans votre navigateur.
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-1. Dans le menu  **…** de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
+1. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 1. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
 1. N’enregistrez pas les modifications apportées à Power BI Desktop ou supprimez le fichier .pbix s’il a déjà été enregistré.
