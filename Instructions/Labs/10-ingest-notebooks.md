@@ -12,7 +12,7 @@ Ce labo prend environ **30** minutes.
 
 Pour cette expérience, vous allez générer le code sur plusieurs cellules de code de notebook, ce qui peut ne pas refléter la façon dont vous allez procéder dans votre environnement ; toutefois, il peut être utile pour le débogage.
 
-Étant donné que vous travaillez également avec un exemple de jeu de données, l’optimisation ne reflète pas ce que vous pouvez voir en production à grande échelle ; toutefois, vous pouvez toujours voir des améliorations et lorsque chaque milliseconde compte, l’optimisation est la clé.
+Étant donné que vous travaillez également avec un exemple de jeu de données, l’optimisation ne reflète pas ce que vous pouvez voir en production à grande échelle. Toutefois, vous pouvez toujours voir des améliorations et lorsque chaque milliseconde compte, l’optimisation est la clé.
 
 > **Note** : vous devez disposer d’une **licence Microsoft Fabric** pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite.
 >
@@ -220,7 +220,7 @@ Ce labo est axé sur l’ingestion des données, ce qui explique surtout le proc
     display(opttable_df.limit(10))
     ```
 
-1. Maintenant, sélectionnez la flèche &#9660; en regard du bouton **Exécuter la cellule** pour la première de ces deux requêtes, puis, dans la liste déroulante, sélectionnez **Exécuter cette cellule, puis ci-dessous**.
+1. Maintenant, sélectionnez la flèche &#9660; en regard du bouton **Exécuter la cellule** pour la première de ces deux requêtes, puis, dans la liste déroulante, sélectionnez **Exécuter cette cellule et celle en-dessous**.
 
     Les deux dernières cellules de code sont alors exécutées. Notez la différence de temps d’exécution entre l’interrogation de la table avec des données non optimisées et une table avec des données optimisées.
 
