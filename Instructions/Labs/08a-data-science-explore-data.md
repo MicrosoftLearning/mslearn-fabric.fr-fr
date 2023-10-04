@@ -8,9 +8,9 @@ lab:
 
 Dans ce labo, nous allons utiliser des notebooks pour l’exploration des données. Les notebooks sont un outil puissant pour l’exploration et l’analyse interactives des données. Au cours de cet exercice, nous allons apprendre à créer et à utiliser des notebooks pour explorer un jeu de données, générer des statistiques récapitulatives et créer des visualisations pour mieux comprendre les données. À la fin de ce labo, vous aurez une solide compréhension de l’utilisation des notebooks pour l’exploration et l’analyse des données.
 
-Ce labo prend environ **45** minutes.
+Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous aurez besoin d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -27,7 +27,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks fournissent un environnement interactif dans lequel vous pouvez écrire et exécuter du code (dans plusieurs langages) en tant qu’*expériences*.
 
-1. En bas à gauche du portail Power BI, sélectionnez l’icône **Engineering données** et basculez vers l’expérience **Science des données**.
+1. En bas à gauche du portail Power BI, sélectionnez l’icône **PowerBI** et basculez vers l’expérience **Science des données**.
 
 1. Dans la page d’accueil de **Science des données**, créez un **notebook**.
 
@@ -49,7 +49,7 @@ Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks four
 
 Vous êtes maintenant prêt à exécuter du code pour obtenir des données. Vous allez utiliser le [**jeu de données diabetes**](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) à partir d’Azure Open Datasets. Après avoir chargé les données, vous allez convertir les données en dataframe Pandas, qui est une structure courante pour l’utilisation des données dans les lignes et les colonnes.
 
-1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes. Entrez ensuite le code suivant :
+1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes. Entrez le code suivant pour charger le jeu de données dans un dataframe.
 
     ```python
     # Azure storage access info for open dataset diabetes
@@ -138,7 +138,7 @@ Maintenant, nous allons générer des statistiques descriptives pour comprendre 
     print(desc_stats)
     ```
 
-    La moyenne `age` est d’environ 48,5 ans, avec un écart type de 13,1 ans. La personne la plus jeune a 19 ans et la plus âgée a 79 ans. La moyenne `BMI` est d’environ 26,4, ce qui se situe dans la catégorie de **surpoids** selon les [normes de l’OMS](https://www.who.int/health-topics/obesity#tab=tab_1). Le minimum `BMI` est de 18 et le maximum est de 42,2.
+    L’âge moyen est d’environ 48,5 ans, avec un écart type de 13,1 ans. La personne la plus jeune a 19 ans et la plus âgée a 79 ans. La moyenne `BMI` est d’environ 26,4, ce qui se situe dans la catégorie de **surpoids** selon les [normes de l’OMS](https://www.who.int/health-topics/obesity#tab=tab_1). Le minimum `BMI` est de 18 et le maximum est de 42,2.
 
 ## Tracer la distribution des données
 
@@ -152,12 +152,12 @@ Nous allons vérifier la `BMI` fonctionnalité et tracer sa distribution pour mi
     import numpy as np
     
     # Calculate the mean, median of the BMI variable
-    mean = df_pnd['BMI'].mean()
-    median = df_pnd['BMI'].median()
+    mean = df['BMI'].mean()
+    median = df['BMI'].median()
     
     # Histogram of the BMI variable
     plt.figure(figsize=(8, 6))
-    plt.hist(df_pnd['BMI'], bins=20, color='skyblue', edgecolor='black')
+    plt.hist(df['BMI'], bins=20, color='skyblue', edgecolor='black')
     plt.title('BMI Distribution')
     plt.xlabel('BMI')
     plt.ylabel('Frequency')
@@ -203,7 +203,7 @@ Nous allons générer des visualisations telles que des nuages de points et des 
     fig, ax = plt.subplots(figsize=(7, 5))
     
     # Replace numeric values with labels
-    df_pnd['SEX'] = df_pnd['SEX'].replace({1: 'Male', 2: 'Female'})
+    df['SEX'] = df['SEX'].replace({1: 'Male', 2: 'Female'})
     
     sns.boxplot(x='SEX', y='BP', data=df, ax=ax)
     ax.set_title('Blood pressure across Gender')
@@ -269,7 +269,7 @@ Calculons les corrélations entre différentes fonctionnalités pour comprendre 
     df.corr(numeric_only=True)
     ```
 
-1. Une carte thermique est un outil utile pour visualiser rapidement la force et la direction des relations entre les paires de variables. Il peut mettre en évidence des corrélations positives ou négatives fortes, ainsi que d’identifier des paires qui n’ont aucune corrélation. Pour créer une carte thermique, ajoutez une autre cellule de code au notebook, puis entrez le code suivant.
+1. Une carte thermique est un outil utile pour visualiser rapidement la force et la direction des relations entre les paires de variables. Il peut mettre en évidence des corrélations positives ou négatives fortes et identifier des paires qui n’ont aucune corrélation. Pour créer une carte thermique, ajoutez une autre cellule de code au notebook, puis entrez le code suivant.
 
     ```python
     plt.figure(figsize=(15, 7))
