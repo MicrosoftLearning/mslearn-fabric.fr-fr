@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Bien démarrer avec Eventstream dans Real-Time Analytics et Microsoft Fabric
-  module: Get started with Eventstream in Real-Time Analytics and Microsoft Fabric
+  title: Bien démarrer avec Real-Time Analytics dans Microsoft Fabric
+  module: Get started with Real-Time Analytics in Microsoft Fabric
 ---
 # Bien démarrer avec Eventstream dans Real-Time Analytics (RTA)
 
@@ -63,38 +63,38 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 1. Dans **Real-Time Analytics**, cochez la case **Base de données KQL**.
 
-   ![choisir Base de données KQL](./Images/select-kqldatabase.png)
+   ![Image du choix de la base de données kql](./Images/select-kqldatabase.png)
 
 2. Vous êtes invité à donner un **Nom** à la base de données KQL
 
-   ![donner un nom à la base de données KQL](./Images/name-kqldatabase.png)
+   ![Image du nom de la base de données kql](./Images/name-kqldatabase.png)
 
 3. Donnez à la base de données KQL un nom dont vous vous souviendrez, par exemple **MyStockData**, puis appuyez sur **Créer**.
 
 1. Dans le panneau **Détails de la base de données**, sélectionnez l’icône de crayon pour activer la disponibilité dans OneLake.
 
-   ![activer OneLake](./Images/enable-onelake-availability.png)
+   ![Image de l’activation d’onlake](./Images/enable-onelake-availability.png)
 
 2. Veillez à basculer le bouton sur **Actif**, puis sélectionnez **Terminé**.
 
-   ![activer le bouton bascule Onelake](./Images/enable-onelake-toggle.png)
+   ![Image de l’activation de la touche bascule onelake](./Images/enable-onelake-toggle.png)
 
 ## Créer un flux d’événements
 
 1. Dans la barre de menus, sélectionnez **Real-Time Analytics** (l’icône ressemble au ![logo RTA](./Images/rta_logo.png)).
 2. Sous **Nouveau**, sélectionnez **Flux d’événements (préversion)**
 
-   ![choisir Flux d’événements](./Images/select-eventstream.png)
+   ![Image du choix eventstream](./Images/select-eventstream.png)
 
 3. Vous êtes invité à **nommer** votre flux d’événements. Donnez au flux d’événements un nom dont vous vous souviendrez, par exemple ***MyStockES**, puis appuyez sur le bouton **Créer**.
 
-   ![nommer le flux d’événements](./Images/name-eventstream.png)
+   ![Image du nom eventstream](./Images/name-eventstream.png)
 
 ## Établir une source et une destination de flux d’événements
 
 1. Dans le canevas du flux d’événements, sélectionnez **Nouvelle source** dans la liste déroulante, puis sélectionnez **Exemples de données**.
 
-   ![canevas du flux d’événements](./Images/real-time-analytics-canvas.png)
+   ![Image du canevas EventStream](./Images/real-time-analytics-canvas.png)
 
 2. Entrez les valeurs de vos exemples de données, comme indiqué dans le tableau suivant, puis sélectionnez **Ajouter et configurer**.
 
@@ -105,7 +105,7 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 3. Maintenant, ajoutez une destination en sélectionnant **Nouvelle destination**, puis **Base de données KQL**
 
-   ![destination du flux d’événements](./Images/new-kql-destination.png)
+   ![Image de la destination EventStream](./Images/new-kql-destination.png)
 
 4. Dans la configuration de la base de données KQL, utilisez le tableau suivant pour effectuer la configuration.
 
@@ -121,22 +121,22 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 1. Dans la page de boîte de dialogue **Ingérer des données**, sélectionnez **Nouvelle table**, puis entrez MyStockData.
 
-   ![insérer des données boursières](./Images/ingest-stream-data-to-kql.png)
+   ![Image de l’insertion de données boursières](./Images/ingest-stream-data-to-kql.png)
 
 2. Sélectionnez **Suivant : Source**.
 3. Dans la page **Source**, confirmez le **Nom de la connexion de données**, puis sélectionnez **Suivant : Schéma**.
 
-   ![nom de source de données](./Images/ingest-data.png)
+   ![Image du nom de la source de données](./Images/ingest-data.png)
 
 4. Les données entrantes n’étant pas compressées pour les exemples de données, conservez le type de compression comme Non compressé.
 5. Dans la liste déroulante **Format des données**, sélectionnez **JSON**.
 
-   ![Passer au format JSON](./Images/injest-as-json.png)
+   ![Image de la modification au format JSON](./Images/injest-as-json.png)
 
 6. Après cela, il peut être nécessaire de remplacer certains ou tous les types de données de votre flux entrant par votre ou vos tables de destination.
 7. Pour accomplir cette tâche, sélectionnez la **flèche vers le bas > Changer le type de données**. Vérifiez ensuite que les colonnes reflètent le type de données correct :
 
-   ![changer les types de données](./Images/change-data-type-in-es.png)
+   ![Image de la modification des types de données](./Images/change-data-type-in-es.png)
 
 8. Quand vous avez terminé, sélectionnez **Suivant : Résumé**.
 
@@ -153,15 +153,15 @@ Une requête KQL (Kusto Query Language, langage de requête Kusto) est une requ�
 1. Accédez à la base de données KQL que vous venez de créer et d’activer, nommée ***MyStockData***.
 2. Dans l’arborescence Données, sélectionnez le menu Plus [...] dans la table MyStockData. Sélectionnez ensuite Interroger la table > Afficher 100 enregistrements.
 
-   ![Jeu de requêtes KQL](./Images/kql-query-sample.png)
+   ![Image de l’ensemble de requêtes KQL](./Images/kql-query-sample.png)
 
 3. L’exemple de requête s’ouvre dans le volet **Explorer vos données** avec le contexte de table déjà renseigné. Cette première requête utilise l’opérateur take pour retourner un nombre restreint d’enregistrements, et est utile pour obtenir un premier aperçu de la structure des données et des valeurs possibles. Les exemples de requêtes renseignées automatiquement sont exécutés automatiquement. Les résultats de la requête s’affichent dans le volet des résultats.
 
-   ![Résultats de requête SQL](./Images/kql-query-results.png)
+   ![Image des résultats de la requête KQL](./Images/kql-query-results.png)
 
 4. Retournez dans l’arborescence de données pour sélectionner la requête suivante, qui utilise l’opérateur where et l’opérateur between pour retourner les enregistrements ingérés au cours des dernières 24 heures.
 
-   ![Résultats de requête KQL des dernières 24 heures](./Images/kql-query-results-last24.png)
+   ![Image des résultats de la requête KQL des 24 dernières heures](./Images/kql-query-results-last24.png)
 
 > **Remarque** : Notez que les volumes des données de streaming dépassent les limites de requête. Ce comportement peut varier en fonction de la quantité de données diffusées en streaming dans votre base de données.
 
@@ -173,11 +173,11 @@ L’éditeur de requête prend en charge l’utilisation de T-SQL en plus de son
 
 1. De retour dans l’arborescence Données, sélectionnez le **menu Plus** [...] dans la table MyStockData. Sélectionnez **Interroger la table > SQL > Afficher 100 enregistrements**.
 
-   ![exemple de requête SQL](./Images/sql-query-sample.png)
+   ![Image de l’exemple de la requête sql](./Images/sql-query-sample.png)
 
 2. Placez votre curseur n’importe où dans la requête, puis sélectionnez **Exécuter** ou appuyez sur **Maj + Entrée**.
 
-   ![Résultats de la requête SQL](./Images/sql-query-results.png)
+   ![Image des résultats de la requête sql](./Images/sql-query-results.png)
 
 Vous pouvez continuer à naviguer à l’aide des fonctions intégrées et à vous familiariser avec les données à l’aide de SQL ou de KQL. Cela met fin à la leçon.
 
