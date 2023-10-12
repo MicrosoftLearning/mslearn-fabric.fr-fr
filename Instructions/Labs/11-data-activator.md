@@ -23,9 +23,9 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
     ![Capture d’écran d’un espace de travail vide dans Power BI](./Images/new-workspace.png)
 
-Dans ce labo, vous allez utiliser Data Activator dans Fabric pour créer un *Reflex*. Data Activator fournit de façon pratique un exemple de jeu de données que vous pouvez utiliser pour explorer les fonctionnalités de Data Activator. Vous utilisez cet exemple de données pour créer un *Reflex* qui analyse des données en temps réel et crée un déclencheur pour envoyer un e-mail lorsqu’une condition est remplie.
+Dans ce lab, vous allez utiliser Data Activator dans Fabric pour créer un élément *Reflex*. Data Activator fournit de façon pratique un exemple de jeu de données que vous pouvez utiliser pour explorer les fonctionnalités de Data Activator. Vous utilisez cet exemple de données pour créer un *Reflex* qui analyse des données en temps réel et crée un déclencheur pour envoyer un e-mail lorsqu’une condition est remplie.
 
-> **Remarque** : l’exemple de processus de Data Activator génère des données aléatoires en arrière-plan.  Plus les conditions et filtres que vous créez sont complexes, plus il est probable qu’aucun événement ne réponde actuellement aux conditions et aux filtres du déclencheur. Si vous ne voyez pas de données dans le graphique, attendez quelques minutes et actualisez la page. Cela dit, vous n’avez pas besoin d’attendre que les données soient affichées dans les graphiques pour continuer avec le labo.
+> **Remarque** : l’exemple de processus de Data Activator génère des données aléatoires en arrière-plan. Plus vos conditions et filtres seront complexes, plus il faudra de temps pour les déclencher. Si vous ne voyez pas de données dans le graphique, attendez quelques minutes et actualisez la page. Cela dit, vous n’avez pas besoin d’attendre que les données soient affichées dans les graphiques pour continuer avec le labo.
 
 ## Scénario
 
@@ -45,7 +45,7 @@ Dans ce scénario, vous êtes analyste de données pour une entreprise qui vend 
 
     ![Capture d’écran de l’écran Obtenir des données de Data Activator.](./Images/data-activator-get-started.png)
 
-1. Par défaut, Data Activator crée votre Reflex avec le nom *Reflex AAAA-MM-JJ hh :mm :ss*. Étant donné que vous pouvez avoir plusieurs Reflex dans votre espace de travail, vous devez remplacer le nom du Reflex par défaut par un nom plus descriptif. Sélectionnez le menu déroulant situé à côté du nom du Reflex actuel dans le coin supérieur gauche et modifiez le nom en ***Reflex Expédition Contoso*** pour notre exemple.
+1. Par défaut, Data Activator crée votre Reflex avec le nom *Reflex AAAA-MM-JJ hh :mm :ss*. Étant donné que vous pouvez avoir plusieurs Reflex dans votre espace de travail, vous devez remplacer le nom du Reflex par défaut par un autre plus descriptif. Sélectionnez le menu déroulant situé à côté du nom du Reflex actuel dans le coin supérieur gauche et modifiez le nom en ***Reflex Expédition Contoso*** pour notre exemple.
 
     ![Capture d’écran de l’écran d’accueil du Reflex de Data Activator.](./Images/data-activator-reflex-home-screen.png)
 
@@ -65,11 +65,11 @@ Pour vous familiariser avec le mode *Conception*, sélectionnez les différentes
 
 ### Mode Données
 
-1. Si vous n’êtes pas actuellement en mode *Données*, sélectionnez l’onglet **Données** en bas à gauche de l’écran. Dans un exemple réel, vous ajouteriez ici vos propres sources de données à partir de vos visuels EventStreams et Power BI. Pour ce labo, vous utiliserez les exemples de données fournis par Data Activator. Les exemples de données fournis par Data Activator sont déjà configurés avec trois EventStreams qui surveillent le statut de livraison du colis.
+Si vous n’êtes pas actuellement en mode *Données*, sélectionnez l’onglet **Données** en bas à gauche de l’écran. Dans un exemple réel, vous ajouteriez ici vos propres sources de données à partir de vos visuels EventStreams et Power BI. Pour ce lab, vous utilisez les exemples de données fournis par Data Activator. Cet exemple est déjà configuré avec trois EventStreams qui surveillent l’état de livraison du colis.
 
 ![Capture d’écran du mode Données du Reflex de Data Activator.](./Images/data-activator-data-tab.png)
 
-1. Sélectionnez chacun des différents événements pour afficher les données que l’événement traite.
+Sélectionnez chacun des différents événements et observez les données utilisées dans le flux.
 
 ![Capture d’écran des événements du mode Données du Reflex de Data Activator.](./Images/data-activator-get-data-tab-event-2.png)
 
@@ -81,7 +81,7 @@ Dans un scénario réel, il n’est peut-être pas nécessaire de créer un obje
 
 1. Si vous n’êtes pas actuellement en mode *Données*, sélectionnez l’onglet **Données** en bas à gauche de l’écran.
 
-1. Sélectionnez l’événement ***Colis en transit***. Prêtez une attention particulière aux valeurs des colonnes *IdColis*, *Température*, *TypeChaîneFroid*, *Ville* et *SoinsParticuliers*. Vous utilisez ces colonnes pour créer votre déclencheur.
+1. Sélectionnez l’événement ***Colis en transit***. Prêtez une attention particulière aux valeurs des colonnes *IdColis*, *Température*, *TypeChaîneFroid*, *Ville* et *SoinsParticuliers*. Vous utiliserez ces colonnes pour créer votre déclencheur.
 
 1. Si la boîte de dialogue *Attribuer vos données* n’est pas déjà ouverte sur le côté droit, sélectionnez le bouton **Attribuer vos données** sur la droite de l’écran.
 
@@ -105,15 +105,17 @@ Il est temps de créer votre déclencheur.
 
 ## Créer un déclencheur
 
-Revoyons ce que vous voulez que votre déclencheur fasse : *Vous voulez créer un Reflex qui envoie un e-mail au service d’expédition si la température d’un colis contenant un médicament prescrit est supérieure ou inférieure à un certain seuil. La température idéale doit se situer entre 0,5 degré et 5 degrés. Comme les événements Reflex contiennent déjà un déclencheur similaire, vous en créez un spécifiquement pour les colis expédiés vers la ville de Redmond*.
+Revoyons ce que vous voulez que votre déclencheur fasse : *vous voulez créer un Reflex qui envoie un e-mail au service d’expédition si la température d’un colis contenant un médicament prescrit est supérieure ou inférieure à un certain seuil. La température idéale doit se situer entre 33 et 41 degrés. Comme les événements Reflex contiennent déjà un déclencheur similaire, vous en créez un spécifiquement pour les colis expédiés vers la ville de Redmond*.
 
-1. Sélectionnez le bouton **Nouveau déclencheur** dans le menu du haut. Un nouveau déclencheur est créé avec le nom par défaut *Sans titre*. Remplacez le nom par ***Température du médicament hors plage*** pour mieux définir votre déclencheur.
+1. Dans l’événement *Colis en transit* de l’objet **Colis Redmond**, sélectionnez le bouton **Nouveau déclencheur** dans le menu supérieur. Un nouveau déclencheur est créé avec le nom par défaut *Sans titre*. Remplacez le nom par ***Température du médicament hors plage*** pour mieux définir votre déclencheur.
 
     ![Capture d’écran de la création d’un déclencheur dans le mode Conception du Reflex de Data Activator.](./Images/data-activator-trigger-new.png)
 
-1. Il est temps de sélectionner la propriété ou la colonne d’événement qui déclenche votre Reflex. Étant donné que vous avez créé plusieurs propriétés lors de la création de votre objet, sélectionnez le bouton **Propriété existante**, puis sélectionnez la propriété ***Température***. La sélection de cette propriété doit renvoyer un graphique avec un échantillon de valeurs historiques de température.
+1. Il est temps de sélectionner la propriété ou la colonne d’événement qui déclenche votre Reflex. Étant donné que vous avez créé plusieurs propriétés lors de la création de votre objet, sélectionnez le bouton **Propriété existante**, puis sélectionnez la propriété ***Température***. 
 
     ![Capture d’écran de la sélection de propriété dans le mode Conception du Reflex de Data Activator.](./Images/data-activator-trigger-select-property.png)
+
+    La sélection de cette propriété doit renvoyer un graphique avec un échantillon de valeurs historiques de température.
 
     ![Capture d’écran du graphique de valeurs historiques de la propriété de Data Activator.](./Images/data-activator-trigger-property-sample-graph.png)
 
@@ -125,11 +127,11 @@ Revoyons ce que vous voulez que votre déclencheur fasse : *Vous voulez créer 
 
     ![Capture d’écran de la saisie de valeurs de conditions dans le mode Conception du Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-define.png)
 
-1. Jusqu’à présent, vous avez défini la propriété et la condition sur lesquelles vous souhaitez que le déclencheur soit activé, mais cela n’inclut pas encore tous les paramètres dont vous avez besoin. Vous devez toujours vous assurer que le déclencheur ne s’active que pour la *Ville* de **Redmond** et pour le type de *Soins particuliers* de **Médicament**. Nous allons maintenant ajouter quelques filtres pour ces conditions.  Sélectionnez le bouton **Ajouter un filtre**, puis sélectionnez la propriété ***Ville***. Entrez ***Redmond*** comme valeur. Ensuite, sélectionnez à nouveau le bouton **Ajouter un filtre**, puis sélectionnez la propriété ***SoinsParticuliers***. Entrez ***Médicament*** comme valeur.
+1. Jusqu’à présent, vous avez défini la propriété et la condition sur lesquelles vous souhaitez que le déclencheur soit activé, mais cela n’inclut pas encore tous les paramètres dont vous avez besoin. Vous devez toujours vous assurer que le déclencheur ne s’active que pour la *Ville* de **Redmond** et pour le type de *Soins particuliers* de **Médicament**. Nous allons maintenant ajouter quelques filtres pour ces conditions.  Sélectionnez le bouton **Ajouter un filtre**, définissez la propriété sur ***Ville***, définissez la relation sur ***Égal***, puis entrez ***Redmond*** comme valeur. Ensuite, ajoutez un nouveau filtre avec la propriété ***SpecialCare***, définissez-la sur ***Égal***, puis entrez ***Médicament*** comme valeur.
 
     ![Capture d’écran de l’ajout de filtre dans le mode Conception du Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-add-filter.png)
 
-1. Ajoutons un filtre supplémentaire pour nous assurer que le médicament est réfrigéré. Sélectionnez le bouton **Ajouter un filtre**, puis sélectionnez la propriété ***TypeChaîneFroid***. Entrez ***Réfrigéré*** comme valeur.
+1. Ajoutons un filtre supplémentaire pour nous assurer que le médicament est réfrigéré. Sélectionnez le bouton **Ajouter un filtre**, définissez la propriété ***ColdChainType***, définissez-la sur ***Égal***, puis entrez ***Réfrigéré*** comme valeur.
 
     ![Capture d’écran de l’ajout de filtre dans le mode Conception du Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-add-filter-additional.png)
 
@@ -144,13 +146,13 @@ Revoyons ce que vous voulez que votre déclencheur fasse : *Vous voulez créer 
     - **Titre** : *Température trop élevée ou trop basse*
     - **Informations supplémentaires** : sélectionnez la propriété *Température* dans la liste de cases à cocher.
 
-    ![Capture d’écran du démarrage du déclencheur dans le mode Conception du Reflex de Data Activator.](./Images/data-activator-trigger-start.png)
+    ![Capture d’écran de définition d’action Data Activator.](./Images/data-activator-trigger-define-action.png)
 
 1. Sélectionnez **Enregistrer**, puis **Démarrer** dans le menu du haut.
 
 Vous avez maintenant créé et démarré un déclencheur dans Data Activator.
 
-## Mettre à jour un déclencheur
+## Mettre à jour et arrêter un déclencheur
 
 Le seul problème avec ce déclencheur est que tandis que le déclencheur a envoyé un e-mail avec la température, il n’a pas envoyé l’*IdColis* du colis. Nous allons maintenant mettre à jour le déclencheur pour inclure l’*IdColis*.
 
@@ -172,11 +174,7 @@ Le seul problème avec ce déclencheur est que tandis que le déclencheur a envo
 
     ![Capture d’écran de la mise à jour du déclencheur de Data Activator.](./Images/data-activator-trigger-updated.png)
 
-Votre déclencheur est maintenant mis à jour.
-
-## Arrêter un déclencheur
-
-Pour arrêter le déclencheur, sélectionnez le bouton **Arrêter** dans le menu du haut.
+1. Arrêtez le déclencheur en sélectionnant le bouton **Arrêter** dans le menu du haut de l’écran.
 
 ## Nettoyer les ressources
 
