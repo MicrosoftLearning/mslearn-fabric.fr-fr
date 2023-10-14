@@ -4,7 +4,7 @@ lab:
   module: Preprocess data with Data Wrangler in Microsoft Fabric
 ---
 
-# Utiliser des notebooks pour entraîner un modèle dans Microsoft Fabric
+# Prétraiter des données avec Data Wrangler dans Microsoft Fabric
 
 Dans ce labo, vous allez apprendre à utiliser Data Wrangler dans Microsoft Fabric pour prétraiter des données, et générer du code à l’aide d’une bibliothèque d’opérations courantes de science des données.
 
@@ -21,28 +21,13 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI](./Images/new-workspace.png)
-
-## Créer un lakehouse et charger des fichiers
-
-Maintenant que vous disposez d’un espace de travail, il est temps de basculer vers l’expérience *Science des données* dans le portail et de créer un data lakehouse pour les fichiers de données que vous allez analyser.
-
-1. En bas à gauche du portail Power BI, sélectionnez l’icône **Power BI** et basculez vers l’expérience **Engineering données**.
-1. Dans la page d’accueil de l’**Engineering données**, créez un **Lakehouse** avec le nom de votre choix.
-
-    Au bout d’une minute environ, un nouveau lakehouse sans **tables** ou **fichiers** sera créé. Vous devez ingérer certaines données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de procéder, mais dans cet exercice vous allez simplement télécharger et extraire un dossier de fichiers texte de votre ordinateur local (ou machine virtuelle de laboratoire le cas échéant), puis les charger dans votre lakehouse.
-
-1. TODO : Téléchargez et enregistrez le fichier CSV `dominicks_OJ.csv` pour cet exercice à partir de [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/XXXXX.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/XXXXX.csv).
-
-
-1. Revenez à l’onglet du navigateur web contenant votre lakehouse puis, dans le menu **…** du nœud **Fichiers** dans le volet **Vue du lac**, sélectionnez **Charger** et **Charger des fichiers**, puis chargez le fichier **dominicks_OJ.csv** à partir de votre ordinateur local (ou de la machine virtuelle de labo, le cas échéant) dans le lakehouse.
-6. Une fois les fichiers chargés, développez **Fichiers** et vérifiez que le fichier CSV a été chargé.
+    ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
 
 ## Créer un notebook
 
 Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks fournissent un environnement interactif dans lequel vous pouvez écrire et exécuter du code (dans plusieurs langages) en tant qu’*expériences*.
 
-1. En bas à gauche du portail Power BI, sélectionnez l’icône **Engineering données** et basculez vers l’expérience **Science des données**.
+1. En bas à gauche du portail Power BI, sélectionnez l’icône **PowerBI** et basculez vers l’expérience **Science des données**.
 
 1. Dans la page d’accueil de **Science des données**, créez un **notebook**.
 
@@ -55,58 +40,88 @@ Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks four
 1. Utilisez le bouton **&#128393;** (Modifier) pour basculer la cellule en mode édition, puis supprimez le contenu et entrez le texte suivant :
 
     ```text
-   # Train a machine learning model and track with MLflow
+   # Perform data exploration for data science
 
-   Use the code in this notebook to train and track models.
+   Use the code in this notebook to perform data exploration for data science.
     ``` 
 
 ## Charger des données dans un DataFrame
 
-Vous êtes maintenant prêt à exécuter du code pour préparer des données et entraîner un modèle. Pour travailler avec des données, vous allez utiliser des *DataFrames*. Les DataFrames dans Spark sont similaires aux DataFrames Pandas dans Python, et fournissent une structure commune pour l’utilisation de données dans des lignes et des colonnes.
+Vous êtes maintenant prêt à exécuter du code pour obtenir des données. Vous allez utiliser le [**jeu de données OJ Sales**](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-oj-sales-simulated?tabs=azureml-opendatasets?azure-portal=true) à partir d’Azure Open Datasets. Après avoir chargé les données, vous allez convertir les données en dataframe Pandas, qui est la structure prise en charge par Data Wrangler.
 
-1. Dans le volet **Ajouter un lakehouse**, sélectionnez **Ajouter** pour ajouter un lakehouse.
-1. Sélectionnez **Lakehouse existant**, puis **Ajouter**.
-1. Sélectionnez le lakehouse que vous avez créé dans une section précédente.
-1. Développez le dossier **Fichiers** afin que le fichier CSV soit listé en regard de l’éditeur de notebook.
-1. Dans le menu **...** pour **churn.csv**, sélectionnez **Charger des données** > **Pandas**. Une nouvelle cellule de code contenant le code suivant doit être ajoutée au notebook :
+1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes. Entrez le code suivant pour charger le jeu de données dans un dataframe.
 
     ```python
-    import pandas as pd
-    df = pd.read_csv("/lakehouse/default/" + "Files/dominicks_OJ.csv") 
-    display(df.head(5))
+    # Azure storage access info for open dataset diabetes
+    blob_account_name = "azureopendatastorage"
+    blob_container_name = "ojsales-simulatedcontainer"
+    blob_relative_path = "oj_sales_data"
+    blob_sas_token = r"" # Blank since container is Anonymous access
+    
+    # Set Spark config to access  blob storage
+    wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+    spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+    print("Remote blob path: " + wasbs_path)
+    
+    # Spark reads csv
+    df = spark.read.csv(wasbs_path, header=True)
     ```
 
-    > **Conseil** : Vous pouvez masquer le volet contenant les fichiers à gauche en utilisant son icône **<<** . Cela vous aidera à vous concentrer sur le notebook.
-
-1. Utilisez le bouton **&#9655; Exécuter la cellule** à gauche de la cellule pour l’exécuter.
+1. Utilisez le bouton **&#9655; Exécuter la cellule** à gauche de la cellule pour l’exécuter. Vous pouvez également appuyer `SHIFT` + `ENTER` sur votre clavier pour exécuter une cellule.
 
     > **Remarque** : Comme c’est la première fois que vous exécutez du code Spark dans cette session, le pool Spark doit être démarré. Cela signifie que la première exécution dans la session peut prendre environ une minute. Les exécutions suivantes seront plus rapides.
 
+1. Utilisez l’icône **+ Code** sous la sortie de cellule pour ajouter une nouvelle cellule de code au notebook, puis entrez le code suivant :
+
+    ```python
+    import pandas as pd
+
+    df = df.toPandas()
+    df = df.sample(n=500, random_state=1)
+    
+    df['WeekStarting'] = pd.to_datetime(df['WeekStarting'])
+    df['Quantity'] = df['Quantity'].astype('int')
+    df['Advert'] = df['Advert'].astype('int')
+    df['Price'] = df['Price'].astype('float')
+    df['Revenue'] = df['Revenue'].astype('float')
+    
+    df = df.reset_index(drop=True)
+    df.head(4)
+    ```
+
+1. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
+
+    ```
+        WeekStarting    Store   Brand       Quantity    Advert  Price   Revenue
+    0   1991-10-17      947     minute.maid 13306       1       2.42    32200.52
+    1   1992-03-26      1293    dominicks   18596       1       1.94    36076.24
+    2   1991-08-15      2278    dominicks   17457       1       2.14    37357.98
+    3   1992-09-03      2175    tropicana   9652        1       2.07    19979.64
+    ```
+
+    La sortie affiche les quatre premières lignes du jeu de données OJ Sales.
+
 ## Afficher des statistiques récapitulatives
 
-Lorsque Data Wrangler est lancé, il génère une vue d’ensemble descriptive du dataframe dans le panneau Résumé. 
+Maintenant que nous avons chargé les données, l’étape suivante consiste à les prétraiter à l’aide de Data Wrangler. Le prétraitement est une étape cruciale dans tout flux de travail de Machine Learning. Il implique de nettoyer les données et de les transformer dans un format qui peut être alimenté dans un modèle Machine Learning.
 
-1. Sélectionnez **Données** dans le menu supérieur, puis la liste déroulante **Data Wrangler** pour parcourir le jeu de données `df`.
+1. Sélectionnez **Données** dans le ruban du notebook, puis la liste déroulante **Lancer Data Wrangler**.
 
-    ![Capture d’écran de l’option de lancement de Data Wrangler.](./Images/launch-data-wrangler.png)
+1. Sélectionnez le jeu de données `df`. Lorsque Data Wrangler est lancé, il génère une vue d’ensemble descriptive du dataframe dans le panneau **Résumé**. 
 
-1. Sélectionnez la colonne **Large HH** et observez combien il est facile de déterminer la distribution des données de cette caractéristique.
+1. Sélectionnez la fonctionnalité **Revenu**, et observez la distribution de données de cette fonctionnalité.
 
-    ![Capture d’écran de la page de Data Wrangler montrant la distribution des données pour une colonne particulière.](./Images/data-wrangler-distribution.png)
-
-    Notez que cette caractéristique suit une distribution normale.
-
-1. Vérifiez le panneau latéral Résumé, et observez les plages de centiles. 
+1. Passez en revue les détails du panneau latéral **Résumé** et observez les valeurs des statistiques.
 
     ![Capture d’écran de la page de Data Wrangler montrant les détails du panneau Résumé.](./Images/data-wrangler-summary.png)
 
-    Vous pouvez constater que la plupart des données se situent entre **0,098** et **0,132**, et que 50 % des valeurs de données se trouvent dans cette plage.
+    Quels sont les informations que vous pouvez en tirer ? Le revenu moyen est d’environ **33 459,54 $** , avec un écart type de **8 032,23 $** . Cela suggère que les valeurs des revenus sont réparties sur une plage d’environ **8 032,23 $** par rapport à la moyenne.
 
 ## Mettre en forme des données de texte
 
 Appliquons maintenant quelques transformations à la caractéristique **Brand**.
 
-1. Dans la page **Data Wrangler**, sélectionnez la caractéristique `Brand`.
+1. Dans le tableau de bord **Data Wrangler** , sélectionnez la fonctionnalité `Brand` dans la grille.
 
 1. Accédez au panneau **Opérations**, développez **Rechercher et remplacer**, puis sélectionnez **Rechercher et remplacer**.
 
@@ -115,49 +130,62 @@ Appliquons maintenant quelques transformations à la caractéristique **Brand**.
     - **Ancienne valeur :** "."
     - **Nouvelle valeur :** " " (caractère d’espace)
 
-    ![Capture d’écran de la page de Data Wrangler montrant le panneau Rechercher et remplacer.](./Images/data-wrangler-find.png)
-
     Les résultats de l’opération sont affichés automatiquement dans la grille d’affichage.
 
 1. Sélectionnez **Appliquer**.
 
 1. Revenez au panneau **Opérations** et développez **Format**.
 
-1. Sélectionnez **Convertir du texte en majuscule**.
-
-1. Dans le panneau **Convertir du texte en majuscules**, sélectionnez **Appliquer**.
+1. Sélectionnez **Convertir du texte en majuscule**. Activez le bouton bascule **Mettre en majuscules tous les mots**, puis sélectionnez **Appliquer**.
 
 1. Sélectionnez **Ajouter du code au notebook**. En outre, vous pouvez également enregistrer le jeu de données transformé en tant que fichier .csv.
 
-    Notez que le code est automatiquement copié dans la cellule du notebook, et qu’il est prêt à être utilisé.
+    >**Remarque :** le code est automatiquement copié dans la cellule du notebook, il est prêt à être utilisé. 
 
-1. Exécutez le code.
+1. Remplacez les lignes 10 et 11 par le code `df = clean_data(df)`, car le code généré dans Data Wrangler ne remplace pas le dataframe d’origine. Le bloc de code final devrait ressembler à ceci :
+ 
+    ```python
+    def clean_data(df):
+        # Replace all instances of "." with " " in column: 'Brand'
+        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
+        # Convert text to capital case in column: 'Brand'
+        df['Brand'] = df['Brand'].str.title()
+        return df
+    
+    df = clean_data(df)
+    ```
 
-> **Important :** Le code généré ne remplace pas le dataframe d’origine. 
+1. Exécutez la cellule de code et observez la variable `Brand`.
 
-Vous avez appris à générer facilement du code et à manipuler des données de texte à l’aide d’opérations Data Wrangler. 
+    ```python
+    df['Brand'].unique()
+    ```
 
-## Appliquer une transformation d’encodeur one-hot
+    Le résultat montre *Minute Maid*, *Dominicks* et *Tropicana*.
 
-Maintenant, nous allons générer le code pour appliquer une transformation d’encodeur one-hot en tant qu’étape de prétraitement.
+Vous avez appris à manipuler graphiquement des données de texte et à générer facilement du code à l’aide de Data Wrangler.
 
-1. Sélectionnez **Données** dans le menu supérieur, puis la liste déroulante **Data Wrangler** pour parcourir le jeu de données `df`.
+## Appliquer une transformation de codage à chaud
 
-1. Dans le panneau **Opérations**, développez **Formules**.
+À présent, nous allons générer le code pour appliquer la transformation d’encodage à chaud à nos données dans le cadre de nos étapes de prétraitement. Pour rendre notre scénario plus pratique, nous commençons par générer des exemples de données. Cela nous permet de simuler une situation réelle et nous fournit une fonctionnalité utilisable.
 
-1. Sélectionnez **Un encodeur à chaud**.
+1. Lancez Data Wrangler dans le menu supérieur du dataframe `df`.
+
+1. Sélectionnez la fonctionnalité `Brand` dans la grille. 
+
+1. Dans le panneau **Opérations**, développez **Formules**, puis sélectionnez **Encoder à chaud**.
 
 1. Dans le panneau **Un encodeur à chaud**, sélectionnez **Appliquer**.
 
-    Accédez à la fin de la grille d’affichage Data Wrangler. Notez que trois nouvelles caractéristiques ont été ajoutées, et que la caractéristique `Brand` a été supprimée.
+    Accédez à la fin de la grille d’affichage Data Wrangler. Notez que trois nouvelles fonctionnalités ont été ajoutées (`Brand_Dominicks`, `Brand_Minute Maid` et `Brand_Tropicana`) et que la fonctionnalité `Brand` a été supprimée.
 
-1. Sélectionnez **Ajouter du code au notebook**.
-
-1. Exécutez le code.
+1. Fermez Data Wrangler sans générer le code.
 
 ## Opérations de tri et de filtrage
 
-1. Sélectionnez **Données** dans le menu supérieur, puis la liste déroulante **Data Wrangler** pour parcourir le jeu de données `df`.
+Imaginez que nous devons passer en revue les données de chiffre d’affaires d’un magasin spécifique, puis trier les prix des produits. Dans les étapes suivantes, nous utilisons Data Wrangler pour filtrer et analyser le dataframe `df`. 
+
+1. Lancez Data Wrangler pour le dataframe `df`.
 
 1. Dans le panneau **Opérations**, développez **Trier et filtrer**.
 
@@ -167,48 +195,34 @@ Maintenant, nous allons générer le code pour appliquer une transformation d’
     
     - **Colonne cible :** Store
     - **Opération :** Égal à
-    - **Valeur :** 2
+    - **Valeur :** 1227
 
-1. Sélectionnez **Appliquer**.
+1. Sélectionnez **Appliquer**, et observez les modifications apportées à la grille d’affichage de Data Wrangler.
 
-    Observez les modifications apportées à la grille d’affichage de Data Wrangler.
+1. Sélectionnez la fonctionnalité **Revenu**, puis passez en revue les détails du panneau latéral **Résumé**.
+
+    Quels sont les informations que vous pouvez en tirer ? L’asymétrie est de **-0,751**, ce qui indique une légère asymétrie gauche (asymétrie négative). Cela signifie que la traîne gauche de la distribution est légèrement plus longue que la traîne droite. En d’autres termes, il y a un certain nombre de périodes où les revenus sont nettement inférieurs à la moyenne.
 
 1. De retour au panneau **Opérations**, développez **Trier et filtrer**.
 
 1. Sélectionner **Trier les valeurs**.
 
-1. Dans le panneau **Price**, ajoutez la condition suivante :
+1. Dans le panneau **Trier les valeurs**, sélectionnez les propriétés suivantes :
     
     - **Nom de la colonne :** Price
     - **Ordre de tri :** Décroissant
 
 1. Sélectionnez **Appliquer**.
 
-    Observez les modifications apportées à la grille d’affichage de Data Wrangler.
-
-## Agréger les données
-
-1. De retour au panneau **Opérations**, sélectionnez **Regrouper et agréger**.
-
-1. Dans la propriété **Colonnes de regroupement :** , sélectionnez la caractéristique `Store`.
-
-1. Sélectionnez **Ajouter une agrégation**.
-
-1. Dans la propriété **Colonne à agréger**, sélectionnez la caractéristique `Quantity`.
-
-1. Sélectionnez **Nombre** pour la propriété **Type d’agrégation**.
-
-1. Sélectionnez **Appliquer**. 
-
-    Observez les modifications apportées à la grille d’affichage de Data Wrangler.
+    Le prix de produit le plus élevé pour le magasin **1227** est **de 2,68 $** . Avec seulement quelques enregistrements, il est plus facile d’identifier le prix du produit le plus élevé, mais tenez compte de la complexité lorsque vous traitez des milliers de résultats.
 
 ## Parcourir et supprimer les étapes
 
-Supposez que vous avez commis une erreur et que vous devez supprimer l’agrégation créée à l’étape précédente. Suivez ces étapes pour la supprimer :
+Supposez que vous avez commis une erreur et que vous devez supprimer le tri créé à l’étape précédente. Suivez ces étapes pour la supprimer :
 
-1. Développez le panneau **Étapes de nettoyage**.
+1. Accédez au panneau **Étapes de nettoyage**.
 
-1. Sélectionnez l’étape **Regrouper et agréger**.
+1. Sélectionnez l’étape **Trier les valeurs**.
 
 1. Sélectionnez l’icône de suppression pour supprimer l’étape.
 
@@ -216,11 +230,62 @@ Supposez que vous avez commis une erreur et que vous devez supprimer l’agréga
 
     > **Important :** L’affichage de grille et le résumé sont limités à l’étape actuelle.
 
-    Notez que les modifications sont rétablies à l’étape précédente, qui est l’étape **Trier les valeurs**.
+    Notez que les modifications sont rétablies à l’étape précédente, **Filtrer**.
 
-1. Sélectionnez **Ajouter du code au notebook**.
+1. Fermez Data Wrangler sans générer le code.
 
-1. Exécutez le code.
+## Agréger les données
+
+Supposons que nous voulons comprendre le chiffre d’affaires moyen généré par chaque marque. Dans les étapes suivantes, nous utilisons Data Wrangler pour effectuer une opération « grouper par » sur le dataframe `df`.
+
+1. Lancez Data Wrangler pour le dataframe `df`.
+
+1. De retour au panneau **Opérations**, sélectionnez **Regrouper et agréger**.
+
+1. Dans la propriété **Colonnes de regroupement :** , sélectionnez la caractéristique `Brand`.
+
+1. Sélectionnez **Ajouter une agrégation**.
+
+1. Dans la propriété **Colonne à agréger**, sélectionnez la caractéristique `Revenue`.
+
+1. Sélectionnez **Moyen** pour la propriété **Type d’agrégation**.
+
+1. Sélectionnez **Appliquer**. 
+
+1. Sélectionnez **Ajouter du code au notebook**. 
+
+1. Combinez le code de la transformation de la variable `Brand` avec le code généré par l’étape d’agrégation dans la fonction `clean_data(df)`. Le bloc de code final devrait ressembler à ceci :
+ 
+    ```python
+    def clean_data(df):
+        # Replace all instances of "." with " " in column: 'Brand'
+        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
+        # Convert text to capital case in column: 'Brand'
+        df['Brand'] = df['Brand'].str.title()
+
+        # Performed 1 aggregation grouped on column: 'Brand'
+        df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()
+
+        return df
+    
+    df = clean_data(df)
+    ```
+
+1. Exécutez le code de cellule.
+
+1. Vérifiez les données dans le dataframe.
+
+    ```python
+    print(df)
+    ``` 
+
+    Résultats :
+    ```
+             Brand  Revenue_mean
+    0    Dominicks  33206.330958
+    1  Minute Maid  33532.999632
+    2    Tropicana  33637.863412
+    ```
 
 Vous avez généré le code pour certaines des opérations de prétraitement, et vous l’avez enregistré dans le notebook en tant que fonction, que vous pouvez ensuite réutiliser ou modifier en fonction des besoins.
 
