@@ -171,7 +171,7 @@ Vous avez appris à manipuler graphiquement des données de texte et à génére
 
 1. Lancez Data Wrangler dans le menu supérieur du dataframe `df`.
 
-1. Sélectionnez la fonctionnalité `Brand` dans la grille. 
+1. Sélectionnez la fonctionnalité `Brand` dans la grille.
 
 1. Dans le panneau **Opérations**, développez **Formules**, puis sélectionnez **Encoder à chaud**.
 
@@ -183,7 +183,7 @@ Vous avez appris à manipuler graphiquement des données de texte et à génére
 
 ## Opérations de tri et de filtrage
 
-Imaginez que nous devons passer en revue les données de chiffre d’affaires d’un magasin spécifique, puis trier les prix des produits. Dans les étapes suivantes, nous utilisons Data Wrangler pour filtrer et analyser le dataframe `df`. 
+Imaginez que nous devons passer en revue les données de chiffre d’affaires d’un magasin spécifique, puis trier les prix des produits. Dans les étapes suivantes, nous utilisons Data Wrangler pour filtrer et analyser le dataframe `df`.
 
 1. Lancez Data Wrangler pour le dataframe `df`.
 
@@ -250,9 +250,9 @@ Supposons que nous voulons comprendre le chiffre d’affaires moyen généré pa
 
 1. Sélectionnez **Moyen** pour la propriété **Type d’agrégation**.
 
-1. Sélectionnez **Appliquer**. 
+1. Sélectionnez **Appliquer**.
 
-1. Sélectionnez **Ajouter du code au notebook**. 
+1. Sélectionnez **Ajouter du code au notebook**.
 
 1. Combinez le code de la transformation de la variable `Brand` avec le code généré par l’étape d’agrégation dans la fonction `clean_data(df)`. Le bloc de code final devrait ressembler à ceci :
  
@@ -277,7 +277,7 @@ Supposons que nous voulons comprendre le chiffre d’affaires moyen généré pa
 
     ```python
     print(df)
-    ``` 
+    ```
 
     Résultats :
     ```
