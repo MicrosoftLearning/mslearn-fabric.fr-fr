@@ -134,8 +134,7 @@ Maintenant, nous allons générer des statistiques descriptives pour comprendre 
 1. Utilisez l’icône **+ Code** sous la sortie de cellule pour ajouter une nouvelle cellule de code au notebook, puis entrez le code suivant.
 
     ```python
-    desc_stats = df.describe()
-    print(desc_stats)
+    df.describe()
     ```
 
     L’âge moyen est d’environ 48,5 ans, avec un écart type de 13,1 ans. La personne la plus jeune a 19 ans et la plus âgée a 79 ans. La moyenne `BMI` est d’environ 26,4, ce qui se situe dans la catégorie de **surpoids** selon les [normes de l’OMS](https://www.who.int/health-topics/obesity#tab=tab_1). Le minimum `BMI` est de 18 et le maximum est de 42,2.
