@@ -10,7 +10,7 @@ Dans ce labo, vous allez utiliser un modèle Machine Learning pour prédire une 
 
 En effectuant ce labo, vous allez acquérir une expérience pratique de la génération de prédictions et de la visualisation des résultats.
 
-Ce labo prend environ **45** minutes.
+Ce labo prend environ **20** minutes.
 
 > **Remarque** : Vous aurez besoin d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -29,13 +29,13 @@ Avant d’utiliser des modèles dans Fabric, créez un espace de travail en acti
 
 Pour ingérer des données, former et inscrire un modèle, vous allez exécuter les cellules d’un notebook. Vous pouvez charger le notebook sur votre espace de travail.
 
-1. En bas à gauche du portail Fabric, sélectionnez l’icône **Engineering données** et basculez vers l’expérience **Science des données**.
+1. Dans un nouvel onglet de navigateur, accédez à et téléchargez le notebook [Générer des prédictions](https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb) dans un dossier de votre choix.
+1. Revenez à l’onglet du navigateur Fabric et, en bas à gauche du portail Fabric, sélectionnez l’icône **Power BI** et basculez vers l’expérience **Science des données** .
 1. Dans la page d’accueil **Science des données**, sélectionnez **Importer un notebook**.
 
     Vous recevez une notification une fois que le notebook est importé.
 
 1. Accédez au notebook importé nommé `Generate-Predictions`.
-
 1. Lisez attentivement les instructions dans le notebook et exécutez chaque cellule individuellement.
 
 ## Nettoyer les ressources
