@@ -7,14 +7,6 @@ lab:
 
 Eventstream est une fonctionnalité de Microsoft Fabric qui capture, transforme et route les événements en temps réel vers différentes destinations avec une expérience sans code. Vous pouvez ajouter des sources de données d’événement, des destinations de routage, ainsi que le processeur d’événements lorsque la transformation est nécessaire, au flux d’événements. EventStore de Microsoft Fabric est une option de supervision qui tient à jour les événements du cluster et fournit un moyen de comprendre l’état de votre cluster ou de votre charge de travail à un moment donné. Vous pouvez interroger le service EventStore à propos des événements qui sont disponibles pour chaque entité et type d’entité du cluster. Cela signifie que vous pouvez rechercher des événements à différents niveaux, tels que les clusters, les nœuds, les applications, les services, les partitions et les réplicas de partition. Le service EventStore a également la possibilité de mettre en corrélation les événements du cluster. En examinant les événements écrits en même temps à partir de différentes entités dont les conséquences peuvent être mutuelles, le service EventStore peut lier ces événements pour aider à identifier les causes des activités du cluster. L’agrégation et la collecte d’événements avec EventFlow constituent une autre option pour superviser et diagnostiquer des clusters Microsoft Fabric.
 
-<!--
-
-SL comments - I can't find anything in the documentation about **EventStore** or **EventFlow**. Is this a feature that isn't released yet? Here's the doc I referred to for monitoring event streams: https://learn.microsoft.com/fabric/real-time-analytics/event-streams/monitor
-
-Does that fit here?
-
--->
-
 Ce labo prend environ **30** minutes.
 
 > **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
@@ -39,12 +31,6 @@ Ce labo est basé sur des exemples de données de streaming appelées « Stock�
 
 Utilisez les fonctionnalités de streaming et de requête Real-Time Analytics pour répondre aux questions clés sur les statistiques boursières. Dans ce scénario, nous allons tirer pleinement parti de l’Assistant au lieu de créer manuellement certains composants sans aide extérieure, comme la base de données KQL.
 
-<!--
-
-I removed the piece on Power BI reports because we don't have them do that in this lab.
-
--->
-
 Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
 - Créer une base de données KQL
@@ -52,12 +38,6 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 - Créer un flux d’événements
 - Streamer des données d’un flux d’événements vers votre base de données KQL
 - Explorer des données avec KQL et SQL
-
-<!--
-
-For "enable data copy to OneLake" - are you adding a lakehouse as a destination? The word copy confuses me.
-
--->
 
 ## Créer une base de données KQL
 
@@ -187,11 +167,3 @@ Dans cet exercice, vous avez créé une base de données KQL et configuré un st
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail.
 2. Dans le menu ... de la barre d’outils, sélectionnez Paramètres de l’espace de travail.
 3. Dans la section Autre, sélectionnez Supprimer cet espace de travail.
-
-<!--
-
-Overall notes: 
-- screenshot alt text needs to be more descriptive and start with the words "screenshot of"
-- 
-
--->
