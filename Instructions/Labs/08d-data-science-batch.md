@@ -29,7 +29,8 @@ Avant d’utiliser des modèles dans Fabric, créez un espace de travail en acti
 
 Pour ingérer des données, former et inscrire un modèle, vous allez exécuter les cellules d’un notebook. Vous pouvez charger le notebook sur votre espace de travail.
 
-1. Dans un nouvel onglet de navigateur, accédez à et téléchargez le notebook [Générer des prédictions](https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb) dans un dossier de votre choix.
+1. Dans un nouvel onglet de navigateur, accédez à `https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb`
+1. Sélectionnez l’icône **Télécharger le fichier brut** pour télécharger le notebook `Generate-Predictions` dans un dossier de votre choix.
 1. Revenez à l’onglet du navigateur Fabric et, en bas à gauche du portail Fabric, sélectionnez l’icône **Power BI** et basculez vers l’expérience **Science des données** .
 1. Dans la page d’accueil **Science des données**, sélectionnez **Importer un notebook**.
 

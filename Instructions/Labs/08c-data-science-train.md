@@ -107,7 +107,6 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour for
     ```python
     from sklearn.model_selection import train_test_split
     
-    print("Splitting data...")
     X, y = df[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df['Y'].values
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
@@ -207,13 +206,13 @@ Une fois que vous avez entraîné et suivi des modèles avec MLflow, vous pouvez
 
     La sortie doit ressembler à l’image suivante :
 
-    ![Capture d’écran des métriques d’évaluation tracées.](./Images/plotted-metrics.png)
+    ![Capture d’écran des métriques d’évaluation tracées.](./Images/data-science-metrics.png)
 
 ## Explorer vos expériences
 
 Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de les explorer visuellement.
 
-1. Accédez à votre espace de travail à partir de la barre de menu du hub sur la gauche.
+1. Accédez à votre espace de travail à partir de la barre de menu sur la gauche.
 1. Sélectionnez l’expérience `experiment-diabetes` pour l’ouvrir.
 
     > **Conseil :** Si vous ne voyez aucune exécution d’expérience journalisée, actualisez la page.
@@ -221,7 +220,9 @@ Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de 
 1. Sélectionnez l’onglet **Affichage**.
 1. Sélectionnez **Liste d’exécutions**.
 1. Sélectionnez les deux dernières exécutions en cochant chaque case.
+
     Vos deux dernières exécutions seront comparées l’une à l’autre dans le volet **Comparaison des métriques**. Par défaut, les métriques sont tracées en fonction du nom d’exécution.
+
 1. Sélectionnez le bouton **&#128393;** (Modifier) du graphe affichant l’erreur absolue moyenne de chaque exécution.
 1. Sélectionnez `bar` comme **type de visualisation**.
 1. Sélectionnez `estimator` comme **axe x**.
@@ -255,7 +256,7 @@ Maintenant que vous avez terminé l’entraînement et l’évaluation des modè
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine Learning. Vous avez utilisé Scikit-Learn pour former le modèle et MLflow pour suivre ses performances.
+Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine Learning. Vous avez utilisé Scikit-Learn pour entraîner le modèle et MLflow pour suivre ses performances.
 
 Si vous avez terminé d’explorer votre modèle et vos expériences, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 

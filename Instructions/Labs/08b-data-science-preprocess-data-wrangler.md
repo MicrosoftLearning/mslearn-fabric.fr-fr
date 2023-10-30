@@ -43,7 +43,7 @@ Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks four
    # Perform data exploration for data science
 
    Use the code in this notebook to perform data exploration for data science.
-    ``` 
+    ```
 
 ## Charger des données dans un DataFrame
 
@@ -91,13 +91,13 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données. Vous
 
 1. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
 
-    ```
-        WeekStarting    Store   Brand       Quantity    Advert  Price   Revenue
-    0   1991-10-17      947     minute.maid 13306       1       2.42    32200.52
-    1   1992-03-26      1293    dominicks   18596       1       1.94    36076.24
-    2   1991-08-15      2278    dominicks   17457       1       2.14    37357.98
-    3   1992-09-03      2175    tropicana   9652        1       2.07    19979.64
-    ```
+    |   |WeekStarting|Magasin|Marque|Quantité|Publication|Price|Chiffre d’affaires|
+    |---|---|---|---|---|---|---|---|
+    |0|1991-10-17|947|minute.maid|13306|1|2,42|32200,52|
+    |1|1992-03-26|1293|dominicks|18596|1|1,94|36076,24|
+    |2|1991-08-15|2278|dominicks|17457|1|2.14|37357,98|
+    |3|1992-09-03|2175|tropicana|9652|1|2,07|19979,64|
+    |...|...|...|...|...|...|...|...|
 
     La sortie affiche les quatre premières lignes du jeu de données OJ Sales.
 
@@ -107,7 +107,7 @@ Maintenant que nous avons chargé les données, l’étape suivante consiste à 
 
 1. Sélectionnez **Données** dans le ruban du notebook, puis la liste déroulante **Lancer Data Wrangler**.
 
-1. Sélectionnez le jeu de données `df`. Lorsque Data Wrangler est lancé, il génère une vue d’ensemble descriptive du dataframe dans le panneau **Résumé**. 
+1. Sélectionnez le jeu de données `df`. Lorsque Data Wrangler est lancé, il génère une vue d’ensemble descriptive du dataframe dans le panneau **Résumé**.
 
 1. Sélectionnez la fonctionnalité **Revenu**, et observez la distribution de données de cette fonctionnalité.
 
@@ -121,14 +121,14 @@ Maintenant que nous avons chargé les données, l’étape suivante consiste à 
 
 Appliquons maintenant quelques transformations à la caractéristique **Brand**.
 
-1. Dans le tableau de bord **Data Wrangler** , sélectionnez la fonctionnalité `Brand` dans la grille.
+1. Dans le tableau de bord **Data Wrangler**, sélectionnez la fonctionnalité `Brand` dans la grille.
 
 1. Accédez au panneau **Opérations**, développez **Rechercher et remplacer**, puis sélectionnez **Rechercher et remplacer**.
 
 1. Dans le panneau **Rechercher et remplacer**, modifiez les propriétés suivantes :
-    
-    - **Ancienne valeur :** "."
-    - **Nouvelle valeur :** " " (caractère d’espace)
+
+    - **Ancienne valeur :** « `.` »
+    - **Nouvelle valeur :** « ` ` » (caractère d’espace)
 
     Les résultats de l’opération sont affichés automatiquement dans la grille d’affichage.
 
@@ -136,19 +136,19 @@ Appliquons maintenant quelques transformations à la caractéristique **Brand**.
 
 1. Revenez au panneau **Opérations** et développez **Format**.
 
-1. Sélectionnez **Convertir du texte en majuscule**. Activez le bouton bascule **Mettre en majuscules tous les mots**, puis sélectionnez **Appliquer**.
+1. Sélectionnez **Mettre en majuscules le premier caractère**. Activez le bouton bascule **Mettre en majuscules tous les mots**, puis sélectionnez **Appliquer**.
 
-1. Sélectionnez **Ajouter du code au notebook**. En outre, vous pouvez également enregistrer le jeu de données transformé en tant que fichier .csv.
+1. Sélectionnez **Ajouter du code au notebook**. En outre, vous pouvez également copier le code et enregistrer le jeu de données transformé en tant que fichier .csv.
 
-    >**Remarque :** le code est automatiquement copié dans la cellule du notebook, il est prêt à être utilisé. 
+    >**Remarque :** le code est automatiquement copié dans la cellule du notebook, il est prêt à être utilisé.
 
 1. Remplacez les lignes 10 et 11 par le code `df = clean_data(df)`, car le code généré dans Data Wrangler ne remplace pas le dataframe d’origine. Le bloc de code final devrait ressembler à ceci :
- 
+
     ```python
     def clean_data(df):
         # Replace all instances of "." with " " in column: 'Brand'
         df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
-        # Convert text to capital case in column: 'Brand'
+        # Capitalize the first character in column: 'Brand'
         df['Brand'] = df['Brand'].str.title()
         return df
     
@@ -161,7 +161,7 @@ Appliquons maintenant quelques transformations à la caractéristique **Brand**.
     df['Brand'].unique()
     ```
 
-    Le résultat montre *Minute Maid*, *Dominicks* et *Tropicana*.
+    Le résultat doit afficher les valeurs *Minute Maid*, *Dominicks* et *Tropicana*.
 
 Vous avez appris à manipuler graphiquement des données de texte et à générer facilement du code à l’aide de Data Wrangler.
 
@@ -175,11 +175,11 @@ Vous avez appris à manipuler graphiquement des données de texte et à génére
 
 1. Dans le panneau **Opérations**, développez **Formules**, puis sélectionnez **Encoder à chaud**.
 
-1. Dans le panneau **Un encodeur à chaud**, sélectionnez **Appliquer**.
+1. Dans le panneau **Encodeur à chaud**, sélectionnez **Appliquer**.
 
     Accédez à la fin de la grille d’affichage Data Wrangler. Notez que trois nouvelles fonctionnalités ont été ajoutées (`Brand_Dominicks`, `Brand_Minute Maid` et `Brand_Tropicana`) et que la fonctionnalité `Brand` a été supprimée.
 
-1. Fermez Data Wrangler sans générer le code.
+1. Quittez Data Wrangler sans générer le code.
 
 ## Opérations de tri et de filtrage
 
@@ -192,10 +192,11 @@ Imaginez que nous devons passer en revue les données de chiffre d’affaires d�
 1. Sélectionnez **Filtrer**.
 
 1. Dans le panneau **Filtre**, ajoutez la condition suivante :
-    
-    - **Colonne cible :** Store
-    - **Opération :** Égal à
-    - **Valeur :** 1227
+
+    - **Colonne cible** : `Store`
+    - **Opération** : `Equal to`
+    - **Valeur** : `1227`
+    - **Action** : `Keep matching rows`
 
 1. Sélectionnez **Appliquer**, et observez les modifications apportées à la grille d’affichage de Data Wrangler.
 
@@ -208,9 +209,9 @@ Imaginez que nous devons passer en revue les données de chiffre d’affaires d�
 1. Sélectionner **Trier les valeurs**.
 
 1. Dans le panneau **Trier les valeurs**, sélectionnez les propriétés suivantes :
-    
-    - **Nom de la colonne :** Price
-    - **Ordre de tri :** Décroissant
+
+    - **Nom de la colonne** : `Price`
+    - **Ordre de tri** : `Descending`
 
 1. Sélectionnez **Appliquer**.
 
@@ -232,7 +233,7 @@ Supposez que vous avez commis une erreur et que vous devez supprimer le tri cré
 
     Notez que les modifications sont rétablies à l’étape précédente, **Filtrer**.
 
-1. Fermez Data Wrangler sans générer le code.
+1. Quittez Data Wrangler sans générer le code.
 
 ## Agréger les données
 
@@ -242,32 +243,34 @@ Supposons que nous voulons comprendre le chiffre d’affaires moyen généré pa
 
 1. De retour au panneau **Opérations**, sélectionnez **Regrouper et agréger**.
 
-1. Dans la propriété **Colonnes de regroupement :** , sélectionnez la caractéristique `Brand`.
+1. Dans le panneau **Colonnes de regroupement :** , sélectionnez la caractéristique `Brand`.
 
 1. Sélectionnez **Ajouter une agrégation**.
 
 1. Dans la propriété **Colonne à agréger**, sélectionnez la caractéristique `Revenue`.
 
-1. Sélectionnez **Moyen** pour la propriété **Type d’agrégation**.
+1. Sélectionnez `Mean` pour la propriété **Type d’agrégation**.
 
 1. Sélectionnez **Appliquer**.
 
-1. Sélectionnez **Ajouter du code au notebook**.
+1. Sélectionnez **Copier le code dans le Presse-papiers**.
+
+1. Quittez Data Wrangler sans générer le code.
 
 1. Combinez le code de la transformation de la variable `Brand` avec le code généré par l’étape d’agrégation dans la fonction `clean_data(df)`. Le bloc de code final devrait ressembler à ceci :
- 
+
     ```python
-    def clean_data(df):
-        # Replace all instances of "." with " " in column: 'Brand'
-        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
-        # Convert text to capital case in column: 'Brand'
+    def clean_data(df):    
+        # Replace all instances of "." with " " in column: 'Brand'    
+        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)    
+        # Capitalize the first character in column: 'Brand'    
         df['Brand'] = df['Brand'].str.title()
-
-        # Performed 1 aggregation grouped on column: 'Brand'
-        df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()
-
-        return df
-    
+        
+        # Performed 1 aggregation grouped on column: 'Brand'    
+        df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()    
+        
+        return df    
+        
     df = clean_data(df)
     ```
 
@@ -280,14 +283,14 @@ Supposons que nous voulons comprendre le chiffre d’affaires moyen généré pa
     ```
 
     Résultats :
-    ```
-             Brand  Revenue_mean
-    0    Dominicks  33206.330958
-    1  Minute Maid  33532.999632
-    2    Tropicana  33637.863412
-    ```
 
-Vous avez généré le code pour certaines des opérations de prétraitement, et vous l’avez enregistré dans le notebook en tant que fonction, que vous pouvez ensuite réutiliser ou modifier en fonction des besoins.
+    |   |Marque|Revenue_mean|
+    |---|---|---|
+    |0|Dominicks|33206,330958|
+    |1|Minute Maid|33532,999632|
+    |2|Tropicana|33637,863412|
+
+Vous avez généré le code pour certaines des opérations de prétraitement, et vous avez recopié le code dans le notebook en tant que fonction, que vous pouvez ensuite exécuter, réutiliser ou modifier en fonction des besoins.
 
 ## Enregistrer le notebook et mettre fin à la session Spark
 
