@@ -10,13 +10,13 @@ Dans ce labo, vous allez effectuer l'apprentissage d’un modèle Machine Learni
 
 En suivant ce labo, vous allez acquérir une expérience pratique du Machine Learning et du suivi des modèles, et apprendre à utiliser des *notebooks*, des *expériences* et des *modèles* dans Microsoft Fabric.
 
-Ce labo prend environ **45** minutes.
+Ce labo prend environ **25** minutes.
 
 > **Remarque** : Vous aurez besoin d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
-Avant d’utiliser des modèles dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
+Avant d’utiliser des modèles dans Fabric, créez un espace de travail en activant l’essai gratuit de Fabric.
 
 1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
 2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
@@ -29,7 +29,7 @@ Avant d’utiliser des modèles dans Fabric, créez un espace de travail avec l�
 
 Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks fournissent un environnement interactif dans lequel vous pouvez écrire et exécuter du code (dans plusieurs langues).
 
-1. En bas à gauche du portail Fabric, sélectionnez l’icône **Engineering données** et basculez vers l’expérience **Science des données**.
+1. En bas à gauche du portail Fabric, sélectionnez l’icône **Power BI** et basculez vers l’expérience **Science des données**.
 
 1. Dans la page d’accueil de **Science des données**, créez un **notebook**.
 
@@ -107,7 +107,6 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour for
     ```python
     from sklearn.model_selection import train_test_split
     
-    print("Splitting data...")
     X, y = df[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df['Y'].values
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
@@ -207,13 +206,13 @@ Une fois que vous avez entraîné et suivi des modèles avec MLflow, vous pouvez
 
     La sortie doit ressembler à l’image suivante :
 
-    ![Capture d’écran des métriques d’évaluation tracées.](./Images/plotted-metrics.png)
+    ![Capture d’écran des métriques d’évaluation tracées.](./Images/data-science-metrics.png)
 
 ## Explorer vos expériences
 
 Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de les explorer visuellement.
 
-1. Accédez à la page d’accueil **Science des données**.
+1. Accédez à votre espace de travail à partir de la barre de menu sur la gauche.
 1. Sélectionnez l’expérience `experiment-diabetes` pour l’ouvrir.
 
     > **Conseil :** Si vous ne voyez aucune exécution d’expérience journalisée, actualisez la page.
@@ -221,7 +220,9 @@ Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de 
 1. Sélectionnez l’onglet **Affichage**.
 1. Sélectionnez **Liste d’exécutions**.
 1. Sélectionnez les deux dernières exécutions en cochant chaque case.
+
     Vos deux dernières exécutions seront comparées l’une à l’autre dans le volet **Comparaison des métriques**. Par défaut, les métriques sont tracées en fonction du nom d’exécution.
+
 1. Sélectionnez le bouton **&#128393;** (Modifier) du graphe affichant l’erreur absolue moyenne de chaque exécution.
 1. Sélectionnez `bar` comme **type de visualisation**.
 1. Sélectionnez `estimator` comme **axe x**.
@@ -237,7 +238,7 @@ Après avoir comparé les modèles Machine Learning que vous avez entraînés po
 1. Dans la vue d’ensemble de l’expérience, vérifiez que l’onglet **Affichage** est sélectionné.
 1. Sélectionnez **Détails de l’exécution**.
 1. Sélectionnez l’exécution avec le score R2 le plus élevé.
-1. Sélectionnez **Enregistrer** dans la zone **Enregistrer en tant que modèle**.
+1. Sélectionnez **Enregistrer** dans la zone **Enregistrer l’exécution en tant que modèle**.
 1. Sélectionnez **Créer un modèle** dans la fenêtre contextuelle nouvellement ouverte.
 1. Sélectionnez le dossier `model` .
 1. Nommez le modèle `model-diabetes`, puis sélectionnez **Enregistrer**.
@@ -249,13 +250,13 @@ Notez que le modèle, l’expérience et l’exécution de l’expérience sont 
 
 Maintenant que vous avez terminé l’entraînement et l’évaluation des modèles, vous pouvez enregistrer le notebook avec un nom significatif et mettre fin à la session Spark.
 
-1. Dans la barre de menus du notebook, utilisez l’icône ⚙️ **Paramètres** pour afficher les paramètres du notebook.
+1. Retournez à votre notebook et, dans la barre de menus du notebook, utilisez l’icône ⚙️ **Paramètres** pour afficher ses paramètres.
 2. Définissez **Entraîner et comparer des modèles** comme **Nom** du notebook, puis fermez le volet des paramètres.
 3. Dans le menu du notebook, sélectionnez **Arrêter la session** pour mettre fin à la session Spark.
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine Learning. Vous avez utilisé Scikit-Learn pour former le modèle et MLflow pour suivre ses performances.
+Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine Learning. Vous avez utilisé Scikit-Learn pour entraîner le modèle et MLflow pour suivre ses performances.
 
 Si vous avez terminé d’explorer votre modèle et vos expériences, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
