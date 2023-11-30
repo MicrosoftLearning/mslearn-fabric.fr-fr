@@ -10,30 +10,31 @@ Dans Microsoft Fabric, un entrepôt de données fournit une base de données rel
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite, consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Pour cela, vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou ultérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Activer une version d’évaluation de Microsoft Fabric
+
+1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
+1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
+1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
 
 ## Créer un espace de travail
 
-Avant de travailler avec des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
+Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com`, puis sélectionnez **Power BI**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône est similaire à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Quand votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Data Warehouse**.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
+    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
 ## Créer un entrepôt de données
 
-Maintenant que vous disposez d’un espace de travail, il est temps de passer à l’expérience *Entrepôt de données* dans le portail et de créer un entrepôt de données.
+Maintenant que vous disposez d’un espace de travail, il est temps de créer un entrepôt de données. La page d’accueil Data Warehouse comprend un raccourci permettant de créer un entrepôt :
 
-1. En bas à gauche du portail Power BI, passez à l’expérience **Entrepôt de données**.
-
-    La page d’accueil Entrepôt de données comprend un raccourci permettant de créer un entrepôt :
-
-    > **Remarque** : Si vous ne voyez pas d’icône dans le coin inférieur gauche, c’est que Fabric n’est pas activé pour votre locataire. Fabric est activé dans le portail d’administration pour les locataires qui ont un abonnement Power BI Premium.
-
-2. Dans la page d’accueil **Entrepôt de données**, créez un **entrepôt** avec le nom de votre choix.
+1. Dans la page d’accueil **Synapse Data Warehouse**, créez un **entrepôt** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
@@ -248,5 +249,5 @@ Dans cet exercice, vous avez créé un entrepôt de données qui contient plusie
 Si vous avez terminé d’explorer votre entrepôt de données, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
