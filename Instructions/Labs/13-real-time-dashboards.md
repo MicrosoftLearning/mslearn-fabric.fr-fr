@@ -5,29 +5,39 @@ lab:
   title: Tableaux de bord en temps réel
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
+
 # Bien démarrer avec l’interrogation d’une base de données Kusto dans Microsoft Fabric
 Les tableaux de bord en temps réel vous permettent de glaner des insights à partir de Microsoft Fabric en utilisant Langage de requête Kusto (KQL) pour récupérer des données structurées et non structurées et les restituer dans des graphiques, des nuages de points, des tables, etc. dans des panneaux qui permettent de lier des segments similaires à ceux de Power BI. 
 
 Ce labo est d’une durée de **25** minutes environ.
 
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Activer une version d’évaluation de Microsoft Fabric
+
+1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
+1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
+1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
+
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Analyse en temps réel**.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
+    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
-Dans ce labo, vous utilisez l’Analyse en temps réel (RTA) dans Fabric pour créer une base de données KQL à partir d’un exemple d’eventstream. L’Analyse en temps réel fournit facilement un exemple de jeu de données à utiliser pour explorer les fonctionnalités de l’analyse en temps réel (RTA). Vous utilisez cet exemple de données pour créer des requêtes et des ensembles de requêtes KQL | SQL qui analysent des données en temps réel et permettent d’autres utilisations dans des processus en aval.
+Dans ce labo, vous utilisez l’Analyse en temps réel (RTA) dans Fabric pour créer une base de données KQL à partir d’un exemple de flux d’événements. L’Analyse en temps réel fournit facilement un exemple de jeu de données à utiliser pour explorer les fonctionnalités de l’analyse en temps réel (RTA). Vous utilisez cet exemple de données pour créer des requêtes et des ensembles de requêtes KQL | SQL qui analysent des données en temps réel et permettent d’autres utilisations dans des processus en aval.
 
 ## Créer une base de données KQL
 
 1. Dans **Real-Time Analytics**, cochez la case **Base de données KQL**.
 
-   ![Image du choix d’une base de données KQL](./Images/select-kqldatabase.png)
+   ![Image du choix de base de données KQL](./Images/select-kqldatabase.png)
 
 2. Vous êtes invité à donner un **Nom** à la base de données KQL
 

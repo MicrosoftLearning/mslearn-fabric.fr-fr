@@ -10,18 +10,25 @@ Data Activator dans Microsoft Fabric prend des mesures en fonction de ce qui se 
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Activer une version d’évaluation de Microsoft Fabric
+
+1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
+1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
+1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
 
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Data Activator**.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI](./Images/new-workspace.png)
+    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
 Dans ce labo, vous allez utiliser Data Activator dans Fabric pour créer un élément *reflex*. Data Activator fournit de façon pratique un exemple de jeu de données que vous pouvez utiliser pour explorer les fonctionnalités de Data Activator. Vous utilisez cet exemple de données pour créer un *reflex* qui analyse certaines données en temps réel et crée un déclencheur pour envoyer un e-mail lorsqu’une condition est remplie.
 
@@ -33,11 +40,7 @@ Dans ce scénario, vous êtes analyste de données pour une entreprise qui vend 
 
 ## Créer un reflex
 
-1. Dans le portail d’expérience **Microsoft Fabric**, sélectionnez l’expérience **Data Activator** en sélectionnant d’abord l’icône de l’expérience Fabric actuelle dans le coin inférieur gauche de l’écran, puis en sélectionnant **Data Activator** dans le menu. Par exemple, dans la capture d’écran suivante, l’expérience Fabric actuelle est **Power BI**.
-
-    ![Capture d’écran de la sélection de l’expérience Data Activator.](./Images/data-activator-select-experience.png)
-
-1. Vous devriez maintenant être sur l’écran d’accueil de Data Activator. L’icône de l’expérience Fabric en bas à droite est également remplacée par celle de Data Activator. Nous allons créer un reflex en sélectionnant le bouton **reflex (préversion)** .
+1. Vérifiez que vous êtes sur l’écran d’accueil de Data Activator en vérifiant que l’icône en bas à droite reflète Data Activator. Nous allons créer un reflex en sélectionnant le bouton **reflex (préversion)** .
 
     ![Capture d’écran de l’écran d’accueil de Data Activator.](./Images/data-activator-home-screen.png)
 
