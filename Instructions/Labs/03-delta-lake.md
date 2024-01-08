@@ -10,35 +10,33 @@ Les tables d’un lakehouse Microsoft Fabric sont basées sur le format de fich
 
 Cet exercice devrait prendre environ **40** minutes.
 
-> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Engineering données**.
 2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
+3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
+    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
 ## Créer un lakehouse et charger des données
 
-Maintenant que vous disposez d’un espace de travail, il est temps de passer à l’expérience *Engineering données* dans le portail et de créer un data lakehouse pour les données que vous allez analyser.
+Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse pour les données que vous analyserez.
 
-1. En bas à gauche du portail Power BI, sélectionnez l’icône **Power BI** et passez à l’expérience **Engineering données**.
-
-2. Dans la page d’accueil d’**Engineering données Synapse**, créez un **Lakehouse** avec le nom de votre choix.
+1. Dans la page d’accueil d’**Engineering données Synapse**, créez un **Lakehouse** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouveau lakehouse vide est créé. Vous devez ingérer certaines données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de faire cela mais dans cet exercice, vous allez simplement télécharger un fichier texte sur votre ordinateur local (ou sur votre machine virtuelle de labo le cas échéant), puis le charger dans votre lakehouse.
 
-3. Téléchargez le fichier de données pour cet exercice depuis `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv`, et enregistrez-le en tant que **products.csv** sur votre ordinateur local (ou votre machine virtuelle de labo le cas échéant).
+1. Téléchargez le fichier de données pour cet exercice depuis `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv`, et enregistrez-le en tant que **products.csv** sur votre ordinateur local (ou votre machine virtuelle de labo le cas échéant).
 
-4. Retournez à l’onglet du navigateur web contenant votre lakehouse et, dans le menu  **...** du dossier **Fichiers** dans le volet **Explorateur**, sélectionnez **Nouveau sous-dossier**, puis créez un sous-dossier nommé **products**.
+1. Retournez à l’onglet du navigateur web contenant votre lakehouse et, dans le menu  **...** du dossier **Fichiers** dans le volet **Explorateur**, sélectionnez **Nouveau sous-dossier**, puis créez un sous-dossier nommé **products**.
 
-5. Dans le menu **...** du dossier **products**, sélectionnez **Charger** et **Charger des fichiers**, puis chargez le fichier **products.csv** depuis votre ordinateur local (ou votre machine virtuelle de labo le cas échéant) dans le lakehouse.
-6. Une fois le fichier chargé, sélectionnez le dossier **products** et vérifiez que le fichier **products.csv** a été chargé, comme montré ici :
+1. Dans le menu **...** du dossier **products**, sélectionnez **Charger** et **Charger des fichiers**, puis chargez le fichier **products.csv** depuis votre ordinateur local (ou votre machine virtuelle de labo le cas échéant) dans le lakehouse.
+1. Une fois le fichier chargé, sélectionnez le dossier **products** et vérifiez que le fichier **products.csv** a été chargé, comme montré ici :
 
     ![Capture d’écran du fichier products.csv chargé dans un lakehouse.](./Images/products-file.png)
 
@@ -61,13 +59,13 @@ Maintenant que vous disposez d’un espace de travail, il est temps de passer à
    display(df)
     ```
 
-    > **Conseil** : Vous pouvez masquer le volet contenant les fichiers à gauche en utilisant son icône **<<** . Ceci vous aidera à vous concentrer sur le notebook.
+    > **Conseil** : Vous pouvez masquer le volet contenant les fichiers à gauche à l’aide de son icône **<<** . Ceci vous aidera à vous concentrer sur le notebook.
 
 5. Utilisez le bouton **&#9655;** (*Exécuter la cellule*) à gauche de la cellule pour l’exécuter.
 
     > **Remarque** : Comme c’est la première fois que vous exécutez du code Spark dans ce notebook, une session Spark doit être démarrée. Cela signifie que la première exécution peut prendre environ une minute. Les exécutions suivantes seront plus rapides.
 
-6. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
+6. Une fois la commande de cellule exécutée, passez en revue la sortie sous la cellule, qui doit ressembler à ceci :
 
     | Index | ProductID | ProductName | Catégorie | ListPrice |
     | -- | -- | -- | -- | -- |
@@ -99,7 +97,7 @@ Vous pouvez aussi créer des tables *externes* pour lesquelles les métadonnées
 1. Ajoutez une nouvelle cellule de code, puis ajoutez-y le code suivant :
 
     ```python
-   df.write.format("delta").saveAsTable("external_products", path="<abfs_path>/external_products")
+   df.write.format("delta").saveAsTable("external_products", path="abfs_path/external_products")
     ```
 
 2. Dans le volet **Explorateur Lakehouse**, dans le menu **…** du dossier **Files**, sélectionnez **Copier le chemin ABFS**.
@@ -108,7 +106,7 @@ Vous pouvez aussi créer des tables *externes* pour lesquelles les métadonnées
 
     *abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files*
 
-3. Dans le code que vous avez entré dans la cellule de code, remplacez **<abfs_path>** par le chemin que vous avez copié dans le Presse-papiers, pour que le code enregistre le dataframe en tant que table externe avec des fichiers de données dans un dossier nommé **external_products** à l’emplacement de votre dossier **Files**. Le chemin complet doit être similaire a ceci :
+3. Dans le code que vous avez entré dans la cellule de code, remplacez **abfs_path** par le chemin que vous avez copié dans le Presse-papiers, pour que le code enregistre le dataframe en tant que table externe avec des fichiers de données dans un dossier nommé **external_products** à l’emplacement de votre dossier **Files**. Le chemin complet doit être similaire a ceci :
 
     *abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files/external_products*
 
@@ -320,6 +318,6 @@ Dans cet exercice, vous avez découvert comment travailler avec des tables delta
 
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
-1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour visualiser tous les éléments qu’il contient.
-2. Dans le menu  **…** de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
+1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
+2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
