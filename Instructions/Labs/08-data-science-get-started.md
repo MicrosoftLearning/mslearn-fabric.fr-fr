@@ -12,23 +12,17 @@ En suivant ce labo, vous allez acquérir une expérience pratique du Machine Lea
 
 Ce labo prend environ **20** minutes.
 
-> **Remarque**: Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activer une version d’évaluation de Microsoft Fabric
-
-1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
-1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
-1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Science des données**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
+1. Accédez à la page d’accueil de Microsoft Fabric à [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com) dans un navigateur.
+1. **Science des données Synapse**.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
@@ -52,24 +46,24 @@ Pour exécuter du code, vous pouvez créer un *notebook*. Les notebooks fourniss
 
 ## Obtenir les données
 
-Vous êtes maintenant prêt à exécuter du code pour obtenir des données et entraîner un modèle. Vous allez utiliser le [jeu de données diabetes](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) à partir d’Azure Open Datasets. Après avoir chargé les données, vous allez convertir les données en dataframe Pandas, qui est une structure courante pour l’utilisation des données dans les lignes et les colonnes.
+Vous êtes maintenant prêt à exécuter du code pour obtenir des données et former un modèle. Vous allez utiliser le [jeu de données diabetes](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) à partir d’Azure Open Datasets. Après avoir chargé les données, vous allez convertir les données en dataframe Pandas, qui est une structure courante pour l’utilisation des données dans les lignes et les colonnes.
 
 1. Dans votre notebook, utilisez l’icône **+ Code** sous la sortie de cellule pour ajouter une nouvelle cellule de code au notebook, puis entrez le code suivant :
 
     ```python
-    # Azure storage access info for open dataset diabetes
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "mlsamples"
-    blob_relative_path = "diabetes"
-    blob_sas_token = r"" # Blank since container is Anonymous access
+   # Azure storage access info for open dataset diabetes
+   blob_account_name = "azureopendatastorage"
+   blob_container_name = "mlsamples"
+   blob_relative_path = "diabetes"
+   blob_sas_token = r"" # Blank since container is Anonymous access
     
-    # Set Spark config to access  blob storage
-    wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
-    print("Remote blob path: " + wasbs_path)
+   # Set Spark config to access  blob storage
+   wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+   spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+   print("Remote blob path: " + wasbs_path)
     
-    # Spark read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+   # Spark read parquet, note that it won't load any data yet by now
+   df = spark.read.parquet(wasbs_path)
     ```
 
 1. Utilisez le bouton **&#9655; Exécuter la cellule** à gauche de la cellule pour l’exécuter. Vous pouvez également appuyer `SHIFT` + `ENTER` sur votre clavier pour exécuter une cellule.
@@ -79,7 +73,7 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données et en
 1. Utilisez l’icône **+ Code** sous la sortie de cellule pour ajouter une nouvelle cellule de code au notebook, puis entrez le code suivant :
 
     ```python
-    display(df)
+   display(df)
     ```
 
 1. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
@@ -110,8 +104,8 @@ Maintenant que vous avez ingéré et exploré les données, vous pouvez les tran
 1. Les données sont chargées en tant que trame de données Spark. Pour lancer data Wrangler, vous devez convertir les données en dataframe Pandas. Exécutez la cellule suivante dans votre notebook :
 
     ```python
-    df = df.toPandas()
-    df.head()
+   df = df.toPandas()
+   df.head()
     ```
 
 1. Sélectionnez **Données** dans le ruban du notebook, puis la liste déroulante **Lancer Data Wrangler**.
@@ -131,7 +125,7 @@ Maintenant que vous avez ingéré et exploré les données, vous pouvez les tran
 1. Exécutez le code suivant dans une nouvelle cellule pour vérifier que la colonne `Risk` est mise en forme comme prévu :
 
     ```python
-    df_clean.describe()
+   df_clean.describe()
     ```
 
 ## Effectuer l’apprentissage de modèles Machine Learning
@@ -143,19 +137,19 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour ent
 1. Exécutez le code suivant pour fractionner les données en un jeu de données d’entraînement et de test, et pour séparer les fonctionnalités de l’étiquette `Y` que vous souhaitez prédire :
 
     ```python
-    from sklearn.model_selection import train_test_split
+   from sklearn.model_selection import train_test_split
     
-    X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Y'].values
+   X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Y'].values
     
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
     ```
 
 1. Ajoutez une nouvelle cellule de code au notebook, entrez le code suivant, puis exécutez-le :
 
     ```python
-    import mlflow
-    experiment_name = "diabetes-regression"
-    mlflow.set_experiment(experiment_name)
+   import mlflow
+   experiment_name = "diabetes-regression"
+   mlflow.set_experiment(experiment_name)
     ```
 
     Le code crée une expérience MLflow nommée `diabetes-regression`. Vos modèles seront suivis dans cette expérience.
@@ -163,13 +157,13 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour ent
 1. Ajoutez une nouvelle cellule de code au notebook, entrez le code suivant, puis exécutez-le :
 
     ```python
-    from sklearn.linear_model import LinearRegression
+   from sklearn.linear_model import LinearRegression
     
-    with mlflow.start_run():
-       mlflow.autolog()
+   with mlflow.start_run():
+      mlflow.autolog()
     
-       model = LinearRegression()
-       model.fit(X_train, y_train)
+      model = LinearRegression()
+      model.fit(X_train, y_train)
     ```
 
     Le code entraîne un modèle de régression à l’aide de la régression linéaire. Les paramètres, les métriques et les artefacts sont automatiquement enregistrés avec MLflow.
@@ -179,19 +173,19 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour ent
 1. Exécutez le code suivant pour fractionner les données en un jeu de données d’entraînement et de test, et pour séparer les fonctionnalités de l’étiquette `Risk` que vous souhaitez prédire :
 
     ```python
-    from sklearn.model_selection import train_test_split
+   from sklearn.model_selection import train_test_split
     
-    X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Risk'].values
+   X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Risk'].values
     
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
     ```
 
 1. Ajoutez une nouvelle cellule de code au notebook, entrez le code suivant, puis exécutez-le :
 
     ```python
-    import mlflow
-    experiment_name = "diabetes-classification"
-    mlflow.set_experiment(experiment_name)
+   import mlflow
+   experiment_name = "diabetes-classification"
+   mlflow.set_experiment(experiment_name)
     ```
 
     Le code crée une expérience MLflow nommée `diabetes-classification`. Vos modèles seront suivis dans cette expérience.
@@ -199,12 +193,12 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour ent
 1. Ajoutez une nouvelle cellule de code au notebook, entrez le code suivant, puis exécutez-le :
 
     ```python
-    from sklearn.linear_model import LogisticRegression
+   from sklearn.linear_model import LogisticRegression
     
-    with mlflow.start_run():
-        mlflow.sklearn.autolog()
+   with mlflow.start_run():
+       mlflow.sklearn.autolog()
 
-        model = LogisticRegression(C=1/0.1, solver="liblinear").fit(X_train, y_train)
+       model = LogisticRegression(C=1/0.1, solver="liblinear").fit(X_train, y_train)
     ```
 
     Le code entraîne un modèle de classification à l’aide de la régression logistique. Les paramètres, les métriques et les artefacts sont automatiquement enregistrés avec MLflow.
@@ -228,7 +222,7 @@ Après avoir comparé les modèles Machine Learning que vous avez entraînés po
 
 1. Sélectionnez **Enregistrer** dans la zone **Enregistrer en tant que modèle**.
 1. Sélectionnez **Créer un modèle** dans la fenêtre contextuelle nouvellement ouverte.
-1. Sélectionnez le dossier `model` .
+1. Sélectionnez le dossier `model`.
 1. Nommez le modèle `model-diabetes`, puis sélectionnez **Enregistrer**.
 1. Sélectionnez **Afficher le modèle** dans la notification qui s’affiche en haut à droite de votre écran lors de la création du modèle. Vous pouvez également actualiser la fenêtre. Le modèle enregistré est lié sous **Version modèle**.
 
@@ -244,7 +238,7 @@ Maintenant que vous avez terminé l’entraînement et l’évaluation des modè
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine Learning. Vous avez utilisé Scikit-Learn pour entraîner le modèle et MLflow pour suivre ses performances.
+Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine Learning. Vous avez utilisé Scikit-Learn pour former le modèle et MLflow pour suivre ses performances.
 
 Si vous avez terminé d’explorer votre modèle et vos expériences, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 

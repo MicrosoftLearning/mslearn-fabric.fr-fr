@@ -10,14 +10,7 @@ Data Activator dans Microsoft Fabric prend des mesures en fonction de ce qui se 
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activer une version d’évaluation de Microsoft Fabric
-
-1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
-1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
-1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -40,7 +33,7 @@ Dans ce scénario, vous êtes analyste de données pour une entreprise qui vend 
 
 ## Créer un reflex
 
-1. Vérifiez que vous êtes sur l’écran d’accueil de Data Activator en vérifiant que l’icône en bas à droite reflète Data Activator. Nous allons créer un reflex en sélectionnant le bouton **reflex (préversion)** .
+1. Vérifiez que vous êtes sur l’écran d’accueil de Data Activator en vérifiant que l’icône en bas à droite reflète Data Activator. Nous allons créer un reflex en sélectionnant le bouton **reflex (préversion)**.
 
     ![Capture d’écran de l’écran d’accueil de Data Activator.](./Images/data-activator-home-screen.png)
 
@@ -58,7 +51,7 @@ Notre reflex maintenant créé, nous pouvons commencer à lui ajouter des décle
 
 L’écran d’accueil de reflex est divisé en deux sections, le mode *Conception* et le mode *Données*. Vous pouvez sélectionner le mode en sélectionnant l’onglet correspondant en bas à gauche de l’écran.  L’onglet du mode *Conception* vous permet de définir vos objets avec vos déclencheurs, propriétés et événements. L’onglet du mode *Données* vous permet d’ajouter vos sources de données et d’afficher les données traitées par votre reflex. Examinons l’onglet du mode *Conception* qui doit être ouvert par défaut lorsque vous créez votre reflex.
 
-### mode Création
+### Mode Conception
 
 Si vous n’êtes pas en mode *Conception*, sélectionnez l’onglet **Conception** en bas à gauche de l’écran.
 
@@ -78,7 +71,7 @@ Sélectionnez chacun des différents événements et observez les données utili
 
 Il est temps d’ajouter un déclencheur à notre reflex, mais commençons par créer un objet.
 
-## Créer un objet
+## Créer un objet 
 
 Dans un scénario réel, il n’est peut-être pas nécessaire de créer un objet pour ce reflex, car l’exemple Data Activator inclut déjà un objet appelé *Colis*. Mais pour ce labo, nous allons créer un objet pour illustrer comment en créer un. Nous allons créer un objet appelé *Colis Redmond*.
 
@@ -106,9 +99,9 @@ Dans un scénario réel, il n’est peut-être pas nécessaire de créer un obje
 
 Il est temps de créer votre déclencheur.
 
-## Créer un déclencheur
+## Créer une gâchette
 
-Revoyons l’action à affecter à votre déclencheur : *vous souhaitez créer un reflex qui envoie un e-mail au service d’expédition si la température d’un colis contenant un médicament prescrit est supérieure ou inférieure à un certain seuil. La température idéale doit se situer entre 33 et 41 degrés. Comme les événements reflex contiennent déjà un déclencheur similaire, vous en créez un spécifiquement pour les colis expédiés vers la ville de Redmond*.
+Examinons ce que doit faire votre déclencheur : *Vous voulez créer un Reflex qui envoie un e-mail au service d’expédition si la température d’un colis contenant un médicament prescrit est supérieure ou inférieure à un certain seuil. La température idéale doit être comprise entre 33 et 41 degrés. Comme les événements du Reflex contiennent déjà un déclencheur similaire, vous en créez un spécifiquement pour les colis expédiés vers la ville de Redmond*.
 
 1. Dans l’événement *Colis en transit* de l’objet **Colis Redmond**, sélectionnez le bouton **Nouveau déclencheur** dans le menu supérieur. Un nouveau déclencheur est créé avec le nom par défaut *Sans titre*. Remplacez le nom par ***Température du médicament hors plage*** pour mieux définir votre déclencheur.
 
@@ -186,5 +179,5 @@ Dans cet exercice, vous avez créé un reflex avec un déclencheur dans Data Act
 Si vous avez terminé d’explorer votre reflex de Data Activator, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
