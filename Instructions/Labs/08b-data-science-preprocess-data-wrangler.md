@@ -10,26 +10,25 @@ Dans ce labo, vous allez apprendre à utiliser Data Wrangler dans Microsoft Fabr
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
+1. Accédez à la page d’accueil de Microsoft Fabric sur `https://app.fabric.microsoft.com` dans un navigateur et, le cas échéant, connectez-vous avec vos informations d’identification Fabric.
+1. Sur la page d’accueil de Microsoft Fabric, sélectionnez **Science des données Synapse**.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
+    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
 ## Créer un notebook
 
 Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks fournissent un environnement interactif dans lequel vous pouvez écrire et exécuter du code (dans plusieurs langages) en tant qu’*expériences*.
 
-1. En bas à gauche du portail Power BI, sélectionnez l’icône **PowerBI** et basculez vers l’expérience **Science des données**.
-
-1. Dans la page d’accueil de **Science des données**, créez un **notebook**.
+1. Sur la page d’accueil de **Synapse Science des données**, créez un **Notebook**.
 
     Après quelques secondes, un nouveau notebook contenant une seule *cellule* s’ouvre. Les notebooks sont constitués d’une ou plusieurs cellules qui peuvent contenir du *code* ou du *Markdown* (texte mis en forme).
 
@@ -37,7 +36,7 @@ Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks four
 
     Lorsque la cellule devient une cellule Markdown, le texte qu’elle contient est affiché.
 
-1. Utilisez le bouton **&#128393;** (Modifier) pour basculer la cellule en mode édition, puis supprimez le contenu et entrez le texte suivant :
+1. Si nécessaire, utilisez le bouton **&#128393;** (Modifier) pour basculer la cellule en mode d’édition, puis supprimez le contenu et entrez le texte suivant :
 
     ```text
    # Perform data exploration for data science
@@ -52,19 +51,19 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données. Vous
 1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes. Entrez le code suivant pour charger le jeu de données dans un dataframe.
 
     ```python
-    # Azure storage access info for open dataset diabetes
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "ojsales-simulatedcontainer"
-    blob_relative_path = "oj_sales_data"
-    blob_sas_token = r"" # Blank since container is Anonymous access
+   # Azure storage access info for open dataset diabetes
+   blob_account_name = "azureopendatastorage"
+   blob_container_name = "ojsales-simulatedcontainer"
+   blob_relative_path = "oj_sales_data"
+   blob_sas_token = r"" # Blank since container is Anonymous access
     
-    # Set Spark config to access  blob storage
-    wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
-    print("Remote blob path: " + wasbs_path)
+   # Set Spark config to access  blob storage
+   wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+   spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+   print("Remote blob path: " + wasbs_path)
     
-    # Spark reads csv
-    df = spark.read.csv(wasbs_path, header=True)
+   # Spark reads csv
+   df = spark.read.csv(wasbs_path, header=True)
     ```
 
 1. Utilisez le bouton **&#9655; Exécuter la cellule** à gauche de la cellule pour l’exécuter. Vous pouvez également appuyer `SHIFT` + `ENTER` sur votre clavier pour exécuter une cellule.
@@ -74,19 +73,19 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données. Vous
 1. Utilisez l’icône **+ Code** sous la sortie de cellule pour ajouter une nouvelle cellule de code au notebook, puis entrez le code suivant :
 
     ```python
-    import pandas as pd
+   import pandas as pd
 
-    df = df.toPandas()
-    df = df.sample(n=500, random_state=1)
+   df = df.toPandas()
+   df = df.sample(n=500, random_state=1)
     
-    df['WeekStarting'] = pd.to_datetime(df['WeekStarting'])
-    df['Quantity'] = df['Quantity'].astype('int')
-    df['Advert'] = df['Advert'].astype('int')
-    df['Price'] = df['Price'].astype('float')
-    df['Revenue'] = df['Revenue'].astype('float')
+   df['WeekStarting'] = pd.to_datetime(df['WeekStarting'])
+   df['Quantity'] = df['Quantity'].astype('int')
+   df['Advert'] = df['Advert'].astype('int')
+   df['Price'] = df['Price'].astype('float')
+   df['Revenue'] = df['Revenue'].astype('float')
     
-    df = df.reset_index(drop=True)
-    df.head(4)
+   df = df.reset_index(drop=True)
+   df.head(4)
     ```
 
 1. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
@@ -145,20 +144,20 @@ Appliquons maintenant quelques transformations à la caractéristique **Brand**.
 1. Remplacez les lignes 10 et 11 par le code `df = clean_data(df)`, car le code généré dans Data Wrangler ne remplace pas le dataframe d’origine. Le bloc de code final devrait ressembler à ceci :
 
     ```python
-    def clean_data(df):
-        # Replace all instances of "." with " " in column: 'Brand'
-        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
-        # Capitalize the first character in column: 'Brand'
-        df['Brand'] = df['Brand'].str.title()
-        return df
+   def clean_data(df):
+       # Replace all instances of "." with " " in column: 'Brand'
+       df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)
+       # Capitalize the first character in column: 'Brand'
+       df['Brand'] = df['Brand'].str.title()
+       return df
     
-    df = clean_data(df)
+   df = clean_data(df)
     ```
 
 1. Exécutez la cellule de code et observez la variable `Brand`.
 
     ```python
-    df['Brand'].unique()
+   df['Brand'].unique()
     ```
 
     Le résultat doit afficher les valeurs *Minute Maid*, *Dominicks* et *Tropicana*.
@@ -189,7 +188,7 @@ Imaginez que nous devons passer en revue les données de chiffre d’affaires d�
 
 1. Dans le panneau **Opérations**, développez **Trier et filtrer**.
 
-1. Sélectionnez **Filtrer**.
+1. Cliquez sur **Filtrer**.
 
 1. Dans le panneau **Filtre**, ajoutez la condition suivante :
 
@@ -235,7 +234,7 @@ Supposez que vous avez commis une erreur et que vous devez supprimer le tri cré
 
 1. Quittez Data Wrangler sans générer le code.
 
-## Agréger les données
+## Données agrégées
 
 Supposons que nous voulons comprendre le chiffre d’affaires moyen généré par chaque marque. Dans les étapes suivantes, nous utilisons Data Wrangler pour effectuer une opération « grouper par » sur le dataframe `df`.
 
@@ -260,18 +259,18 @@ Supposons que nous voulons comprendre le chiffre d’affaires moyen généré pa
 1. Combinez le code de la transformation de la variable `Brand` avec le code généré par l’étape d’agrégation dans la fonction `clean_data(df)`. Le bloc de code final devrait ressembler à ceci :
 
     ```python
-    def clean_data(df):    
-        # Replace all instances of "." with " " in column: 'Brand'    
-        df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)    
-        # Capitalize the first character in column: 'Brand'    
-        df['Brand'] = df['Brand'].str.title()
+   def clean_data(df):    
+       # Replace all instances of "." with " " in column: 'Brand'    
+       df['Brand'] = df['Brand'].str.replace(".", " ", case=False, regex=False)    
+       # Capitalize the first character in column: 'Brand'    
+       df['Brand'] = df['Brand'].str.title()
         
-        # Performed 1 aggregation grouped on column: 'Brand'    
-        df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()    
+       # Performed 1 aggregation grouped on column: 'Brand'    
+       df = df.groupby(['Brand']).agg(Revenue_mean=('Revenue', 'mean')).reset_index()    
         
-        return df    
+       return df    
         
-    df = clean_data(df)
+   df = clean_data(df)
     ```
 
 1. Exécutez le code de cellule.
@@ -279,7 +278,7 @@ Supposons que nous voulons comprendre le chiffre d’affaires moyen généré pa
 1. Vérifiez les données dans le dataframe.
 
     ```python
-    print(df)
+   print(df)
     ```
 
     Résultats :
