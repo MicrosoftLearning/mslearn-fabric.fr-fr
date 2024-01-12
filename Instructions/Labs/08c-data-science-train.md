@@ -12,23 +12,17 @@ En suivant ce labo, vous allez acquérir une expérience pratique du Machine Lea
 
 Ce labo prend environ **25** minutes.
 
-> **Remarque**: Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activer une version d’évaluation de Microsoft Fabric
-
-1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
-1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
-1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Science des données**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
+1. Accédez à la page d’accueil de Microsoft Fabric sur `https://app.fabric.microsoft.com` dans un navigateur et, le cas échéant, connectez-vous avec vos informations d’identification Fabric.
+1. Sur la page d’accueil de Microsoft Fabric, sélectionnez **Science des données Synapse**.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
@@ -44,7 +38,7 @@ Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks four
 
     Lorsque la cellule devient une cellule Markdown, le texte qu’elle contient est affiché.
 
-1. Utilisez le bouton **&#128393;** (Modifier) pour basculer la cellule en mode édition, puis supprimez le contenu et entrez le texte suivant :
+1. Si nécessaire, utilisez le bouton **&#128393;** (Modifier) pour basculer la cellule en mode d’édition, puis supprimez le contenu et entrez le texte suivant :
 
     ```text
    # Train a machine learning model and track with MLflow
@@ -57,29 +51,29 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données et fo
 1. Dans votre notebook, utilisez l’icône **+ Code** sous la sortie de cellule pour ajouter une nouvelle cellule de code au notebook, puis entrez le code suivant :
 
     ```python
-    # Azure storage access info for open dataset diabetes
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "mlsamples"
-    blob_relative_path = "diabetes"
-    blob_sas_token = r"" # Blank since container is Anonymous access
+   # Azure storage access info for open dataset diabetes
+   blob_account_name = "azureopendatastorage"
+   blob_container_name = "mlsamples"
+   blob_relative_path = "diabetes"
+   blob_sas_token = r"" # Blank since container is Anonymous access
     
-    # Set Spark config to access  blob storage
-    wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
-    print("Remote blob path: " + wasbs_path)
+   # Set Spark config to access  blob storage
+   wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+   spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+   print("Remote blob path: " + wasbs_path)
     
-    # Spark read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+   # Spark read parquet, note that it won't load any data yet by now
+   df = spark.read.parquet(wasbs_path)
     ```
 
-1. Utilisez le bouton **&#9655; Exécuter la cellule** à gauche de la cellule pour l’exécuter. Vous pouvez également appuyer `SHIFT` + `ENTER` sur votre clavier pour exécuter une cellule.
+1. Utilisez le bouton **&#9655; Exécuter la cellule** à gauche de la cellule pour l’exécuter. Vous pouvez également appuyer sur **MAJ** + **ENTRÉE** sur votre clavier pour exécuter une cellule.
 
     > **Remarque** : Comme c’est la première fois que vous exécutez du code Spark dans cette session, le pool Spark doit être démarré. Cela signifie que la première exécution dans la session peut prendre environ une minute. Les exécutions suivantes seront plus rapides.
 
 1. Utilisez l’icône **+ Code** sous la sortie de cellule pour ajouter une nouvelle cellule de code au notebook, puis entrez le code suivant :
 
     ```python
-    display(df)
+   display(df)
     ```
 
 1. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
@@ -98,9 +92,9 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données et fo
 1. Les données sont chargées en tant que trame de données Spark. Scikit-learn s’attend à ce que le jeu de données d’entrée soit un dataframe Pandas. Exécutez le code ci-dessous pour convertir votre jeu de données en dataframe Pandas :
 
     ```python
-    import pandas as pd
-    df = df.toPandas()
-    df.head()
+   import pandas as pd
+   df = df.toPandas()
+   df.head()
     ```
 
 ## Entraîner un modèle Machine Learning
@@ -110,11 +104,11 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour for
 1. Exécutez le code suivant pour fractionner les données en un jeu de données de formation et de test, et pour séparer les fonctionnalités de l’étiquette que vous souhaitez prédire :
 
     ```python
-    from sklearn.model_selection import train_test_split
+   from sklearn.model_selection import train_test_split
     
-    X, y = df[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df['Y'].values
+   X, y = df[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df['Y'].values
     
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
     ```
 
 1. Ajoutez une nouvelle cellule de code au notebook, entrez le code suivant, puis exécutez-le :
@@ -130,34 +124,34 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour for
 1. Ajoutez une nouvelle cellule de code au notebook, entrez le code suivant, puis exécutez-le :
 
     ```python
-    from sklearn.linear_model import LinearRegression
+   from sklearn.linear_model import LinearRegression
     
-    with mlflow.start_run():
-       mlflow.autolog()
+   with mlflow.start_run():
+      mlflow.autolog()
     
-       model = LinearRegression()
-       model.fit(X_train, y_train)
+      model = LinearRegression()
+      model.fit(X_train, y_train)
     
-       mlflow.log_param("estimator", "LinearRegression")
+      mlflow.log_param("estimator", "LinearRegression")
     ```
 
-    Le code entraîne un modèle de régression à l’aide de la régression linéaire. Les paramètres, les métriques et les artefacts sont automatiquement enregistrés avec MLflow. En outre, vous journaliserez un paramètre appelé `estimator`, avec la valeur `LinearRegression`.
+    Le code entraîne un modèle de régression à l’aide de la régression linéaire. Les paramètres, les métriques et les artefacts sont automatiquement enregistrés avec MLflow. En outre, vous journalisez un paramètre appelé **estimateur**, avec la valeur *LinearRegression*.
 
 1. Ajoutez une nouvelle cellule de code au notebook, entrez le code suivant, puis exécutez-le :
 
     ```python
-    from sklearn.tree import DecisionTreeRegressor
+   from sklearn.tree import DecisionTreeRegressor
     
-    with mlflow.start_run():
-       mlflow.autolog()
+   with mlflow.start_run():
+      mlflow.autolog()
     
-       model = DecisionTreeRegressor(max_depth=5) 
-       model.fit(X_train, y_train)
+      model = DecisionTreeRegressor(max_depth=5) 
+      model.fit(X_train, y_train)
     
-       mlflow.log_param("estimator", "DecisionTreeRegressor")
+      mlflow.log_param("estimator", "DecisionTreeRegressor")
     ```
 
-    Le code entraîne un modèle de régression à l’aide du régresseur de l’arbre de décision. Les paramètres, les métriques et les artefacts sont automatiquement enregistrés avec MLflow. En outre, vous journaliserez un paramètre appelé `estimator`, avec la valeur `DecisionTreeRegressor`.
+    Le code entraîne un modèle de régression à l’aide du régresseur de l’arbre de décision. Les paramètres, les métriques et les artefacts sont automatiquement enregistrés avec MLflow. En outre, vous journalisez un paramètre appelé **estimateur**, avec la valeur *DecisionTreeRegressor*.
 
 ## Utiliser MLflow pour rechercher et afficher vos expériences
 
@@ -186,7 +180,7 @@ Une fois que vous avez entraîné et suivi des modèles avec MLflow, vous pouvez
    mlflow.search_runs(exp.experiment_id)
     ```
 
-1. Pour comparer plus facilement les exécutions de travaux et les sorties, vous pouvez configurer la recherche afin que les résultats soient classés. Par exemple, la cellule suivante classe les résultats selon la valeur `start_time` et affiche un maximum de `2` résultats :
+1. Pour comparer plus facilement les exécutions de travaux et les sorties, vous pouvez configurer la recherche afin que les résultats soient classés. Par exemple, la cellule suivante classe les résultats selon la valeur *start_time* et affiche uniquement un maximum de 2 résultats :
 
     ```python
    mlflow.search_runs(exp.experiment_id, order_by=["start_time DESC"], max_results=2)
@@ -218,7 +212,7 @@ Une fois que vous avez entraîné et suivi des modèles avec MLflow, vous pouvez
 Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de les explorer visuellement.
 
 1. Accédez à votre espace de travail à partir de la barre de menu sur la gauche.
-1. Sélectionnez l’expérience `experiment-diabetes` pour l’ouvrir.
+1. Sélectionnez l’expérience **experiment-diabetes** pour l’ouvrir.
 
     > **Conseil :** Si vous ne voyez aucune exécution d’expérience journalisée, actualisez la page.
 
@@ -229,8 +223,8 @@ Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de 
     Vos deux dernières exécutions seront comparées l’une à l’autre dans le volet **Comparaison des métriques**. Par défaut, les métriques sont tracées en fonction du nom d’exécution.
 
 1. Sélectionnez le bouton **&#128393;** (Modifier) du graphe affichant l’erreur absolue moyenne de chaque exécution.
-1. Sélectionnez `bar` comme **type de visualisation**.
-1. Sélectionnez `estimator` comme **axe x**.
+1. Remplacez le **type de visualisation** par **barre**.
+1. Remplacer l’**axe X** par **estimateur**.
 1. Sélectionnez **Remplacer** et explorez le nouveau graphe.
 1. Si vous le souhaitez, vous pouvez répéter ces étapes pour les autres graphiques dans le volet **comparaison des métriques**.
 
@@ -242,12 +236,12 @@ Après avoir comparé les modèles Machine Learning que vous avez entraînés po
 
 1. Dans la vue d’ensemble de l’expérience, vérifiez que l’onglet **Affichage** est sélectionné.
 1. Sélectionnez **Détails de l’exécution**.
-1. Sélectionnez l’exécution avec le score R2 le plus élevé.
-1. Sélectionnez **Enregistrer** dans la zone **Enregistrer l’exécution en tant que modèle**.
+1. Sélectionnez l’exécution avec le score R2 d’apprentissage le plus élevé.
+1. Sélectionnez **Enregistrer** dans la zone **Enregistrer l’exécution en tant que modèle** (il est possible que vous deviez faire défiler vers la droite pour la voir).
 1. Sélectionnez **Créer un modèle** dans la fenêtre contextuelle nouvellement ouverte.
-1. Sélectionnez le dossier `model` .
+1. Sélectionnez un dossier de **modèle**.
 1. Nommez le modèle `model-diabetes`, puis sélectionnez **Enregistrer**.
-1. Sélectionnez **Afficher le modèle** dans la notification qui s’affiche en haut à droite de votre écran lors de la création du modèle. Vous pouvez également actualiser la fenêtre. Le modèle enregistré est lié sous **Version modèle**.
+1. Sélectionnez **Afficher le modèle ML** dans la notification qui s’affiche en haut à droite de votre écran lors de la création du modèle. Vous pouvez également actualiser la fenêtre. Le modèle enregistré est lié sous **Version modèle**.
 
 Notez que le modèle, l’expérience et l’exécution de l’expérience sont liés, ce qui vous permet d’examiner la façon dont le modèle est entraîné.
 
@@ -261,7 +255,7 @@ Maintenant que vous avez terminé l’entraînement et l’évaluation des modè
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine Learning. Vous avez utilisé Scikit-Learn pour entraîner le modèle et MLflow pour suivre ses performances.
+Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine Learning. Vous avez utilisé Scikit-Learn pour former le modèle et MLflow pour suivre ses performances.
 
 Si vous avez terminé d’explorer votre modèle et vos expériences, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
