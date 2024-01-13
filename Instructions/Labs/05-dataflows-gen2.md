@@ -10,14 +10,7 @@ Dans Microsoft Fabric, les flux de données (Gen2) se connectent à différentes
 
 Ce labo est conçu pour présenter les différents éléments des flux de données (Gen2) et non pour créer une solution complexe qui peut exister dans une entreprise. Ce labo prend **environ 30 minutes**.
 
-> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activer une version d’évaluation de Microsoft Fabric
-
-1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
-1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
-1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -30,7 +23,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
-## Créer un lakehouse.
+## Créer un lakehouse
 
 Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse dans lequel vous ingérerez les données.
 
@@ -142,6 +135,6 @@ Si vous avez terminé d’explorer les flux de données dans Microsoft Fabric, v
 
 1. Accédez à Microsoft Fabric dans votre navigateur.
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-1. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+1. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 1. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
 1. N’enregistrez pas les modifications apportées à Power BI Desktop ou supprimez le fichier .pbix s’il a déjà été enregistré.

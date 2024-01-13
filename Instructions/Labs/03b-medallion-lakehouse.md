@@ -10,14 +10,7 @@ Dans cet exercice, vous allez créer une architecture en médaillon dans un lake
 
 Cet exercice devrait prendre environ **45** minutes
 
-> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activer une version d’évaluation de Microsoft Fabric
-
-1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
-1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
-1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -232,7 +225,7 @@ Maintenant que vous avez des données dans votre couche argent, vous pouvez util
     ORDER BY YEAR(OrderDate)
     ```
 
-    Cette requête calcule les ventes totales pour chaque année dans la table sales_silver. Vos résultats doivent ressembler à ceci :
+    Cette requête calcule les ventes totales pour chaque année dans la table sales_silver. Vos résultats devraient ressembler à ceci :
 
     ![Capture d’écran des résultats d’une requête SQL dans un lakehouse.](./Images/total-sales-sql.png)
 
@@ -505,7 +498,7 @@ Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook,
               .execute()
       ```
 
-      **Maintenant que vos dimensions sont générées, la dernière étape consiste à créer la table de faits.**
+      **Maintenant que vos dimensions ont été générées, la dernière étape consiste à créer la table de faits.**
 
 15. **Dans un nouveau bloc de code**, collez et exécutez le code suivant pour créer la **table de faits** :
 
@@ -618,5 +611,5 @@ Dans cet exercice, vous avez appris à créer une architecture en médaillon dan
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.

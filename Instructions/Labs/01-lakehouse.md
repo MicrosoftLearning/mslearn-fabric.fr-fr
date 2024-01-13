@@ -12,34 +12,30 @@ Dans Microsoft Fabric, un lakehouse fournit un stockage de fichiers hautement �
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Engineering données**.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
+    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
-## Créer un lakehouse.
+## Créer un lakehouse
 
-Maintenant que vous disposez d’un espace de travail, il est temps de passer à l’expérience *Engineering données* dans le portail et de créer un data lakehouse pour vos fichiers de données.
+Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse pour vos fichiers de données.
 
-1. En bas à gauche du portail Power BI, passez à l’expérience **Engineering données**. Si vous ne voyez pas l’expérience d’engineering données, contactez votre administrateur Fabric avec une requête pour [activer Fabric](https://learn.microsoft.com/fabric/admin/fabric-switch).
-
-    La page d’accueil de l’engineering données comprend des vignettes permettant de créer des ressources d’ingénierie données couramment utilisées.
-
-2. Dans la page d’accueil de l’**Engineering données**, créez un **Lakehouse** avec le nom de votre choix.
+1. Dans la page d’accueil d’**Engineering données Synapse**, créez un nouveau **Lakehouse** du nom de votre choix.
 
     Au bout d’une minute environ, un nouveau lakehouse est créé :
 
     ![Capture d’écran d’un nouveau lakehouse.](./Images/new-lakehouse.png)
 
-3. Affichez le nouveau lakehouse et notez que le volet **Explorateur de lakehouse** à gauche vous permet de parcourir les tables et les fichiers présents dans le lakehouse :
+1. Affichez le nouveau lakehouse et notez que le volet **Explorateur de lakehouse** à gauche vous permet de parcourir les tables et les fichiers présents dans le lakehouse :
     - Le dossier **Tables** contient des tables que vous pouvez interroger à l’aide de la sémantique SQL. Les tables d’un lakehouse Microsoft Fabric sont basées sur le format de fichier *Delta Lake* open source, qui est couramment utilisé dans Apache Spark.
     - Le dossier **Fichiers** contient des fichiers de données du stockage OneLake pour le lakehouse qui ne sont pas associés à des tables delta managées. Vous pouvez également créer des *raccourcis* dans ce dossier pour référencer des données qui sont stockées en externe.
 
@@ -173,5 +169,5 @@ Dans cet exercice, vous avez créé un lakehouse et importé des données dans c
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.

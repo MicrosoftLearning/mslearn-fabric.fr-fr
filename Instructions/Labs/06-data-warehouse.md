@@ -10,14 +10,7 @@ Dans Microsoft Fabric, un entrepôt de données fournit une base de données rel
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activer une version d’évaluation de Microsoft Fabric
-
-1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
-1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
-1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -249,5 +242,5 @@ Dans cet exercice, vous avez créé un entrepôt de données qui contient plusie
 Si vous avez terminé d’explorer votre entrepôt de données, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.

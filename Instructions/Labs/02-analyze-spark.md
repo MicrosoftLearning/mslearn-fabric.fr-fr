@@ -10,34 +10,32 @@ Apache Spark est un moteur open source pour le traitement des données distribu�
 
 Ce labo prend environ **45** minutes.
 
-> **Remarque** : Vous aurez besoin d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
-2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
-4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Engineering données**.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
-    ![Capture d’écran d’un espace de travail vide dans Power BI](./Images/new-workspace.png)
+    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
 ## Créer un lakehouse et charger des fichiers
 
-Maintenant que vous disposez d’un espace de travail, il est temps de basculer vers l’expérience *Engineering données* dans le portail et de créer un data lakehouse pour les fichiers de données que vous allez analyser.
+Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse pour les fichiers de données que vous analyserez.
 
-1. En bas à gauche du portail Power BI, sélectionnez l’icône **Power BI** et basculez vers l’expérience **Engineering données**.
-
-2. Dans la page d’accueil d’**Engineering données Synapse**, créez un nouveau **Lakehouse** du nom de votre choix.
+1. Dans la page d’accueil d’**Engineering données Synapse**, créez un nouveau **Lakehouse** du nom de votre choix.
 
     Au bout d’une minute environ, un nouveau lakehouse vide est créé. Vous devez ingérer certaines données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de procéder, mais dans cet exercice, vous allez simplement télécharger et extraire un dossier de fichiers texte de votre ordinateur local (ou machine virtuelle de laboratoire le cas échéant), puis les charger dans votre lakehouse.
 
-3. Téléchargez et extrayez les fichiers de données pour cet exercice à partir de [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip).
+1. Téléchargez et extrayez les fichiers de données pour cet exercice à partir de [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip).
 
-4. Après avoir extrait l’archive compressée, vérifiez que vous disposez d’un dossier nommé **orders** qui contient des fichiers CSV nommés **2019.csv**, **2020.csv** et **2021.csv**.
-5. Revenez à l’onglet du navigateur web contenant votre lakehouse, puis dans le menu **…** du dossier **Fichiers** dans le volet **Explorateur**, sélectionnez **Charger** et **Charger le dossier**, puis chargez le dossier **orders** à partir de votre ordinateur local (ou de la machine virtuelle de labo, le cas échéant) dans le lakehouse.
-6. Une fois les fichiers chargés, développez **Fichiers** et sélectionnez le dossier **orders**, et vérifiez que les fichiers CSV ont été chargés, comme illustré ici :
+1. Après avoir extrait l’archive compressée, vérifiez que vous disposez d’un dossier nommé **orders** qui contient des fichiers CSV nommés **2019.csv**, **2020.csv** et **2021.csv**.
+1. Revenez à l’onglet du navigateur web contenant votre lakehouse, puis dans le menu **…** du dossier **Fichiers** dans le volet **Explorateur**, sélectionnez **Charger** et **Charger le dossier**, puis chargez le dossier **orders** à partir de votre ordinateur local (ou de la machine virtuelle de labo, le cas échéant) dans le lakehouse.
+1. Une fois les fichiers chargés, développez **Fichiers** et sélectionnez le dossier **orders**, et vérifiez que les fichiers CSV ont été chargés, comme illustré ici :
 
     ![Capture d’écran des fichiers chargés dans un lakehouse](./Images/uploaded-files.png)
 
@@ -47,9 +45,9 @@ Pour utiliser des données dans Apache Spark, vous pouvez créer un *notebook*. 
 
 1. Dans la page **Accueil**, lors de l’affichage du contenu du dossier **orders** dans votre datalake, dans le menu **Ouvrir un notebook**, sélectionnez **Nouveau notebook**.
 
-    Après quelques secondes, un nouveau notebook contenant une seule *cellule* s’ouvre. Les notebooks sont constitués d’une ou plusieurs cellules qui peuvent contenir du *code* ou du texte *markdown* (texte mis en forme).
+    Après quelques secondes, un nouveau notebook contenant une seule *cellule* s’ouvre. Les notebooks sont constitués d’une ou plusieurs cellules qui peuvent contenir du *code* ou du *Markdown* (texte mis en forme).
 
-2. Sélectionnez la première cellule (qui est actuellement une cellule de *code*), puis dans la barre d’outils dynamique en haut à droite, utilisez le bouton **M&#8595;** pour convertir la cellule en cellule *Markdown*.
+2. Sélectionnez la première cellule (qui est actuellement une cellule de *code*) puis, dans la barre d’outils dynamique en haut à droite, utilisez le bouton **M&#8595;** pour convertir la cellule en cellule *Markdown*.
 
     Lorsque la cellule devient une cellule Markdown, le texte qu’elle contient est affiché avec rendu.
 
@@ -87,7 +85,7 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
 
     > **Remarque** : Comme il s’agit de la première fois que vous exécutez du code Spark, une session Spark doit être démarrée. Cela signifie que la première exécution dans la session peut prendre environ une minute. Les exécutions suivantes seront plus rapides.
 
-4. Une fois la commande de cellule terminée, passez en revue la sortie sous la cellule, qui doit ressembler à ceci :
+4. Une fois la commande de cellule exécutée, passez en revue la sortie sous la cellule, qui doit ressembler à ceci :
 
     | Index | SO43701 | 11 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399.99 | 271,9992 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -157,9 +155,9 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
 10. Le dataframe inclut uniquement les données du fichier **2019.csv**. Modifiez le code afin que le chemin de fichier utilise un caractère générique \* pour lire les données de commandes client à partir de tous les fichiers figurant dans le dossier **orders** :
 
     ```python
-   from pyspark.sql.types import *
+    from pyspark.sql.types import *
 
-   orderSchema = StructType([
+    orderSchema = StructType([
        StructField("SalesOrderNumber", StringType()),
        StructField("SalesOrderLineNumber", IntegerType()),
        StructField("OrderDate", DateType()),
@@ -171,8 +169,8 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
        StructField("Tax", FloatType())
        ])
 
-   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-   display(df)
+    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+    display(df)
     ```
 
 11. Exécutez la cellule de code modifiée et passez en revue la sortie, qui doit maintenant inclure les ventes de 2019, 2020 et 2021.
@@ -570,7 +568,7 @@ Bien que **matplotlib** vous permette de créer des graphiques complexes de plus
    # Clear the plot area
    plt.clf()
 
-   # Create a bar chart
+   # Create a line chart
    ax = sns.lineplot(x="OrderYear", y="GrossRevenue", data=df_sales)
    plt.show()
     ```
@@ -593,6 +591,6 @@ Dans cet exercice, vous avez appris à utiliser Spark pour travailler sur des do
 
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
-1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour visualiser tous les éléments qu’il contient.
-2. Dans le menu  **…** de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
+1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
+2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.

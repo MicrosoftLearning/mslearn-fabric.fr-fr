@@ -16,14 +16,7 @@ Ce labo est d’une durée de **25** minutes environ.
 
 Dans ce scénario, vous êtes un analyste chargé d’interroger un exemple de jeu de données de métriques brutes de courses de taxi à NYC pour extraire des statistiques récapitulatives (profilage) des données dans l’environnement Fabric. Vous utilisez KQL pour interroger ces données et collecter des informations afin d’obtenir des insights instructifs sur les données.
 
-> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activer une version d’évaluation de Microsoft Fabric
-
-1. Après avoir ouvert un compte Microsoft Fabric, accédez au portail Microsoft Fabric à l’adresse [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Sélectionnez l’icône **Gestionnaire de comptes** (l’image de l’*utilisateur* en haut à droite)
-1. Dans le menu du gestionnaire de comptes, sélectionnez **Démarrer la version d’évaluation** pour démarrer un essai de Microsoft Fabric.
-1. Après avoir effectué la mise à niveau vers Microsoft Fabric, accédez à la page d’accueil en sélectionnant **Page d’accueil de l’infrastructure**.
+> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -312,5 +305,5 @@ La base de données KQL ne prend pas en charge T-SQL de manière native, mais el
 
 Dans cet exercice, vous avez créé une base de données KQL et configuré un exemple de jeu de données pour un interrogation. Après cela, vous avez interrogé les données à l’aide de KQL et de SQL. Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 1. Dans la barre de gauche, sélectionnez l’**icône** de votre espace de travail.
-2. Dans le menu ... de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+2. Dans le menu ... de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
 3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.

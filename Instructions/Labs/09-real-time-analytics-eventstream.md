@@ -9,7 +9,7 @@ Eventstream est une fonctionnalité de Microsoft Fabric qui capture, transforme
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’une licence Microsoft Fabric pour effectuer cet exercice. Consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite. Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou version ultérieure](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous aurez besoin d’une licence Microsoft Fabric pour effectuer cet exercice. Pour plus d’informations sur l’activation d’une licence d’essai Fabric gratuite, consultez [Bien démarrer avec Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial). Vous aurez besoin pour cela d’un compte *scolaire* ou *professionnel* Microsoft. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Créer un espace de travail
 
@@ -17,7 +17,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
 2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+3. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :
 
    ![Capture d’écran d’un espace de travail vide dans Power BI.](./Images/new-workspace.png)
@@ -66,7 +66,7 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
    ![Image du choix eventstream](./Images/select-eventstream.png)
 
-3. Vous êtes invité à **nommer** votre flux d’événements. Donnez au flux d’événements un nom dont vous vous souviendrez, par exemple ***MyStockES**, puis appuyez sur le bouton **Créer**.
+3. Vous êtes invité à **nommer** votre flux d’événements. Donnez à l’EventStream un nom dont vous vous souviendrez, par exemple ***MyStockES**, puis cliquez sur le bouton **Créer**.
 
    ![Image du nom eventstream](./Images/name-eventstream.png)
 
@@ -76,7 +76,7 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
    ![Image du canevas EventStream](./Images/real-time-analytics-canvas.png)
 
-2. Entrez les valeurs de vos exemples de données, comme indiqué dans le tableau suivant, puis sélectionnez **Ajouter et configurer**.
+2. Saisissez les valeurs de vos données d’échantillonnage comme indiqué dans le tableau suivant, puis sélectionnez **Ajouter et configurer**.
 
    | Champ       | Valeur recommandée |
    | ----------- | ----------------- |
@@ -95,7 +95,7 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
    | Espace de travail        | Espace de travail dans lequel vous avez créé une base de données KQL |
    | Base de données KQL     | MyStockData                                    |
 
-3. Sélectionnez **Ajouter et configurer**.
+3. Sélectionnez **Créer et configurer**.
 
 ## Configurer l’ingestion des données
 
@@ -130,7 +130,7 @@ Une requête KQL (Kusto Query Language, langage de requête Kusto) est une requ�
 
 > **Remarque** : L’éditeur KQL est fourni avec la mise en évidence de la syntaxe et d’Intellisense, ce qui vous permet d’acquérir rapidement des connaissances sur le langage de requête Kusto (KQL).
 
-1. Accédez à la base de données KQL que vous venez de créer et d’activer, nommée ***MyStockData***.
+1. Accédez à la base de données KQL que vous venez de créer et d’activer, nommée **MyStockData**.
 2. Dans l’arborescence Données, sélectionnez le menu Plus [...] dans la table MyStockData. Sélectionnez ensuite Interroger la table > Afficher 100 enregistrements.
 
    ![Image de l’ensemble de requêtes KQL](./Images/kql-query-sample.png)
