@@ -119,7 +119,7 @@ Maintenant que vous avez chargé les données, vous pouvez les utiliser pour for
    mlflow.set_experiment(experiment_name)
     ```
 
-    Le code crée une expérience MLflow nommée `experiment-diabetes`. Vos modèles seront suivis dans cette expérience.
+    Le code crée une expérience MLflow nommée **expérience-diabète**. Vos modèles seront suivis dans cette expérience.
 
 1. Ajoutez une nouvelle cellule de code au notebook, entrez le code suivant, puis exécutez-le :
 
