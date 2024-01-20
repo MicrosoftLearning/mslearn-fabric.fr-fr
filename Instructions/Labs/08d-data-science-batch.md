@@ -19,7 +19,7 @@ Ce labo prend environ **20** minutes.
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
 1. Accédez à la page d’accueil de Microsoft Fabric sur `https://app.fabric.microsoft.com` dans un navigateur.
-1. Sur la page d’accueil de Microsoft Fabric, sélectionnez **Science des données Synapse**.
+1. Sur la page d’accueil de Microsoft Fabric, sélectionnez **Science des données Synapse**
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -133,7 +133,7 @@ Pour utiliser le modèle, vous allez avoir besoin d’un jeu de données des inf
     ```python
    from pyspark.sql.types import IntegerType, DoubleType
 
-   # Create a new daraframe with patient data
+   # Create a new dataframe with patient data
    data = [
        (62, 2, 33.7, 101.0, 157, 93.2, 38.0, 4.0, 4.8598, 87),
        (50, 1, 22.7, 87.0, 183, 103.2, 70.0, 3.0, 3.8918, 69),
@@ -170,9 +170,9 @@ Pour utiliser le modèle, vous allez avoir besoin d’un jeu de données des inf
 1. Une fois le code terminé, sélectionnez les **...** à côté de **Tables** dans le volet **Explorateur Lakehouse**, puis **Actualiser**. La table **diabetes_test** doit s’afficher.
 1. Développez la table **diabetes_test** dans le volet gauche pour afficher tous les champs qu’elle comprend.
 
-## Appliquez le modèle pour générer des prédictions
+## Appliquer le modèle pour générer des prédictions
 
-Maintenant que vous pouvez utiliser le modèle entraîné précédemment pour générer des prévisions de progression du diabète pour les lignes de données de patients dans votre table.
+Maintenant vous pouvez utiliser le modèle entraîné précédemment pour générer des prévisions de progression du diabète pour les lignes de données de patients dans votre table.
 
 1. Ajoutez une nouvelle cellule de code, puis exécutez le code suivant :
 
