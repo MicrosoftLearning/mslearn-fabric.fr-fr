@@ -10,13 +10,13 @@ lab:
 
 **La durée estimée pour effectuer ce tutoriel est de 45 minutes.**
 
-Dans ce labo, vous allez travailler avec des relations de modèle pour répondre aux besoins de dimensions spécifiques de rôles actifs. Pour cela, vous devrez utiliser des relations actives et inactives, ainsi que des fonctions DAX (Data Analysis Expressions) qui modifient le comportement des relations.
+Dans ce labo, vous allez travailler avec des relations de modèle pour répondre aux besoins de dimensions spécifiques de rôles actifs. Cela implique d’utiliser des relations actives et inactives, ainsi que des fonctions DAX (Data Analysis Expressions) qui modifient le comportement des relations.
 
 Dans ce labo, vous découvrez comment :
 
-- Interpréter les propriétés de relation dans le diagramme de modèle
+- Interpréter les propriétés des relations dans le diagramme du modèle
 
-- Définir des propriétés de relation
+- Définir les propriétés des relations.
 
 - Utiliser des fonctions DAX qui modifient le comportement des relations
 
@@ -24,64 +24,26 @@ Dans ce labo, vous découvrez comment :
 
 Dans cet exercice, vous allez ouvrir une solution Power BI Desktop prédéveloppée pour en savoir plus sur le modèle de données. Vous allez ensuite explorer le comportement des relations de modèle actives.
 
-## Bien démarrer
-### Cloner le référentiel pour cette formation
+### Télécharger un ficher de démarrage
 
-1. Dans le menu Démarrer, ouvrez l’invite de commandes.
-   
-    ![](../images/command-prompt.png)
+1. Ouvrez le [fichier de démarrage Sales Analysis](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/15/Starter/Sales%20Analysis%20-%20Work%20with%20model%20relationships.pbix) et enregistrez-le dans un emplacement dont vous vous souviendrez.
 
-2. Dans la fenêtre d’invite de commandes, accédez au lecteur D en tapant :
-
-    `d:` 
-
-   Appuyez sur Entrée.
-   
-    ![](../images/command-prompt-2.png)
-
-
-3. Dans la fenêtre d’invite de commandes, entrez la commande ci-après pour télécharger les fichiers de cours et les enregistrer dans un dossier appelé DP500.
-    
-    `git clone https://github.com/MicrosoftLearning/DP-500-Azure-Data-Analyst DP500`
-   
-
-1. Une fois le référentiel cloné, fermez la fenêtre d’invite de commandes. 
-   
-1. Ouvrez le lecteur D dans l’explorateur de fichiers pour vous assurer que les fichiers ont été téléchargés.
-
-### Configurer Power BI Desktop
-
-Dans cette tâche, vous allez ouvrir une solution Power BI Desktop prédéveloppée.
-
-1. Pour ouvrir l’Explorateur de fichiers, dans la barre des tâches, sélectionnez le raccourci vers **Explorateur de fichiers**.
-
-2. Dans l’explorateur de fichiers, accédez au dossier **D:\DP500\Allfiles\06\Starter**.
-
-3. Pour ouvrir un fichier Power BI Desktop prédéveloppé, double-cliquez sur le fichier **Sales Analysis - Work with model relationships.pbix**.
-
-4. Pour enregistrer le fichier, sous l’onglet de ruban **Fichier**, sélectionnez **Enregistrer sous**.
-
-5. Dans la fenêtre **Enregistrer sous**, accédez au dossier **D:\DP500\Allfiles\06\MySolution**.
-
-6. Sélectionnez **Enregistrer**.
+1. Accédez au fichier téléchargé et ouvrez-le dans Power BI Desktop.
 
 ### Examiner le modèle de données
 
-Dans cette tâche, vous allez passer en revue le modèle de données.
-
 1. Dans Power BI Desktop, à gauche, passez à la vue **Modèle**.
 
-    ![](../images/dp500-work-with-model-relationships-image2.png)
-
+    ![](Images/work-with-model-relationships-image2.png)
 2. Utilisez le diagramme de modèle pour passer en revue la conception du modèle.
 
-    ![](../images/dp500-work-with-model-relationships-image3.png)
+    ![](Images/work-with-model-relationships-image3.png)
 
     *Le modèle comprend six tables de dimension et une table de faits. La table de faits **Sales** stocke les détails des commandes client. Il s’agit d’une conception classique de schéma en étoile.*
- 
+
 3. Notez qu’il existe trois relations entre les tables **Date** et **Sales**.
 
-    ![](../images/dp500-work-with-model-relationships-image4.png)
+    ![](Images/work-with-model-relationships-image4.png)
 
     *La colonne **DateKey** de la table **Date** est une colonne unique qui représente le côté « unique » des relations. Les filtres appliqués à n’importe quelle colonne de la table **Date** se propagent à la table **Sales** à l’aide de l’une des relations.*
 
@@ -101,27 +63,27 @@ Dans cette tâche, vous allez visualiser les données de ventes par date et chan
 
 1. Passez à l’affichage **Report**.
 
-    ![](../images/dp500-work-with-model-relationships-image5.png)
+    ![](Images/work-with-model-relationships-image5.png)
 
 2. Pour ajouter un visuel de table, dans le volet **Visualisations**, sélectionnez l’icône de visuel **Table**.
 
-    ![](../images/dp500-work-with-model-relationships-image6.png)
+    ![](Images/work-with-model-relationships-image6.png)
 
 3. Pour ajouter des colonnes au visuel de table, dans le volet **Données** (à droite), développez d’abord la table **Date**.
 
-    ![](../images/dp500-work-with-model-relationships-image7.png)
+    ![](Images/work-with-model-relationships-image7.png)
 
 4. Faites glisser la colonne **Fiscal Year** et déposez-la dans le visuel de table.
 
-    ![](../images/dp500-work-with-model-relationships-image8.png)
+    ![](Images/work-with-model-relationships-image8.png)
 
 5. Développez la table **Sales**, puis faites glisser et déposez la colonne **Sales Amount** dans le visuel de table.
 
-    ![](../images/dp500-work-with-model-relationships-image9.png)
+    ![](Images/work-with-model-relationships-image9.png)
 
 6. Passez en revue le visuel de table.
 
-    ![](../images/dp500-work-with-model-relationships-image10.png)
+    ![](Images/work-with-model-relationships-image10.png)
 
     *Le visuel de table affiche la somme de la colonne **Sales Amount** regroupée par année. Mais que signifie **Fiscal Year** ? Étant donné qu’il existe une relation active entre les tables **Date** et **Sales** avec la colonne **OrderDateKey**, **Fiscal year** correspond à l’année fiscale pendant laquelle les commandes ont été effectuées.*
 
@@ -129,17 +91,17 @@ Dans cette tâche, vous allez visualiser les données de ventes par date et chan
 
 7. Dans le volet **Visualisations** du visuel de table, dans la zone **Valeurs**, sélectionnez la flèche vers le bas, puis **Renommer pour ce visuel**.
 
-    ![](../images/dp500-work-with-model-relationships-image11.png)
+    ![](Images/work-with-model-relationships-image11.png)
 
 8. Remplacez le texte par **Order Year**, puis appuyez sur **Entrée**.
 
-    ![](../images/dp500-work-with-model-relationships-image12.png)
+    ![](Images/work-with-model-relationships-image12.png)
 
-    *Conseil : il est plus rapide de renommer un champ de visuel en double-cliquant sur son nom.*
+    *Remarque : Il est plus rapide de renommer un champ visuel en cliquant deux fois sur son nom.*
 
 9. Notez que l’en-tête de colonne du visuel de table est mis à jour avec le nouveau nom.
 
-    ![](../images/dp500-work-with-model-relationships-image13.png)
+    ![](Images/work-with-model-relationships-image13.png)
 
 ### Modifier l’état actif des relations
 
@@ -147,29 +109,29 @@ Dans cette tâche, vous allez modifier l’état actif de deux relations.
 
 1. Sous le ruban **Modélisation**, sélectionnez **Gérer les relations**.
 
-    ![](../images/dp500-work-with-model-relationships-image14.png)
+    ![](Images/work-with-model-relationships-image14.png)
 
 2. Dans la fenêtre **Gérer les relations**, pour la relation entre les tables **Sales** et **Date** de la colonne **OrderDateKey** (troisième de la liste), décochez la case **Active**.
 
-    ![](../images/dp500-work-with-model-relationships-image15.png)
+    ![](Images/work-with-model-relationships-image15.png)
 
 3. Cochez la case **Active** pour la relation entre les tables **Sales** et **Date** pour la colonne **ShipDateKey** (dernière dans la liste).
 
-    ![](../images/dp500-work-with-model-relationships-image16.png)
+    ![](Images/work-with-model-relationships-image16.png)
 
 4. Sélectionnez **Fermer**.
 
-    ![](../images/dp500-work-with-model-relationships-image17.png)
+    ![](Images/work-with-model-relationships-image17.png)
 
     *Ces configurations ont basculé la relation active entre les tables **Date** et **Sales** vers la colonne **ShipDateKey**.*
 
 5. Examinez le visuel de table qui affiche désormais les montants des ventes regroupés par années d’expédition.
 
-    ![](../images/dp500-work-with-model-relationships-image18.png)
+    ![](Images/work-with-model-relationships-image18.png)
 
 6. Renommez la première colonne en **Ship Year**.
 
-    ![](../images/dp500-work-with-model-relationships-image19.png)
+    ![](Images/work-with-model-relationships-image19.png)
 
     *La première ligne représente un groupe vide, car certaines commandes n’ont pas encore été livrées. En d’autres termes, la colonne **ShipDateKey** de la table **Sales** contient des espaces vides (BLANK).*
 
@@ -185,7 +147,7 @@ Dans cette tâche, vous allez modifier l’état actif de deux relations.
 
     - Renommez le premier champ visuel dans le visuel de table en **Order Year**.
 
-    ![](../images/dp500-work-with-model-relationships-image20.png)
+    ![](Images/work-with-model-relationships-image20.png)
 
     *Dans l’exercice suivant, vous allez apprendre à activer une relation dans une formule DAX.*
 
@@ -199,32 +161,33 @@ Dans cette tâche, vous allez utiliser la fonction USERELATIONSHIP pour activer 
 
 1. Dans le volet **Données**, cliquez avec le bouton droit sur la table **Sales**, puis sélectionnez **Nouvelle mesure**.
 
-    ![](../images/dp500-work-with-model-relationships-image21.png)
+    ![](Images/work-with-model-relationships-image21.png)
 
 2. Dans la barre de formule (située sous le ruban), remplacez le texte par la définition de mesure suivante, puis sélectionnez **Entrée**.
 
-    *Conseil : toutes les formules peuvent être copiées et collées à partir du fichier **D:\DP500\Allfiles\06\Assets\Snippets.txt**.*
+    *Conseil : Toutes les formules peuvent être copiées et collées à partir de **D:\fabric\Allfiles\Labs\15\Assets\Snippets.txt**.*
 
-    ```
+    ```DAX
     Sales Shipped =
     CALCULATE (
     SUM ( 'Sales'[Sales Amount] ),
     USERELATIONSHIP ( 'Date'[DateKey], 'Sales'[ShipDateKey] )
     )
-    ``` 
+    ```
+
     *Cette formule utilise la fonction CALCULATE pour modifier le contexte de filtre. C’est la fonction USERELATIONSHIP qui, dans le cadre de ce calcul, active la relation **ShipDateKey**.*
 
 3. Dans le ruban contextuel **Outils de mesure**, à l’intérieur du groupe **Mise en forme**, définissez les décimales sur **2**.
 
-    ![](../images/dp500-work-with-model-relationships-image22.png)
+    ![](Images/work-with-model-relationships-image22.png)
 
 4. Ajoutez la mesure **Sales Shipped** au visuel de table.
 
-    ![](../images/dp500-work-with-model-relationships-image23.png)
+    ![](Images/work-with-model-relationships-image23.png)
 
 5. Redimensionnez le visuel de table afin que toutes les colonnes soient visibles.
 
-    ![](../images/dp500-work-with-model-relationships-image24.png)
+    ![](Images/work-with-model-relationships-image24.png)
 
     *La création de mesures qui définissent temporairement les relations comme actives constitue un moyen d’utiliser des dimensions de rôle actif. Toutefois, cela peut devenir fastidieux lorsqu’il est nécessaire de créer des versions de rôle actif pour de nombreuses mesures. Par exemple, s’il y a 10 mesures liées aux ventes et trois dates de rôle actif, cela signifie qu’il faut créer 30 mesures. La création de ces dernières avec des groupes de calcul peut faciliter le processus.*
 
@@ -232,7 +195,7 @@ Dans cette tâche, vous allez utiliser la fonction USERELATIONSHIP pour activer 
 
 6. Pour supprimer la mesure du visuel de table, dans le volet **Visualisations**, à partir du champ **Valeurs**, pour le champ **Sales Shipped**, cliquez sur **X**.
 
-    ![](../images/dp500-work-with-model-relationships-image25.png)
+    ![](Images/work-with-model-relationships-image25.png)
 
 ## Ajouter une table Date
 
@@ -244,15 +207,15 @@ Dans cette tâche, vous allez supprimer la relation existante avec la **colonne 
 
 1. Basculez vers la vue **Modèle**.
 
-    ![](../images/dp500-work-with-model-relationships-image26.png)
+    ![](Images/work-with-model-relationships-image26.png)
 
 2. Dans le diagramme de modèle, cliquez avec le bouton droit sur la relation **ShipDateKey**, puis sélectionnez **Supprimer**.
 
-    ![](../images/dp500-work-with-model-relationships-image27.png)
+    ![](Images/work-with-model-relationships-image27.png)
 
 3. Lorsque vous êtes invité à confirmer la suppression, sélectionnez **OK**.
 
-    ![](../images/dp500-work-with-model-relationships-image28.png)
+    ![](Images/work-with-model-relationships-image28.png)
 
     *La suppression de la relation entraîne une erreur avec la mesure **Sales Shipped**. Vous réécrirez la formule de mesure plus loin dans ce labo.*
 
@@ -262,21 +225,21 @@ Dans cette tâche, vous allez désactiver deux options de relation.
 
 1. Sous l’onglet de ruban **Fichier**, sélectionnez **Options et paramètres**, puis **Options**.
 
-    ![](../images/dp500-work-with-model-relationships-image29.png)
+    ![](Images/work-with-model-relationships-image29.png)
 
 2. Dans la fenêtre **Options**, à gauche, à partir du groupe **FICHIER ACTIF**, sélectionnez **Chargement des données**.
 
-    ![](../images/dp500-work-with-model-relationships-image30.png)
+    ![](Images/work-with-model-relationships-image30.png)
 
 3. Dans la section **Relations**, décochez les deux options activées.
 
-    ![](../images/dp500-work-with-model-relationships-image31.png)
+    ![](Images/work-with-model-relationships-image31.png)
 
     *En règle générale, dans votre travail quotidien, vous pouvez laisser ces options activées. Toutefois, dans le cadre de ce labo, vous allez créer des relations explicitement.*
 
 4. Cliquez sur **OK**.
 
-    ![](../images/dp500-work-with-model-relationships-image32.png)
+    ![](Images/work-with-model-relationships-image32.png)
 
 ### Ajouter une autre table de dates
 
@@ -284,43 +247,43 @@ Dans cette tâche, vous allez créer une requête pour ajouter une autre table d
 
 1. Sous l’onglet de ruban **Accueil**, dans le groupe **Requêtes**, sélectionnez l’icône **Transformer les données**.
 
-    ![](../images/dp500-work-with-model-relationships-image33.png) 
+    ![](Images/work-with-model-relationships-image33.png)
 
     *Si vous êtes invité à spécifier le mode de connexion, sélectionnez **Modifier les informations d’identification** et spécifiez le mode de connexion.*
 
-    ![](../images/dp500-work-with-model-relationships-image52.png)
+    ![](Images/work-with-model-relationships-image52.png)
 
     *Sélectionnez **Se connecter***
 
-     ![](../images/dp500-work-with-model-relationships-image53.png)
- 
+     ![](Images/work-with-model-relationships-image53.png)
+
 2. Dans la fenêtre **Éditeur Power Query**, dans le volet **Requêtes** (à gauche), cliquez avec le bouton droit sur la requête **Date**, puis sélectionnez **Référence**.
 
-    ![](../images/dp500-work-with-model-relationships-image34.png)
+    ![](Images/work-with-model-relationships-image34.png)
 
     *Une requête de référencement est une requête qui utilise une autre requête comme source. Par conséquent, cette nouvelle requête obtient sa date de la requête **Date**.*
 
 3. Dans le volet **Paramètres de requête** (à droite), dans la zone **Nom**, remplacez le texte par **Ship Date**.
 
-    ![](../images/dp500-work-with-model-relationships-image35.png)
+    ![](Images/work-with-model-relationships-image35.png)
 
 4. Pour renommer la colonne **DateKey**, double-cliquez sur l’en-tête de colonne **DateKey**.
 
 5. Remplacez le texte par **ShipDateKey**, puis appuyez sur **Entrée**.
 
-    ![](../images/dp500-work-with-model-relationships-image36.png)
+    ![](Images/work-with-model-relationships-image36.png)
 
 6. Renommez également la colonne **Fiscal Year** en **Ship Year**.
 
-    *Si possible, il convient de renommer toutes les colonnes afin qu’elles décrivent le rôle qu’elles jouent. Dans ce labo, pour simplifier les choses, vous ne renommez que deux colonnes.*
+    *Dans la mesure du possible, il est conseillé de renommer toutes les colonnes afin qu’elles décrivent le rôle qu’elles jouent. Dans ce labo, vous allez renommer deux colonnes uniquement pour simplifier les choses.*
 
 7. Pour charger la table dans le modèle, sous l’onglet de ruban **Accueil**, sélectionnez l’icône **Fermer &amp; appliquer**.
 
-    ![](../images/dp500-work-with-model-relationships-image37.png)
+    ![](Images/work-with-model-relationships-image37.png)
 
 8. Lorsque la table a été ajoutée au modèle, pour créer une relation, à partir de la table **Ship Date**, faites glisser la colonne **ShipDateKey** vers la colonne **ShipDateKey** de la table **Sales**.
 
-    ![](../images/dp500-work-with-model-relationships-image38.png)
+    ![](Images/work-with-model-relationships-image38.png)
 
 9. Notez qu’une relation active existe maintenant entre la table **Ship Date** et la table **Sales**.
 
@@ -330,35 +293,35 @@ Dans cette tâche, vous allez visualiser les données de date d’expédition da
 
 1. Passez à l’affichage **Report**.
 
-    ![](../images/dp500-work-with-model-relationships-image39.png)
+    ![](Images/work-with-model-relationships-image39.png)
 
 2. Pour cloner le visuel de table, commencez par sélectionner le visuel.
 
 3. Sous l’onglet de ruban **Accueil**, dans le groupe **Presse-papiers**, sélectionnez **Copier**.
 
-    ![](../images/dp500-work-with-model-relationships-image40.png)
+    ![](Images/work-with-model-relationships-image40.png)
 
 4. Pour coller le visuel copié, sous l’onglet de ruban **Accueil**, à partir du groupe **Presse-papiers**, sélectionnez **Coller**.
 
     *Conseil : vous pouvez également utiliser les raccourcis **Ctrl+C** et **Ctrl+V**.*
 
-    ![](../images/dp500-work-with-model-relationships-image41.png)
+    ![](Images/work-with-model-relationships-image41.png)
 
 5. Déplacez le nouveau visuel de table à droite du visuel de table existant.
- 
+
 6. Sélectionnez le nouveau visuel de table, puis, dans le volet **Visualisations**, à l’intérieur de la zone **Valeurs**, supprimez le champ **Order Year**.
 
-    ![](../images/dp500-work-with-model-relationships-image42.png)
+    ![](Images/work-with-model-relationships-image42.png)
 
 7. Dans le volet **Données**, développez la table **Ship Date**.
 
 8. Pour ajouter un nouveau champ au nouveau visuel de table, à partir de la table **Ship Date**, faites glisser le champ **Ship Year** vers la zone **Valeurs**, au-dessus du champ **Sales Amount**.
 
-    ![](../images/dp500-work-with-model-relationships-image43.png)
+    ![](Images/work-with-model-relationships-image43.png)
 
 9. Vérifiez que le nouveau visuel de table affiche le montant des ventes par année d’expédition.
 
-    ![](../images/dp500-work-with-model-relationships-image44.png)
+    ![](Images/work-with-model-relationships-image44.png)
 
     *Le modèle possède désormais deux tables de dates, chacune avec une relation active avec la table **Sales**. L’avantage de cette approche de conception est qu’elle est flexible. Il est désormais possible d’utiliser toutes les mesures et champs récapitulants avec l’une ou l’autre table de dates.*
 
@@ -376,11 +339,11 @@ Dans cette tâche, vous allez utiliser les fonctions CROSSFILTER et TREATAS pour
 
 1. Dans le volet **Données**, dans la table **Sales**, sélectionnez la mesure **Sales Shipped**.
 
-    ![](../images/dp500-work-with-model-relationships-image45.png)
+    ![](Images/work-with-model-relationships-image45.png)
 
 2. Dans la base de formule, remplacez le texte par la définition suivante :
 
-    ```
+    ```dax
     Sales Shipped =
     CALCULATE (
     SUM ( 'Sales'[Sales Amount] ),
@@ -396,11 +359,11 @@ Dans cette tâche, vous allez utiliser les fonctions CROSSFILTER et TREATAS pour
 
 3. Ajoutez la mesure **Sales Shipped** révisée au premier visuel de table.
 
-    ![](../images/dp500-work-with-model-relationships-image46.png)
+    ![](Images/work-with-model-relationships-image46.png)
 
 4. Examinez le premier visuel de table.
 
-    ![](../images/dp500-work-with-model-relationships-image47.png)
+    ![](Images/work-with-model-relationships-image47.png)
 
 5. Notez qu’il n’existe aucun groupe « BLANK ».
 
@@ -410,15 +373,16 @@ Dans cette tâche, vous allez utiliser les fonctions CROSSFILTER et TREATAS pour
 
 Dans cette tâche, vous allez créer une mesure pour afficher le montant des ventes non expédiées.
 
-1. Créez une mesure nommée **Sales Unshipped** à l’aide de la définition suivante :
+1. Créez une mesure nommée **Sales Unshipped** dans la table **Sales** en utilisant la définition suivante :
 
-    ```
+    ```DAX
     Sales Unshipped =
     CALCULATE (
     SUM ( 'Sales'[Sales Amount] ),
     ISBLANK ( 'Sales'[ShipDateKey] )
     )
     ```
+
     *Cette formule additionne la colonne **Sales Amount** lorsque la colonne **ShipDateKey** affiche BLANK.*
 
 2. Formatez la mesure pour qu’elle comporte deux décimales.
@@ -427,22 +391,16 @@ Dans cette tâche, vous allez créer une mesure pour afficher le montant des ven
 
 4. Dans le volet **Visualisations**, sélectionnez l’icône de visuel **Carte**.
 
-    ![](../images/dp500-work-with-model-relationships-image48.png)
+    ![](Images/work-with-model-relationships-image48.png)
 
 5. Faites glisser la mesure **Sales Unshipped** dans le visuel de carte.
 
-    ![](../images/dp500-work-with-model-relationships-image49.png)
+    ![](Images/work-with-model-relationships-image49.png)
 
 6. Vérifiez que la mise en page du rapport final ressemble à ce qui suit :
 
-    ![](../images/dp500-work-with-model-relationships-image50.png)
+    ![](Images/work-with-model-relationships-image50.png)
 
 ### Terminer
 
-Dans cette tâche, vous allez terminer.
-
-1. Enregistrez le fichier Power BI Desktop.
-
-    ![](../images/dp500-work-with-model-relationships-image51.png)
-
-2. Fermez Power BI Desktop.
+Pour terminer cet exercice, fermez Power BI Desktop. Il est inutile d’enregistrer le fichier.
