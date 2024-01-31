@@ -85,7 +85,7 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
 
     > **Remarque** : Comme il s’agit de la première fois que vous exécutez du code Spark, une session Spark doit être démarrée. Cela signifie que la première exécution dans la session peut prendre environ une minute. Les exécutions suivantes seront plus rapides.
 
-4. Une fois la commande de cellule exécutée, passez en revue la sortie sous la cellule, qui doit ressembler à ceci :
+4. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
 
     | Index | SO43701 | 11 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399.99 | 271,9992 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -146,7 +146,7 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
 
     À présent, le dataframe inclut les noms de colonnes corrects (en plus de l’**index**, qui est une colonne intégrée dans tous les dataframes en fonction de la position ordinale de chaque ligne). Les types de données des colonnes sont spécifiés à l’aide d’un ensemble standard de types définis dans la bibliothèque Spark SQL, qui ont été importés au début de la cellule.
 
-9. Vérifiez que vos modifications ont été appliquées aux données en consultant le dataframe. Exécutez la cellule suivante :
+9. Vérifiez que vos modifications ont été appliquées aux données en consultant le dataframe. Exécutez le code suivant dans une nouvelle cellule de code :
 
     ```python
    display(df)
