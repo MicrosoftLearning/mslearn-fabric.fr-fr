@@ -48,7 +48,11 @@ Pour entraîner un modèle, vous pouvez créer un *notebook*. Les notebooks four
 
 Vous êtes maintenant prêt à exécuter du code pour obtenir des données. Vous allez utiliser le [**jeu de données diabetes**](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) à partir d’Azure Open Datasets. Après avoir chargé les données, vous allez convertir les données en dataframe Pandas, qui est une structure courante pour l’utilisation des données dans les lignes et les colonnes.
 
-1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes. Entrez le code suivant pour charger le jeu de données dans un dataframe.
+1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes.
+
+    > **Conseil** : Pour afficher l’icône **+ Code**, déplacez la souris juste en dessous et à gauche de la sortie de la cellule active. Sinon, dans la barre de menus, sous l’onglet **Modifier**, sélectionnez **+ Ajouter une cellule de code**.
+
+1. Entrez le code suivant pour charger le jeu de données dans un dataframe.
 
     ```python
    # Azure storage access info for open dataset diabetes
@@ -112,7 +116,7 @@ Maintenant que vous avez chargé les données, vous pouvez case activée la stru
    print(df.dtypes)
     ```
 
-    Le jeu de données contient **442 lignes** et **11 colonnes**. Cela signifie que vous avez 442 exemples et 11 fonctionnalités ou variables dans votre jeu de données. La variable `SEX` contient probablement des données catégorielles ou de chaînes.
+    Le jeu de données contient **442 lignes** et **11 colonnes**. Cela signifie que vous avez 442 exemples et 11 fonctionnalités ou variables dans votre jeu de données. La variable **SEX** contient probablement des données de chaînes ou catégorielles.
 
 ## Vérifier les données manquantes
 
