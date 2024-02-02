@@ -48,7 +48,11 @@ Vous utilisez un *notebook* pour effectuer l’apprentissage et utiliser un mod�
 
 Tout d’abord, effectuons l’apprentissage du modèle Machine Learning qui utilise un algorithme de *régression* pour prédire une réponse d’intérêt pour des patients diabétiques (une mesure quantitative de la progression de la maladie un an après la base de référence)
 
-1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes. Entrez le code suivant pour charger et préparer des données et les utiliser pour effectuer l’apprentissage d’un modèle.
+1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes.
+
+    > **Conseil** : pour afficher l’icône **+ Code** , déplacez la souris juste en dessous et à gauche de la sortie de la cellule active. Sinon, dans la barre de menus, sous l’onglet **Modifier**, sélectionnez **+ Ajouter une cellule de code**.
+
+1. Entrez le code suivant pour charger et préparer des données et les utiliser pour effectuer l’apprentissage d’un modèle.
 
     ```python
    import pandas as pd
