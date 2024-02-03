@@ -28,7 +28,7 @@ Dans cet exercice, vous allez préparer votre environnement.
 
 ### Télécharger le fichier de démarrage Power BI
 
-1. Ouvrez le [fichier de démarrage Sales Analysis](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/17/Starter/Sales%20Analysis%20-%20Enforce%20model%20security.pbix) et enregistrez-le dans un emplacement dont vous vous souviendrez.
+1. Téléchargez le [fichier Sales Analysis starter](https://aka.ms/fabric-security-starter) à partir de `https://aka.ms/fabric-security-starter` et enregistrez-le sur votre ordinateur local (dans n’importe quel dossier).
 
 1. Accédez au fichier téléchargé et ouvrez-le dans Power BI Desktop.
 
@@ -38,7 +38,7 @@ Dans cet exercice, vous allez préparer votre environnement.
 
 Dans cette tâche, vous allez vous connecter au service Power BI, démarrer une licence d’évaluation et créer un espace de travail.
 
-1. Dans un navigateur web, accédez à [app.powerbi.com](https://app.powerbi.com/).
+1. Dans un navigateur Web, accédez à `https://app.powerbi.com/`.
 
 2. Terminez le processus de connexion avec le même compte utilisé dans Power BI Desktop.
 
@@ -50,17 +50,13 @@ Dans cette tâche, vous allez vous connecter au service Power BI, démarrer une
 
 Dans cette tâche, vous allez créer un espace de travail.
 
-1. Dans le service Power BI, pour créer un espace de travail, dans le volet **Navigation** (situé à gauche), sélectionnez **Espaces de travail**, puis **Créer un espace de travail**.
+1. Dans le service Power BI, pour créer un espace de travail, dans le volet **Navigation** (situé à gauche), sélectionnez **Espaces de travail**, puis **+ Nouvel espace de travail**.
 
-    ![](Images/enforce-model-security-image5.png)
-
-2. Dans le volet **Créer un espace de travail** (situé à droite), dans la zone **Nom de l’espace de travail**, saisissez un nom pour l’espace de travail.
+2. Dans le volet **Créer un espace de travail** (situé à droite), dans la zone **Nom**, entrez un nom pour l’espace de travail.
 
     *Ce nom doit être unique au sein du locataire.*
 
-    ![](Images/enforce-model-security-image6.png)
-
-3. Sélectionnez **Enregistrer**.
+3. Sélectionnez **Appliquer**.
 
     *Une fois créé, l’espace de travail est ouvert. Dans un exercice ultérieur, vous allez publier un modèle sémantique dans cet espace de travail.*
 
@@ -172,7 +168,7 @@ Dans cette tâche, vous allez valider l’un des rôles statiques.
 
 Dans cette tâche, vous allez publier le rapport.
 
-1. Enregistrez le fichier Power BI Desktop.
+1. Enregistrez le fichier Power BI Desktop. Quand il vous est demandé d’appliquer les modifications en attente, sélectionnez **Appliquer plus tard**.
 
     ![](Images/enforce-model-security-image27.png)
 
@@ -283,6 +279,16 @@ Dans cette tâche, vous allez ajouter la table **Salesperson** au modèle.
 2. Sous l’onglet de ruban **Accueil**, dans le groupe **Requêtes**, sélectionnez l’icône **Transformer les données**.
 
     ![](Images/enforce-model-security-image44.png)
+
+    *Si vous êtes invité à spécifier le mode de connexion, sélectionnez **Modifier les informations d’identification** et spécifiez le mode de connexion.*
+
+    ![](Images/work-with-model-relationships-image52.png)
+
+    *Sélectionnez **Se connecter***
+
+     ![](Images/work-with-model-relationships-image53.png)
+
+    *Dans la page **Prise en charge du chiffrement**, sélectionnez **OK**.*
 
 3. Dans la fenêtre **Éditeur Power Query**, dans le volet **Requêtes** (situé à gauche), cliquez avec le bouton droit sur la requête **Customer**, puis sélectionnez **Dupliquer**.
 
@@ -400,7 +406,7 @@ Dans cette tâche, vous allez créer un rôle dynamique, qui applique des autori
 
     ![](Images/enforce-model-security-image65.png)
 
-6. Dans la zone **Expression DAX de filtre de table**, remplacez **"Value"** par **USERPRINCIPALNAME()**.
+6. Dans la zone **Expression DAX de filtre de table**, remplacez **"Value"** par `USERPRINCIPALNAME()`.
 
     ![](Images/enforce-model-security-image66.png)
 

@@ -46,7 +46,7 @@ Dans notre scénario, comme nous n’avons pas de données disponibles, nous dev
 1. Spécifiez les informations suivantes dans la boîte de dialogue **Charger le fichier dans une nouvelle table**.
     - **Nom de la nouvelle table :** staging_sales
     - **Utiliser l’en-tête pour les noms de colonnes :** Sélectionné
-    - **Séparateur :** \n
+    - **Séparateur :** ,
 
 1. Sélectionnez **Charger**.
 
@@ -101,11 +101,6 @@ Créons les tables de faits et les dimensions pour les données de ventes (Sales
         );
         
     ALTER TABLE Sales.Dim_Item add CONSTRAINT PK_Dim_Item PRIMARY KEY NONCLUSTERED (ItemID) NOT ENFORCED
-    GO
-    
-    CREATE VIEW [Sales].[Staging_Sales]
-    AS
-        SELECT * FROM [ExternalData].[dbo].[staging_sales];
     GO
     ```
 
@@ -183,7 +178,7 @@ Exécutons des requêtes analytiques pour vérifier les données de l’entrepô
     SELECT c.CustomerName, SUM(s.UnitPrice * s.Quantity) AS TotalSales
     FROM Sales.Fact_Sales s
     JOIN Sales.Dim_Customer c
-    ON s.SalesOrderNumber = c.SalesOrderNumber
+    ON s.CustomerID = c.CustomerID
     WHERE YEAR(s.OrderDate) = 2021
     GROUP BY c.CustomerName
     ORDER BY TotalSales DESC;

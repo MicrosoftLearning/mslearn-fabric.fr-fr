@@ -26,9 +26,10 @@ Dans cet exercice, vous allez ouvrir une solution Power BI Desktop prédévelo
 
 ### Télécharger un ficher de démarrage
 
-1. Ouvrez le [fichier de démarrage Sales Analysis](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/15/Starter/Sales%20Analysis%20-%20Work%20with%20model%20relationships.pbix) et enregistrez-le dans un emplacement dont vous vous souviendrez.
+1. Téléchargez le [fichier de démarrage Analyse des ventes](https://aka.ms/fabric-relationships-starter) à partir de `https://aka.ms/fabric-relationships-starter` et enregistrez-le sur votre ordinateur local (dans n’importe quel dossier).
 
 1. Accédez au fichier téléchargé et ouvrez-le dans Power BI Desktop.
+    >Remarque : Ignorez et fermez l’avertissement demandant d’appliquer des modifications.
 
 ### Examiner le modèle de données
 
@@ -165,8 +166,6 @@ Dans cette tâche, vous allez utiliser la fonction USERELATIONSHIP pour activer 
 
 2. Dans la barre de formule (située sous le ruban), remplacez le texte par la définition de mesure suivante, puis sélectionnez **Entrée**.
 
-    *Conseil : Toutes les formules peuvent être copiées et collées à partir de **D:\fabric\Allfiles\Labs\15\Assets\Snippets.txt**.*
-
     ```DAX
     Sales Shipped =
     CALCULATE (
@@ -213,9 +212,7 @@ Dans cette tâche, vous allez supprimer la relation existante avec la **colonne 
 
     ![](Images/work-with-model-relationships-image27.png)
 
-3. Lorsque vous êtes invité à confirmer la suppression, sélectionnez **OK**.
-
-    ![](Images/work-with-model-relationships-image28.png)
+3. Lorsque vous êtes invité à confirmer la suppression, sélectionnez **Oui**.
 
     *La suppression de la relation entraîne une erreur avec la mesure **Sales Shipped**. Vous réécrirez la formule de mesure plus loin dans ce labo.*
 
@@ -245,17 +242,17 @@ Dans cette tâche, vous allez désactiver deux options de relation.
 
 Dans cette tâche, vous allez créer une requête pour ajouter une autre table de dates au modèle.
 
-1. Sous l’onglet de ruban **Accueil**, dans le groupe **Requêtes**, sélectionnez l’icône **Transformer les données**.
+1. Sous l’onglet de ruban **Accueil**, dans le groupe **Requêtes**, sélectionnez l’icône **Transformer les données** qui ouvre l’**éditeur Power Query**.
 
     ![](Images/work-with-model-relationships-image33.png)
 
-    *Si vous êtes invité à spécifier le mode de connexion, sélectionnez **Modifier les informations d’identification** et spécifiez le mode de connexion.*
+    *Si vous êtes invité à spécifier comment vous connecter, **modifiez les informations d’identification**.*
 
     ![](Images/work-with-model-relationships-image52.png)
 
-    *Sélectionnez **Se connecter***
+    *Conservez les paramètres de connexion par défaut pour Windows avec l’option « Utiliser mes informations d’identification actuelles », puis **Se connecter**.*
 
-     ![](Images/work-with-model-relationships-image53.png)
+     ![](Images/work-with-model-relationships-image53.png) *Sélectionnez **Oui** dans le message d’avertissement.*
 
 2. Dans la fenêtre **Éditeur Power Query**, dans le volet **Requêtes** (à gauche), cliquez avec le bouton droit sur la requête **Date**, puis sélectionnez **Référence**.
 
