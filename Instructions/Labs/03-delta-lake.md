@@ -16,7 +16,7 @@ Cet exercice devrait prendre environ **40** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Engineering données**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com`, sélectionnez **Synapse Data Engineering**.
 2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -31,7 +31,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
     Au bout d’une minute environ, un nouveau lakehouse vide est créé. Vous devez ingérer certaines données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de faire cela mais dans cet exercice, vous allez simplement télécharger un fichier texte sur votre ordinateur local (ou sur votre machine virtuelle de labo le cas échéant), puis le charger dans votre lakehouse.
 
-1. Téléchargez le fichier de données pour cet exercice depuis `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv`, et enregistrez-le en tant que **products.csv** sur votre ordinateur local (ou votre machine virtuelle de labo le cas échéant).
+1. Téléchargez le [fichier de données](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) pour cet exercice à l’adresse `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv`, puis enregistrez-le en tant que **products.csv** sur votre ordinateur local (ou votre machine virtuelle de labo le cas échéant).
 
 1. Retournez à l’onglet du navigateur web contenant votre lakehouse et, dans le menu  **...** du dossier **Fichiers** dans le volet **Explorateur**, sélectionnez **Nouveau sous-dossier**, puis créez un sous-dossier nommé **products**.
 
@@ -65,7 +65,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
     > **Remarque** : Comme c’est la première fois que vous exécutez du code Spark dans ce notebook, une session Spark doit être démarrée. Cela signifie que la première exécution peut prendre environ une minute. Les exécutions suivantes seront plus rapides.
 
-6. Une fois la commande de cellule exécutée, passez en revue la sortie sous la cellule, qui doit ressembler à ceci :
+6. Une fois la commande de la cellule exécutée, examinez la sortie sous la cellule, qui doit être similaire à ceci :
 
     | Index | ProductID | ProductName | Catégorie | ListPrice |
     | -- | -- | -- | -- | -- |
@@ -82,13 +82,17 @@ Vous pouvez enregistrer le dataframe en tant que table delta en utilisant la mé
 
 Les tables *managées* sont des tables pour lesquelles les métadonnées de schéma et les fichiers de données sont gérés par Fabric. Les fichiers de données de la table sont créés dans le dossier **Tables**.
 
-1. Sous les résultats retournés par la première cellule de code, utilisez le bouton **+ Code** pour ajouter une nouvelle cellule de code s’il n’en existe pas déjà. Entrez ensuite le code suivant dans la nouvelle cellule et exécutez-le :
+1. Sous les résultats renvoyés par la première cellule de code, utilisez le bouton **+ Code** pour ajouter une nouvelle cellule de code s’il n’en existe pas déjà.
+
+    > **Conseil** : Pour afficher l’icône **+ Code**, déplacez la souris juste en dessous et à gauche de la sortie de la cellule active. Sinon, dans la barre de menus, sous l’onglet **Modifier**, sélectionnez **+ Ajouter une cellule de code**.
+
+2. Saisissez ensuite le code suivant dans la nouvelle cellule et exécutez-le :
 
     ```python
    df.write.format("delta").saveAsTable("managed_products")
     ```
 
-2. Dans le volet **Explorateur Lakehouse**, dans le menu **…** du dossier **Tables**, sélectionnez **Actualiser**. Développez ensuite le nœud **Tables** et vérifiez que la table **managed_products** a été créée.
+3. Dans le volet **Explorateur Lakehouse**, dans le menu **…** du dossier **Tables**, sélectionnez **Actualiser**. Développez ensuite le nœud **Tables** et vérifiez que la table **managed_products** a été créée.
 
 ### Créer une table *externe*
 
@@ -219,7 +223,7 @@ L’historique des transactions pour les tables delta est stocké dans des fichi
 
 ## Utiliser des tables delta pour les données de streaming
 
-Delta Lake prend en charge les données de streaming. Les tables delta peuvent être un *récepteur* ou une *source* pour des flux de données créés en utilisant l’API Spark Structured Streaming. Dans cet exemple, vous allez utiliser une table delta comme récepteur pour des données de streaming dans un scénario IoT (Internet des objets) simulé.
+Delta Lake prend en charge les données de diffusion en continu. Les tables delta peuvent être un *récepteur* ou une *source* pour des flux de données créés en utilisant l’API Spark Structured Streaming. Dans cet exemple, vous allez utiliser une table delta comme récepteur pour des données de streaming dans un scénario IoT (Internet des objets) simulé.
 
 1. Ajoutez une nouvelle cellule de code dans le notebook. Ensuite, dans la nouvelle cellule, ajoutez le code suivant et exécutez-le :
 
