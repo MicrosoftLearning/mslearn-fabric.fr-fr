@@ -31,7 +31,7 @@ Dans notre scénario, comme nous n’avons pas de données disponibles, nous dev
 
     Au bout d’une minute environ, un nouveau lakehouse vide est créé. Vous devez ingérer certaines données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de faire cela, mais dans cet exercice, vous allez télécharger un fichier CSV sur votre ordinateur local (ou le cas échéant, sur votre machine virtuelle de labo), puis le charger dans votre lakehouse.
 
-1. Téléchargez le fichier pour cet exercice depuis [https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv](https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv).
+1. Téléchargez le fichier pour cet exercice depuis `https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv`.
 
 1. Revenez à l’onglet du navigateur web contenant votre lakehouse puis, dans le menu **…** du dossier **Fichiers** dans le volet **Explorateur**, sélectionnez **Charger** et **Charger le dossier**, puis chargez le fichier **sales.csv** depuis votre ordinateur local (ou le cas échéant, depuis votre machine virtuelle de labo) dans le lakehouse.
 

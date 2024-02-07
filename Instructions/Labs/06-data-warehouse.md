@@ -66,7 +66,7 @@ Un entrepôt est une base de données relationnelle dans laquelle vous pouvez d�
 
 5. Exécutez la nouvelle requête pour insérer trois lignes dans la table **DimProduct**.
 6. Une fois la requête terminée, sélectionnez l’onglet **Données** en bas de la page dans l’entrepôt de données. Dans le volet **Explorateur**, sélectionnez la table **DimProduct** et vérifiez que les trois lignes ont été ajoutées à la table.
-7. Sous l’onglet du menu **Accueil**, utilisez le bouton **Nouvelle requête SQL** pour créer une requête. Ensuite, copiez et collez le code Transact-SQL depuis [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt) dans le nouveau volet de requête.
+7. Sous l’onglet du menu **Accueil**, utilisez le bouton **Nouvelle requête SQL** pour créer une requête. Ensuite, copiez et collez le code Transact-SQL depuis `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt` dans le nouveau volet de requête.
 <!-- I had to remove the GO command in this query as well -->
 8. Exécutez la requête, qui crée un schéma d’entrepôt de données simple et charge des données. L’exécution du script doit prendre environ 30 secondes.
 9. Utilisez le bouton **Actualiser** dans la barre d’outils pour actualiser la vue. Ensuite, dans le volet **Explorateur**, vérifiez que le schéma **dbo** dans l’entrepôt de données contient maintenant les quatre tables suivantes :

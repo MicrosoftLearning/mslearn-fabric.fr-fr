@@ -6,7 +6,7 @@ lab:
 
 # Créer une architecture en médaillon dans un lakehouse Microsoft Fabric
 
-Dans cet exercice, vous allez créer une architecture en médaillon dans un lakehouse Fabric à l’aide de notebooks. Vous allez créer un espace de travail, créer un lakehouse, charger les données dans la couche bronze, transformer les données et les charger dans la table Delta argent, transformer davantage les données et les charger dans les tables Delta or, puis explorer le jeu de données et créer des relations.
+Dans cet exercice, vous allez créer une architecture en médaillon dans un lakehouse Fabric à l’aide de notebooks. Vous allez créer un espace de travail, créer un lakehouse, charger les données dans la couche bronze, transformer les données et les charger dans la table Delta argent, transformer davantage les données et les charger dans les tables Delta or, puis explorer le modèle sémantique et créer des relations.
 
 Cet exercice devrait prendre environ **45** minutes
 
@@ -23,7 +23,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace-medallion.png)
 
-5. Accédez aux paramètres de l’espace de travail et activez la fonctionnalité d’évaluation **Modification du modèle de données**. Cela vous permet de créer des relations entre des tables dans votre lakehouse à l’aide d’un jeu de données Power BI.
+5. Accédez aux paramètres de l’espace de travail et activez la fonctionnalité d’évaluation **Modification du modèle de données**. Cela vous permet de créer des relations entre des tables dans votre lakehouse à l’aide d’un modèle sémantique Power BI.
 
     ![Capture d’écran de la page des paramètres de l’espace de travail dans Fabric.](./Images/workspace-settings.png)
 
@@ -582,25 +582,24 @@ Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook,
 
 Vous disposez maintenant d’une couche **or** organisée et modélisée qui peut être utilisée pour la création de rapports et l’analyse.
 
-## Créer un jeu de données
+## Créer un modèle sémantique
 
-Dans votre espace de travail, vous pouvez désormais utiliser la couche or pour créer un rapport et analyser les données. Vous pouvez accéder au jeu de données directement dans votre espace de travail afin de créer des relations et des mesures pour la génération de rapports.
+Dans votre espace de travail, vous pouvez désormais utiliser la couche or pour créer un rapport et analyser les données. Vous pouvez accéder au modèle sémantique directement dans votre espace de travail afin de créer des relations et des mesures pour la génération de rapports.
 
-Notez que vous ne pouvez pas utiliser le **jeu de données par défaut** créé automatiquement lorsque vous créez un lakehouse. Vous devez créer un jeu de données qui inclut les tables or que vous avez créées dans cet exercice, à partir de l’Explorateur lakehouse.
+Notez que vous ne pouvez pas utiliser le **modèle sémantique par défaut** créé automatiquement lorsque vous créez un lakehouse. Vous devez créer un modèle sémantique qui inclut les tables or que vous avez créées dans cet exercice, à partir de l’Explorateur lakehouse.
 
 1. Dans votre espace de travail, accédez à votre lakehouse **Sales**.
-2. Sélectionnez **Nouveau jeu de données Power BI** dans le ruban de la vue Explorateur lakehouse.
-3. Sélectionnez vos tables or transformées à inclure dans votre jeu de données, puis **Confirmer**.
+2. Sélectionnez **Nouveau modèle sémantique** dans le ruban de la vue Explorateur lakehouse.
+3. Attribuez le nom **Sales_Gold** à votre nouveau modèle sémantique.
+4. Sélectionnez vos tables or transformées à inclure dans votre modèle sémantique, puis **Confirmer**.
    - dimdate_gold
    - dimcustomer_gold
    - dimproduct_gold
    - factsales_gold
 
-    Cela ouvre le jeu de données dans Fabric, où vous pouvez créer des relations et des mesures, comme indiqué ici :
+    Cela ouvre le modèle sémantique dans Fabric, où vous pouvez créer des relations et des mesures, comme indiqué ici :
 
-    ![Capture d’écran d’un jeu de données dans Fabric.](./Images/dataset-relationships.png)
-
-4. Renommez votre jeu de données afin de l’identifier plus facilement. Sélectionnez le nom du jeu de données dans le coin supérieur gauche de la fenêtre. Renommez le jeu de données en **Sales_Gold**.
+    ![Capture d’écran d’un modèle sémantique dans Fabric.](./Images/dataset-relationships.png)
 
 À partir de là, vous ou d’autres membres de votre équipe de données pouvez créer des rapports et des tableaux de bord en fonction des données de votre lakehouse. Ces rapports seront directement connectés à la couche or de votre lakehouse, de sorte à refléter en permanence les données les plus récentes.
 

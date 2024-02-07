@@ -18,9 +18,9 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Engineering données**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com`, sélectionnez **Synapse Engineering données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence dans la section **Avancé** qui comprend la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
@@ -45,7 +45,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 Fabric offre plusieurs façons de charger des données dans le lakehouse, notamment la prise en charge intégrée des pipelines qui copient des sources externes de données et des flux de données (Gen 2) que vous pouvez définir à l’aide d’outils visuels basés sur Power Query. Toutefois, l’un des moyens les plus simples d’ingérer de petites quantités de données consiste à charger des fichiers ou des dossiers à partir de votre ordinateur local (ou d’une machine virtuelle de labo, le cas échéant).
 
-1. Téléchargez le fichier **sales.csv** à partir de [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv), et enregistrez-le sous le nom **sales.csv** sur votre ordinateur local (ou machine virtuelle de labo, le cas échéant).
+1. Téléchargez le fichier [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) à partir de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`, et enregistrez-le sous le nom **sales.csv** sur votre ordinateur local (ou machine virtuelle de labo, le cas échéant).
 
    > **Remarque** : Pour télécharger le fichier, ouvrez un nouvel onglet dans le navigateur, puis collez l’URL. Cliquez avec le bouton droit n’importe où dans la page contenant les données, puis sélectionnez **Enregistrer sous** pour enregistrer la page en tant que fichier CSV.
 
@@ -88,9 +88,7 @@ Les données de ventes que vous avez chargées se trouvent dans un fichier, que 
 
 Lorsque vous créez un lakehouse et que vous y définissez des tables, un point de terminaison SQL par le biais duquel les tables peuvent être interrogées à l’aide d’instructions SQL `SELECT` est automatiquement créé.
 
-1. En haut à droite de la page Lakehouse, passez de **Lakehouse** à **Point de terminaison SQL**. Attendez ensuite que le point de terminaison de requête SQL de votre lakehouse s’ouvre dans une interface visuelle à partir de laquelle vous pouvez interroger ses tables, comme illustré ici :
-
-    ![Capture d’écran de la page Point de terminaison SQL.](./Images/lakehouse-sql-endpoint.png)
+1. En haut à droite de la page Lakehouse, passez de **Lakehouse** à **Point de terminaison d’analytique SQL**. Attendez ensuite que le point de terminaison d’analytique SQL de votre lakehouse s’ouvre dans une interface visuelle à partir de laquelle vous pouvez interroger ses tables.
 
 2. Utilisez le bouton **Nouvelle requête SQL** pour ouvrir un nouvel éditeur de requête, puis entrez la requête SQL suivante :
 
@@ -131,13 +129,14 @@ Même si de nombreux professionnels des données connaissent bien SQL, les analy
 
 ## Créer un rapport
 
-Les tables de votre lakehouse sont automatiquement ajoutées à un jeu de données par défaut qui définit un modèle de données pour la création de rapports avec Power BI.
+Les tables de votre lakehouse sont automatiquement ajoutées à un modèle sémantique par défaut pour la création de rapports avec Power BI.
 
-1. En bas de la page Point de terminaison SQL, sélectionnez l’onglet **Modèle**. Le schéma du modèle de données pour le jeu de données est affiché.
 
-    ![Capture d’écran d’un modèle de données.](./Images/data-model.png)
+1. En bas de la page Point de terminaison SQL, sélectionnez l’onglet **Modèle**. Le schéma du modèle de données pour le modèle sémantique est affiché.
 
-    > **Remarque** : Dans cet exercice, le modèle de données se compose d’une seule table. Dans un scénario réel, vous créeriez probablement plusieurs tables dans votre lakehouse, chacune étant incluse dans le modèle. Vous pourriez ensuite définir des relations entre ces tables dans le modèle.
+    ![Capture d’écran d’un modèle sémantique.](./Images/data-model.png)
+
+    > **Remarque** : Dans cet exercice, le modèle sémantique se compose d’une seule table. Dans un scénario réel, vous créeriez probablement plusieurs tables dans votre lakehouse, chacune étant incluse dans le modèle. Vous pourriez ensuite définir des relations entre ces tables dans le modèle.
 
 2. Dans le ruban de menu, sélectionnez l’onglet **Création de rapports**. Sélectionnez ensuite **Nouveau rapport**. Un nouvel onglet de navigateur s’ouvre, pour vous permettre de concevoir votre rapport.
 
@@ -158,13 +157,13 @@ Les tables de votre lakehouse sont automatiquement ajoutées à un jeu de donné
 5. Dans le menu **File** (Fichier), sélectionnez **Save** (Enregistrer). Enregistrez ensuite le rapport sous le nom **Rapport des ventes d’articles** dans l’espace de travail que vous avez créé précédemment.
 6. Fermez l’onglet de navigateur contenant le rapport pour revenir au point de terminaison SQL de votre lakehouse. Ensuite, dans la barre de menus du hub à gauche, sélectionnez votre espace de travail pour vérifier qu’il contient les éléments suivants :
     - Votre lakehouse.
-    - Le point de terminaison SQL de votre lakehouse.
-    - Un jeu de données par défaut pour les tables de votre lakehouse.
+    - Le point de terminaison d’analytique SQL de votre lakehouse.
+    - Un modèle sémantique par défaut pour les tables de votre lakehouse.
     - Le **Rapport des ventes d’articles**.
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé un lakehouse et importé des données dans celui-ci. Vous avez vu comment un lakehouse se compose de fichiers et de tables stockés dans un magasin de données OneLake. Les tables managées peuvent être interrogées à l’aide de SQL et sont incluses dans un jeu de données par défaut pour prendre en charge les visualisations de données.
+Dans cet exercice, vous avez créé un lakehouse et importé des données dans celui-ci. Vous avez vu comment un lakehouse se compose de fichiers et de tables stockés dans un magasin de données OneLake. Les tables managées peuvent être interrogées à l’aide de SQL et sont incluses dans un modèle sémantique par défaut pour prendre en charge les visualisations de données.
 
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
