@@ -112,7 +112,7 @@ Maintenant que vous avez ingéré et exploré les données, vous pouvez les tran
    df.head()
     ```
 
-1. Sélectionnez **Données** dans le ruban du notebook, puis la liste déroulante **Lancer Data Wrangler**.
+1. Sélectionnez **Données** dans le ruban du notebook, puis la liste déroulante **Transformer DataFrame dans Data Wrangler**.
 1. Sélectionnez le jeu de données `df`. Lorsque Data Wrangler est lancé, il génère une vue d’ensemble descriptive du dataframe dans le panneau **Résumé**.
 
     Actuellement, la colonne d’étiquette est `Y`, qui est une variable continue. Pour entraîner un modèle Machine Learning qui prédit Y, vous devez entraîner un modèle de régression. Les valeurs (prédites) de Y peuvent être difficiles à interpréter. Au lieu de cela, nous pourrions explorer la formation d’un modèle de classification qui prédit si quelqu’un est à faible risque ou à risque élevé de développer le diabète. Pour pouvoir entraîner un modèle de classification, vous devez créer une colonne d’étiquette binaire basée sur les valeurs de `Y`.
@@ -224,11 +224,11 @@ Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de 
 
 Après avoir comparé les modèles Machine Learning que vous avez entraînés pour les différentes exécutions d’expériences, vous pouvez choisir le modèle le plus performant. Pour utiliser le modèle le plus performant, enregistrez le modèle et utilisez-le afin de générer des prédictions.
 
-1. Sélectionnez **Enregistrer** dans la zone **Enregistrer en tant que modèle**.
-1. Sélectionnez **Créer un modèle** dans la fenêtre contextuelle nouvellement ouverte.
+1. Sélectionnez **Enregistrer en tant que modèle ML** dans le ruban d’expérience.
+1. Sélectionnez **Créer un modèle ML** dans la fenêtre contextuelle nouvellement ouverte.
 1. Sélectionnez le dossier `model`.
 1. Nommez le modèle `model-diabetes`, puis sélectionnez **Enregistrer**.
-1. Sélectionnez **Afficher le modèle** dans la notification qui s’affiche en haut à droite de votre écran lors de la création du modèle. Vous pouvez également actualiser la fenêtre. Le modèle enregistré est lié sous **Version modèle**.
+1. Sélectionnez **Afficher le modèle ML** dans la notification qui s’affiche en haut à droite de votre écran lors de la création du modèle. Vous pouvez également actualiser la fenêtre. Le modèle enregistré est lié sous **Versions de modèle ML**.
 
 Notez que le modèle, l’expérience et l’exécution de l’expérience sont liés, ce qui vous permet d’examiner la façon dont le modèle est entraîné.
 
