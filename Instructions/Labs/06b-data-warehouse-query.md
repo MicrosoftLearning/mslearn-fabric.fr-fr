@@ -6,7 +6,7 @@ lab:
 
 # Interroger un entrepôt de données dans Microsoft Fabric
 
-Dans Microsoft Fabric, un entrepôt de données fournit une base de données relationnelle pour l’analytique à grande échelle. Les entrepôts de données dans Microsoft Fabric incluent XXXXXX.
+Dans Microsoft Fabric, un entrepôt de données fournit une base de données relationnelle pour l’analytique à grande échelle. L’ensemble complet d’expériences intégrées à l’espace de travail Microsoft Fabric permet aux clients de réduire leur temps d’insights en ayant un modèle sémantique facilement consommable et toujours connecté intégré à Power BI en mode DirectLake. 
 
 Ce labo prend environ **30** minutes.
 

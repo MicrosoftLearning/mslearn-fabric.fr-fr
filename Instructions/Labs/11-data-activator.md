@@ -119,7 +119,7 @@ Examinons ce que doit faire votre déclencheur : *Vous voulez créer un Reflex q
 
     ![Capture d’écran du choix du type de condition dans le mode Conception du reflex de Data Activator.](./Images/data-activator-trigger-select-condition-type.png)
 
-1. Vous devez maintenant entrer les valeurs pour votre condition. Entrez ***0,5*** et ***5*** comme valeurs de plage. Étant donné que vous choisissez la condition *Sort de la plage numérique*, le déclencheur doit s’activer lorsque la température est inférieure à *0,5* degré ou supérieure à *5* degrés.
+1. Vous devez maintenant entrer les valeurs pour votre condition. Saisissez ***33*** et ***41*** comme valeurs de plage. Étant donné que vous choisissez la condition *Sort de la plage numérique*, le déclencheur doit s’activer lorsque la température est inférieure à *33* degrés ou supérieure à *41* degrés.
 
     ![Capture d’écran de la saisie de valeurs de conditions dans le mode Conception du reflex de Data Activator.](./Images/data-activator-trigger-select-condition-define.png)
 
@@ -164,7 +164,7 @@ Le seul problème avec ce déclencheur est que tandis que le déclencheur a envo
 
     ![Capture d’écran de l’ajout de propriété au déclencheur de Data Activator.](./Images/data-activator-trigger-add-property-existing-trigger.png)
 
-1. Étant donné que vous avez mis à jour le déclencheur, l’action appropriée devrait être de mettre à jour et non d’enregistrer le déclencheur, mais pour ce labo, nous allons faire le contraire et sélectionner le bouton **Enregistrer** au lieu du bouton **Mettre à jour** pour voir également ce qu’il se passe. La raison pour laquelle vous devriez avoir sélectionné le bouton *Mettre à jour* est que le fait de*mettre à jour* le déclencheur l’enregistre et met à jour celui en cours d’exécution avec les nouvelles conditions. Si vous sélectionnez simplement le bouton *Enregistrer*, le déclencheur en cours d’exécution n’a pas les nouvelles conditions tant que vous n’avez pas choisi de le mettre à jour. Nous allons maintenant sélectionner le bouton **Enregistrer**.
+1. Étant donné que vous avez mis à jour le déclencheur, l’action appropriée devrait être de mettre à jour et non d’enregistrer le déclencheur, mais pour ce labo, nous allons faire le contraire et sélectionner le bouton **Enregistrer** au lieu du bouton **Mettre à jour** pour voir également ce qu’il se passe. La raison pour laquelle vous devriez avoir sélectionné le bouton *Mettre à jour* est que le fait de*mettre à jour* le déclencheur l’enregistre et met à jour celui en cours d’exécution avec les nouvelles conditions. Si vous sélectionnez simplement le bouton *Enregistrer*, le déclencheur en cours d’exécution n’appliquera les nouvelles conditions que lorsque vous choisirez de le mettre à jour. Nous allons maintenant sélectionner le bouton **Enregistrer**.
 
 1. Étant donné que vous avez sélectionné *Enregistrer* au lieu de *Mettre à jour*, vous avez remarqué que le message *Il existe une mise à jour de propriété disponible. Mettez à jour maintenant pour vous assurer que le déclencheur a les modifications les plus récentes* s’affiche en haut de l’écran. Le message comporte également un bouton *Mettre à jour*. Nous allons maintenant sélectionner le bouton **Mettre à jour**.
 
