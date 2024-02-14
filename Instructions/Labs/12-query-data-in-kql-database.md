@@ -49,8 +49,8 @@ Dans ce labo, vous utilisez l’Analyse en temps réel (RTA) dans Fabric pour cr
 
    Utilisez ensuite le curseur pour activer la disponibilité.
 
-   ![Image de la sélection du curseur dans Data Lake.](./images/data-availability-data-lake.png)
-
+   ![Image de la sélection du curseur dans Data Lake](./Images/data-availability-data-lake.png)
+   
 1. Sélectionnez la zone **exemple de données** dans les options ***Commencer par obtenir des données***.
 
    ![Image des options de sélection avec exemple de données mis en évidence](./Images/load-sample-data.png)
