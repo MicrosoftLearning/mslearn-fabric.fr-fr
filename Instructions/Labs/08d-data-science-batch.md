@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Générer et enregistrer des prédictions par lots
+  title: "Générer des prédictions par lots en tirant parti d’un modèle déployé dans Microsoft\_Fabric"
   module: Generate batch predictions using a deployed model in Microsoft Fabric
 ---
 
-# Générer et enregistrer des prédictions par lots
+# Générer des prédictions par lots en tirant parti d’un modèle déployé dans Microsoft Fabric
 
 Dans ce labo, vous allez utiliser un modèle Machine Learning pour prédire une mesure quantitative de diabète.
 
