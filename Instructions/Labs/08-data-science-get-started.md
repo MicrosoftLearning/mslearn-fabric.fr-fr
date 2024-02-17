@@ -1,10 +1,10 @@
 ---
 lab:
-  title: "Explorer la science des données dans Microsoft\_Fabric"
+  title: "Bien démarrer avec la science des données dans Microsoft\_Fabric"
   module: Get started with data science in Microsoft Fabric
 ---
 
-# Explorer la science des données dans Microsoft Fabric
+# Bien démarrer avec la science des données dans Microsoft Fabric
 
 Dans ce labo, vous allez ingérer des données, explorer les données d’un notebook, traiter les données avec Data Wrangler et entraîner deux types de modèles. En effectuant toutes ces étapes, vous serez en mesure d’explorer les fonctionnalités de science des données dans Microsoft Fabric.
 

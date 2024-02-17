@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Créer et utiliser des notebooks pour l’exploration des données
+  title: Explorer les données pour la science des données avec des notebooks dans Microsoft Fabric
   module: Explore data for data science with notebooks in Microsoft Fabric
 ---
 
-# Utiliser des notebooks pour explorer les données dans Microsoft Fabric
+# Explorer les données pour la science des données avec des notebooks dans Microsoft Fabric
 
 Dans ce labo, nous allons utiliser des notebooks pour l’exploration des données. Les notebooks sont un outil puissant pour l’exploration et l’analyse interactives des données. Au cours de cet exercice, nous allons apprendre à créer et à utiliser des notebooks pour explorer un jeu de données, générer des statistiques récapitulatives et créer des visualisations pour mieux comprendre les données. À la fin de ce labo, vous aurez une solide compréhension de l’utilisation des notebooks pour l’exploration et l’analyse des données.
 
@@ -50,7 +50,7 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données. Vous
 
 1. Dans votre bloc-notes, utilisez l’icône **+ Code** sous la dernière cellule pour ajouter une nouvelle cellule de code au bloc-notes.
 
-    > **Conseil** : Pour afficher l’icône **+ Code**, déplacez la souris juste en dessous et à gauche de la sortie de la cellule active. Sinon, dans la barre de menus, sous l’onglet **Modifier**, sélectionnez **+ Ajouter une cellule de code**.
+    > **Conseil** : pour afficher l’icône **+ Code** , déplacez la souris juste en dessous et à gauche de la sortie de la cellule active. Sinon, dans la barre de menus, sous l’onglet **Modifier**, sélectionnez **+ Ajouter une cellule de code**.
 
 1. Entrez le code suivant pour charger le jeu de données dans un dataframe.
 
