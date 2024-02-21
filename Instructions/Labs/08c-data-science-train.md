@@ -1,6 +1,6 @@
 ---
 lab:
-  title: "Former et suivre un modèle dans Microsoft\_Fabric"
+  title: Entraîner et suivre des modèles Machine Learning avec MLflow dans Microsoft Fabric
   module: Train and track machine learning models with MLflow in Microsoft Fabric
 ---
 
