@@ -129,7 +129,7 @@ Tout d’abord, effectuons l’apprentissage du modèle Machine Learning qui uti
 
 Pour utiliser le modèle, vous allez avoir besoin d’un jeu de données des informations du patient pour lequel vous devez prédire un diagnostic de diabète. Vous allez créer ce jeu de données en tant que table dans un lakehouse Microsoft Fabric.
 
-1. Dans l’éditeur Notebook, dans le volet **Lakehouses** sur la gauche, sélectionnez **Ajouter** pour ajouter un lakehouse.
+1. Dans l’éditeur Notebook, dans le volet **Explorer** sur la gauche, sélectionnez **+ Source de données** pour ajouter un Lakehouse.
 1. Sélectionnez **Nouveau lakehouse**, puis **Ajouter** et créez un **Lakehouse** avec un nom valide de votre choix.
 1. Au moment de l’invitation vous demandant d’arrêter la session active, sélectionnez **Arrêter maintenant** pour redémarrer le notebook.
 1. Une fois le lakehouse créé et attaché à votre notebook, ajoutez une nouvelle cellule de code pour exécuter le code suivant afin de créer un jeu de données et l’enregistrer dans la table d’un lakehouse :
