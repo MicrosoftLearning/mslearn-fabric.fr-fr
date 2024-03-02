@@ -14,7 +14,7 @@ Ce labo est d’une durée de **25** minutes environ.
 
 ## Scénario
 
-Dans ce scénario, vous êtes un analyste chargé d’interroger un exemple de jeu de données de métriques brutes de courses de taxi à NYC pour extraire des statistiques récapitulatives (profilage) des données dans l’environnement Fabric. Vous utilisez KQL pour interroger ces données et collecter des informations afin d’obtenir des insights instructifs sur les données.
+Dans ce scénario, vous êtes un analyste chargé d’interroger un exemple de jeu de données de métriques brutes de courses de taxi à NYC pour extraire des statistiques récapitulatives (profilage) des données dans l’environnement Fabric. Vous utilisez KQL pour interroger ces données et collecter des informations afin d’obtenir des insights informatifs sur les données.
 
 > **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -63,11 +63,12 @@ Dans ce labo, vous utilisez l’Analyse en temps réel (RTA) dans Fabric pour cr
 
    ![Données chargées dans la base de données KQL](./Images/choose-automotive-operations-analytics.png)
 
-1. Une fois les données chargées, vérifiez qu’elles sont chargées dans la base de données KQL. Pour effectuer cette opération, sélectionnez les points de suspension à droite de la table, accédez à **Interroger la table** et sélectionnez **Afficher 100 enregistrements**.
+1. Une fois les données chargées, vérifiez qu’elles sont chargées dans la base de données KQL. Pour effectuer cette opération, sélectionnez les points de suspension à droite de la table, accédez à **Interroger la table** et sélectionnez **Afficher 100 enregistrements**.
 
     ![Image de la sélection des 100 premiers fichiers de la table RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
    > **REMARQUE** : La première fois que vous effectuez cette opération, l’allocation des ressources de calcul peut prendre plusieurs secondes.
+
 
     ![Image des 100 enregistrements des données](./Images/explore-with-kql-take-100.png)
 
@@ -81,9 +82,9 @@ L’une des principales caractéristiques de KQL est sa capacité à gérer de g
 
 Dans le contexte de Microsoft Fabric, KQL peut servir à interroger et à analyser des données provenant de différentes sources, telles que les journaux d’application, les métriques de performances et les événements système. Cela peut vous aider à obtenir des insights sur l’intégrité et les performances de vos applications et de votre infrastructure, mais également à identifier les problèmes et les opportunités d’optimisation.
 
-Dans l’ensemble, KQL est un puissant et flexible langage de requête qui peut vous aider à obtenir des insights sur vos données rapidement et facilement, que vous travailliez avec Microsoft Fabric ou d’autres sources de données. Avec sa syntaxe intuitive et ses puissantes fonctionnalités, KQL vaut certainement la peine d’être davantage exploré.
+Dans l’ensemble, KQL est un puissant et flexible langage de requête qui peut vous aider à obtenir des insights sur vos données rapidement et facilement, que vous travailliez avec Microsoft Fabric ou d’autres sources de données. Avec sa syntaxe intuitive et ses puissantes fonctionnalités, KQL vaut la peine d’être davantage exploré.
 
-Dans ce module, nous nous concentrons sur les principes de base des requêtes sur une base de données KQL en utilisant d’abord KQL, puis T-SQL. Nous allons nous concentrer sur les éléments de base de la syntaxe T-SQL utilisés pour les requêtes incluant les éléments suivants :
+Dans ce module, nous nous concentrons sur les principes de base des requêtes sur une base de données KQL en utilisant d’abord KQL, puis T-SQL. Nous allons nous concentrer sur les éléments de base de la syntaxe T-SQL utilisés pour les requêtes incluant les éléments suivants :
 
 Requêtes **SELECT** qui sont utilisées pour récupérer des données à partir d’une ou plusieurs tables. Vous pouvez par exemple utiliser une requête SELECT pour obtenir les noms et les salaires de tous les employés d’une entreprise.
 
@@ -95,13 +96,13 @@ Requêtes **ORDER BY** qui sont utilisées pour trier les données d’une ou de
 
    > **AVERTISSEMENT :** Vous ne pouvez pas créer de rapports Power BI à partir des ensembles de requêtes avec **T-SQL**, car Power BI ne prend pas en charge T-SQL en tant que source de données. **Power BI ne prend en charge KQL qu’en tant que langage de requête natif pour les ensembles de requêtes**. Pour utiliser T-SQL pour interroger vos données dans Microsoft Fabric, vous devez utiliser le point de terminaison T-SQL qui émule Microsoft SQL Server et vous permet d’exécuter des requêtes T-SQL sur vos données. Le point de terminaison T-SQL présente toutefois certaines limitations et différences par rapport au SQL Server natif et ne prend pas en charge la création ou la publication de rapports dans Power BI.
 
-> **REMARQUE** : en plus de l’approche consistant à extraire une fenêtre de requête dans l’exemple plus haut, vous pouvez toujours appuyer sur le bouton **Explorer vos données** dans le principal panneau de la base de données KQL.
+> **REMARQUE** : En plus de l’approche consistant à extraire une fenêtre de requête, indiquée plus haut, vous pouvez toujours appuyer sur le bouton **Explorer vos données** dans le principal panneau de la base de données KQL...
 
    ![Image du bouton Explorer vos données](./Images/explore-your-data.png)
 
-## Données ```SELECT``` de notre exemple de jeu de données à l’aide de KQL
+## Données `SELECT` de notre exemple de jeu de données à l’aide de KQL
 
-1. Dans cette requête, nous extrayons 100 enregistrements de la table Trajets. Nous utilisons le mot clé ```take``` pour demander au moteur de retourner 100 enregistrements.
+1. Dans cette requête, nous extrayons 100 enregistrements de la table Trajets. Nous utilisons le mot clé `take` pour demander au moteur de retourner 100 enregistrements.
 
     ```kusto
     
@@ -109,11 +110,11 @@ Requêtes **ORDER BY** qui sont utilisées pour trier les données d’une ou de
     | take 100
     ```
 
-    > **REMARQUE :** Le caractère ```|``` du Canal est utilisé à deux fins dans KQL, notamment pour séparer des opérateurs de requête dans une instruction d’expression tabulaire. Il est également utilisé comme opérateur OR logique entre parenthèses carrées ou rondes pour indiquer que vous pouvez spécifier l’un des éléments séparés par le caractère du canal.
+    > **REMARQUE :** Le caractère trait vertical `|` est utilisé à deux fins dans KQL, notamment pour séparer des opérateurs de requête dans une instruction d’expression tabulaire. Il est également utilisé comme opérateur OR logique entre parenthèses carrées ou rondes pour indiquer que vous pouvez spécifier l’un des éléments séparés par le caractère du canal.
 
-1. Nous pouvons être plus précis en ajoutant des attributs spécifiques que nous aimerions interroger à l’aide du mot clé ```project```, puis en utilisant le mot clé ```take``` pour indiquer au moteur le nombre d’enregistrements à renvoyer.
+1. Nous pouvons être plus précis en ajoutant des attributs spécifiques que nous aimerions interroger à l’aide du mot clé `project`, puis en utilisant le mot clé `take` pour indiquer au moteur le nombre d’enregistrements à renvoyer.
 
-    > **REMARQUE :** l’utilisation de ```//``` désigne les commentaires utilisés dans l’outil de requête ***Exploration de vos données*** de Microsoft Fabric.
+    > **REMARQUE :** l’utilisation de `//` désigne les commentaires utilisés dans l’outil de requête ***Exploration de vos données*** de Microsoft Fabric.
 
     ```kusto
     
@@ -140,9 +141,9 @@ Requêtes **ORDER BY** qui sont utilisées pour trier les données d’une ou de
     | summarize ["Total Trip Distance"] = sum(trip_distance)
     ```
 
-## Données ```GROUP BY``` de notre exemple de jeu de données à l’aide de KQL
+## Données `GROUP BY` de notre exemple de jeu de données à l’aide de KQL
 
-1. Nous pouvons ensuite ***regrouper par*** emplacement de prise en charge que nous effectuons avec l’opérateur ```summarize```. Nous pouvons également utiliser l’opérateur ```project``` qui nous permet de sélectionner et de renommer les colonnes que vous souhaitez inclure dans votre sortie. Dans ce cas, nous regroupons par quartier, au sein du système Taxi de NY, pour fournir à nos utilisateurs la distance totale parcourue à partir de chaque quartier.
+1. Nous pouvons ensuite `group by` l’emplacement de prise en charge que nous effectuons avec l’opérateur `summarize`. Nous pouvons également utiliser l’opérateur `project` qui nous permet de sélectionner et de renommer les colonnes que vous souhaitez inclure dans votre sortie. Dans ce cas, nous regroupons par quartier, au sein du système Taxi de NY, pour fournir à nos utilisateurs la distance totale parcourue à partir de chaque quartier.
 
 ```kusto
 
@@ -151,7 +152,7 @@ Trips
 | project Borough = pickup_boroname, ["Total Trip Distance"]
 ```
 
-1. Dans ce cas, nous avons une valeur vide, ce qui n’est jamais bon pour les analyses, et nous pouvons utiliser la fonction ```case```, ainsi que les fonctions ```isempty``` et ```isnull```, pour les classer dans une catégorie ***Non identifié*** pour le suivi.
+1. Dans ce cas, nous avons une valeur vide, ce qui n’est jamais bon pour les analyses, et nous pouvons utiliser la fonction `case`, ainsi que les fonctions `isempty` et `isnull`, pour les classer dans une catégorie ***Non identifié*** pour le suivi.
 
 ```kusto
 
@@ -160,9 +161,9 @@ Trips
 | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
 ```
 
-## Données ```ORDER BY``` de notre exemple de jeu de données à l’aide de KQL
+## Données `ORDER BY` de notre exemple de jeu de données à l’aide de KQL
 
-Pour donner plus de sens à nos données, nous les trions généralement par colonne, et ce processus est effectué dans KQL avec un opérateur ```sort by``` ou ```order by``` qui se comporte de la même façon.
+Pour donner plus de sens à nos données, nous les trions généralement par colonne, et ce processus est effectué dans KQL avec un opérateur `sort by` ou `order by` qui se comporte de la même façon.
  
 ```kusto
 
@@ -179,9 +180,9 @@ Trips
 | sort by Borough asc 
 ```
 
-## Clause ```WHERE``` pour filtrer les données dans notre exemple de requête KQL
+## Clause `WHERE` pour filtrer les données dans notre exemple de requête KQL
 
-Contrairement à SQL, notre clause WHERE est immédiatement appelée dans notre requête KQL. Nous pouvons toujours utiliser les opérateurs logiques ```and``` et ```or``` au sein de la clause « where » qui prennent la valeur « true » ou « false » par rapport à la table et peuvent être une expression simple ou complexe pouvant impliquer plusieurs colonnes, opérateurs et fonctions.
+Contrairement à SQL, notre clause `WHERE` est immédiatement appelée dans notre requête KQL. Nous pouvons toujours utiliser les opérateurs logiques `and` et `or` au sein de la clause « where » qui prennent la valeur « true » ou « false » par rapport à la table et peuvent être une expression simple ou complexe pouvant impliquer plusieurs colonnes, opérateurs et fonctions.
 
 ```kusto
 
@@ -198,9 +199,9 @@ Trips
 
 La base de données KQL ne prend pas en charge T-SQL de manière native, mais elle fournit un point de terminaison T-SQL qui émule Microsoft SQL Server et vous permet d’exécuter des requêtes T-SQL sur vos données. Le point de terminaison T-SQL présente toutefois certaines limitations et différences par rapport au SQL Server natif. Il ne prend par exemple pas en charge la création, la modification ou la suppression de tables, ni l’insertion, la mise à jour ou la suppression de données. Il ne prend pas non plus en charge certaines fonctions et syntaxe T-SQL non compatibles avec KQL. Il a été créé pour permettre aux systèmes (ne prenant pas en charge KQL) d’utiliser T-SQL pour interroger les données au sein d’une base de données KQL. Il est donc recommandé d’utiliser KQL comme langage de requête principal pour une base de données KQL, car il offre davantage de fonctionnalités et de performances que T-SQL. Vous pouvez également utiliser certaines fonctions SQL prises en charge par KQL, telles que count, sum, avg, min, max, etc. 
 
-## Données ```SELECT``` de notre exemple de jeu de données à l’aide de T-SQL
+## Données `SELECT` de notre exemple de jeu de données à l’aide de T-SQL
 
-1. Dans cette requête, nous extrayons les 100 premiers enregistrements de la table **Trajets** en utilisant la clause ```TOP```. 
+1. Dans cette requête, nous extrayons les 100 premiers enregistrements de la table `Trips` en utilisant la clause `TOP`. 
 
     ```sql
     // We can use the TOP clause to limit the number of records returned
@@ -208,7 +209,7 @@ La base de données KQL ne prend pas en charge T-SQL de manière native, mais el
     SELECT TOP 100 * from Trips
     ```
 
-1. Si vous utilisez le ```//```, qui est un commentaire dans l’outil ***Explorer vos données** de la base de données KQL, vous ne pouvez pas le mettre en surbrillance lors de l’exécution de requêtes T-SQL. Vous devez plutôt utiliser la notation de commentaires SQL standard ```--```. ce trait d’union double indique également au moteur KQL d’attendre T-SQL dans Azure Data Explorer.
+1. Si vous utilisez le `//`, qui est un commentaire dans l’outil ***Explorer vos données*** de la base de données KQL, vous ne pouvez pas le mettre en surbrillance lors de l’exécution de requêtes T-SQL. Vous devez plutôt utiliser la notation de commentaires SQL standard `--`. ce trait d’union double indique également au moteur KQL d’attendre T-SQL dans Azure Data Explorer.
 
     ```sql
     -- instead of using the 'project' and 'take' keywords we simply use a standard SQL Query
@@ -233,9 +234,9 @@ La base de données KQL ne prend pas en charge T-SQL de manière native, mais el
     ```
      >**REMARQUE :** l’utilisation des guillemets n’est pas nécessaire dans T-SQL par rapport à la requête KQL. Notez également que les commandes `summarize` et `sort by` ne sont pas disponibles dans T-SQL.
 
-## Données ```GROUP BY``` de notre exemple de jeu de données à l’aide de T-SQL
+## Données `GROUP BY` de notre exemple de jeu de données à l’aide de T-SQL
 
-1. Nous pouvons ensuite ***regrouper par*** emplacement de prise en charge que nous effectuons avec l’opérateur ```GROUP BY```. Nous pouvons également utiliser l’opérateur ```AS``` qui nous permet de sélectionner et de renommer les colonnes que vous souhaitez inclure dans votre sortie. Dans ce cas, nous regroupons par quartier, au sein du système Taxi de NY, pour fournir à nos utilisateurs la distance totale parcourue à partir de chaque quartier.
+1. Nous pouvons ensuite `group by` l’emplacement de prise en charge que nous effectuons avec l’opérateur `GROUP BY`. Nous pouvons également utiliser l’opérateur `AS` qui nous permet de sélectionner et de renommer les colonnes que vous souhaitez inclure dans votre sortie. Dans ce cas, nous regroupons par quartier, au sein du système Taxi de NY, pour fournir à nos utilisateurs la distance totale parcourue à partir de chaque quartier.
 
     ```sql
     SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
@@ -243,7 +244,7 @@ La base de données KQL ne prend pas en charge T-SQL de manière native, mais el
     GROUP BY pickup_boroname
     ```
 
-1. Dans ce cas, nous avons une valeur vide, ce qui n’est jamais bon pour les analyses, et nous pouvons utiliser la fonction ```CASE```, ainsi que la fonction ```IS NULL``` et la valeur vide ```''``` pour les classer dans une catégorie ***Non identifié*** pour le suivi. 
+1. Dans ce cas, nous avons une valeur vide, ce qui n’est jamais bon pour les analyses, et nous pouvons utiliser la fonction `CASE`, ainsi que la fonction `IS NULL` et la valeur vide `''` pour les classer dans une catégorie ***Non identifié*** pour le suivi. 
 
     ```sql
     
@@ -259,9 +260,9 @@ La base de données KQL ne prend pas en charge T-SQL de manière native, mais el
              END;
     ```
 
-## Données ```ORDER BY``` de notre exemple de jeu de données à l’aide de T-SQL
+## Données `ORDER BY` de notre exemple de jeu de données à l’aide de T-SQL
 
-1. Pour mieux comprendre nos données, nous les trions généralement par colonne, et ce processus est effectué dans T-SQL avec un opérateur ```ORDER BY```. Il n’existe aucun opérateur ***TRIER PAR*** dans T-SQL
+1. Pour mieux comprendre nos données, nous les trions généralement par colonne, et ce processus est effectué dans T-SQL avec un opérateur `ORDER BY`. Il n’existe aucun opérateur ***TRIER PAR*** dans T-SQL
  
     ```sql
     -- Group by pickup_boroname and calculate the summary statistics of trip_distance
@@ -278,9 +279,9 @@ La base de données KQL ne prend pas en charge T-SQL de manière native, mais el
     -- Add an ORDER BY clause to sort by Borough in ascending order
     ORDER BY Borough ASC;
     ```
-    ## Clause ```WHERE``` pour filtrer les données dans notre exemple de requête T-KQL
+    ## Clause `WHERE` pour filtrer les données dans notre exemple de requête T-KQL
     
-1. Contrairement à KQL, notre clause ```WHERE``` ira à la fin de l’instruction T-SQL. Toutefois, dans ce cas, nous avons une clause ```GROUP BY```, qui nous oblige à utiliser l’instruction ```HAVING``` et nous utilisons le nouveau nom de la colonne, dans ce cas **Quartier** comme nom de colonne à partir de laquelle filtrer.
+1. Contrairement à KQL, notre clause `WHERE` ira à la fin de l’instruction T-SQL. Toutefois, dans ce cas, nous avons une clause `GROUP BY`, qui nous oblige à utiliser l’instruction `HAVING` et nous utilisons le nouveau nom de la colonne, dans ce cas **Borough** (Quartier) comme nom de colonne à partir de laquelle filtrer.
 
     ```sql
     -- Group by pickup_boroname and calculate the summary statistics of trip_distance

@@ -42,17 +42,34 @@ Le langage de requête Kusto (KQL) est utilisé pour interroger des données sta
 3. Une fois la nouvelle base de données créée, sélectionnez l’option permettant d’obtenir des données à partir d’un **fichier local**. Ensuite, utilisez l’Assistant pour importer les données dans une nouvelle table en sélectionnant les options suivantes :
     - **Destination** :
         - **Base de données** : *La base de données que vous avez créée est déjà sélectionnée*
-        - **Table** : *Créez une table nommée* **sales**.
-    - **Source** :
-        - **Type de source** : fichier
-        - **Charger des fichiers** : *Faites glisser ou recherchez le fichier que vous avez téléchargé*
-    - **Schéma** :
-        - **Type de compression** : non compressé
-        - **Format de données** : CSV
-        - **Ignorer le premier enregistrement** : *Sélectionné*
-        - **Nom du mappage** : sales_mapping
-    - **Résumé**:
-        - *Passez en revue l’aperçu de la table et fermez l’Assistant.*
+        - **Table** : *Créez une table nommée* **sales** en cliquant sur le signe + à gauche de ***Nouvelle table***
+
+        ![Assistant Nouvelle table – Étape 1](./Images/import-wizard-local-file-1.png?raw=true)
+
+        - Vous verrez maintenant que le lien hypertexte **Faites glisser des fichiers ici ou sélectionnez des fichiers** apparaît dans la même fenêtre.
+
+        ![Assistant Nouvelle table – Étape 2](./Images/import-wizard-local-file-2.png?raw=true)
+
+        - Sélectionnez ou faites glisser votre fichier **sales.csv** sur l’écran, et attendez que la zone État affiche une coche verte, puis sélectionnez **Suivant**.
+
+        ![Assistant Nouvelle table – Étape 3](./Images/import-wizard-local-file-3.png?raw=true)
+
+        - Dans cet écran, vous verrez que vos en-têtes de colonne se trouvent dans la première ligne ; même si le système les a détectés, nous devons néanmoins déplacer le curseur au-dessus de ces lignes et sélectionner **La première ligne est l’en-tête de colonne** pour éviter d’obtenir des erreurs.
+        
+        ![Assistant Nouvelle table – Étape 4](./Images/import-wizard-local-file-4.png?raw=true)
+
+        - Une fois que vous avez sélectionné ce curseur, vous verrez que tout est maintenant correct : sélectionnez le bouton **Terminer** en bas à droite du panneau.
+
+        ![Assistant Nouvelle table – Étape 5](./Images/import-wizard-local-file-5.png?raw=true)
+
+        - Attendez que les étapes suivantes de l’écran récapitulatif se terminent :
+            - Créer une table (sales)
+            - Créer un mappage (sales_mapping)
+            - Mise en file d’attente des données
+            - Ingestion
+        - Sélectionnez le bouton **Fermer**.
+
+        ![Assistant Nouvelle table – Étape 6](./Images/import-wizard-local-file-6.png?raw=true)
 
 > **Remarque** : Dans cet exemple, vous avez importé une très petite quantité de données statiques à partir d’un fichier, ce qui est parfait dans le cadre de cet exercice. En réalité, vous pouvez utiliser Kusto pour analyser des volumes de données beaucoup plus importants, notamment des données en temps réel à partir d’une source de streaming telle qu’Azure Event Hubs.
 

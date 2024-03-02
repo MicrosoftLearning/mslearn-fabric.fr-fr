@@ -67,7 +67,7 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
 
 > **Remarque** : Spark prend en charge plusieurs langages de codage, y compris Scala et Java. Dans cet exercice, nous allons utiliser *PySpark*, qui est une variante optimisée pour Spark de Python. PySpark est l’un des langages les plus couramment utilisés sur Spark et représente le langage par défaut utilisé dans les notebooks Fabric.
 
-1. Le notebook étant visible, développez la liste **Fichiers** et sélectionnez le dossier **orders** afin que les fichiers CSV soient répertoriés en regard de l’éditeur de notebook, comme suit :
+1. Le notebook étant visible, dans le volet **Explorateur**, développez **Lakehouses**, puis développez la liste **Fichiers** de votre lakehouse et sélectionnez le dossier **orders** (commandes) afin que les fichiers CSV soient répertoriés en regard de l’éditeur de notebook, comme suit :
 
     ![Capture d’écran d’un notebook avec un volet Fichiers](./Images/notebook-files.png)
 
@@ -146,14 +146,6 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
 
     À présent, le dataframe inclut les noms de colonnes corrects (en plus de l’**index**, qui est une colonne intégrée dans tous les dataframes en fonction de la position ordinale de chaque ligne). Les types de données des colonnes sont spécifiés à l’aide d’un ensemble standard de types définis dans la bibliothèque Spark SQL, qui ont été importés au début de la cellule.
 
-1. Vérifiez que vos modifications ont été appliquées aux données en consultant le dataframe.
-
-1. Ajoutez une nouvelle cellule de code à l’aide du lien **+ Code** qui s’affiche lorsque vous déplacez la souris sous le côté gauche de la sortie de la cellule active (ou dans la barre de menus, sous l’onglet **Modifier**, sélectionnez **+ Ajouter une cellule de code**). Puis exécutez le code suivant dans une nouvelle cellule de code :
-
-    ```Python
-   display(df)
-    ```
-
 1. Le dataframe inclut uniquement les données du fichier **2019.csv**. Modifiez le code afin que le chemin de fichier utilise un caractère générique \* pour lire les données de commandes client à partir de tous les fichiers figurant dans le dossier **orders** :
 
     ```python
@@ -185,7 +177,7 @@ L’objet dataframe inclut un large éventail de fonctions que vous pouvez utili
 
 ### Filtrer un dataframe
 
-1. Utilisez l’icône **+ Code** sous la sortie de la cellule pour ajouter une nouvelle cellule de code au notebook, puis entrez-y le code suivant.
+1. Ajoutez une nouvelle cellule de code à l’aide du lien **+ Code** qui s’affiche lorsque vous déplacez la souris sous le côté gauche de la sortie de la cellule active (ou dans la barre de menus, sous l’onglet **Modifier**, sélectionnez **+ Ajouter une cellule de code**). Entrez ensuite le code suivant.
 
     ```Python
    customers = df['CustomerName', 'Email']
@@ -278,7 +270,7 @@ Une tâche courante des ingénieurs données consiste à ingérer des données d
 
     > **Remarque** : Le format *Parquet* est généralement préféré pour les fichiers de données que vous allez utiliser pour une analyse ou une ingestion plus approfondie dans un magasin analytique. Parquet est un format très efficace qui est pris en charge par la plupart des systèmes d’analytique de données à grande échelle. Parfois, votre besoin de transformation de données peut en fait simplement consister à convertir des données d’un autre format (comme CSV) vers Parquet !
 
-2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet **Explorateur** à gauche, dans le menu **…** du nœud **Fichiers**, sélectionnez **Actualiser**, puis sélectionnez le dossier **transformed_orders** pour vérifier qu’il contient un nouveau dossier nommé **orders**, qui contient à son tour un ou plusieurs fichiers Parquet.
+2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet **Lakehouses** à gauche, dans le menu **…** du nœud **Fichiers**, sélectionnez **Actualiser**, puis sélectionnez le dossier **transformed_orders** pour vérifier qu’il contient un nouveau dossier nommé **orders**, qui contient à son tour un ou plusieurs fichiers Parquet.
 
     ![Capture d’écran d’un dossier contenant des fichiers Parquet](./Images/saved-parquet.png)
 
@@ -300,7 +292,7 @@ Une tâche courante des ingénieurs données consiste à ingérer des données d
    print ("Transformed data saved!")
     ```
 
-2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet **Explorateur** à gauche, dans le menu **…** du nœud **Fichiers**, sélectionnez **Actualiser**, puis développez le dossier **partitioned_orders** pour vérifier qu’il contient une hiérarchie de dossiers nommés **Year=* xxxx***, chacun contenant des dossiers nommés **Month=* xxxx***. Chaque dossier de mois contient un fichier Parquet avec les commandes de ce mois.
+2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet **Lakehouses** à gauche, dans le menu **...** du nœud **Fichiers**, sélectionnez **Actualiser**, puis développez le dossier **partitioned_orders** pour vérifier qu’il contient une hiérarchie de dossiers nommés **Year=* xxxx***, chacun contenant des dossiers nommés **Month=* xxxx***. Chaque dossier de mois contient un fichier Parquet avec les commandes de ce mois.
 
     ![Capture d’écran d’une hiérarchie de fichiers de données partitionnés](./Images/partitioned-files.png)
 
@@ -337,7 +329,7 @@ Les tables d’un metastore Spark sont des abstractions relationnelles sur les f
 
 2. Exécutez la cellule de code et passez en revue la sortie, qui décrit la définition de la nouvelle table.
 
-3. Dans le volet **Explorateur**, dans le menu **…** du dossier **Tables**, sélectionnez **Actualiser**. Développez ensuite le nœud **Tables** et vérifiez que la table **salesorders** a été créée.
+3. Dans le volet **Lakehouses**, dans le menu **…** du dossier **Tables**, sélectionnez **Actualiser**. Développez ensuite le nœud **Tables** et vérifiez que la table **salesorders** a été créée.
 
     ![Capture d’écran de la table salesorder dans Explorateur](./Images/table-view.png)
 
@@ -389,7 +381,7 @@ Selon le proverbe, une image vaut mille mots, et un graphique exprime souvent pl
 
 2. Exécutez ce code et observez qu’il retourne les données de la vue **salesorders** que vous avez créée précédemment.
 3. Dans la section des résultats sous la cellule, modifiez l’option **Affichage** de **Tableau** à **Graphique**.
-4. Utilisez le bouton **Options d’affichage** en haut à droite du graphique pour afficher le volet d’options du graphique. Définissez ensuite les options comme suit et sélectionnez **Appliquer** :
+4. Utilisez le bouton **Personnaliser le graphique** en haut à droite du graphique pour afficher le volet d’options du graphique. Définissez ensuite les options comme suit et sélectionnez **Appliquer** :
     - **Type de graphique** : Graphique à barres
     - **Clé** : Élément
     - **Valeurs** : Quantité

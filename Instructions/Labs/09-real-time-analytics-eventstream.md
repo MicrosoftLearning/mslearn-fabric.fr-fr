@@ -57,6 +57,8 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
 2. Veillez à basculer le bouton sur **Actif**, puis sélectionnez **Terminé**.
 
+ > **Remarque :** Vous n’avez pas besoin de sélectionner un dossier, Fabric le crée pour vous.
+
    ![Image de l’activation de la touche bascule onelake](./Images/enable-onelake-toggle.png)
 
 ## Créer un flux d’événements
@@ -94,35 +96,16 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
    | Nom de la destination | MyStockData                                    |
    | Espace de travail        | Espace de travail dans lequel vous avez créé une base de données KQL |
    | Base de données KQL     | MyStockData                                    |
+   | Table de destination| MyStockData                                    |
+   | Format des données d’entrée| Json                                           |
 
-3. Sélectionnez **Créer et configurer**.
+3. Sélectionnez **Ajouter**.
 
-## Configurer l’ingestion des données
-
-1. Dans la page de boîte de dialogue **Ingérer des données**, sélectionnez **Nouvelle table**, puis entrez MyStockData.
-
-   ![Image de l’insertion de données boursières](./Images/ingest-stream-data-to-kql.png)
-
-2. Sélectionnez **Suivant : Source**.
-3. Dans la page **Source**, confirmez le **Nom de la connexion de données**, puis sélectionnez **Suivant : Schéma**.
-
-   ![Image du nom de la source de données](./Images/ingest-data.png)
-
-4. Les données entrantes n’étant pas compressées pour les exemples de données, conservez le type de compression comme Non compressé.
-5. Dans la liste déroulante **Format des données**, sélectionnez **JSON**.
-
-   ![Image de la modification au format JSON](./Images/injest-as-json.png)
-
-6. Après cela, il peut être nécessaire de remplacer certains ou tous les types de données de votre flux entrant par votre ou vos tables de destination.
-7. Pour accomplir cette tâche, sélectionnez la **flèche vers le bas > Changer le type de données**. Vérifiez ensuite que les colonnes reflètent le type de données correct :
-
-   ![Image de la modification des types de données](./Images/change-data-type-in-es.png)
-
-8. Quand vous avez terminé, sélectionnez **Suivant : Résumé**.
+> **Remarque** : L’ingestion de vos données commence immédiatement.
 
 Attendez que toutes les étapes soient marquées par des coches vertes. Vous devez voir le titre de la page **Ingestion continue à partir d’un flux d’événements établie**. Après cela, sélectionnez **Fermer** pour revenir à votre page de flux d’événements.
 
-> **Remarque** : Il peut être nécessaire d’actualiser la page pour afficher votre table une fois que la connexion de flux d’événements a été créée et établie
+> **Remarque** : Il peut être nécessaire d’actualiser la page pour afficher votre table une fois que la connexion Eventstream a été créée et établie.
 
 ## Requêtes KQL
 
@@ -143,7 +126,7 @@ Une requête KQL (Kusto Query Language, langage de requête Kusto) est une requ�
 
    ![Image des résultats de la requête KQL des 24 dernières heures](./Images/kql-query-results-last24.png)
 
-> **Remarque** : Notez que les volumes des données de streaming dépassent les limites de requête. Ce comportement peut varier en fonction de la quantité de données diffusées en streaming dans votre base de données.
+> **Remarque** : Vous pouvez voir un avertissement indiquant que vous avez dépassé les limites de requête. Ce comportement varie en fonction de la quantité de données diffusées en streaming dans votre base de données.
 
 Vous pouvez continuer à naviguer à l’aide des fonctions de requête intégrées pour vous familiariser avec vos données.
 
@@ -165,5 +148,5 @@ Vous pouvez continuer à naviguer à l’aide des fonctions intégrées et à vo
 
 Dans cet exercice, vous avez créé une base de données KQL et configuré un streaming continu avec un flux d’événements. Après cela, vous avez interrogé les données à l’aide de KQL et de SQL. Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail.
-2. Dans le menu ... de la barre d’outils, sélectionnez Paramètres de l’espace de travail.
+2. Dans le menu ... de la barre d’outils, sélectionnez Paramètres des espaces de travail.
 3. Dans la section Autre, sélectionnez Supprimer cet espace de travail.
