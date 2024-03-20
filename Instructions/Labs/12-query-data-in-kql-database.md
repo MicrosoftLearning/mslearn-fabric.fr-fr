@@ -8,15 +8,13 @@ lab:
 
 KQL Queryset est un outil qui vous permet d’exécuter des requêtes, mais également de modifier et d’afficher les résultats des requêtes à partir d’une base de données KQL. Vous pouvez lier chaque onglet dans KQL Queryset à une base de données KQL différente et enregistrer vos requêtes pour une utilisation ultérieure ou les partager avec d’autres personnes pour l’analyse des données. Vous pouvez également basculer la base de données KQL pour n’importe quel onglet, ce qui vous permet de comparer les résultats de la requête à partir de diverses sources de données.
 
+Dans ce scénario, vous jouez le rôle d’un analyste chargé d’interroger un exemple de jeu de données de métriques brutes sur des courses de taxi à NYC pour extraire des statistiques récapitulatives (profilage) des données dans l’environnement Fabric. Vous utilisez KQL pour interroger ces données et collecter des informations afin d’obtenir des insights informatifs sur les données.
+
 Pour créer des requêtes, KQL Queryset utilise le langage Kusto Query qui est compatible avec de nombreuses fonctions SQL. Pour en savoir plus sur le [langage kusto query (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
 
 Ce labo est d’une durée de **25** minutes environ.
 
-## Scénario
-
-Dans ce scénario, vous êtes un analyste chargé d’interroger un exemple de jeu de données de métriques brutes de courses de taxi à NYC pour extraire des statistiques récapitulatives (profilage) des données dans l’environnement Fabric. Vous utilisez KQL pour interroger ces données et collecter des informations afin d’obtenir des insights informatifs sur les données.
-
-> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
@@ -41,7 +39,7 @@ Dans ce labo, vous utilisez l’Analyse en temps réel (RTA) dans Fabric pour cr
 
    ![Image du nom de la base de données KQL](./Images/name-kqldatabase.png)
 
-1. Donnez à la base de données KQL un nom dont vous vous souviendrez, par exemple **MyStockData**, puis appuyez sur **Créer**.
+1. Donnez à la base de données KQL un nom dont vous vous souviendrez, comme **TaxiData**, puis cliquez sur **Créer**.
 
 1. Dans le panneau **Détails de la base de données**, sélectionnez l’icône de crayon pour activer la disponibilité dans OneLake.
 
