@@ -14,7 +14,7 @@ Pour cette expérience, vous allez générer le code sur plusieurs cellules de c
 
 Étant donné que vous travaillez également avec un exemple de jeu de données, l’optimisation ne reflète pas ce que vous pouvez voir en production à grande échelle. Toutefois, vous pouvez toujours voir des améliorations et lorsque chaque milliseconde compte, l’optimisation est la clé.
 
-> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
