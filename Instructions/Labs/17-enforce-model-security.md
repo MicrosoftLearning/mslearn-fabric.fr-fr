@@ -6,21 +6,18 @@ lab:
 
 # Appliquer la sécurité des modèles
 
-## Vue d’ensemble
+Dans cet exercice, vous allez mettre à jour un modèle de données prédéfini pour appliquer la sécurité. Plus précisément, les vendeurs de l’entreprise Adventure Works ne doivent être en mesure de voir que les données de vente liées à la région qui leur est affectée.
 
-**La durée estimée pour effectuer ce tutoriel est de 45 minutes.**
-
-Dans ce labo, vous allez mettre à jour un modèle de données prédéveloppé pour mettre en place la sécurité. Plus précisément, les vendeurs de l’entreprise Adventure Works ne doivent être en mesure de voir que les données de vente liées à la région qui leur est affectée.
-
-Dans ce labo, vous découvrez comment :
+Dans cet exercice, vous apprenez à effectuer les opérations suivantes :
 
 - Créer des rôles statiques.
-
 - Créer des rôles dynamiques.
-
 - Valider les rôles
-
 - Mapper des principaux de sécurité à des rôles de modèle sémantique.
+
+Ce labo est d’une durée de **45** minutes environ.
+
+> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Bien démarrer
 
