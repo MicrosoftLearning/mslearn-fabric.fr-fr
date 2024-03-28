@@ -6,17 +6,17 @@ lab:
 
 # Créer et explorer un modèle sémantique
 
-## Vue d’ensemble
-
-**La durée estimée pour effectuer ce labo est de 30 minutes.**
-
-Dans ce labo, vous allez utiliser l’interface de Fabric pour développer un modèle de données sur l’exemple de données NY Taxi dans un entrepôt de données Fabric.
+Dans cet exercice, vous allez utiliser Microsoft Fabric pour développer un modèle de données pour l’exemple NY Taxi dans un entrepôt de données.
 
 Vous allez vous entraîner à :
 
 - Créer un modèle sémantique personnalisé à partir d’un entrepôt de données Fabric.
 - Créer des relations et organiser le diagramme du modèle.
 - Explorer les données de votre modèle sémantique directement dans Fabric.
+
+Ce labo prend environ **30** minutes.
+
+> **Remarque** : vous devez disposer d’une [version d’évaluation de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
