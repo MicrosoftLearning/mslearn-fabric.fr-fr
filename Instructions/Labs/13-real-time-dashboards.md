@@ -7,11 +7,12 @@ lab:
 ---
 
 # Bien démarrer avec l’interrogation d’une base de données Kusto dans Microsoft Fabric
+
 Les tableaux de bord en temps réel vous permettent de glaner des insights à partir de Microsoft Fabric en utilisant Langage de requête Kusto (KQL) pour récupérer des données structurées et non structurées et les restituer dans des graphiques, des nuages de points, des tables, etc. dans des panneaux qui permettent de lier des segments similaires à ceux de Power BI. 
 
 Ce labo est d’une durée de **25** minutes environ.
 
-> **Remarque** : Vous avez besoin d’un compte *scolaire* ou *professionnel* Microsoft pour réaliser cet exercice. Si vous n’en avez pas, vous pouvez vous [inscrire à un essai de Microsoft Office 365 E3 ou supérieur](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
@@ -46,7 +47,7 @@ Dans ce labo, vous utilisez l’Analyse en temps réel (RTA) dans Fabric pour cr
  
    ![Image des options de sélection avec exemple de données mis en évidence](./Images/load-sample-data.png)
 
-6. Choisissez la zone **Analytique des métriques automobile** dans les options des exemples de données.
+6. Choisissez la zone **Analytique des opérations automobiles** parmi les options des exemples de données.
 
    ![Image du choix des données analytiques pour le labo](./Images/create-sample-data.png)
 
@@ -54,7 +55,7 @@ Dans ce labo, vous utilisez l’Analyse en temps réel (RTA) dans Fabric pour cr
 
    ![Données chargées dans la base de données KQL](./Images/choose-automotive-operations-analytics.png)
 
-7. Une fois les données chargées, vérifiez qu’elles sont chargées dans la base de données KQL. Pour effectuer cette opération, sélectionnez les points de suspension à droite de la table, accédez à **Interroger la table** et sélectionnez **Afficher 100 enregistrements**.
+7. Une fois les données chargées, vérifiez qu’elles sont chargées dans la base de données KQL. Pour effectuer cette opération, sélectionnez les points de suspension (...) à droite de la table, accédez à **Interroger la table** et sélectionnez **Afficher 100 enregistrements**.
 
     ![Image de la sélection des 100 premiers fichiers de la table RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
@@ -80,7 +81,7 @@ Trips
 | sort by Borough asc 
 
 ```
-3. Appuyez sur le bouton Exécuter et vérifiez que votre requête ne contient aucune erreur.
+3. Appuyez sur le bouton **Exécuter** et vérifiez que votre requête ne contient aucune erreur.
 4. Sur le côté droit du panneau, sélectionnez l’onglet **Mise en forme visuelle** et renseignez le ***Nom de la vignette*** et le ***Type de visuel***.
 
    ![Image de la vignette de mise en forme visuelle.](./Images/visual-formatting-tile.png)

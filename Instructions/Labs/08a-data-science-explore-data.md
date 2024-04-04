@@ -10,7 +10,7 @@ Dans ce labo, nous allons utiliser des notebooks pour l’exploration des donné
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’un [essai gratuit Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
@@ -185,7 +185,7 @@ Nous allons générer des visualisations telles que des nuages de points et des 
    import matplotlib.pyplot as plt
    import seaborn as sns
 
-   # Scatter plot of Quantity vs. Price
+   # Scatter plot of BMI vs. Target variable
    plt.figure(figsize=(8, 6))
    sns.scatterplot(x='BMI', y='Y', data=df)
    plt.title('BMI vs. Target variable')
