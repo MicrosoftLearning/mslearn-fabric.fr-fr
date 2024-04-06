@@ -10,7 +10,7 @@ Dans Microsoft Fabric, les flux de données (Gen2) se connectent à différentes
 
 Ce labo est conçu pour présenter les différents éléments des flux de données (Gen2) et non pour créer une solution complexe qui peut exister dans une entreprise. Ce labo prend **environ 30 minutes**.
 
-> **Remarque** : Vous devez disposer d’un [essai gratuit Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 

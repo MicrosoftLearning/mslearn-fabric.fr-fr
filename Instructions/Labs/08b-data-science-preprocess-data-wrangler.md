@@ -10,7 +10,7 @@ Dans ce labo, vous allez apprendre à utiliser Data Wrangler dans Microsoft Fabr
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : vous devez disposer d’une [version d’évaluation de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Remarque** : Vous devez disposer d’un [essai gratuit Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
