@@ -6,19 +6,17 @@ lab:
 
 # Utiliser des relations de modèle
 
-## Vue d’ensemble
+Dans cet exercice, vous allez travailler avec des relations de modèles pour répondre spécifiquement au besoin de dimensions de rôle actif. Cela implique d’utiliser des relations actives et inactives, ainsi que des fonctions DAX (Data Analysis Expressions) qui modifient le comportement des relations.
 
-**La durée estimée pour effectuer ce tutoriel est de 45 minutes.**
-
-Dans ce labo, vous allez travailler avec des relations de modèle pour répondre aux besoins de dimensions spécifiques de rôles actifs. Cela implique d’utiliser des relations actives et inactives, ainsi que des fonctions DAX (Data Analysis Expressions) qui modifient le comportement des relations.
-
-Dans ce labo, vous découvrez comment :
+Dans cet exercice, vous apprenez à effectuer les opérations suivantes :
 
 - Interpréter les propriétés des relations dans le diagramme du modèle
-
 - Définir les propriétés des relations.
+- Utiliser des fonctions DAX qui modifient le comportement des relations.
 
-- Utiliser des fonctions DAX qui modifient le comportement des relations
+Ce labo est d’une durée de **45** minutes environ.
+
+> **Remarque** : vous devez disposer d’une [version d’évaluation de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Explorer les relations de modèle
 
