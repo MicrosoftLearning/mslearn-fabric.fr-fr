@@ -16,7 +16,7 @@ Vous allez vous entraîner à :
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : vous devez disposer d’une [version d’évaluation de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
@@ -39,7 +39,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 1. Au centre de l’interface utilisateur de l’entrepôt de données, vous verrez plusieurs façons de charger des données dans votre entrepôt. Sélectionnez **Exemple de données** pour charger les données de NYC Taxi dans votre entrepôt de données. Cette opération prend quelques minutes.
 
-1. Une fois que votre exemple de données a été chargé, utilisez le volet **Explorateur** à droite pour voir les tables et vues qui existent déjà dans l’exemple d’entrepôt de données.
+1. Une fois que les données de l’échantillon ont été chargées, utilisez le volet **Explorer** sur la gauche pour voir quelles tables et vues existent déjà dans l’entrepôt de données de l’échantillon.
 
 1. Sélectionnez l’onglet **Rapports** du ruban, puis choisissez **Nouveau modèle sémantique**. Ceci vous permet de créer un modèle sémantique avec seulement des tables et des vues spécifiques de votre entrepôt de données, pour une utilisation par les équipes de données et l’entreprise pour créer des rapports.
 
@@ -65,7 +65,7 @@ Vous allez maintenant créer des relations entre les tables pour analyser et vis
 
     *En passant en revue le concept de schéma en étoile, nous allons organiser les tables de notre modèle en une table de faits et en tables de dimension. Dans ce modèle, la table **Trip** est notre table de faits, et nos dimensions sont **Date**, **Geography**et **Weather**.*
 
-1. Créez une relation entre la table **Date** et la table **Trip** en utilisant la colonne **DateID**. **Sélectionnez la colonne DateID** dans la table **Date** et **faites-la glisser et déposez-la en haut de la colonne DateID dans la table Trip**. Vous pouvez aussi sélectionner **Gérer les relations** dans le ruban, puis **Nouvelle relation**.
+1. Créez une relation entre la table **Date** et la table **Trip** en utilisant la colonne **DateID**. **Sélectionnez la colonne DateID** dans la table **Date** et **faites-la glisser au-dessus de la colonne DateID dans la table Trip**. Vous pouvez aussi sélectionner **Gérer les relations** dans le ruban, puis **Nouvelle relation**.
 
 1. Vérifiez que la relation est une relation **Un à plusieurs** de la table **Date** vers la table **Trip**.
 
