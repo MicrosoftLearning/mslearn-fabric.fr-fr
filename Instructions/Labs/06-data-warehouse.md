@@ -10,7 +10,7 @@ Dans Microsoft Fabric, un entrepôt de données fournit une base de données rel
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Remarque** : Vous devez disposer d’un [essai gratuit Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
@@ -97,8 +97,8 @@ Un entrepôt de données relationnelles se compose généralement de tables de *
     - **Intégrité référentielle supposée** : Non sélectionné
 
 4. Répétez le processus pour créer des relations plusieurs-à-un entre les tables suivantes :
-    - **FactOrderSales.CustomerKey** &#8594; **DimCustomer.CustomerKey**
-    - **FactOrderSales.SalesOrderDateKey** &#8594; **DimDate.DateKey**
+    - **FactSalesOrder.CustomerKey** &#8594; **DimCustomer.CustomerKey**
+    - **FactSalesOrder.SalesOrderDateKey** &#8594; **DimDate.DateKey**
 
     Quand toutes les relations ont été définies, le modèle doit se présenter comme ceci :
 

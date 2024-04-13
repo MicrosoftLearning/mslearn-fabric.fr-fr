@@ -12,7 +12,7 @@ Dans Microsoft Fabric, un lakehouse fournit un stockage de fichiers hautement �
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’un [essai gratuit Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 

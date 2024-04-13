@@ -10,7 +10,7 @@ Dans Microsoft Fabric, un entrepôt de données fournit une base de données rel
 
 Ce labo prend environ **30** minutes.
 
-> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Remarque** : Vous devez disposer d’un [essai gratuit Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
 
 ## Créer un espace de travail
 
@@ -237,7 +237,7 @@ Exécutons des requêtes analytiques pour vérifier les données de l’entrepô
     ORDER BY TotalSales DESC;
     ```
 
-    > **Remarque :** Les résultats de cette requête montrent le plus gros client pour chacune des catégories : Bike (Vélo), Helmet (Casque) et Gloves (Gants) en fonction de leurs ventes totales. Par exemple, **Carson Butler** est le plus gros client pour la catégorie **Bike**.
+    > **Remarque :** Les résultats de cette requête montrent le plus gros client pour chacune des catégories : Bike (Vélo), Helmet (Casque) et Gloves (Gants) en fonction de leurs ventes totales. Par exemple, **Joan Coleman** est le premier client de la catégorie **Gants**.
     >
     > Les informations de catégorie ont été extraites de la colonne `ItemName` en utilisant une manipulation de chaîne, car il n’existe pas de colonne de catégorie distincte dans la table de dimension. Cette approche suppose que les noms des articles suivent une convention de nommage cohérente. Si les noms des articles ne suivent pas une convention de nommage cohérente, les résultats peuvent ne pas refléter avec exactitude la véritable catégorie de chaque article.
 
