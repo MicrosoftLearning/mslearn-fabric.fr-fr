@@ -39,7 +39,7 @@ Commencez par créer un lakehouse et un dossier de destination dans le lakehouse
 
 1. Dans **Fichiers**, sélectionnez **[...]** pour créer un **Nouveau sous-dossier** nommé **RawData**.
 
-1. À partir de l’explorateur Lakehouse dans le lakehouse, sélectionnez **Fichiers > ... > Propriétés**.
+1. Depuis l’explorateur Lakehouse dans le lakehouse, sélectionnez **RawData > ... > Propriétés**.
 
 1. Copiez le **chemin ABFS** du dossier **RawData** dans un bloc-notes vide pour une utilisation ultérieure. Cela doit ressembler à ce qui suit :  `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
@@ -217,7 +217,7 @@ Ce labo est axé sur l’ingestion des données, ce qui explique surtout le proc
     display(opttable_df.limit(10))
     ```
 
-1. Maintenant, sélectionnez la flèche &#9660; en regard du bouton **Exécuter la cellule** pour la première de ces deux requêtes, puis, dans la liste déroulante, sélectionnez **Exécuter cette cellule et celle en-dessous**.
+1. Sélectionnez maintenant la flèche &#9660; en regard du bouton **Exécuter la cellule** pour la première de ces deux requêtes puis, dans la liste déroulante, sélectionnez **Exécuter cette cellule et toutes celles en dessous**.
 
     Les deux dernières cellules de code sont alors exécutées. Notez la différence de temps d’exécution entre l’interrogation de la table avec des données non optimisées et une table avec des données optimisées.
 
@@ -228,5 +228,5 @@ Dans cet exercice, vous avez utilisé des notebooks avec PySpark dans Fabric pou
 Une fois que vous avez fini d’explorer, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+2. Dans la page de l’espace de travail, sélectionnez **Paramètres de l’espace de travail**.
+3. En bas de la section **Général**, sélectionnez **Supprimer cet espace de travail**.

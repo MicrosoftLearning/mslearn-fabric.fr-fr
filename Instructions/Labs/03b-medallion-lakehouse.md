@@ -198,6 +198,7 @@ Maintenant que vous avez des données dans la couche bronze de votre lakehouse, 
       ) \
       .execute()
     ```
+13. Exécutez la cellule pour exécuter le code à l’aide du bouton ****&#9655;** (*Exécuter la cellule*)**.
 
     Cette opération est importante, car elle vous permet de mettre à jour les enregistrements existants dans la table en fonction des valeurs de colonnes spécifiques et d’insérer de nouveaux enregistrements lorsqu’aucune correspondance n’est trouvée. Il s’agit d’une exigence courante lorsque vous chargez des données à partir d’un système source qui peut contenir des mises à jour des enregistrements existants et nouveaux.
 
@@ -610,5 +611,5 @@ Dans cet exercice, vous avez appris à créer une architecture en médaillon dan
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+2. Dans la page de l’espace de travail, sélectionnez **Paramètres de l’espace de travail**.
+3. En bas de la section **Général**, sélectionnez **Supprimer cet espace de travail**.

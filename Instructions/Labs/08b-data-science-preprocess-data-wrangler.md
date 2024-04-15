@@ -310,5 +310,5 @@ Dans cet exercice, vous avez créé un notebook et utilisé Data Wrangler pour e
 Si vous avez terminé d’explorer les étapes de prétraitement, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+2. Dans la page de l’espace de travail, sélectionnez **Paramètres de l’espace de travail**.
+3. En bas de la section **Général**, sélectionnez **Supprimer cet espace de travail**.
