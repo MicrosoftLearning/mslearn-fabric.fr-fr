@@ -149,9 +149,9 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
 1. Le dataframe inclut uniquement les données du fichier **2019.csv**. Modifiez le code afin que le chemin de fichier utilise un caractère générique \* pour lire les données de commandes client à partir de tous les fichiers figurant dans le dossier **orders** :
 
     ```python
-    from pyspark.sql.types import *
+   from pyspark.sql.types import *
 
-    orderSchema = StructType([
+   orderSchema = StructType([
        StructField("SalesOrderNumber", StringType()),
        StructField("SalesOrderLineNumber", IntegerType()),
        StructField("OrderDate", DateType()),
@@ -163,8 +163,8 @@ Vous êtes maintenant prêt à exécuter du code qui charge les données dans un
        StructField("Tax", FloatType())
        ])
 
-    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-    display(df)
+   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+   display(df)
     ```
 
 1. Exécutez la cellule de code modifiée et passez en revue la sortie, qui doit maintenant inclure les ventes de 2019, 2020 et 2021.
@@ -586,5 +586,5 @@ Dans cet exercice, vous avez appris à utiliser Spark pour travailler sur des do
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans la page de l’espace de travail, sélectionnez **Paramètres de l’espace de travail**.
-3. En bas de la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.

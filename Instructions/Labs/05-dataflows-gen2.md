@@ -135,6 +135,6 @@ Si vous avez terminé d’explorer les flux de données dans Microsoft Fabric, v
 
 1. Accédez à Microsoft Fabric dans votre navigateur.
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-1. Dans la page de l’espace de travail, sélectionnez **Paramètres de l’espace de travail**.
-1. En bas de la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+1. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+1. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
 1. N’enregistrez pas les modifications apportées à Power BI Desktop ou supprimez le fichier .pbix s’il a déjà été enregistré.
