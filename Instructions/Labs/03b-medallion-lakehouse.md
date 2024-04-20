@@ -198,6 +198,7 @@ Maintenant que vous avez des données dans la couche bronze de votre lakehouse, 
       ) \
       .execute()
     ```
+13. Exécutez la cellule pour exécuter le code à l’aide du bouton ****&#9655;** (*Exécuter la cellule*)**.
 
     Cette opération est importante, car elle vous permet de mettre à jour les enregistrements existants dans la table en fonction des valeurs de colonnes spécifiques et d’insérer de nouveaux enregistrements lorsqu’aucune correspondance n’est trouvée. Il s’agit d’une exigence courante lorsque vous chargez des données à partir d’un système source qui peut contenir des mises à jour des enregistrements existants et nouveaux.
 
