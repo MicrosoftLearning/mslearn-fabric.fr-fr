@@ -43,7 +43,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 ## Charger un fichier
 
-Fabric offre plusieurs façons de charger des données dans le lakehouse, notamment la prise en charge intégrée des pipelines qui copient des sources externes de données et des flux de données (Gen 2) que vous pouvez définir à l’aide d’outils visuels basés sur Power Query. Toutefois, l’un des moyens les plus simples d’ingérer de petites quantités de données consiste à charger des fichiers ou des dossiers à partir de votre ordinateur local (ou d’une machine virtuelle de labo, le cas échéant).
+Fabric offre plusieurs façons de charger des données dans le lakehouse, notamment via la prise en charge intégrée des pipelines qui copient depuis des sources de données externes et des flux de données (Gen 2) que vous pouvez définir en utilisant des outils visuels basés sur Power Query. Toutefois, l’un des moyens les plus simples d’ingérer de petites quantités de données consiste à charger des fichiers ou des dossiers à partir de votre ordinateur local (ou d’une machine virtuelle de labo, le cas échéant).
 
 1. Téléchargez le fichier [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) à partir de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`, et enregistrez-le sous le nom **sales.csv** sur votre ordinateur local (ou machine virtuelle de labo, le cas échéant).
 
@@ -169,4 +169,4 @@ Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’es
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
 2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

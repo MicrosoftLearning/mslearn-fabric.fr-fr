@@ -305,4 +305,4 @@ La base de données KQL ne prend pas en charge T-SQL de manière native, mais el
 Dans cet exercice, vous avez créé une base de données KQL et configuré un exemple de jeu de données pour un interrogation. Après cela, vous avez interrogé les données à l’aide de KQL et de SQL. Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 1. Dans la barre de gauche, sélectionnez l’**icône** de votre espace de travail.
 2. Dans le menu ... de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

@@ -138,4 +138,4 @@ Si vous avez terminé d’explorer votre base de données KQL, vous pouvez suppr
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail.
 2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
