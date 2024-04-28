@@ -148,5 +148,5 @@ Vous pouvez continuer à naviguer à l’aide des fonctions intégrées et à vo
 
 Dans cet exercice, vous avez créé une base de données KQL et configuré un streaming continu avec un flux d’événements. Après cela, vous avez interrogé les données à l’aide de KQL et de SQL. Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail.
-2. Dans le menu ... de la barre d’outils, sélectionnez Paramètres des espaces de travail.
-3. Dans la section Autre, sélectionnez Supprimer cet espace de travail.
+2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
