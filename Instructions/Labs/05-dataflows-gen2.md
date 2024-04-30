@@ -93,7 +93,7 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
 
 6. Sélectionnez **Publier** pour publier le flux de données. Attendez ensuite que le flux de données **Dataflow 1** soit créé dans votre espace de travail.
 
-7. Une fois publié, vous pouvez cliquer avec le bouton droit sur le flux de données dans votre espace de travail, sélectionner **Propriétés** et renommer votre flux de données.
+7. Une fois publié, vous pouvez cliquer sur l’ellipse **(...)** dans votre espace de travail, sélectionner **Propriétés** et renommer votre flux de données.
 
 ## Ajouter un flux de données à un pipeline
 
@@ -136,5 +136,4 @@ Si vous avez terminé d’explorer les flux de données dans Microsoft Fabric, v
 1. Accédez à Microsoft Fabric dans votre navigateur.
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
 1. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-1. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
-1. N’enregistrez pas les modifications apportées à Power BI Desktop ou supprimez le fichier .pbix s’il a déjà été enregistré.
+1. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

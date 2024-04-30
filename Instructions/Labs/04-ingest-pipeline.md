@@ -39,7 +39,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 Un moyen simple d’ingérer des données consiste à utiliser une activité **Copier des données** dans un pipeline afin d’extraire les données d’une source et de les copier dans un fichier dans le lakehouse.
 
-1. Dans la page **Accueil** de votre lakehouse, sélectionnez **Nouveau pipeline de données**, puis créez un pipeline de données nommé **Ingérer des données de ventes**.
+1. Dans la page **Accueil** de votre lakehouse, sélectionnez **Obtenir des données**, puis sélectionnez **Nouveau pipeline de données** et créez un pipeline de données nommé **Ingérer des données de ventes**.
 2. Si l’Assistant **Copier des données** ne s’ouvre pas automatiquement, sélectionnez **Copier des données** dans la page de l’éditeur de pipeline.
 3. Dans l’Assistant **Copier des données**, dans la page **Choisir une source de données**, dans la section **Sources de données**, sélectionnez l’onglet **Protocole générique**, puis **HTTP**.
 

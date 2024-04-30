@@ -270,11 +270,11 @@ Une tâche courante des ingénieurs données consiste à ingérer des données d
 
     > **Remarque** : Le format *Parquet* est généralement préféré pour les fichiers de données que vous allez utiliser pour une analyse ou une ingestion plus approfondie dans un magasin analytique. Parquet est un format très efficace qui est pris en charge par la plupart des systèmes d’analytique de données à grande échelle. Parfois, votre besoin de transformation de données peut en fait simplement consister à convertir des données d’un autre format (comme CSV) vers Parquet !
 
-2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet **Lakehouses** à gauche, dans le menu **…** du nœud **Fichiers**, sélectionnez **Actualiser**, puis sélectionnez le dossier **transformed_orders** pour vérifier qu’il contient un nouveau dossier nommé **orders**, qui contient à son tour un ou plusieurs fichiers Parquet.
+2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet **Lakehouses** à gauche, dans le menu **…** du nœud **Fichiers**, sélectionnez **Actualiser**, puis sélectionnez le dossier **transformed_data** pour vérifier qu’il contient un nouveau dossier nommé **orders**, qui contient à son tour un ou plusieurs fichiers Parquet.
 
     ![Capture d’écran d’un dossier contenant des fichiers Parquet](./Images/saved-parquet.png)
 
-3. Ajoutez une nouvelle cellule avec le code suivant pour charger un nouveau dataframe à partir des fichiers Parquet figurant dans le dossier **transformed_orders/orders** :
+3. Ajoutez une nouvelle cellule avec le code suivant pour charger un nouveau dataframe à partir des fichiers Parquet du dossier **transformed_data/orders** :
 
     ```Python
    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
