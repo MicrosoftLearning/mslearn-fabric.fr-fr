@@ -39,7 +39,7 @@ Commencez par créer un lakehouse et un dossier de destination dans le lakehouse
 
 1. Dans **Fichiers**, sélectionnez **[...]** pour créer un **Nouveau sous-dossier** nommé **RawData**.
 
-1. À partir de l’explorateur Lakehouse dans le lakehouse, sélectionnez **Fichiers > ... > Propriétés**.
+1. Depuis l’explorateur Lakehouse dans le lakehouse, sélectionnez **RawData > ... > Propriétés**.
 
 1. Copiez le **chemin ABFS** du dossier **RawData** dans un bloc-notes vide pour une utilisation ultérieure. Cela doit ressembler à ce qui suit :  `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
@@ -229,4 +229,4 @@ Une fois que vous avez fini d’explorer, vous pouvez supprimer l’espace de tr
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
 2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
