@@ -93,7 +93,7 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
 
 6. Sélectionnez **Publier** pour publier le flux de données. Attendez ensuite que le flux de données **Dataflow 1** soit créé dans votre espace de travail.
 
-7. Une fois publié, vous pouvez cliquer sur l’ellipse **(...)** dans votre espace de travail, sélectionner **Propriétés** et renommer votre flux de données.
+7. Une fois publié, vous pouvez cliquer sur les points de suspension **(...)** dans votre espace de travail, sélectionner **Propriétés** et renommer votre flux de données.
 
 ## Ajouter un flux de données à un pipeline
 
