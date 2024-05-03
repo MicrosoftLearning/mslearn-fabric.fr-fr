@@ -181,6 +181,8 @@ Maintenant que vous avez implémenté un notebook pour transformer des données 
 
     ![Capture d’écran d’un pipeline avec une activité Flux de données.](./Images/pipeline-run.png)
 
+> Remarque : Si vous recevez le message d’erreur * Les requêtes Spark SQL sont uniquement possibles dans le contexte d’un lakehouse. Attachez un lakehouse pour poursuivre* : Ouvrez votre bloc-notes, sélectionnez dans le volet gauche le lakehouse que vous avez créé, sélectionnez **Supprimer tous les lakehouses**, puis ajoutez-le à nouveau. Revenez au concepteur de pipeline et sélectionnez **&#9655 ; Exécuter**.
+
 8. Dans la barre de menus du hub sur le bord gauche du portail, sélectionnez votre lakehouse.
 9. Dans le volet **Explorateur**, développez **Tables** et sélectionnez la table **new_sales** pour afficher un aperçu des données qu’elle contient. Cette table a été créée par le notebook lors de son exécution par le pipeline.
 
