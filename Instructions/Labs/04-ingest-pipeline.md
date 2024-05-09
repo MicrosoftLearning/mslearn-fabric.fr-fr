@@ -49,6 +49,7 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
     - **URL** : `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Connexion** : créez une connexion
     - **Nom de connexion** : *spécifiez un nom unique*
+    - **Passerelle de données** : (aucune)
     - **Type d’authentification** : De base (*laissez le nom d’utilisateur et le mot de passe vides*)
 5. Sélectionnez **Suivant**. Vérifiez ensuite que les paramètres suivants sont sélectionnés :
     - **URL relative** : *Laissez vide*
@@ -64,7 +65,7 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
     - **Première ligne comme en-tête** : Sélectionné
     - **Type de compression** : Aucune
 7. Sélectionnez **Aperçu des données** pour afficher un échantillon des données qui seront ingérées. Fermez ensuite l’aperçu des données, puis sélectionnez **Suivant**.
-8. Dans la page **Choisir la destination des données**, sélectionnez votre lakehouse existant. Sélectionnez ensuite **Suivant**.
+8. Dans la page **Se connecter à la destination des données**, sélectionnez votre lakehouse existant. Sélectionnez ensuite **Suivant**.
 9. Définissez les options de destination des données suivantes, puis sélectionnez **Suivant** :
     - **Dossier racine** : Fichiers
     - **Nom du chemin d’accès au dossier** : new_data
