@@ -60,16 +60,23 @@ Vous allez maintenant créer des relations entre les tables pour analyser et vis
      *Remarque : Un modèle sémantique par défaut est créé automatiquement quand vous créez un point de terminaison d’analyse Entrepôt de données ou SQL dans Microsoft Fabric, et il hérite de la logique métier du lakehouse ou de l’entrepôt de données parent. Un modèle sémantique que vous créez vous-même, comme nous l’avons fait ici, est un modèle personnalisé que vous pouvez concevoir et modifier en fonction de vos besoins et de vos préférences spécifiques. Vous pouvez créer un modèle sémantique personnalisé en utilisant Power BI Desktop, le service Power BI ou d’autres outils qui se connectent à Microsoft Fabric.*
 
 1. Sélectionnez **Ouvrir un modèle données à partir du ruban**.
-   
+
     À présent, vous allez créer des relations entre les tables. Si vous avez l’habitude de créer des relations dans Power BI Desktop, ceci vous semblera familier.
 
     *En passant en revue le concept de schéma en étoile, nous allons organiser les tables de notre modèle en une table de faits et en tables de dimension. Dans ce modèle, la table **Trip** est notre table de faits, et nos dimensions sont **Date**, **Geography**et **Weather**.*
 
-1. Créez une relation entre la table **Date** et la table **Trip** en utilisant la colonne **DateID**. **Sélectionnez la colonne DateID** dans la table **Date** et **faites-la glisser au-dessus de la colonne DateID dans la table Trip**. Vous pouvez aussi sélectionner **Gérer les relations** dans le ruban, puis **Nouvelle relation**.
+1. Créez une relation entre la table **Date** et la table **Trip** en utilisant la colonne **DateID**.
 
-1. Vérifiez que la relation est une relation **Un à plusieurs** de la table **Date** vers la table **Trip**.
+    **Sélectionnez la colonne DateID** dans la table **Date** et *faites-la glisser au-dessus de la colonne DateID dans la table Trip*.
 
-1. Créez des relations vers la table de faits **Trip** depuis les dimensions **Geography** et **Weather**, en répétant l’étape ci-dessus. Vérifiez également que ces relations sont **Un à plusieurs**, avec une occurrence de la clé dans la table de dimension et plusieurs occurrences dans la table de faits. 
+    Vérifiez que la relation est une relation **Un à plusieurs** de la table **Date** vers la table **Trip**.
+
+1. Créez deux relations supplémentaires à la table de faits **Trip** comme suit :
+
+   - **Geography [GeographyID]** à **Trip [DropoffGeographyID]** (1:Many)
+   - **Weather [GeographyID]** à **Trip [DropoffGeographyID]** (1:Many)
+
+    > **Remarque** : vous devez modifier la cardinalité par défaut de la relation sur **1:Many** pour les deux relations.
 
 1. Faites glisser les tables dans une position telle que la table de faits **Trip** se trouve dans le bas du diagramme et que les tables restantes, qui sont des tables de dimension, se trouvent autour de la table de faits.
 
@@ -104,4 +111,3 @@ Vous disposez maintenant d’un modèle sémantique créé à partir de votre en
 1. Une fois que vous avez enregistré votre exploration, revenez à votre espace de travail pour voir votre entrepôt de données, votre modèle sémantique par défaut, le modèle sémantique que vous avez créé et votre exploration.
 
     ![Capture d’écran d’un espace de travail dans Fabric montrant un entrepôt de données, un modèle sémantique par défaut, un modèle sémantique et une exploration de données.](./Images/semantic-model-workspace.png)
-

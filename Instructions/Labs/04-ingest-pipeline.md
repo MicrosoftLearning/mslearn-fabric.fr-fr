@@ -50,8 +50,8 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
     - **Connexion** : créez une connexion
     - **Nom de connexion** : *spécifiez un nom unique*
     - **Passerelle de données** : (aucune)
-    - **Type d’authentification** : De base (*laissez le nom d’utilisateur et le mot de passe vides*)
-5. Sélectionnez **Suivant**. Vérifiez ensuite que les paramètres suivants sont sélectionnés :
+    - **Type d’authentification** : Anonyme
+5. Cliquez sur **Suivant**. Vérifiez ensuite que les paramètres suivants sont sélectionnés :
     - **URL relative** : *Laissez vide*
     - **Méthode de demande** : GET
     - **En-têtes supplémentaires** : *Laissez vide*
@@ -149,8 +149,7 @@ Maintenant que vous avez implémenté un notebook pour transformer des données 
     - **Général** :
         - **Nom** : Supprimer les anciens fichiers
     - **Source**
-        - **Type de magasin de données** : Espace de travail
-        - **Magasin de données d’espace de travail** : *Votre lakehouse*
+        - **Connexion** : *Votre lakehouse*
         - **Type de chemin de fichier** : Chemin de fichier générique
         - **Chemin du dossier** : Files / **new_data**
         - **Nom du fichier générique** : *.csv        
