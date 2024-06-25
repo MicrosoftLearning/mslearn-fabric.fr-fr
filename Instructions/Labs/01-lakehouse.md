@@ -43,7 +43,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 ## Charger un fichier
 
-Fabric offre plusieurs façons de charger des données dans le lakehouse, notamment la prise en charge intégrée des pipelines qui copient des sources externes de données et des flux de données (Gen 2) que vous pouvez définir à l’aide d’outils visuels basés sur Power Query. Toutefois, l’un des moyens les plus simples d’ingérer de petites quantités de données consiste à charger des fichiers ou des dossiers à partir de votre ordinateur local (ou d’une machine virtuelle de labo, le cas échéant).
+Fabric offre plusieurs façons de charger des données dans le lakehouse, notamment via la prise en charge intégrée des pipelines qui copient depuis des sources de données externes et des flux de données (Gen 2) que vous pouvez définir en utilisant des outils visuels basés sur Power Query. Toutefois, l’un des moyens les plus simples d’ingérer de petites quantités de données consiste à charger des fichiers ou des dossiers à partir de votre ordinateur local (ou d’une machine virtuelle de labo, le cas échéant).
 
 1. Téléchargez le fichier [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) à partir de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`, et enregistrez-le sous le nom **sales.csv** sur votre ordinateur local (ou machine virtuelle de labo, le cas échéant).
 
@@ -98,6 +98,7 @@ Lorsque vous créez un lakehouse et que vous y définissez des tables, un point 
    GROUP BY Item
    ORDER BY Revenue DESC;
     ```
+> **Remarque** : Si vous êtes connecté à une machine virtuelle de labo et rencontrez des problèmes lors de l’entrée de la requête SQL, vous pouvez télécharger le fichier [01-Snippets.txt](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/01/Assets/01-Snippets.txt) à partir de `https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/01/Assets/01-Snippets.txt` et l’enregistrer sur la machine virtuelle. Vous pouvez ensuite copier la requête à partir du fichier texte.
 
 3. Utilisez le bouton **&#9655; Exécuter** pour exécuter la requête et afficher les résultats, qui doivent montrer les recettes totales de chaque produit.
 
@@ -134,9 +135,11 @@ Les tables de votre lakehouse sont automatiquement ajoutées à un modèle séma
 
 1. En bas de la page Point de terminaison SQL, sélectionnez l’onglet **Modèle**. Le schéma du modèle de données pour le modèle sémantique est affiché.
 
-    ![Capture d’écran d’un modèle sémantique.](./Images/data-model.png)
+    ![Capture d’écran 2024-04-29 155248](https://github.com/afelix-95/mslearn-fabric/assets/148110824/ba9bd67d-8968-4c46-ac7a-f96a9f697f4c)
 
-    > **Remarque** : Dans cet exercice, le modèle sémantique se compose d’une seule table. Dans un scénario réel, vous créeriez probablement plusieurs tables dans votre lakehouse, chacune étant incluse dans le modèle. Vous pourriez ensuite définir des relations entre ces tables dans le modèle.
+    > **Remarque 1** : Dans cet exercice, le modèle sémantique se compose d’une seule table. Dans un scénario réel, vous créeriez probablement plusieurs tables dans votre lakehouse, chacune étant incluse dans le modèle. Vous pourriez ensuite définir des relations entre ces tables dans le modèle.
+    
+    > **Remarque 2** : Les vues `frequently_run_queries`, `long_running_queries`, `exec_sessions_history` et `exec_requests_history` font partie du schéma `queryinsights` créé automatiquement par Fabric. Il s’agit d’une fonctionnalité qui fournit une vue holistique de l’historique de l’activité de requête sur le point de terminaison d’analytique SQL. Étant donné que cette fonctionnalité n’entre pas dans l’étendue de cet exercice, ces vues doivent être ignorées pour l’instant.
 
 2. Dans le ruban de menu, sélectionnez l’onglet **Création de rapports**. Sélectionnez ensuite **Nouveau rapport**. Un nouvel onglet de navigateur s’ouvre, pour vous permettre de concevoir votre rapport.
 
@@ -169,4 +172,4 @@ Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’es
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
 2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

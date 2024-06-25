@@ -270,11 +270,11 @@ Une tâche courante des ingénieurs données consiste à ingérer des données d
 
     > **Remarque** : Le format *Parquet* est généralement préféré pour les fichiers de données que vous allez utiliser pour une analyse ou une ingestion plus approfondie dans un magasin analytique. Parquet est un format très efficace qui est pris en charge par la plupart des systèmes d’analytique de données à grande échelle. Parfois, votre besoin de transformation de données peut en fait simplement consister à convertir des données d’un autre format (comme CSV) vers Parquet !
 
-2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet **Lakehouses** à gauche, dans le menu **…** du nœud **Fichiers**, sélectionnez **Actualiser**, puis sélectionnez le dossier **transformed_orders** pour vérifier qu’il contient un nouveau dossier nommé **orders**, qui contient à son tour un ou plusieurs fichiers Parquet.
+2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet **Lakehouses** à gauche, dans le menu **…** du nœud **Fichiers**, sélectionnez **Actualiser**, puis sélectionnez le dossier **transformed_data** pour vérifier qu’il contient un nouveau dossier nommé **orders**, qui contient à son tour un ou plusieurs fichiers Parquet.
 
     ![Capture d’écran d’un dossier contenant des fichiers Parquet](./Images/saved-parquet.png)
 
-3. Ajoutez une nouvelle cellule avec le code suivant pour charger un nouveau dataframe à partir des fichiers Parquet figurant dans le dossier **transformed_orders/orders** :
+3. Ajoutez une nouvelle cellule avec le code suivant pour charger un nouveau dataframe à partir des fichiers Parquet du dossier **transformed_data/orders** :
 
     ```Python
    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
@@ -358,7 +358,7 @@ Bien qu’il soit utile d’incorporer des instructions SQL dans une cellule con
    GROUP BY YEAR(OrderDate)
    ORDER BY OrderYear;
     ```
-
+ 
 2. Exécutez la cellule et passez en revue les résultats. Observez que :
     - La ligne `%%sql` au début de la cellule (appelée *commande magique*) indique que le runtime de langage Spark SQL doit être utilisé à la place de PySpark pour exécuter le code dans cette cellule.
     - Le code SQL fait référence à la table **salesorders** que vous avez créée précédemment.
@@ -587,4 +587,4 @@ Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’es
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
 2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

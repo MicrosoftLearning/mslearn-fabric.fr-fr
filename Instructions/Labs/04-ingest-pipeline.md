@@ -39,7 +39,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 Un moyen simple d’ingérer des données consiste à utiliser une activité **Copier des données** dans un pipeline afin d’extraire les données d’une source et de les copier dans un fichier dans le lakehouse.
 
-1. Dans la page **Accueil** de votre lakehouse, sélectionnez **Nouveau pipeline de données**, puis créez un pipeline de données nommé **Ingérer des données de ventes**.
+1. Dans la page **Accueil** de votre lakehouse, sélectionnez **Obtenir des données**, puis sélectionnez **Nouveau pipeline de données** et créez un pipeline de données nommé **Ingérer des données de ventes**.
 2. Si l’Assistant **Copier des données** ne s’ouvre pas automatiquement, sélectionnez **Copier des données** dans la page de l’éditeur de pipeline.
 3. Dans l’Assistant **Copier des données**, dans la page **Choisir une source de données**, dans la section **Sources de données**, sélectionnez l’onglet **Protocole générique**, puis **HTTP**.
 
@@ -49,8 +49,9 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
     - **URL** : `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Connexion** : créez une connexion
     - **Nom de connexion** : *spécifiez un nom unique*
-    - **Type d’authentification** : De base (*laissez le nom d’utilisateur et le mot de passe vides*)
-5. Sélectionnez **Suivant**. Vérifiez ensuite que les paramètres suivants sont sélectionnés :
+    - **Passerelle de données** : (aucune)
+    - **Type d’authentification** : Anonyme
+5. Cliquez sur **Suivant**. Vérifiez ensuite que les paramètres suivants sont sélectionnés :
     - **URL relative** : *Laissez vide*
     - **Méthode de demande** : GET
     - **En-têtes supplémentaires** : *Laissez vide*
@@ -64,7 +65,7 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
     - **Première ligne comme en-tête** : Sélectionné
     - **Type de compression** : Aucune
 7. Sélectionnez **Aperçu des données** pour afficher un échantillon des données qui seront ingérées. Fermez ensuite l’aperçu des données, puis sélectionnez **Suivant**.
-8. Dans la page **Choisir la destination des données**, sélectionnez votre lakehouse existant. Sélectionnez ensuite **Suivant**.
+8. Dans la page **Se connecter à la destination des données**, sélectionnez votre lakehouse existant. Sélectionnez ensuite **Suivant**.
 9. Définissez les options de destination des données suivantes, puis sélectionnez **Suivant** :
     - **Dossier racine** : Fichiers
     - **Nom du chemin d’accès au dossier** : new_data
@@ -148,8 +149,7 @@ Maintenant que vous avez implémenté un notebook pour transformer des données 
     - **Général** :
         - **Nom** : Supprimer les anciens fichiers
     - **Source**
-        - **Type de magasin de données** : Espace de travail
-        - **Magasin de données d’espace de travail** : *Votre lakehouse*
+        - **Connexion** : *Votre lakehouse*
         - **Type de chemin de fichier** : Chemin de fichier générique
         - **Chemin du dossier** : Files / **new_data**
         - **Nom du fichier générique** : *.csv        
@@ -181,6 +181,8 @@ Maintenant que vous avez implémenté un notebook pour transformer des données 
 
     ![Capture d’écran d’un pipeline avec une activité Flux de données.](./Images/pipeline-run.png)
 
+> Remarque : Si vous recevez le message d’erreur * Les requêtes Spark SQL sont uniquement possibles dans le contexte d’un lakehouse. Attachez un lakehouse pour poursuivre* : Ouvrez votre bloc-notes, sélectionnez dans le volet gauche le lakehouse que vous avez créé, sélectionnez **Supprimer tous les lakehouses**, puis ajoutez-le à nouveau. Revenez au concepteur de pipeline et sélectionnez **&#9655 ; Exécuter**.
+
 8. Dans la barre de menus du hub sur le bord gauche du portail, sélectionnez votre lakehouse.
 9. Dans le volet **Explorateur**, développez **Tables** et sélectionnez la table **new_sales** pour afficher un aperçu des données qu’elle contient. Cette table a été créée par le notebook lors de son exécution par le pipeline.
 
@@ -194,4 +196,4 @@ Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’es
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
 2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

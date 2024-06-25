@@ -94,7 +94,7 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données et fo
     La sortie affiche les lignes et les colonnes du jeu de données diabetes.
 
 1. Il existe deux onglets en haut du tableau affiché : **Tableau** et **Graphique**. Sélectionnez un **graphique**.
-1. Sélectionnez les **options Afficher** en haut à droite du graphique pour modifier la visualisation.
+1. Sélectionnez l’option **Personnaliser le graphique** en haut à droite du graphique pour modifier la visualisation.
 1. Remplacez le graphique par les paramètres suivants :
     * **Type de graphique** : `Box plot`
     * **Clé** : *laissez ce champ vide*
@@ -112,8 +112,7 @@ Maintenant que vous avez ingéré et exploré les données, vous pouvez les tran
    df.head()
     ```
 
-1. Sélectionnez **Données** dans le ruban du notebook, puis la liste déroulante **Transformer DataFrame dans Data Wrangler**.
-1. Sélectionnez le jeu de données `df`. Lorsque Data Wrangler est lancé, il génère une vue d’ensemble descriptive du dataframe dans le panneau **Résumé**.
+1. Sélectionnez **Data Wrangler** dans le ruban du notebook, puis sélectionnez le jeu de données `df`. Lorsque Data Wrangler est lancé, il génère une vue d’ensemble descriptive du dataframe dans le panneau **Résumé**.
 
     Actuellement, la colonne d’étiquette est `Y`, qui est une variable continue. Pour entraîner un modèle Machine Learning qui prédit Y, vous devez entraîner un modèle de régression. Les valeurs (prédites) de Y peuvent être difficiles à interpréter. Au lieu de cela, nous pourrions explorer la formation d’un modèle de classification qui prédit si quelqu’un est à faible risque ou à risque élevé de développer le diabète. Pour pouvoir entraîner un modèle de classification, vous devez créer une colonne d’étiquette binaire basée sur les valeurs de `Y`.
 
@@ -247,5 +246,5 @@ Dans cet exercice, vous avez créé un notebook et entraîné un modèle Machine
 Si vous avez terminé d’explorer votre modèle et vos expériences, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

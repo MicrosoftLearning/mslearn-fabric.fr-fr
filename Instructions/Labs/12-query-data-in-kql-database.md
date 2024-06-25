@@ -20,18 +20,18 @@ Ce labo est d’une durée de **25** minutes environ.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Analyse en temps réel**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Real-Time Intelligence**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
-Dans ce labo, vous utilisez l’Analyse en temps réel (RTA) dans Fabric pour créer une base de données KQL à partir d’un exemple de flux d’événements. L’analyse en temps réel fournit facilement un exemple de jeu de données à utiliser pour explorer les fonctionnalités de l’analyse en temps réel (RTA). Vous utilisez cet échantillon de données pour créer des requêtes KQL/SQL et des ensembles de requêtes qui analysent les données en temps réel et permettent d’autres utilisations dans les processus descendants.
+Dans ce labo, vous allez utiliser Real-Time Intelligence dans Fabric pour créer une base de données KQL à partir d’un exemple d’Eventstream. Real-Time Intelligence fournit à des fins pratiques un exemple de jeu de données que vous pouvez utiliser pour explorer les fonctionnalités de Real-Time Intelligence. Vous utilisez cet échantillon de données pour créer des requêtes KQL/SQL et des ensembles de requêtes qui analysent les données en temps réel et permettent d’autres utilisations dans les processus descendants.
 
 ## Créer une base de données KQL
 
-1. Dans **Real-Time Analytics**, cochez la case **Base de données KQL**.
+1. Dans **Real-Time Analytics**, cochez la case **Base de données KQL**.
 
    ![Image du choix de base de données KQL](./Images/select-kqldatabase.png)
 
@@ -305,4 +305,4 @@ La base de données KQL ne prend pas en charge T-SQL de manière native, mais el
 Dans cet exercice, vous avez créé une base de données KQL et configuré un exemple de jeu de données pour un interrogation. Après cela, vous avez interrogé les données à l’aide de KQL et de SQL. Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 1. Dans la barre de gauche, sélectionnez l’**icône** de votre espace de travail.
 2. Dans le menu ... de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
-3. Dans la section **Autre**, sélectionnez **Supprimer cet espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
