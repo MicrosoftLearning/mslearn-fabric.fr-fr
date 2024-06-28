@@ -167,7 +167,7 @@ Pour utiliser le modèle, vous allez avoir besoin d’un jeu de données des inf
 
    # Save the data in a delta table
    table_name = "diabetes_test"
-   df.write.format("delta").mode("overwrite").save(f"Tables/{table_name}")
+   df.write.format("delta").mode("overwrite").saveAsTable(table_name)
    print(f"Spark dataframe saved to delta table: {table_name}")
     ```
 
@@ -196,7 +196,7 @@ Maintenant vous pouvez utiliser le modèle entraîné précédemment pour géné
    df_test = model.transform(df)
 
    # Save the results (the original features PLUS the prediction)
-   df_test.write.format('delta').mode("overwrite").option("mergeSchema", "true").save(f"Tables/{table_name}")
+   df_test.write.format('delta').mode("overwrite").option("mergeSchema", "true").saveAsTable(table_name)
     ```
 
 1. Une fois le code terminé, sélectionnez les **...** à côté de la table **diabetes_test** dans le volet **Explorateur Lakehouse**, puis **Actualiser**. Un nouveau champ **prévisions** a été ajouté.
