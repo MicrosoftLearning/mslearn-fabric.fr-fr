@@ -143,42 +143,6 @@ Il est probable que votre tâche d’ingestion de données ne se termine pas par
 
 Vous avez réussi à vous connecter à des données externes, à les écrire dans un fichier parquet, à charger les données dans un DataFrame, à les transformer et à les charger dans une table Delta.
 
-## Optimiser les écritures de tables Delta
-
-Vous utilisez probablement le Big Data dans votre organisation et c’est pourquoi vous avez choisi les notebooks Fabric pour l’ingestion de données. Nous allons donc également expliquer comment optimiser l’ingestion et les lectures pour vos données. Tout d’abord, nous répétons les étapes de transformation et d’écriture dans une table Delta avec les optimisations d’écriture incluses.
-
-1. Créez une nouvelle cellule de code et insérez le code suivant :
-
-    ```python
-    from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
- 
-    # Read the parquet data from the specified path
-    raw_df = spark.read.parquet(output_parquet_path)    
-
-    # Add dataload_datetime column with current timestamp
-    opt_df = raw_df.withColumn("dataload_datetime", current_timestamp())
-    
-    # Filter columns to exclude any NULL values in storeAndFwdFlag
-    opt_df = opt_df.filter(opt_df["storeAndFwdFlag"].isNotNull())
-    
-    # Enable V-Order
-    spark.conf.set("spark.sql.parquet.vorder.enabled", "true")
-    
-    # Enable automatic Delta optimized write
-    spark.conf.set("spark.microsoft.delta.optimizeWrite.enabled", "true")
-    
-    # Load the filtered data into a Delta table
-    table_name = "yellow_taxi_opt"  # New table name
-    opt_df.write.format("delta").mode("append").saveAsTable(table_name)
-    
-    # Display results
-    display(opt_df.limit(1))
-    ```
-
-1. Vérifiez que vous avez les mêmes résultats qu’avant le code d’optimisation.
-
-À présent, prenez note des temps d’exécution pour les deux blocs de code. Vos temps peuvent varier, mais vous pouvez voir une nette amélioration des performances avec le code optimisé.
-
 ## Analyser les données de table Delta avec des requêtes SQL
 
 Ce labo est axé sur l’ingestion des données, ce qui explique surtout le processus *d’extraction, de transformation et de chargement*, mais il est également utile pour vous permettre d’afficher un aperçu des données.
@@ -223,7 +187,7 @@ Ce labo est axé sur l’ingestion des données, ce qui explique surtout le proc
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez utilisé des notebooks avec PySpark dans Fabric pour charger des données et les enregistrer dans Parquet. Vous avez ensuite utilisé ce fichier Parquet pour transformer davantage les données et optimiser les écritures de table Delta. Enfin, vous avez utilisé SQL pour interroger les tables Delta.
+Dans cet exercice, vous avez utilisé des notebooks avec PySpark dans Fabric pour charger des données et les enregistrer dans Parquet. Vous avez ensuite utilisé ce fichier Parquet pour transformer davantage les données. Enfin, vous avez utilisé SQL pour interroger les tables Delta.
 
 Une fois que vous avez fini d’explorer, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 

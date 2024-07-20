@@ -105,7 +105,7 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données et fo
 
 Maintenant que vous avez ingéré et exploré les données, vous pouvez les transformer. Vous pouvez exécuter du code dans un notebook ou utiliser Data Wrangler pour générer du code pour vous.
 
-1. Les données sont chargées en tant que trame de données Spark. Pour lancer data Wrangler, vous devez convertir les données en dataframe Pandas. Exécutez la cellule suivante dans votre notebook :
+1. Les données sont chargées en tant que trame de données Spark. Bien que Data Wrangler accepte des DataFrames Spark ou Pandas, il est actuellement optimisé pour fonctionner avec Pandas. Par conséquent, vous allez convertir les données en DataFrame Pandas. Exécutez la cellule suivante dans votre notebook :
 
     ```python
    df = df.toPandas()
