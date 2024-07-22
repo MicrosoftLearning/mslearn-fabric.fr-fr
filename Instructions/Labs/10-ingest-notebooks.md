@@ -123,7 +123,7 @@ Il est probable que votre tâche d’ingestion de données ne se termine pas par
     filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
     
     # Load the filtered data into a Delta table
-    table_name = "yellow_taxi"  # Replace with your desired table name
+    table_name = "yellow_taxi"
     filtered_df.write.format("delta").mode("append").saveAsTable(table_name)
     
     # Display results
@@ -164,26 +164,11 @@ Ce labo est axé sur l’ingestion des données, ce qui explique surtout le proc
     display(table_df.limit(10))
     ```
 
-1. Créez une autre cellule de code et insérez également le code suivant :
+1. Sélectionnez **&#9655; Run Cell** à côté de la cellule de code.
 
-    ```python
-    # Load table into df
-    delta_table_name = "yellow_taxi_opt"
-    opttable_df = spark.read.format("delta").table(delta_table_name)
-    
-    # Create temp SQL table
-    opttable_df.createOrReplaceTempView("yellow_taxi_opt")
-    
-    # SQL Query to confirm
-    opttable_df = spark.sql('SELECT * FROM yellow_taxi_opt')
-    
-    # Display results
-    display(opttable_df.limit(10))
-    ```
+     De nombreux analystes de données sont plus à l’aise avec la syntaxe SQL. Spark SQL est une API de langage SQL dans Spark que vous pouvez utiliser pour exécuter des instructions SQL, ou même pour conserver des données dans des tables relationnelles.
 
-1. Maintenant, sélectionnez la flèche &#9660; en regard du bouton **Exécuter la cellule** pour la première de ces deux requêtes, puis, dans la liste déroulante, sélectionnez **Exécuter cette cellule et celle en-dessous**.
-
-    Les deux dernières cellules de code sont alors exécutées. Notez la différence de temps d’exécution entre l’interrogation de la table avec des données non optimisées et une table avec des données optimisées.
+   Le code que vous venez d’exécuter crée une *vue* relationnelle des données dans un dataframe, puis utilise la bibliothèque **spark.sql** pour incorporer la syntaxe Spark SQL dans votre code Python et interroger la vue et retourner les résultats sous forme de dataframe.
 
 ## Nettoyer les ressources
 
