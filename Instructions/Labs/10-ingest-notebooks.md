@@ -123,7 +123,7 @@ Il est probable que votre tâche d’ingestion de données ne se termine pas par
     filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
     
     # Load the filtered data into a Delta table
-    table_name = "yellow_taxi"  # Replace with your desired table name
+    table_name = "yellow_taxi"
     filtered_df.write.format("delta").mode("append").saveAsTable(table_name)
     
     # Display results
@@ -142,42 +142,6 @@ Il est probable que votre tâche d’ingestion de données ne se termine pas par
     ![Capture d’écran d’une sortie réussie affichant une seule ligne](Images/notebook-transform-result.png)
 
 Vous avez réussi à vous connecter à des données externes, à les écrire dans un fichier parquet, à charger les données dans un DataFrame, à les transformer et à les charger dans une table Delta.
-
-## Optimiser les écritures de tables Delta
-
-Vous utilisez probablement le Big Data dans votre organisation et c’est pourquoi vous avez choisi les notebooks Fabric pour l’ingestion de données. Nous allons donc également expliquer comment optimiser l’ingestion et les lectures pour vos données. Tout d’abord, nous répétons les étapes de transformation et d’écriture dans une table Delta avec les optimisations d’écriture incluses.
-
-1. Créez une nouvelle cellule de code et insérez le code suivant :
-
-    ```python
-    from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
- 
-    # Read the parquet data from the specified path
-    raw_df = spark.read.parquet(output_parquet_path)    
-
-    # Add dataload_datetime column with current timestamp
-    opt_df = raw_df.withColumn("dataload_datetime", current_timestamp())
-    
-    # Filter columns to exclude any NULL values in storeAndFwdFlag
-    opt_df = opt_df.filter(opt_df["storeAndFwdFlag"].isNotNull())
-    
-    # Enable V-Order
-    spark.conf.set("spark.sql.parquet.vorder.enabled", "true")
-    
-    # Enable automatic Delta optimized write
-    spark.conf.set("spark.microsoft.delta.optimizeWrite.enabled", "true")
-    
-    # Load the filtered data into a Delta table
-    table_name = "yellow_taxi_opt"  # New table name
-    opt_df.write.format("delta").mode("append").saveAsTable(table_name)
-    
-    # Display results
-    display(opt_df.limit(1))
-    ```
-
-1. Vérifiez que vous avez les mêmes résultats qu’avant le code d’optimisation.
-
-À présent, prenez note des temps d’exécution pour les deux blocs de code. Vos temps peuvent varier, mais vous pouvez voir une nette amélioration des performances avec le code optimisé.
 
 ## Analyser les données de table Delta avec des requêtes SQL
 
@@ -200,30 +164,15 @@ Ce labo est axé sur l’ingestion des données, ce qui explique surtout le proc
     display(table_df.limit(10))
     ```
 
-1. Créez une autre cellule de code et insérez également le code suivant :
+1. Sélectionnez **&#9655; Run Cell** à côté de la cellule de code.
 
-    ```python
-    # Load table into df
-    delta_table_name = "yellow_taxi_opt"
-    opttable_df = spark.read.format("delta").table(delta_table_name)
-    
-    # Create temp SQL table
-    opttable_df.createOrReplaceTempView("yellow_taxi_opt")
-    
-    # SQL Query to confirm
-    opttable_df = spark.sql('SELECT * FROM yellow_taxi_opt')
-    
-    # Display results
-    display(opttable_df.limit(10))
-    ```
+     De nombreux analystes de données sont plus à l’aise avec la syntaxe SQL. Spark SQL est une API de langage SQL dans Spark que vous pouvez utiliser pour exécuter des instructions SQL, ou même pour conserver des données dans des tables relationnelles.
 
-1. Maintenant, sélectionnez la flèche &#9660; en regard du bouton **Exécuter la cellule** pour la première de ces deux requêtes, puis, dans la liste déroulante, sélectionnez **Exécuter cette cellule et celle en-dessous**.
-
-    Les deux dernières cellules de code sont alors exécutées. Notez la différence de temps d’exécution entre l’interrogation de la table avec des données non optimisées et une table avec des données optimisées.
+   Le code que vous venez d’exécuter crée une *vue* relationnelle des données dans un dataframe, puis utilise la bibliothèque **spark.sql** pour incorporer la syntaxe Spark SQL dans votre code Python et interroger la vue et retourner les résultats sous forme de dataframe.
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez utilisé des notebooks avec PySpark dans Fabric pour charger des données et les enregistrer dans Parquet. Vous avez ensuite utilisé ce fichier Parquet pour transformer davantage les données et optimiser les écritures de table Delta. Enfin, vous avez utilisé SQL pour interroger les tables Delta.
+Dans cet exercice, vous avez utilisé des notebooks avec PySpark dans Fabric pour charger des données et les enregistrer dans Parquet. Vous avez ensuite utilisé ce fichier Parquet pour transformer davantage les données. Enfin, vous avez utilisé SQL pour interroger les tables Delta.
 
 Une fois que vous avez fini d’explorer, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 

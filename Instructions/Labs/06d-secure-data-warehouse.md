@@ -8,9 +8,7 @@ lab:
 
 Les autorisations Microsoft Fabric et les autorisations SQL granulaires fonctionnent ensemble pour régir l’accès à l’entrepôt et les autorisations utilisateur. Dans cet exercice, vous allez sécuriser les données en utilisant des autorisations granulaires, la sécurité au niveau des colonnes, la sécurité au niveau des lignes et le masquage dynamique des données.
 
-> **Remarque** : Pour effectuer les exercices de ce labo, vous aurez besoin de deux utilisateurs : un utilisateur avec le rôle Administrateur d’espace de travail et un autre avec le rôle Viewer d’espace de travail. Pour attribuer des rôles à des espaces de travail, consultez [ Accorder l’accès à votre espace de travail ](
-https://learn.microsoft.com/fabric/get-started/give-access-workspaces
-).
+> **Remarque** : Pour effectuer les exercices de ce labo, vous aurez besoin de deux utilisateurs : un utilisateur avec le rôle Administrateur d’espace de travail et un autre avec le rôle Viewer d’espace de travail. Pour attribuer des rôles à des espaces de travail, consultez [ Accorder l’accès à votre espace de travail ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces).
 
 Ce labo est d’une durée de **45** minutes environ.
 
@@ -43,24 +41,24 @@ Les règles de masquage dynamique des données sont appliquées sur des colonnes
 
 1. Dans votre entrepôt, sélectionnez la vignette **T-SQL** et remplacez le code SQL par défaut par les instructions T-SQL suivantes pour créer une table et insérer et afficher des données.  
 
-    ```tsql
-    CREATE TABLE dbo.Customers
-    (   
-        CustomerID INT NOT NULL,   
-        FirstName varchar(50) MASKED WITH (FUNCTION = 'partial(1,"XXXXXXX",0)') NULL,     
-        LastName varchar(50) NOT NULL,     
-        Phone varchar(20) MASKED WITH (FUNCTION = 'default()') NULL,     
-        Email varchar(50) MASKED WITH (FUNCTION = 'email()') NULL   
-    );
-    
-    INSERT dbo.Customers (CustomerID, FirstName, LastName, Phone, Email) VALUES
-    (29485,'Catherine','Abel','555-555-5555','catherine0@adventure-works.com'),
-    (29486,'Kim','Abercrombie','444-444-4444','kim2@adventure-works.com'),
-    (29489,'Frances','Adams','333-333-3333','frances0@adventure-works.com');
-    
-    SELECT * FROM dbo.Customers;
-    
+    ```T-SQL
+   CREATE TABLE dbo.Customers
+   (   
+       CustomerID INT NOT NULL,   
+       FirstName varchar(50) MASKED WITH (FUNCTION = 'partial(1,"XXXXXXX",0)') NULL,     
+       LastName varchar(50) NOT NULL,     
+       Phone varchar(20) MASKED WITH (FUNCTION = 'default()') NULL,     
+       Email varchar(50) MASKED WITH (FUNCTION = 'email()') NULL   
+   );
+   
+   INSERT dbo.Customers (CustomerID, FirstName, LastName, Phone, Email) VALUES
+   (29485,'Catherine','Abel','555-555-5555','catherine0@adventure-works.com'),
+   (29486,'Kim','Abercrombie','444-444-4444','kim2@adventure-works.com'),
+   (29489,'Frances','Adams','333-333-3333','frances0@adventure-works.com');
+   
+   SELECT * FROM dbo.Customers;
     ```
+
     Quand des utilisateurs qui ne sont pas autorisés à voir des données non masquées interrogent la table, la colonne **FirstName** va afficher la première lettre de la chaîne avec XXXXXXX, sans aucun des derniers caractères. La colonne **Phone** va afficher xxxx. La colonne **Email** va afficher la première lettre de l’adresse e-mail suivie de `XXX@XXX.com`. Cette approche garantit que les données sensibles restent confidentielles, tout en permettant aux utilisateurs restreints d’interroger la table.
 
 2. Utilisez le bouton **&#9655; Exécuter** pour exécuter le script SQL, qui crée une table nommée **Customers** dans le schéma **dbo** de l’entrepôt de données.
@@ -69,20 +67,21 @@ Les règles de masquage dynamique des données sont appliquées sur des colonnes
 
 4. Connectez-vous en tant qu’utilisateur de test membre du rôle d’espace de travail **Viewer** et exécutez l’instruction T-SQL suivante.
 
-    ```tsql
+    ```T-SQL
     SELECT * FROM dbo.Customers;
     ```
+    
     L’utilisateur de test n’a pas reçu l’autorisation UNMASK : les données retournées pour les colonnes FirstName, Phone et Email sont donc masquées, car ces colonnes ont été définies avec un masque dans l’instruction `CREATE TABLE`.
 
 5. Reconnectez-vous en tant qu’Administrateur d’espace de travail (vous-même) et exécutez les instructions T-SQL suivantes afin de supprimer le masquage des données pour l’utilisateur de test. Remplacez `<username>@<your_domain>.com` par le nom de l’utilisateur que vous testez, qui est membre du rôle d’espace de travail **Viewer**. 
 
-    ```tsql
+    ```T-SQL
     GRANT UNMASK ON dbo.Customers TO [<username>@<your_domain>.com];
     ```
 
 6. Connectez-vous à nouveau en tant qu’utilisateur de test et exécutez l’instruction T-SQL suivante.
 
-    ```tsql
+    ```T-SQL
     SELECT * FROM dbo.Customers;
     ```
 
@@ -94,27 +93,27 @@ La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’a
 
 1. Dans l’entrepôt que vous avez créé dans le dernier exercice, sélectionnez la liste déroulante **Nouvelle requête SQL**.  Sous l’en-tête **Vide**, sélectionnez **Nouvelle requête SQL**.
 
-2. Créer une table et y insérer des données. Pour pouvoir tester la sécurité au niveau des lignes dans une étape ultérieure, remplacez `<username1>@<your_domain>.com` par un nom d’utilisateur de votre environnement, et remplacez `<username2>@<your_domain>.com` par votre nom d’utilisateur.
+2. Créer une table et y insérer des données. Pour pouvoir tester la sécurité au niveau des lignes dans une étape ultérieure, remplacez `username1@your_domain.com` par un nom d’utilisateur de votre environnement, et remplacez `username2@your_domain.com` par votre nom d’utilisateur.
 
-    ```tsql
-    CREATE TABLE dbo.Sales  
-    (  
-        OrderID INT,  
-        SalesRep VARCHAR(60),  
-        Product VARCHAR(10),  
-        Quantity INT  
-    );
-     
-    --Populate the table with 6 rows of data, showing 3 orders for each test user. 
-    INSERT dbo.Sales (OrderID, SalesRep, Product, Quantity) VALUES
-    (1, '<username1>@<your_domain>.com', 'Valve', 5),   
-    (2, '<username1>@<your_domain>.com', 'Wheel', 2),   
-    (3, '<username1>@<your_domain>.com', 'Valve', 4),  
-    (4, '<username2>@<your_domain>.com', 'Bracket', 2),   
-    (5, '<username2>@<your_domain>.com', 'Wheel', 5),   
-    (6, '<username2>@<your_domain>.com', 'Seat', 5);  
-     
-    SELECT * FROM dbo.Sales;  
+    ```T-SQL
+   CREATE TABLE dbo.Sales  
+   (  
+       OrderID INT,  
+       SalesRep VARCHAR(60),  
+       Product VARCHAR(10),  
+       Quantity INT  
+   );
+    
+   --Populate the table with 6 rows of data, showing 3 orders for each test user. 
+   INSERT dbo.Sales (OrderID, SalesRep, Product, Quantity) VALUES
+   (1, '<username1>@<your_domain>.com', 'Valve', 5),   
+   (2, '<username1>@<your_domain>.com', 'Wheel', 2),   
+   (3, '<username1>@<your_domain>.com', 'Valve', 4),  
+   (4, '<username2>@<your_domain>.com', 'Bracket', 2),   
+   (5, '<username2>@<your_domain>.com', 'Wheel', 5),   
+   (6, '<username2>@<your_domain>.com', 'Seat', 5);  
+    
+   SELECT * FROM dbo.Sales;  
     ```
 
 3. Utilisez le bouton **&#9655; Exécuter** pour exécuter le script SQL, qui crée une table nommée **Ventes** dans le schéma **dbo** de l’entrepôt de données.
@@ -122,47 +121,45 @@ La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’a
 4. Ensuite, dans le volet **Explorateur**, développez **Schémas** > **dbo** > **Tables** et vérifiez que la table **Ventes** a été créée.
 5. Créez un schéma, un prédicat de sécurité défini en tant que fonction et une stratégie de sécurité.  
 
-    ```tsql
-    --Create a separate schema to hold the row-level security objects (the predicate function and the security policy)
-    CREATE SCHEMA rls;
-    GO
-    
-    /*Create the security predicate defined as an inline table-valued function.
-    A predicate evaluates to true (1) or false (0). This security predicate returns 1,
-    meaning a row is accessible, when a row in the SalesRep column is the same as the user
-    executing the query.*/
-
-    --Create a function to evaluate who is querying the table
-    CREATE FUNCTION rls.fn_securitypredicate(@SalesRep AS VARCHAR(60)) 
-        RETURNS TABLE  
-    WITH SCHEMABINDING  
-    AS  
-        RETURN SELECT 1 AS fn_securitypredicate_result   
-    WHERE @SalesRep = USER_NAME();
-    GO
-
-    /*Create a security policy to invoke and enforce the function each time a query is run on the Sales table.
-    The security policy has a filter predicate that silently filters the rows available to 
-    read operations (SELECT, UPDATE, and DELETE). */
-    CREATE SECURITY POLICY SalesFilter  
-    ADD FILTER PREDICATE rls.fn_securitypredicate(SalesRep)   
-    ON dbo.Sales  
-    WITH (STATE = ON);
-    GO
+    ```T-SQL
+   --Create a separate schema to hold the row-level security objects (the predicate function and the security policy)
+   CREATE SCHEMA rls;
+   GO
+   
+   /*Create the security predicate defined as an inline table-valued function.
+   A predicate evaluates to true (1) or false (0). This security predicate returns 1,
+   meaning a row is accessible, when a row in the SalesRep column is the same as the user
+   executing the query.*/   
+   --Create a function to evaluate who is querying the table
+   CREATE FUNCTION rls.fn_securitypredicate(@SalesRep AS VARCHAR(60)) 
+       RETURNS TABLE  
+   WITH SCHEMABINDING  
+   AS  
+       RETURN SELECT 1 AS fn_securitypredicate_result   
+   WHERE @SalesRep = USER_NAME();
+   GO   
+   /*Create a security policy to invoke and enforce the function each time a query is run on the Sales table.
+   The security policy has a filter predicate that silently filters the rows available to 
+   read operations (SELECT, UPDATE, and DELETE). */
+   CREATE SECURITY POLICY SalesFilter  
+   ADD FILTER PREDICATE rls.fn_securitypredicate(SalesRep)   
+   ON dbo.Sales  
+   WITH (STATE = ON);
+   GO
     ```
 
 6. Utilisez le bouton **&#9655; Exécuter** pour exécuter le script SQL.
 7. Ensuite, dans le volet **Explorateur**, développez **Schémas** > **rls** > **Fonctions** et vérifiez que la fonction a été créée.
 8. Connectez-vous à Fabric en tant qu’utilisateur par lequel vous avez remplacé `<username1>@<your_domain>.com`, dans l’instruction `INSERT` pour la table Sales. Vérifiez que vous êtes connecté en tant que cet utilisateur en exécutant le T-SQL suivant.
 
-    ```tsql
-    SELECT USER_NAME();
+    ```T-SQL
+   SELECT USER_NAME();
     ```
 
 9. Interrogez la table **Sales** pour vérifier que la sécurité au niveau des lignes fonctionne comme prévu. Vous devez voir seulement les données qui répondent aux conditions du prédicat de sécurité défini pour l’utilisateur sous lequel vous êtes connecté.
 
-    ```tsql
-    SELECT * FROM dbo.Sales;
+    ```T-SQL
+   SELECT * FROM dbo.Sales;
     ```
 
 ## Implémenter la sécurité au niveau des colonnes
@@ -173,40 +170,38 @@ La sécurité au niveau des colonnes vous permet de désigner les utilisateurs q
 
 2. Créez une table et insérez des données dans la table.
 
-    ```tsql
-    CREATE TABLE dbo.Orders
-    (   
-        OrderID INT,   
-        CustomerID INT,  
-        CreditCard VARCHAR(20)      
-    );
-
-    INSERT dbo.Orders (OrderID, CustomerID, CreditCard) VALUES
-    (1234, 5678, '111111111111111'),
-    (2341, 6785, '222222222222222'),
-    (3412, 7856, '333333333333333');
-
-    SELECT * FROM dbo.Orders;
+    ```T-SQL
+   CREATE TABLE dbo.Orders
+   (   
+       OrderID INT,   
+       CustomerID INT,  
+       CreditCard VARCHAR(20)      
+   );   
+   INSERT dbo.Orders (OrderID, CustomerID, CreditCard) VALUES
+   (1234, 5678, '111111111111111'),
+   (2341, 6785, '222222222222222'),
+   (3412, 7856, '333333333333333');   
+   SELECT * FROM dbo.Orders;
      ```
 
 3. Refuser l’autorisation d’afficher une colonne dans la table. L’instruction T-SQL empêche `<username>@<your_domain>.com` de voir la colonne CreditCard de la table Orders. Dans l’instruction `DENY`, remplacez `<username>@<your_domain>.com` par un nom d’utilisateur de votre système qui a des autorisations **Viewer** sur l’espace de travail.
 
-     ```tsql
-    DENY SELECT ON dbo.Orders (CreditCard) TO [<username>@<your_domain>.com];
+     ```T-SQL
+   DENY SELECT ON dbo.Orders (CreditCard) TO [<username>@<your_domain>.com];
      ```
 
 4. Testez la sécurité au niveau des colonnes en vous connectant à Fabric en tant qu’utilisateur auquel vous avez refusé les autorisations de sélection.
 
 5. Interrogez la table Orders pour confirmer que la sécurité au niveau des colonnes fonctionne comme prévu. La requête suivante va retourner seulement les colonnes OrderID et CustomerID, et non pas la colonne CreditCard.  
 
-    ```tsql
-    SELECT * FROM dbo.Orders;
+    ```T-SQL
+   SELECT * FROM dbo.Orders;
     ```
 
     Vous recevrez une erreur car l’accès à la colonne CreditCard a été restreint.  Essayez en sélectionnant seulement les champs OrderID et CustomerID : la requête va réussir.
 
-    ```tsql   
-    SELECT OrderID, CustomerID from dbo.Orders
+    ```T-SQL
+   SELECT OrderID, CustomerID from dbo.Orders
     ```
 
 ## Configurer des autorisations granulaires SQL à l’aide de T-SQL
@@ -217,47 +212,45 @@ Fabric a un modèle d’autorisations qui vous permet de contrôler l’accès a
 
 2. Créez une procédure stockée et une table. Exécutez ensuite la procédure et interrogez la table.
 
-     ```tsql
-    CREATE PROCEDURE dbo.sp_PrintMessage
-    AS
-    PRINT 'Hello World.';
+     ```T-SQL
+   CREATE PROCEDURE dbo.sp_PrintMessage
+   AS
+   PRINT 'Hello World.';
+   GO   
+   CREATE TABLE dbo.Parts
+   (
+       PartID INT,
+       PartName VARCHAR(25)
+   );
+   
+   INSERT dbo.Parts (PartID, PartName) VALUES
+   (1234, 'Wheel'),
+   (5678, 'Seat');
     GO
-
-    CREATE TABLE dbo.Parts
-    (
-        PartID INT,
-        PartName VARCHAR(25)
-    );
-    
-    INSERT dbo.Parts (PartID, PartName) VALUES
-    (1234, 'Wheel'),
-    (5678, 'Seat');
-     GO
-    
-    /*Execute the stored procedure and select from the table and note the results you get
-    as a member of the Workspace Admin role. Look for output from the stored procedure on 
-    the 'Messages' tab.*/
-    EXEC dbo.sp_PrintMessage;
-    GO
-
-    SELECT * FROM dbo.Parts
+   
+   /*Execute the stored procedure and select from the table and note the results you get
+   as a member of the Workspace Admin role. Look for output from the stored procedure on 
+   the 'Messages' tab.*/
+   EXEC dbo.sp_PrintMessage;
+   GO   
+   SELECT * FROM dbo.Parts
      ```
 
-3. Ensuite, appliquez `DENY SELECT` sur la table à un utilisateur membre du rôle **Viewer d’espace de travail** et `GRANT EXECUTE` sur la procédure pour le même utilisateur. Remplacez `<username>@<your_domain>.com` par un nom d’utilisateur de votre environnement membre du rôle **Viewer d’espace de travail**. 
+3. Ensuite, appliquez `DENY SELECT` sur la table à un utilisateur membre du rôle **Viewer d’espace de travail** et `GRANT EXECUTE` sur la procédure pour le même utilisateur. Remplacez `<username>@<your_domain>.com` par un nom d’utilisateur de votre environnement membre du rôle **Viewer d’espace de travail**.
 
-     ```tsql
-    DENY SELECT on dbo.Parts to [<username>@<your_domain>.com];
+     ```T-SQL
+   DENY SELECT on dbo.Parts to [<username>@<your_domain>.com];
 
-    GRANT EXECUTE on dbo.sp_PrintMessage to [<username>@<your_domain>.com];
+   GRANT EXECUTE on dbo.sp_PrintMessage to [<username>@<your_domain>.com];
      ```
 
 4. Connectez-vous à Fabric en tant que l’utilisateur que vous avez spécifié dans les instructions `DENY` et `GRANT` à la place de `<username>@<your_domain>.com`. Testez ensuite les autorisations granulaires que vous avez appliquées en exécutant la procédure stockée et en interrogeant la table.  
 
-     ```tsql
-    EXEC dbo.sp_PrintMessage;
-    GO
+     ```T-SQL
+   EXEC dbo.sp_PrintMessage;
+   GO
    
-    SELECT * FROM dbo.Parts;
+   SELECT * FROM dbo.Parts;
      ```
 
 ## Nettoyer les ressources
