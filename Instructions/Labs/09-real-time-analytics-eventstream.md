@@ -53,8 +53,7 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 1. Vous pouvez nommer votre base de données et sélectionner une **Nouvelle base de données (par défaut)**, ou créer un **Nouveau raccourci de base de données (abonné)**.
 1. Sélectionnez **Créer**.
 
-     >[!Note]
-     > La fonctionnalité de base de données d’abonné vous permet d’attacher une base de données située dans un cluster différent à votre cluster Azure Data Explorer. La base de données d’abonné est jointe en mode lecture seule, ce qui permet d’afficher les données et d’exécuter des requêtes sur les données ingérées dans la base de données du responsable. La base de données d’abonné synchronise les modifications apportées aux bases de données de responsable. En raison de la synchronisation, il existe un décalage de données de quelques secondes à quelques minutes au niveau de la disponibilité des données. La durée du décalage dépend de la taille globale des métadonnées de la base de données du responsable. Les bases de données de responsable et d’abonné utilisent le même compte de stockage pour extraire les données. Le stockage appartient à la base de données de responsable. La base de données d’abonné affiche les données sans qu’il soit nécessaire de les ingérer. Étant donné que la base de données jointe est une base de données en lecture seule, les données, les tables et les stratégies de la base de données ne peuvent pas être modifiées, à l’exception de la stratégie de mise en cache, des principaux et des autorisations.
+     >**Remarque :** la fonctionnalité de base de données d’abonné vous permet d’attacher une base de données située dans un cluster différent à votre cluster Azure Data Explorer. La base de données d’abonné est jointe en mode lecture seule, ce qui permet d’afficher les données et d’exécuter des requêtes sur les données ingérées dans la base de données du responsable. La base de données d’abonné synchronise les modifications apportées aux bases de données de responsable. En raison de la synchronisation, il existe un décalage de données de quelques secondes à quelques minutes au niveau de la disponibilité des données. La durée du décalage dépend de la taille globale des métadonnées de la base de données du responsable. Les bases de données de responsable et d’abonné utilisent le même compte de stockage pour extraire les données. Le stockage appartient à la base de données de responsable. La base de données d’abonné affiche les données sans qu’il soit nécessaire de les ingérer. Étant donné que la base de données jointe est une base de données en lecture seule, les données, les tables et les stratégies de la base de données ne peuvent pas être modifiées, à l’exception de la stratégie de mise en cache, des principaux et des autorisations.
 
    ![Image du choix de la base de données kql](./Images/create-kql-database-eventhouse.png)
 
@@ -75,17 +74,15 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 ## Créer un flux d’événements
 
 1. Dans la barre de menus, sélectionnez **Real-Time Intelligence** (l’icône ressemble au ![logo Real-Time Intelligence](./Images/rta_logo.png))
-2. Sous **Nouveau**, sélectionnez **Flux d’événements (préversion)**
+2. Sous **Nouveau**, sélectionnez **Eventstream**.
 
    ![Image du choix eventstream](./Images/select-eventstream.png)
 
-3. Vous êtes invité à **nommer** votre flux d’événements. Donnez à l’EventStream un nom dont vous vous souviendrez, par exemple ***MyStockES**, puis cliquez sur le bouton **Créer**.
+3. Vous êtes invité à **nommer** votre flux d’événements. Donnez à Eventstream un nom dont vous vous souviendrez, par exemple **MyStockES**, puis sélectionnez l’option **Fonctionnalités améliorées (préversion)** et cliquez sur le bouton **Créer**.
 
    ![Image du nom eventstream](./Images/name-eventstream.png)
 
-4. **Nommez** le **Nouvel Eventstream**, sélectionnez l’option **Fonctionnalités améliorées (préversion)**, puis sélectionnez le bouton **Créer**.
-
-     >[!Remarque :] La création de votre flux d’événements dans l’espace de travail ne prend que quelques instants. Une fois l’opération effectuée, vous êtes automatiquement redirigé vers l’éditeur principal, prêt à commencer à intégrer des sources dans votre flux d’événements.
+     >**Remarque :** la création de votre flux d’événements dans l’espace de travail ne prend que quelques instants. Une fois l’opération effectuée, vous êtes automatiquement redirigé vers l’éditeur principal, prêt à commencer à intégrer des sources dans votre flux d’événements.
 
 ## Établir une source d’Eventstream
 
@@ -93,18 +90,16 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
     [ ![Image de l’utilisation d’un exemple de données](./Images/eventstream-select-sample-data.png) ](./Images/eventstream-select-sample-data-large.png#lightbox)
 
-2.  Dans **Ajouter une source**, attribuez un nom à votre source, puis sélectionnez **Bicycles Reflex compatible)
-1.  Cliquez sur le bouton **Ajouter**.
+2.  Dans **Ajouter une source**, donnez un nom à votre source, puis sélectionnez **Bicycles (Reflex compatible)**.
+3.  Cliquez sur le bouton **Ajouter**.
 
     ![Sélectionner et nommer un flux d’événements lié à l’exemple de données](./Images/eventstream-sample-data.png)
 
-1. Une fois que vous avez sélectionné le bouton **Ajouter**, votre flux est mappé, et vous êtes automatiquement redirigé vers le **canevas d’Eventstream**.
+4. Une fois que vous avez sélectionné le bouton **Ajouter**, votre flux est mappé, et vous êtes automatiquement redirigé vers le **canevas d’Eventstream**.
 
    [ ![Passer en revue le canevas d’eventstream](./Images/real-time-intelligence-eventstream-sourced.png) ](./Images/real-time-intelligence-eventstream-sourced-large.png#lightbox)
-
-3. Saisissez les valeurs de vos données d’échantillonnage comme indiqué dans le tableau suivant, puis sélectionnez **Ajouter et configurer**.
  
- > [!REMARQUE :] Une fois que vous avez créé l’exemple de source de données, vous voyez qu’il est ajouté à votre Eventstream sur le canevas en mode d’édition. Pour implémenter cet exemple de données récemment ajouté, sélectionnez **Publier**.
+ > **Remarque :** une fois que vous avez créé l’exemple de source de données, vous voyez qu’il est ajouté à votre Eventstream sur le canevas en mode d’édition. Pour implémenter cet exemple de données récemment ajouté, sélectionnez **Publier**.
 
 ## Ajouter une activité Transformer des événements ou ajouter une destination
 
@@ -121,10 +116,9 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
         - ***Ingestion directe*** : ingestion des données directement dans une table KQL sans transformation.
         - ***Traitement des événements avant l’ingestion***: transformation des données avec le processeur d’événements avant d’envoyer à une table KQL.      
         
-        > [!WARNING]
         > **Avertissement :** Vous **NE POUVEZ PAS** modifier le mode d’ingestion une fois la destination de la base de données KQL ajoutée à l’Eventstream.     
 
-   - **Nom de la destination** : entrez un nom pour cette nouvelle destination Evenstream, par exemple "kql-dest."
+   - **Nom de la destination :** entrez un nom pour cette destination Evenstream, par exemple « kql-dest ».
    - **Espace de travail** : l’emplacement où se trouve votre base de données KQL.
    - **Base de données KQL** : nom de votre base de données KQL.
    - **Table de destination** : nom de votre table KQL. Vous pouvez également entrer un nom pour créer une table, par exemple « bike-count ».
@@ -138,25 +132,32 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
 1. Dans le canevas d’**Eventstream**, sélectionnez **Transformer les événements**.
 
+    ![Ajoutez Regrouper par à l’événement de transformation.](./Images/eventstream-add-aggregates.png)
+
     A. Sélectionnez **Regrouper par**.
 
     B. Sélectionnez **Modifier**, représenté par l’icône de ***crayon***.
 
-    C. Remplir les propriétés de la section de paramètres **Regrouper par**
+    C. Une fois que vous avez créé l’événement de transformation **Regrouper par**, vous devez le connecter de l’**Eventstream** à **Regrouper par**. Pour ce faire, sans utiliser du code, cliquez sur le point situé à droite de l’**Eventstream**, puis faites-le glisser vers le point situé à gauche de la nouvelle zone **Regrouper par**. 
 
-    [ ![Ajouter Regrouper par à l’événement de transformation.](./Images/eventstream-add-aggregates.png) ](./Images/eventstream-add-aggregates-large.png)
+    ![Ajoutez un lien entre l’Eventstream et Regrouper par.](./Images/group-by-drag-connectors.png)    
 
-2. Une fois que vous avez créé l’événement de transformation **Regrouper par**, vous devez le connecter de l’**Eventstream** à **Regrouper par**. Pour ce faire, sans utiliser du code, cliquez sur le point situé à droite de l’**Eventstream**, puis faites-le glisser vers le point situé à gauche de la nouvelle zone **Regrouper par**.
+2. Renseignez les propriétés de la section de paramètres **Regrouper par** :
+    - **Nom de l’opération :** entrez un nom pour cet événement de transformation
+    - **Type d’agrégat :** Somme
+    - **Champ :** No_Bikes
+    - **Nom :** SUM_No_Bikes
+    - **Regrouper les agrégations par :** Rue
+      
+3. Sélectionnez **Ajouter**, puis sélectionnez **Enregistrer**.
 
-   [ ![Ajouter un lien entre l’Eventstream et Regrouper par.](./Images/group-by-drag-connectors.png) ](./Images/group-by-drag-connectors-large.png)
-
-3. De la même manière, vous pouvez pointer sur la flèche entre le **flux d’événements** et ***kql_dest***, puis sélectionner la ***poubelle***
+4. De la même manière, vous pouvez survoler avec le pointeur de la souris la flèche située entre le **flux d’événements** et ***kql-dest***, puis sélectionner la ***poubelle**. Vous pouvez ensuite connecter l’événement **Regrouper par** à **kql-dest**.
 
    [ ![Supprimer un lien entre deux événements](./Images/delete-flow-arrows.png) ](./Images/delete-flow-arrows-large.png)
 
-    > [!REMARQUE :] Chaque fois que vous ajoutez ou supprimez des connecteurs, vous devez reconfigurer les objets de destination.
+    > **Remarque :** chaque fois que vous ajoutez ou supprimez des connecteurs, vous devez reconfigurer les objets de destination.
 
-
+5. Sélectionnez le crayon sous **kql-dest** et créez une table de destination nommée **Bike_sum** qui recevra la sortie de l’événement **Regrouper par**.
 
 ## Requêtes KQL
 
@@ -166,7 +167,7 @@ Une requête KQL (Kusto Query Language, langage de requête Kusto) est une requ�
 
 1. Accédez à la base de données KQL qui vient d’être créée et remplie de données :
 
-    A.  Sélectionnez **kql_dest** 
+    A.  Sélectionnez la destination **kql-dest**. 
 
     B. Sélectionnez le lien hypertexte **Ouvrir l’élément**, situé sur la ligne **Élément connexe**
 
@@ -176,11 +177,11 @@ Une requête KQL (Kusto Query Language, langage de requête Kusto) est une requ�
 
    [ ![Supprimer un lien entre deux événements](./Images/kql-query-sample.png) ](./Images/kql-query-sample-large.png)
 
-3. L’exemple de requête s’ouvre dans le volet **Explorer vos données** avec le contexte de table déjà renseigné. Cette première requête utilise l’opérateur take pour retourner un nombre restreint d’enregistrements, et est utile pour obtenir un premier aperçu de la structure des données et des valeurs possibles. Les exemples de requêtes renseignées automatiquement sont exécutés automatiquement. Les résultats de la requête s’affichent dans le volet des résultats.
+3. L’exemple de requête s’ouvre dans le volet **Explorer vos données** avec le contexte de table déjà renseigné. Cette première requête utilise l’opérateur `take` pour renvoyer un échantillon de nombre d’enregistrements. Elle est utile pour avoir un premier aperçu de la structure des données et des valeurs possibles. Les exemples de requêtes renseignées automatiquement sont exécutés automatiquement. Les résultats de la requête s’affichent dans le volet des résultats.
 
    ![Image des résultats de la requête KQL](./Images/kql-query-results.png)
 
-4. Retournez à l’arborescence des données afin de sélectionner la requête suivante, qui utilise l’opérateur summarize pour compter le nombre d’enregistrements ingérés par intervalles de 15 minutes.
+4. Retournez à l’arborescence des données afin de sélectionner la requête suivante, **Résumer les ingestions par heure**, qui utilise l’opérateur `summarize` pour compter le nombre d’enregistrements ingérés dans l’intervalle donné.
 
    ![Image des résultats de la requête KQL](./Images/kql-query-results-15min-intervals.png)
 
