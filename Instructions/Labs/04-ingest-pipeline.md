@@ -40,12 +40,13 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 Un moyen simple d’ingérer des données consiste à utiliser une activité **Copier des données** dans un pipeline afin d’extraire les données d’une source et de les copier dans un fichier dans le lakehouse.
 
 1. Dans la page **Accueil** de votre lakehouse, sélectionnez **Obtenir des données**, puis sélectionnez **Nouveau pipeline de données** et créez un pipeline de données nommé **Ingérer des données de ventes**.
-2. Si l’Assistant **Copier des données** ne s’ouvre pas automatiquement, sélectionnez **Copier des données** dans la page de l’éditeur de pipeline.
-3. Dans l’Assistant **Copier des données**, dans la page **Choisir une source de données**, dans la section **Sources de données**, sélectionnez l’onglet **Protocole générique**, puis **HTTP**.
+2. Si l’assistant **Copier des données** ne s’ouvre pas automatiquement, sélectionnez **Copier des données > Utiliser l’assistant de copie** dans la page de l’éditeur de pipeline.
+3. Dans l’assistant **Copier des données**, dans la page **Choisir une source de données**, saisissez HTTP dans la barre de recherche, puis sélectionnez **HTTP** dans la section **Nouvelles sources**.
+
 
     ![Capture d’écran de la page Choisir une source de données](./Images/choose-data-source.png)
 
-4. Sélectionnez **Suivant**, puis **Créer une connexion** et entrez les paramètres suivants pour la connexion à votre source de données :
+4. Dans le volet **Se connecter à la source de données**, saisissez les paramètres suivants pour la connexion à votre source de données :
     - **URL** : `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Connexion** : créez une connexion
     - **Nom de connexion** : *spécifiez un nom unique*
@@ -65,7 +66,7 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
     - **Première ligne comme en-tête** : Sélectionné
     - **Type de compression** : Aucune
 7. Sélectionnez **Aperçu des données** pour afficher un échantillon des données qui seront ingérées. Fermez ensuite l’aperçu des données, puis sélectionnez **Suivant**.
-8. Dans la page **Se connecter à la destination des données**, sélectionnez votre lakehouse existant. Sélectionnez ensuite **Suivant**.
+8. Dans la page **Choisir la destination des données**, sélectionnez **Hub de données OneLake**, puis votre lakehouse existant.
 9. Définissez les options de destination des données suivantes, puis sélectionnez **Suivant** :
     - **Dossier racine** : Fichiers
     - **Nom du chemin d’accès au dossier** : new_data

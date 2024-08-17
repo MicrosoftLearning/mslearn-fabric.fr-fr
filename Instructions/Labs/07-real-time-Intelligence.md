@@ -44,7 +44,7 @@ Le langage de requête Kusto (KQL) est utilisé pour interroger des données sta
 
    L’eventhouse est utilisé pour regrouper et gérer vos bases de données sur plusieurs projets. Une base de données KQL vide est créée automatiquement avec le nom de l’eventhouse.
    
-3. Une fois la nouvelle base de données créée, sélectionnez l’option permettant d’obtenir des données à partir d’un **fichier local**. Ensuite, utilisez l’Assistant pour importer les données dans une nouvelle table en sélectionnant les options suivantes :
+3. Une fois la nouvelle base de données créée, sélectionnez-la dans la liste située à gauche sous Bases de données KQL. Sélectionnez ensuite l’option permettant d’obtenir des données à partir du **fichier local**. Utilisez l’assistant pour importer les données dans une nouvelle table en sélectionnant les options suivantes :
     - **Destination** :
         - **Base de données** : *La base de données que vous avez créée est déjà sélectionnée*
         - **Table** : *Créez une table nommée* **sales** en cliquant sur le signe + à gauche de ***Nouvelle table***
@@ -59,7 +59,7 @@ Le langage de requête Kusto (KQL) est utilisé pour interroger des données sta
 
         ![Assistant Nouvelle table – Étape 3](./Images/import-wizard-local-file-3.png?raw=true)
 
-        - Dans cet écran, vous verrez que vos en-têtes de colonne se trouvent dans la première ligne ; même si le système les a détectés, nous devons néanmoins déplacer le curseur au-dessus de ces lignes et sélectionner **La première ligne est l’en-tête de colonne** pour éviter d’obtenir des erreurs.
+        - Dans cet écran, vous verrez que vos en-têtes de colonne se trouvent dans la première ligne. Même si le système les a détectés, nous devons néanmoins déplacer le curseur au-dessus de ces lignes **La première ligne est l’en-tête de colonne** pour éviter d’obtenir des erreurs.
         
         ![Assistant Nouvelle table – Étape 4](./Images/import-wizard-local-file-4.png?raw=true)
 
