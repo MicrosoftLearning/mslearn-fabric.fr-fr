@@ -16,7 +16,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Synapse Data Warehouse**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Data Warehouse**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -125,7 +125,7 @@ La plupart des requêtes dans un entrepôt de données relationnelles impliquent
    ORDER BY CalendarYear, MonthOfYear;
     ```
 
-    Notez que les attributs de la dimension temps vous permettent d’agréger les mesures de la table de faits à plusieurs niveaux hiérarchiques, dans le cas présent année et mois. C’est un modèle courant dans les entrepôts de données.
+    Notez que les attributs de la dimension de date vous permettent d’agréger les mesures de la table de faits à plusieurs niveaux hiérarchiques, dans le cas présent année et mois. C’est un modèle courant dans les entrepôts de données.
 
 2. Modifiez la requête comme suit pour ajouter une deuxième dimension à l’agrégation.
 
@@ -217,7 +217,7 @@ Vous pouvez facilement visualiser les données dans une seule requête ou dans v
       - **ProductKey**
       - **ProductAltKey** 
 
-1. Vous êtes maintenant prêt à créer un rapport et à rendre ce jeu de données disponible pour d’autres utilisateurs. Dans le menu Accueil, sélectionnez **Nouveau rapport**. Ceci va ouvrir une nouvelle fenêtre, où vous pouvez créer un rapport Power BI.
+1. Vous êtes maintenant prêt à créer un rapport et à rendre ce jeu de données disponible pour d’autres utilisateurs. Dans le menu Rapports, sélectionnez **Nouveau rapport**. Ceci va ouvrir une nouvelle fenêtre, où vous pouvez créer un rapport Power BI.
 
 1. Dans le volet **Données**, développez **FactSalesOrder**. Notez que les colonnes que vous avez masquées ne sont plus visibles. 
 
