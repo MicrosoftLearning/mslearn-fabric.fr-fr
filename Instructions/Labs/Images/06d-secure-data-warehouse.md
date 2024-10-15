@@ -25,7 +25,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 ## Créer un entrepôt de données
 
-Ensuite, vous allez créer un entrepôt de données dans l’espace de travail que vous venez de créer. La page d’accueil Data Warehouse comprend un raccourci permettant de créer un entrepôt :
+Ensuite, créez un entrepôt de données dans l’espace de travail que vous venez de créer. La page d’accueil Data Warehouse comprend un raccourci permettant de créer un entrepôt :
 
 1. Dans la page d’accueil **Synapse Data Warehouse**, créez un **entrepôt** avec le nom de votre choix.
 
@@ -35,7 +35,7 @@ Ensuite, vous allez créer un entrepôt de données dans l’espace de travail q
 
 ## Appliquer un masquage dynamique des données aux colonnes d’une table
 
-Les règles de masquage dynamique des données sont appliquées sur des colonnes individuelles au niveau de la table afin que toutes les requêtes soient affectées par le masquage. Les utilisateurs qui n’ont pas d’autorisations explicites pour afficher les données confidentielles voient les valeurs masquées dans les résultats de requête, contrairement à ceux disposant d’une autorisation d’affichage des données. Il existe quatre types de masques : par défaut, adresse e-mail, chaîne aléatoire et personnalisée. Dans cet exercice, vous allez appliquer un masque par défaut, un masque d’adresse e-mail et un masque de chaîne personnalisé.
+Les règles de masquage dynamique des données sont appliquées sur des colonnes individuelles au niveau de la table afin que toutes les requêtes soient affectées par le masquage. Les utilisateurs qui n’ont pas d’autorisations explicites pour afficher les données confidentielles voient les valeurs masquées dans les résultats de requête, tandis que les utilisateurs disposant d’une autorisation d’affichage des données ne le voient pas. Il existe quatre types de masques : par défaut, e-mail, chaîne aléatoire et personnalisée. Dans cet exercice, vous allez appliquer un masque par défaut, un masque de messagerie et un masque de chaîne personnalisé.
 
 1. Dans votre entrepôt, sélectionnez la vignette **T-SQL** et remplacez le code SQL par défaut par les instructions T-SQL suivantes pour créer une table et insérer et afficher des données.  Les masques appliqués dans l’instruction `CREATE TABLE` effectuent les opérations suivantes :
 
@@ -68,7 +68,7 @@ Les règles de masquage dynamique des données sont appliquées sur des colonnes
 
 3. Ensuite, dans le volet **Explorateur**, développez **Schémas** > **dbo** > **Tables** et vérifiez que la table **Client** a été créée. L’instruction SELECT retourne des données non masquées, car vous êtes connecté en tant qu’administrateur d’espace de travail qui peut voir les données non masquées.
 
-4. Connectez-vous en tant qu’utilisateur de test membre du rôle d’espace de travail **viewer** et exécutez l’instruction T-SQL suivante.
+4. Connectez-vous en tant qu’utilisateur de test membre du rôle d’espace de travail de la **viewer** et exécutez l’instruction T-SQL suivante.
 
     ```sql
     SELECT * FROM dbo.Customer;
@@ -95,7 +95,7 @@ Les règles de masquage dynamique des données sont appliquées sur des colonnes
 
 ## Appliquer la sécurité au niveau des lignes
 
-La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’accès aux lignes en fonction de l’identité ou du rôle de l’utilisateur exécutant une requête.  Dans cet exercice, vous limiterez l’accès aux lignes en créant une stratégie de sécurité et un prédicat de sécurité défini comme une TVF inline.
+La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’accès aux lignes en fonction de l’identité ou du rôle de l’utilisateur exécutant une requête.  Dans cet exercice, vous limiterez l’accès aux lignes en créant une stratégie de sécurité et un prédicat de sécurité défini comme une fonction table inline.
 
 1. Dans l’entrepôt que vous avez créé dans le dernier exercice, sélectionnez la liste déroulante **Nouvelle requête SQL**.  Sous la liste déroulante sous l’en-tête **Vide**, sélectionnez **Nouvelle requête SQL**.
 

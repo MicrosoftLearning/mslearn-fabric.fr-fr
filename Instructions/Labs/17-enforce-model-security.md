@@ -4,7 +4,7 @@ lab:
   module: Design and build tabular models
 ---
 
-# Appliquer la sécurité des modèles
+# Appliquer la sécurité du modèle sémantique
 
 Dans cet exercice, vous allez mettre à jour un modèle de données prédéfini pour appliquer la sécurité. Plus précisément, les vendeurs de l’entreprise Adventure Works ne doivent être en mesure de voir que les données de vente liées à la région qui leur est affectée.
 

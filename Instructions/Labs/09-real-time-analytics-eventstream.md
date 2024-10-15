@@ -3,7 +3,7 @@ lab:
   title: Bien démarrer avec Eventstream dans Microsoft Fabric
   module: Get started with Eventstream in Microsoft Fabric
 ---
-# Bien démarrer avec Eventstream dans Real-Time Intelligence
+# Bien démarrer avec Eventstream dans Microsoft Fabric
 
 Eventstream est une fonctionnalité de Microsoft Fabric qui capture, transforme et route les événements en temps réel vers différentes destinations avec une expérience sans code. Vous pouvez ajouter des sources de données d’événement, des destinations de routage, ainsi que le processeur d’événements lorsque la transformation est nécessaire, au flux d’événements. EventStore de Microsoft Fabric est une option de supervision qui tient à jour les événements du cluster et fournit un moyen de comprendre l’état de votre cluster ou de votre charge de travail à un moment donné. Vous pouvez interroger le service EventStore à propos des événements qui sont disponibles pour chaque entité et type d’entité du cluster. Cela signifie que vous pouvez rechercher des événements à différents niveaux, tels que les clusters, les nœuds, les applications, les services, les partitions et les réplicas de partition. Le service EventStore a également la possibilité de mettre en corrélation les événements du cluster. En examinant les événements écrits en même temps à partir de différentes entités dont les conséquences peuvent être mutuelles, le service EventStore peut lier ces événements pour aider à identifier les causes des activités du cluster. L’agrégation et la collecte d’événements avec EventFlow constituent une autre option pour superviser et diagnostiquer des clusters Microsoft Fabric.
 
@@ -15,7 +15,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Connectez-vous à [Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com` et sélectionnez **Power BI**.
+1. Connectez-vous sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` et sélectionnez **Power BI**.
 2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 3. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide, comme illustré ici :

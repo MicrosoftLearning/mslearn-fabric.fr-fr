@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Créer un Lakehouse
+# Créer un lakehouse Microsoft Fabric
 
 Les solutions d’analytique des données à grande échelle sont généralement conçues autour d’un *entrepôt de données*, dans lequel les données sont stockées dans des tables relationnelles et interrogées à l’aide de SQL. La croissance du « Big Data » (caractérisé par des *volumes* élevés, la *variété* et la *rapidité* de nouvelles ressources de données), ainsi que la disponibilité d’un stockage à faible coût et de technologies de calcul distribué à l’échelle du cloud, a donné lieu à une autre approche du stockage des données analytiques : le *lac de données*. Dans un lac de données, les données sont stockées sous forme de fichiers sans imposer de schéma fixe pour le stockage. Les ingénieurs données et les analystes cherchent de plus en plus à tirer parti des meilleures fonctionnalités de ces deux approches en les combinant dans un *data lakehouse*. Ce dernier permet de stocker les données dans des fichiers dans un lac de données et un schéma relationnel leur est appliqué en tant que couche de métadonnées afin qu’elles puissent être interrogées à l’aide de la sémantique SQL traditionnelle.
 
@@ -18,7 +18,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com) à l’adresse `https://app.fabric.microsoft.com`, sélectionnez **Synapse Engineering données**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Engineering données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence dans la section **Avancé** qui comprend la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -50,7 +50,7 @@ Fabric offre plusieurs façons de charger des données dans le lakehouse, notamm
    > **Remarque** : Pour télécharger le fichier, ouvrez un nouvel onglet dans le navigateur, puis collez l’URL. Cliquez avec le bouton droit n’importe où dans la page contenant les données, puis sélectionnez **Enregistrer sous** pour enregistrer la page en tant que fichier CSV.
 
 2. Retournez à l’onglet du navigateur web contenant votre lakehouse, puis dans le menu  **...** du dossier **Fichiers** dans le volet **Explorateur de lakehouse**, sélectionnez **Nouveau sous-dossier**, puis créez un sous-dossier nommé **Données**.
-3. Dans le menu  **...** du nouveau dossier **données**, sélectionnez **Charger** et **Charger le fichier**, puis chargez le fichier **sales.csv** à partir de votre ordinateur local (ou machine virtuelle de labo, le cas échéant).
+3. Dans le menu  **...** du nouveau dossier de **données**, sélectionnez **Charger** et **Charger les fichiers**, puis chargez le fichier **sales.csv** à partir de votre ordinateur local (ou machine virtuelle de labo, le cas échéant).
 4. Une fois le fichier chargé, sélectionnez le dossier **Fichiers/Données** et vérifiez que le fichier **sales.csv** a été chargé, comme indiqué ici :
 
     ![Capture d’écran du fichier sales.csv chargé dans un lakehouse.](./Images/uploaded-sales-file.png)
@@ -139,9 +139,9 @@ Les tables de votre lakehouse sont automatiquement ajoutées à un modèle séma
 
     > **Remarque 1** : Dans cet exercice, le modèle sémantique se compose d’une seule table. Dans un scénario réel, vous créeriez probablement plusieurs tables dans votre lakehouse, chacune étant incluse dans le modèle. Vous pourriez ensuite définir des relations entre ces tables dans le modèle.
     
-    > **Remarque 2** : Les vues `frequently_run_queries`, `long_running_queries`, `exec_sessions_history` et `exec_requests_history` font partie du schéma `queryinsights` créé automatiquement par Fabric. Il s’agit d’une fonctionnalité qui fournit une vue holistique de l’historique de l’activité de requête sur le point de terminaison d’analytique SQL. Étant donné que cette fonctionnalité n’entre pas dans l’étendue de cet exercice, ces vues doivent être ignorées pour l’instant.
+    > **Remarque 2** : les vues **frequently_run_queries**, **long_running_queries**, **exec_sessions_history** et **exec_requests_history** font partie du schéma **queryinsights** créé automatiquement par Fabric. Il s’agit d’une fonctionnalité qui fournit une vue holistique de l’historique de l’activité de requête sur le point de terminaison d’analytique SQL. Étant donné que cette fonctionnalité n’entre pas dans l’étendue de cet exercice, ces vues doivent être ignorées pour l’instant.
 
-2. Dans le ruban de menu, sélectionnez l’onglet **Création de rapports**. Sélectionnez ensuite **Nouveau rapport**. Un nouvel onglet de navigateur s’ouvre, pour vous permettre de concevoir votre rapport.
+2. Dans le ruban de menu, sélectionnez l’onglet **Création de rapports**. Sélectionnez ensuite **Nouveau rapport**. Votre page active passe à la vue Concepteur de rapports.
 
     ![Capture d’écran du concepteur de rapports.](./Images/report-designer.png)
 
@@ -157,8 +157,8 @@ Les tables de votre lakehouse sont automatiquement ajoutées à un modèle séma
 
     ![Capture d’écran d’un rapport contenant un graphique à barres groupées.](./Images/clustered-bar-chart.png)
 
-5. Dans le menu **File** (Fichier), sélectionnez **Save** (Enregistrer). Enregistrez ensuite le rapport sous le nom **Rapport des ventes d’articles** dans l’espace de travail que vous avez créé précédemment.
-6. Fermez l’onglet de navigateur contenant le rapport pour revenir au point de terminaison SQL de votre lakehouse. Ensuite, dans la barre de menus du hub à gauche, sélectionnez votre espace de travail pour vérifier qu’il contient les éléments suivants :
+5. Dans le menu **File** (Fichier), sélectionnez **Save** (Enregistrer). Enregistrez ensuite le rapport sous le nom `Item Sales Report` dans l’espace de travail que vous avez créé précédemment.
+6. Maintenant, dans la barre de menus du hub à gauche, sélectionnez votre espace de travail pour vérifier qu’il contient les éléments suivants :
     - Votre lakehouse.
     - Le point de terminaison d’analytique SQL de votre lakehouse.
     - Un modèle sémantique par défaut pour les tables de votre lakehouse.
