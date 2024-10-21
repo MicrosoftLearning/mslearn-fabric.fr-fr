@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Interroger des données dans une base de données KQL
+  title: Bien démarrer avec l’interrogation d’une base de données Kusto dans Microsoft Fabric
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
 
@@ -20,7 +20,7 @@ Ce labo est d’une durée de **25** minutes environ.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Real-Time Intelligence**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Real-Time Intelligence**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.

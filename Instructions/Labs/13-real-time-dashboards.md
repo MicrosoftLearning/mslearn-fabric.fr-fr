@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Tableaux de bord en temps réel dans Microsoft Fabric
-  module: Get Started with Real-Time Dashboards in Microsoft Fabric
+  title: "Bien démarrer avec les tableaux de bord en temps réel dans Microsoft\_Fabric"
+  module: Get started with Real-Time Dashboards in Microsoft Fabric
 ---
 
 # Bien démarrer avec les tableaux de bord en temps réel dans Microsoft Fabric
@@ -16,7 +16,7 @@ Ce labo est d’une durée de **25** minutes environ.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com), sélectionnez **Real-Time Intelligence**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Real-Time Intelligence**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*). Vous pouvez également utiliser un espace de travail existant pour créer un tableau de bord en temps réel.
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
