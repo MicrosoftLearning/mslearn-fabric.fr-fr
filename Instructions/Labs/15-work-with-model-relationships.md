@@ -88,7 +88,7 @@ Dans cette tâche, vous allez visualiser les données de ventes par date et chan
 
     *Pour préciser de quelle année fiscale il s’agit, il est conseillé de renommer le champ du visuel (ou d’ajouter un titre au visuel).*
 
-7. Dans le volet **Visualisations** du visuel de table, dans la zone **Colonnes**, sélectionnez la flèche vers le bas, puis **Renommer pour ce visuel**.
+7. Dans le volet **Visualisations** du visuel de table, dans la zone **Valeurs**, sélectionnez la flèche vers le bas, puis **Renommer pour ce visuel**.
 
     ![](Images/work-with-model-relationships-image11.png)
 
@@ -190,7 +190,7 @@ Dans cette tâche, vous allez utiliser la fonction USERELATIONSHIP pour activer 
 
     *Une autre approche consiste à créer une table de modèle différente pour chaque dimension de rôle actif. C’est ce que vous allez faire dans l’exercice suivant.*
 
-6. Pour supprimer la mesure du visuel de table, dans le volet **Visualisations**, à partir de la zone **Colonnes**, pour le champ **Sales Shipped**, appuyez sur **X**.
+6. Pour supprimer la mesure du visuel de table, dans le volet **Visualisations**, à partir du champ **Valeurs**, pour le champ **Sales Shipped**, cliquez sur **X**.
 
     ![](Images/work-with-model-relationships-image25.png)
 
@@ -304,13 +304,13 @@ Dans cette tâche, vous allez visualiser les données de date d’expédition da
 
 5. Déplacez le nouveau visuel de table à droite du visuel de table existant.
 
-6. Sélectionnez le nouveau visuel de table, puis, dans le volet **Visualisations**, à l’intérieur de la zone **Colonnes**, supprimez le champ **Order Year**.
+6. Sélectionnez le nouveau visuel de table, puis, dans le volet **Visualisations**, à l’intérieur de la zone **Valeurs**, supprimez le champ **Order Year**.
 
     ![](Images/work-with-model-relationships-image42.png)
 
 7. Dans le volet **Données**, développez la table **Ship Date**.
 
-8. Pour ajouter un nouveau champ au nouveau visuel de table, à partir de la table **Ship Date**, faites glisser le champ **Ship Year** vers la zone **Colonnes**, au-dessus du champ **Sales Amount**.
+8. Pour ajouter un nouveau champ au nouveau visuel de table, à partir de la table **Ship Date**, faites glisser le champ **Ship Year** vers la zone **Valeurs**, au-dessus du champ **Sales Amount**.
 
     ![](Images/work-with-model-relationships-image43.png)
 

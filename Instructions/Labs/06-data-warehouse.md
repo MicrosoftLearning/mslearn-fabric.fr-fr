@@ -125,7 +125,7 @@ La plupart des requêtes dans un entrepôt de données relationnelles impliquent
    ORDER BY CalendarYear, MonthOfYear;
     ```
 
-    Notez que les attributs de la dimension de date vous permettent d’agréger les mesures de la table de faits à plusieurs niveaux hiérarchiques, dans le cas présent année et mois. C’est un modèle courant dans les entrepôts de données.
+    Notez que les attributs de la dimension temps vous permettent d’agréger les mesures de la table de faits à plusieurs niveaux hiérarchiques, dans le cas présent année et mois. C’est un modèle courant dans les entrepôts de données.
 
 2. Modifiez la requête comme suit pour ajouter une deuxième dimension à l’agrégation.
 
@@ -217,7 +217,7 @@ Vous pouvez facilement visualiser les données dans une seule requête ou dans v
       - **ProductKey**
       - **ProductAltKey** 
 
-1. Vous êtes maintenant prêt à créer un rapport et à rendre ce jeu de données disponible pour d’autres utilisateurs. Dans le menu Rapports, sélectionnez **Nouveau rapport**. Ceci va ouvrir une nouvelle fenêtre, où vous pouvez créer un rapport Power BI.
+1. Vous êtes maintenant prêt à créer un rapport et à rendre ce jeu de données disponible pour d’autres utilisateurs. Dans le menu Accueil, sélectionnez **Nouveau rapport**. Ceci va ouvrir une nouvelle fenêtre, où vous pouvez créer un rapport Power BI.
 
 1. Dans le volet **Données**, développez **FactSalesOrder**. Notez que les colonnes que vous avez masquées ne sont plus visibles. 
 
