@@ -8,8 +8,6 @@ lab:
 
 Microsoft Fabric offre un modèle de sécurité multicouche pour gérer l’accès aux données. La sécurité peut être définie pour un espace de travail entier, pour des éléments individuels ou via des autorisations granulaires dans chaque moteur Fabric. Dans cet exercice, vous sécurisez les données à l’aide de l’espace de travail, ainsi que des contrôles d’accès aux éléments et des rôles d’accès aux données OneLake.
 
-> **Remarque** : pour effectuer les exercices de ce labo, vous aurez besoin de deux utilisateurs : un utilisateur ayant le rôle Administrateur d’espace de travail et un utilisateur qui se verra affecter des autorisations tout au long de ce labo. Pour attribuer des rôles à des espaces de travail, consultez [ Accorder l’accès à votre espace de travail ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces).
-
 Ce labo est d’une durée de **45** minutes environ.
 
 ## Créer un espace de travail

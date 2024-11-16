@@ -4,7 +4,7 @@ lab:
   module: Ingest Data with Dataflows Gen2 in Microsoft Fabric
 ---
 
-# Créer et utiliser des flux de données (Gen2) dans Microsoft Fabric
+# Créer un flux de données (Gen2) dans Microsoft Fabric
 
 Dans Microsoft Fabric, les flux de données (Gen2) se connectent à différentes sources de données et effectuent des transformations dans Power Query Online. Ils peuvent ensuite être utilisés dans des pipelines de données pour ingérer des données dans un lakehouse ou un autre magasin analytique, ou pour définir un jeu de données pour un rapport Power BI.
 
@@ -82,7 +82,7 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
 
    ![Page de configuration de la destination des données](./Images/data-destination-target.png)
 
-4. Sélectionnez **Suivant** et, dans la page **Choisir les paramètres de destination**, désactivez l’option **Utiliser les paramètres automatiques**, sélectionnez **Ajouter**, puis **Enregistrer les paramètres**.
+4. Dans la page **Choisir les paramètres de destination**, sélectionnez **Ajouter**, puis **Enregistrez les paramètres**.
     > **Remarque :** Nous recommandons l’utilisation de l’éditeur *Power Query* pour mettre à jour les types de données, mais vous pouvez également le faire à partir de cette page.
 
     ![Page des paramètres de destination des données](./Images/destination-settings.png)
@@ -92,6 +92,8 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
    ![Requête avec une destination lakehouse](./Images/lakehouse-destination.png)
 
 6. Sélectionnez **Publier** pour publier le flux de données. Attendez ensuite que le flux de données **Dataflow 1** soit créé dans votre espace de travail.
+
+7. Une fois publié, vous pouvez cliquer sur l’ellipse **(...)** dans votre espace de travail, sélectionner **Propriétés** et renommer votre flux de données.
 
 ## Ajouter un flux de données à un pipeline
 
@@ -121,7 +123,7 @@ Vous pouvez inclure un flux de données en tant qu’activité dans un pipeline.
 
    ![Table chargée par un flux de données](./Images/loaded-table.png)
 
-> **Conseil** : dans Power BI Desktop, vous pouvez vous connecter directement aux transformations de données effectuées avec votre flux de données à l’aide du connecteur hérité du *flux de données Power BI*.
+> **Conseil** : Utilisez le *connecteur de flux de données* Power BI Desktop pour vous connecter directement aux transformations de données effectuées avec votre flux de données.
 >
 > Vous pouvez également effectuer des transformations supplémentaires, publier en tant que nouveau jeu de données et distribuer auprès d’un public visé pour les jeux de données spécialisés.
 >
