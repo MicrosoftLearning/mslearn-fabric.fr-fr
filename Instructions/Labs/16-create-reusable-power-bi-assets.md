@@ -1,6 +1,7 @@
 ---
 lab:
   title: "Créer des ressources Power\_BI réutilisables"
+  module: Create reusable Power BI assets
 ---
 
 # Créer des ressources Power BI réutilisables
@@ -54,7 +55,7 @@ Dans cette tâche, vous allez créer un rapport en vous connectant au modèle s�
 
 1. Si vous êtes invité à redémarrer Power BI Desktop, faites-le avant de poursuivre l’exercice.
 
-    ![Capture d’écran des options disponibles dans la catégorie fonctionnalités en version préliminaire.](./Images/power-bi-enable-tmdl.png)
+    ![Capture d’écran des options disponibles dans la catégorie Fonctionnalités en version préliminaire.](./Images/power-bi-enable-tmdl.png)
 
 1. Sélectionnez **Enregistrer sous**, puis choisissez le type de fichier en sélectionnant la flèche dans le menu déroulant lorsque vous nommez le fichier.
 1. Sélectionnez l’extension de fichier **.*.pbip***, choisissez un nom pour votre rapport, puis enregistrez-le dans un dossier dont vous vous rappellerez.
@@ -113,7 +114,7 @@ Dans cette tâche, vous allez ajouter une nouvelle table, car le modèle sémant
 Dans cette tâche, nous allons apporter des modifications au rapport dans Power BI Desktop et observer les modifications apportées dans les fichiers plats .tmdl.
 
 1. Dans l’Explorateur de fichiers, recherchez le dossier ***YourReport*.SemanticModel**.
-1. Ouvrez le dossier de définition et remarquez les différents fichiers.
+1. Ouvrez le dossier de définition et observez les différents fichiers.
 1. Ouvrez le fichier **relationships.tmdl** dans le Bloc-notes : vous pouvez ainsi noter qu’il existe 9 relations répertoriées. Fermez le fichier .
 1. Revenez à Power BI Desktop, puis accédez à l’onglet **Modélisation** sur le ruban.
 1. Sélectionnez **Gérer les relations** et notez qu’il existe 9 relations.
@@ -154,37 +155,37 @@ Dans cette tâche, vous allez ajouter une mesure et un visuel pour étendre le m
 1. Sélectionnez le visuel et modifiez-le en **Tableau**.
 1. Notez la mise en forme incohérente des données Sales per Capita et Population.
 1. Sélectionnez chaque champ dans le volet Données et modifiez le format et les décimales.
-    - Ventes par habitant : Devise \| 4 décimales
-    - Population : nombre entier \| séparé par une virgule \| 0 décimale
+    - Sales per Capita : Devise \| 4 décimales
+    - Population : Nombre entier \| Séparé par une virgule \| 0 décimale
 
-    ![Capture d’écran de la mesure Ventes par habitant avec la mise en forme configurée.](./Images/power-bi-measure-details.png)
+    ![Capture d’écran de la mesure Sales per Capita avec la mise en forme configurée.](./Images/power-bi-measure-details.png)
 
-    > Conseil : si vous créez accidentellement une mesure dans le mauvais tableau, vous pouvez facilement modifier la table Accueil, comme illustré dans l’image précédente.
+    > Conseil : si vous créez accidentellement une mesure dans la mauvaise table, vous pouvez facilement modifier la table Accueil, comme le montre l’image précédente.
 
 1. Enregistrez votre fichier.
 
-> Votre tableau doit ressembler à l’image suivante avec quatre colonnes et des nombres correctement mis en forme.
+> Votre tableau doit ressembler à l’image suivante, avec quatre colonnes et des nombres correctement mis en forme.
 
-![Capture d’écran d’un visuel de tableau avec quelques lignes montrant État, Population, Ventes par habitant et Somme des ventes.](./Images/power-bi-sales-per-capita-table.png)
+![Capture d’écran d’un visuel de tableau avec quelques lignes indiquant State, Population, Sales per Capita et Sum of Sales.](./Images/power-bi-sales-per-capita-table.png)
 
 ## Configurer un fichier de modèle Power BI (.pbit)
 
-Dans cette tâche, vous allez créer un fichier de modèle pour pouvoir partager un fichier léger avec d’autres personnes pour une meilleure collaboration.
+Dans cette tâche, vous allez créer un fichier de modèle afin de pouvoir partager un fichier léger avec d’autres personnes pour une meilleure collaboration.
 
-1. Accédez à l’onglet Insérer du ruban dans Power BI Desktop et sélectionnez **Images**. Accédez à votre dossier des téléchargements et sélectionnez le fichier `AdventureWorksLogo.jpg`.
+1. Accédez à l’onglet Insérer du ruban dans Power BI Desktop et sélectionnez **Images**. Accédez à votre dossier de téléchargements et sélectionnez le fichier `AdventureWorksLogo.jpg`.
 1. Positionnez cette image dans le coin supérieur gauche.
 1. Sélectionnez un nouveau visuel et ajoutez **Ventes \| Profit** et **Produit \| Catégorie** à celui-ci.
 
     > Nous avons utilisé un graphique en anneau pour notre capture d’écran suivante.
 
-    ![Capture d’écran d’un graphique en anneau avec Profit et Catégorie et le tableau créé dans la dernière tâche.](./Images/power-bi-donut-table-default.png)
+    ![Capture d’écran d’un graphique en anneau avec Profit et Catégorie et le tableau créé lors de tâche précédente.](./Images/power-bi-donut-table-default.png)
 
 1. Notez qu’il existe 4 couleurs différentes dans la légende.
 1. Accédez à l’onglet **Affichage** dans le ruban.
-1. Sélectionnez la flèche en regard des **thèmes** pour développer et afficher tous les choix.
+1. Sélectionnez la flèche à côté des **thèmes** pour développer et afficher tous les choix.
 1. Sélectionnez l’un des **thèmes accessibles** à appliquer à ce rapport.
 
-    > Ces thèmes sont spécifiquement créés pour être plus accessibles pour les visionneuses de rapports.
+    > Ces thèmes sont spécifiquement créés pour offrir une meilleure accessibilité pour les personnes qui consultent les rapports.
 
 1. Développez à nouveau les thèmes, puis sélectionnez **Personnaliser le thème actuel**.
 
@@ -197,48 +198,48 @@ Dans cette tâche, vous allez créer un fichier de modèle pour pouvoir partager
 1. Une fois que vous avez terminé, **appliquez** les modifications.
 1. Notez les différentes couleurs dans les visuels avec le nouveau thème appliqué.
 
-    ![Capture d’écran de la page de rapport configuré.](./Images/power-bi-icon-donut-table-custom.png)
+    ![Capture d’écran de la page du rapport configuré.](./Images/power-bi-icon-donut-table-custom.png)
 
 1. Sélectionnez **Fichier > Enregistrer sous** pour créer le fichier *.pbit*.
 1. Remplacez le type de fichier par *.pbit* et enregistrez-le dans le même emplacement que le fichier *.pbip*.
-1. Entrez une description de ce que les utilisateurs peuvent attendre de ce modèle quand ils l’utilisent et sélectionnez OK.
+1. Entrez une description de ce que les utilisateurs doivent attendre de ce modèle quand ils l’utilisent, puis sélectionnez OK.
 1. Revenez à l’Explorateur de fichiers, ouvrez le fichier *.pbit* et vérifiez qu’il ressemble exactement au fichier *.pbip*.
 
     > Dans cet exercice, nous voulons uniquement un modèle de thème de rapport standard sans modèle sémantique.
 
 1. Dans ce même nouveau fichier, supprimez les deux visuels du canevas.
 1. Dans le ruban Accueil, sélectionnez **Transformer les données**.
-1. Dans l’Éditeur Power Query, sélectionnez la requête **Population américaine** et cliquez avec le bouton droit pour la supprimer.
-1. Sélectionnez Paramètres de la source de données dans le ruban et supprimez la source de données **DirectQuery sur AS - modèle sémantique Power BI**, puis sélectionnez **Fermer**.
+1. Dans l’Éditeur Power Query, sélectionnez la requête **US population** et cliquez avec le bouton droit pour la supprimer.
+1. Sélectionnez Paramètres de la source de données dans le ruban et supprimez la source de données **DirectQuery vers AS - modèle sémantique Power BI**, puis sélectionnez **Fermer**.
 1. **Fermer et appliquer**
 1. Revenez aux thèmes et regardez que votre thème accessible modifié est toujours appliqué au rapport.
-1. Notez également le message que *vous n’avez pas encore chargé de données* dans le volet Données.
-1. **Enregistrez sous** un fichier *.pbit* portant le même nom que celui utilisé précédemment pour remplacer le fichier.
-1. Fermez le fichier sans titre sans enregistrer. Vous devez toujours avoir d’ouvert votre autre fichier *.pbip*.
+1. Notez également le message *Vous n’avez pas encore chargé de données* présent dans le volet Données.
+1. **Enregistrez sous** un fichier *.pbit* avec le même nom que celui que vous avez utilisé précédemment pour remplacer le fichier.
+1. Fermez le fichier sans titre sans enregistrer. Votre autre fichier *.pbip* doit encore être ouvert.
 
 > Vous disposez maintenant d’un modèle avec un thème cohérent sans aucune donnée préchargée.
 
 ## Publier et explorer vos ressources
 
-Dans cette tâche, vous allez publier votre fichier Projet Power BI et examiner les éléments associés à l’aide de la vue Traçabilité dans le service.
+Dans cette tâche, vous allez publier votre fichier de projet Power BI et examiner les éléments associés à l’aide de la vue Traçabilité dans le service.
 
 > Important : nous avons créé un modèle DirectQuery local lorsque nous avons ajouté la source de données HTML. Les rapports publiés nécessitent une passerelle pour accéder aux données locales. Vous recevrez donc une erreur. Cela n’affecte pas la valeur de cette tâche, mais peut être déroutant.
 
-1. Dans votre fichier Projet Power BI, sélectionnez **Publier**.
+1. Dans votre fichier de projet Power BI, sélectionnez **Publier**.
 1. **Enregistrez** votre fichier, si vous y êtes invité.
 1. **Ne mettez pas à niveau** la version *PBIR*, si vous y êtes invité.
 1. Sélectionnez l’espace de travail que vous avez créé au début de cet exercice.
-1. Sélectionnez **Ouvrir « VotreRapport.*. pbip* » dans Power BI** lorsque vous recevez le message indiquant que le fichier a été publié, mais déconnecté.
+1. Sélectionnez **Ouvrir « YourReport.*. pbip* » dans Power BI** lorsque vous recevez le message indiquant que le fichier a été publié, mais déconnecté.
 
     ![Capture d’écran du message indiquant que le fichier a été publié, mais déconnecté.](./Images/power-bi-published-disconnected-message.png)
 
-1. Une fois que vous êtes dans votre espace de travail, vous pouvez voir le modèle sémantique et le rapport précédents, ainsi que votre nouveau modèle sémantique et rapport.
-1. Dans le coin droit ci-dessous les paramètres de l’espace de travail, sélectionnez la **vue Traçabilité** pour voir comment votre nouveau rapport dépend d’autres sources de données.
+1. Une fois que vous êtes dans votre espace de travail, vous pouvez voir le modèle sémantique précédent et le rapport précédent, ainsi que votre nouveau modèle sémantique et votre nouveau rapport.
+1. Dans le coin à droite, en dessous de Paramètres de l’espace de travail, sélectionnez la **vue Traçabilité** pour observer comment votre nouveau rapport dépend d’autres sources de données.
 
-    ![Capture d’écran de la vue traçabilité avec une base de données et deux fichiers texte se connectant à un modèle sémantique unique à partir de notre fichier de démarrage. Ce même modèle sémantique se connecte au rapport de fichier de démarrage et a un nouveau modèle sémantique connecté au nouveau rapport.](./Images/power-bi-lineage-view.png)
+    ![Capture d’écran de la vue Traçabilité avec une base de données et deux fichiers texte se connectant à un modèle sémantique unique à partir de notre fichier de démarrage. Ce même modèle sémantique se connecte au rapport du fichier de démarrage et possède un nouveau modèle sémantique connecté au nouveau rapport.](./Images/power-bi-lineage-view.png)
 
-> Lorsque les modèles sémantiques sont liés à d’autres modèles sémantiques, il s’agit d’un chaînage. Dans ce labo, le modèle sémantique de démarrage est chaîné au modèle sémantique nouvellement créé, ce qui permet sa réutilisation à des fins spécifiques.
+> Lorsque des modèles sémantiques sont liés à d’autres modèles sémantiques, cela s’appelle un chaînage. Dans ce labo, le modèle sémantique de démarrage est chaîné au modèle sémantique nouvellement créé, ce qui permet sa réutilisation dans un but spécifique.
 
 ## Nettoyage
 
-Vous avez terminé cet exercice. Vous avez créé des fichiers de projet et de modèle Power BI, ainsi que des modèles sémantiques spécialisés et des rapports. Vous pouvez supprimer en toute tranquillité l’espace de travail et toutes les ressources locales.
+Vous avez terminé cet exercice. Vous avez créé des fichiers de projet et de modèle Power BI, ainsi que des modèles sémantiques spécialisés et des rapports. Vous pouvez supprimer en toute sécurité l’espace de travail et toutes les ressources locales.
