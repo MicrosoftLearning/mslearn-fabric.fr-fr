@@ -16,7 +16,7 @@ Cet exercice devrait prendre environ **45** minutes
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Engineering données**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Power BI**.
 2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -33,9 +33,9 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse pour les données que vous analyserez.
 
-1. Dans la page d’accueil d’**Engineering données Synapse**, créez un **Lakehouse** appelé **Ventes**.
+1. Dans l’espace de travail que vous venez de créer, créez un **lakehouse** nommé **Sales** en cliquant sur le bouton **Nouvel élément**.
 
-    Au bout d’une minute environ, un nouveau lakehouse vide est créé. Vous devez ingérer certaines données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de faire cela mais dans cet exercice, vous allez simplement télécharger un fichier texte sur votre ordinateur local (ou sur votre machine virtuelle de labo le cas échéant), puis le charger dans votre lakehouse.
+    Au bout d’une minute environ, un nouveau lakehouse vide est créé. Ingérez ensuite des données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de faire cela mais dans cet exercice, vous allez simplement télécharger un fichier texte sur votre ordinateur local (ou sur votre machine virtuelle de labo le cas échéant), puis le charger dans votre lakehouse.
 
 1. Téléchargez le fichier de données pour cet exercice à partir de `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip`. Extrayez des fichiers et enregistrez-les avec leur nom d’origine sur votre ordinateur local (ou votre machine virtuelle de labo le cas échéant). Il doit y avoir 3 fichiers contenant des données de vente pour 3 ans : 2019.csv, 2020.csv et 2021.csv.
 
@@ -206,15 +206,15 @@ Vous disposez maintenant dans votre table Delta argent de données qui sont prê
 
 ## Explorer les données de la couche argent à l’aide du point de terminaison SQL
 
-Maintenant que vous avez des données dans votre couche argent, vous pouvez utiliser le point de terminaison SQL pour explorer les données et effectuer une analyse de base. Il s’agit d’une bonne option pour vous si vous êtes familiarisé avec SQL et que vous souhaitez effectuer une exploration de base de vos données. Dans cet exercice, nous utilisons la vue Point de terminaison SQL dans Fabric, mais notez que vous pouvez également utiliser d’autres outils tels que SQL Server Management Studio (SSMS) et Azure Data Explorer.
+Maintenant que vous avez des données dans votre couche argent, vous pouvez utiliser le point de terminaison d’analytique SQL pour explorer les données et effectuer une analyse de base. Il s’agit d’une bonne option pour vous si vous êtes familiarisé avec SQL et que vous souhaitez effectuer une exploration de base de vos données. Dans cet exercice, nous utilisons la vue Point de terminaison SQL dans Fabric, mais vous pouvez également utiliser d’autres outils tels que SQL Server Management Studio (SSMS) et Azure Data Explorer.
 
-1. Revenez à votre espace de travail et notez que vous avez maintenant quelques ressources répertoriées. Sélectionnez **Point de terminaison SQL** pour ouvrir votre lakehouse dans la vue Point de terminaison SQL.
+1. Revenez à votre espace de travail et notez que vous avez maintenant plusieurs éléments répertoriés. Sélectionnez **Point de terminaison d’analytique SQL Sales** pour ouvrir votre lakehouse dans la vue Point de terminaison d’analytique SQL.
 
     ![Capture d’écran du point de terminaison SQL dans un lakehouse.](./Images/sql-endpoint-item.png)
 
 2. Sélectionnez **Nouvelle requête SQL** dans le ruban, ce qui ouvre un éditeur de requête SQL. Notez que vous pouvez renommer votre requête à l’aide de l’élément de menu  **...** en regard du nom de requête existant dans le volet de l’explorateur de lakehouse.
 
-   Nous allons exécuter deux requêtes SQL pour explorer nos données.
+   Ensuite, vous allez exécuter deux requêtes SQL pour explorer les données.
 
 3. Collez la requête suivante dans l’éditeur de requête, puis cliquez sur **Exécuter** :
 
@@ -230,7 +230,7 @@ Maintenant que vous avez des données dans votre couche argent, vous pouvez util
 
     ![Capture d’écran des résultats d’une requête SQL dans un lakehouse.](./Images/total-sales-sql.png)
 
-4. Nous allons maintenant examiner quels clients achètent le plus (en termes de quantité). Collez la requête suivante dans l’éditeur de requête, puis cliquez sur **Exécuter** :
+4. Ensuite, vous allez voir quels clients achètent le plus (en termes de quantité). Collez la requête suivante dans l’éditeur de requête, puis cliquez sur **Exécuter** :
 
     ```sql
     SELECT TOP 10 CustomerName, SUM(Quantity) AS TotalQuantity
@@ -247,13 +247,13 @@ L’exploration des données au niveau de la couche argent est utile pour l’an
 
 Vous avez réussi à extraire des données de votre couche bronze, à les transformer et à les charger dans une table Delta argent. Vous allez maintenant utiliser un nouveau notebook pour transformer davantage les données, les modéliser en schéma en étoile et les charger dans des tables Delta or.
 
-Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook, mais pour les besoins de cet exercice, vous utilisez des notebooks distincts pour illustrer le processus de transformation des données de la couche bronze vers la couche argent, puis de la couche argent vers la couche or. Cela peut faciliter le débogage, la résolution des problèmes et la réutilisation.
+Vous auriez pu effectuer toutes ces opérations dans un seul notebook, mais pour cet exercice, vous utilisez des notebooks distincts pour illustrer le processus de transformation des données de la couche bronze vers la couche argent, puis de la couche argent vers la couche or. Cela peut faciliter le débogage, la résolution des problèmes et la réutilisation.
 
-1. Revenez à la page d’accueil **Engineering données** et créez un notebook appelé **Transformer les données pour la couche or**.
+1. Revenez à la page d’accueil de l’espace de travail et créez un notebook appelé **Transformer les données pour la couche or**.
 
-2. Dans le volet Explorateur lakehouse, ajoutez votre lakehouse **Sales** en sélectionnant **Ajouter**, puis en sélectionnant le lakehouse **Sales** que vous avez créé précédemment. Vous devrez voir la table **sales_silver** répertoriée dans la section **Tables** du volet Explorateur.
+2. Dans le volet Explorateur lakehouse, ajoutez votre lakehouse **Sales** en sélectionnant **Ajouter**, puis en sélectionnant le lakehouse **Sales** que vous avez créé précédemment. Dans la fenêtre **Ajouter un lakehouse**, sélectionnez **Lakehouse existant sans schéma**. Vous devrez voir la table **sales_silver** répertoriée dans la section **Tables** du volet Explorateur.
 
-3. Dans le bloc de code existant, supprimez le texte standard et **ajoutez le code suivant** pour charger des données dans votre dataframe et commencer à créer votre schéma en étoile, puis exécutez-le :
+3. Dans le bloc de code existant, supprimez le texte commenté et **ajoutez le code suivant** pour charger des données dans votre dataframe et commencer à créer votre schéma en étoile, puis exécutez-le :
 
    ```python
     # Load data to the dataframe as a starting point to create the gold layer
@@ -309,10 +309,10 @@ Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook,
     
     dfUpdates = dfdimDate_gold
     
-    deltaTable.alias('silver') \
+    deltaTable.alias('gold') \
       .merge(
         dfUpdates.alias('updates'),
-        'silver.OrderDate = updates.OrderDate'
+        'gold.OrderDate = updates.OrderDate'
       ) \
        .whenMatchedUpdate(set =
         {
@@ -326,13 +326,13 @@ Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook,
           "Month": "updates.Month",
           "Year": "updates.Year",
           "mmmyyyy": "updates.mmmyyyy",
-          "yyyymm": "yyyymm"
+          "yyyymm": "updates.yyyymm"
         }
       ) \
       .execute()
     ```
 
-    Félicitations ! Votre dimension de date est configurée. Vous allez maintenant créer votre dimension client.
+    La dimension de date est maintenant configurée. Vous allez maintenant créer votre dimension client.
 7. Pour générer la table de dimension client, **ajoutez un nouveau bloc de code**, puis collez et exécutez le code suivant :
 
     ```python
@@ -397,10 +397,10 @@ Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook,
     
     dfUpdates = dfdimCustomer_gold
     
-    deltaTable.alias('silver') \
+    deltaTable.alias('gold') \
       .merge(
         dfUpdates.alias('updates'),
-        'silver.CustomerName = updates.CustomerName AND silver.Email = updates.Email'
+        'gold.CustomerName = updates.CustomerName AND gold.Email = updates.Email'
       ) \
        .whenMatchedUpdate(set =
         {
@@ -436,7 +436,7 @@ Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook,
 12. **Ajoutez un autre bloc de code** pour créer la trame de données **product_silver**.
   
     ```python
-    from pyspark.sql.functions import col, split, lit
+    from pyspark.sql.functions import col, split, lit, when
     
     # Create product_silver dataframe
     
@@ -479,10 +479,10 @@ Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook,
             
     dfUpdates = dfdimProduct_gold
             
-    deltaTable.alias('silver') \
+    deltaTable.alias('gold') \
       .merge(
             dfUpdates.alias('updates'),
-            'silver.ItemName = updates.ItemName AND silver.ItemInfo = updates.ItemInfo'
+            'gold.ItemName = updates.ItemName AND gold.ItemInfo = updates.ItemInfo'
             ) \
             .whenMatchedUpdate(set =
             {
@@ -556,10 +556,10 @@ Notez que vous auriez pu effectuer toutes ces opérations dans un seul notebook,
     
     dfUpdates = dffactSales_gold
     
-    deltaTable.alias('silver') \
+    deltaTable.alias('gold') \
       .merge(
         dfUpdates.alias('updates'),
-        'silver.OrderDate = updates.OrderDate AND silver.CustomerID = updates.CustomerID AND silver.ItemID = updates.ItemID'
+        'gold.OrderDate = updates.OrderDate AND gold.CustomerID = updates.CustomerID AND gold.ItemID = updates.ItemID'
       ) \
        .whenMatchedUpdate(set =
         {
@@ -598,7 +598,7 @@ Notez que vous ne pouvez pas utiliser le **modèle sémantique par défaut** cr�
    - dimproduct_gold
    - factsales_gold
 
-    Cela ouvre le modèle sémantique dans Fabric, où vous pouvez créer des relations et des mesures, comme indiqué ici :
+    Cela ouvre le modèle sémantique dans Fabric, où vous pouvez créer des relations et des mesures.
 
     ![Capture d’écran d’un modèle sémantique dans Fabric.](./Images/dataset-relationships.png)
 
