@@ -105,9 +105,9 @@ query {
 }
 ```
 
-Dans cette requête, les produits sont le type principal, et il inclut des champs pour `ProductModelID`, `Name`, `ListPrice`, `Color`, `Size` et `ModifiedDate`. Cette requête retourne une liste de produits dont les noms commencent par *« HL Road Frame »*.
+Dans cette requête, les produits sont le type principal, et il inclut des champs pour `ProductModelID`, `Name`, `ListPrice`, `Color`, `Size` et `ModifiedDate`. Cette requête renvoit une liste de produits dont les noms commencent par *« HL Road Frame ».*
 
-> **Informations supplémentaires** : voir [Qu’est-ce que l’API Microsoft Fabric pour GraphQL ?](https://learn.microsoft.com/fabric/data-engineering/api-graphql-overview) dans la documentation Microsoft Fabric pour en savoir plus sur les autres composants disponibles dans la plateforme.
+> **Informations supplémentaires** : voir [Qu’est-ce que l’API Microsoft Fabric pour GraphQL ?](https://learn.microsoft.com/fabric/data-engineering/api-graphql-overview) dans la documentation Microsoft Fabric pour en savoir plus sur les autres composants disponibles sur la plateforme.
 
 Dans cet exercice, vous avez créé, interrogé et exposé des données à partir d’une base de données SQL à l’aide de GraphQL dans Microsoft Fabric.
 

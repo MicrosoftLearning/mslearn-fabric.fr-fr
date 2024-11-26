@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Interroger des données dans une base de données KQL
+  title: Bien démarrer avec l’interrogation d’une base de données Kusto dans Microsoft Fabric
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
 

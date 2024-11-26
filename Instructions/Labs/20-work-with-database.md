@@ -102,15 +102,14 @@ Vous allez intégrer des données externes sur les jours fériés avec la comman
 
     ```sql
     INSERT INTO SalesLT.PublicHolidays (CountryOrRegion, HolidayName, Date, IsPaidTimeOff)
-    SELECT CountryOrRegion, HolidayName, Date, IsPaidTimeOff
-    FROM OPENROWSET 
-    (BULK 'abs://holidaydatacontainer@azureopendatastorage.blob.core.windows.net/Processed/*.parquet'
-    , FORMAT = 'PARQUET') AS [PublicHolidays]
-    WHERE countryorRegion in ('Canada', 'United Kingdom', 'United States')
-        AND YEAR([date]) = 2024
+    VALUES
+        ('Canada', 'Victoria Day', '2024-02-19', 1),
+        ('United Kingdom', 'Christmas Day', '2024-12-25', 1),
+        ('United Kingdom', 'Spring Bank Holiday', '2024-05-27', 1),
+        ('United States', 'Thanksgiving Day', '2024-11-28', 1);
     ```
     
-    Cette requête lit les données de congés des fichiers Parquet dans Stockage Blob Azure, les filtre pour inclure uniquement les jours fériés au Canada, au Royaume-Uni et aux États-Unis pour l’année 2024, puis insère ces données filtrées dans la table `SalesLT.PublicHolidays`.    
+    Dans cet exemple, cette requête insère dans la table `SalesLT.PublicHolidays` des jours fériés au Canada, au Royaume-Uni et aux États-Unis pour l’année 2024.    
 
 1. Dans un éditeur de requête nouveau ou existant, entrez et exécutez le code T-SQL suivant.
 
@@ -190,7 +189,7 @@ Créons une vue basée sur la requête utilisée plus tôt et ajoutons-y un filt
 
 > **Informations supplémentaires** : voir [Qu’est-ce que Microsoft Fabric ?](https://learn.microsoft.com/fabric/get-started/microsoft-fabric-overview) dans la documentation Microsoft Fabric pour en savoir plus sur les autres composants disponibles dans la plateforme.
 
-Dans cet exercice, vous avez créé et importé des données externes, puis vous les avez interrogées et sécurisées dans une base de données SQL de Microsoft Fabric.
+Dans cet exercice, vous avez créé, interrogé et sécurisé des données dans une base de données SQL de Microsoft Fabric.
 
 ## Nettoyer les ressources
 

@@ -1,7 +1,7 @@
 ---
 lab:
-  title: Tableaux de bord en temps réel dans Microsoft Fabric
-  module: Get Started with Real-Time Dashboards in Microsoft Fabric
+  title: "Bien démarrer avec les tableaux de bord en temps réel dans Microsoft\_Fabric"
+  module: Get started with Real-Time Dashboards in Microsoft Fabric
 ---
 
 # Bien démarrer avec les tableaux de bord en temps réel dans Microsoft Fabric
