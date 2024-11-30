@@ -3,7 +3,7 @@ lab:
   title: Bien démarrer avec Eventstream dans Microsoft Fabric
   module: Get started with Eventstream in Microsoft Fabric
 ---
-# Bien démarrer avec Eventstream dans Real-Time Intelligence
+# Bien démarrer avec Eventstream dans Microsoft Fabric
 
 Eventstream est une fonctionnalité de Microsoft Fabric qui capture, transforme et route les événements en temps réel vers différentes destinations avec une expérience sans code. Vous pouvez ajouter des sources de données d’événement, des destinations de routage, ainsi que le processeur d’événements lorsque la transformation est nécessaire, au flux d’événements. EventStore de Microsoft Fabric est une option de supervision qui tient à jour les événements du cluster et fournit un moyen de comprendre l’état de votre cluster ou de votre charge de travail à un moment donné. Vous pouvez interroger le service EventStore à propos des événements qui sont disponibles pour chaque entité et type d’entité du cluster. Cela signifie que vous pouvez rechercher des événements à différents niveaux, tels que les clusters, les nœuds, les applications, les services, les partitions et les réplicas de partition. Le service EventStore a également la possibilité de mettre en corrélation les événements du cluster. En examinant les événements écrits en même temps à partir de différentes entités dont les conséquences peuvent être mutuelles, le service EventStore peut lier ces événements pour aider à identifier les causes des activités du cluster. L’agrégation et la collecte d’événements avec EventFlow constituent une autre option pour superviser et diagnostiquer des clusters Microsoft Fabric.
 
@@ -134,7 +134,7 @@ Ce didacticiel vous montre comment effectuer les opérations suivantes :
 
     ![Ajoutez Regrouper par à l’événement de transformation.](./Images/eventstream-add-aggregates.png)
 
-    A. Sélectionnez **Regrouper par**.
+    R : Sélectionnez **Regrouper par**.
 
     B. Sélectionnez **Modifier**, représenté par l’icône de ***crayon***.
 
@@ -167,7 +167,7 @@ Une requête KQL (Kusto Query Language, langage de requête Kusto) est une requ�
 
 1. Accédez à la base de données KQL qui vient d’être créée et remplie de données :
 
-    A.  Sélectionnez la destination **kql-dest**. 
+    R :  Sélectionnez la destination **kql-dest**. 
 
     B. Sélectionnez le lien hypertexte **Ouvrir l’élément**, situé sur la ligne **Élément connexe**
 
