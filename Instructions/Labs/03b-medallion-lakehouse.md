@@ -21,8 +21,6 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 3. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 4. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
-   ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace-medallion.png)
-
 5. Accédez aux paramètres de l’espace de travail et activez la fonctionnalité d’évaluation **Modification du modèle de données**. Cela vous permet de créer des relations entre des tables dans votre lakehouse à l’aide d’un modèle sémantique Power BI.
 
     ![Capture d’écran de la page des paramètres de l’espace de travail dans Fabric.](./Images/workspace-settings.png)
@@ -153,8 +151,6 @@ Maintenant que vous avez des données dans la couche bronze de votre lakehouse, 
 10. Exécutez la cellule pour exécuter le code à l’aide du bouton ****&#9655;** (*Exécuter la cellule*)**.
 
 11. Sélectionnez le bouton **...** dans la section Tables du volet Explorateur lakehouse, puis sélectionnez **Actualiser**. Vous devrez maintenant voir la nouvelle table **sales_silver** répertoriée. Le symbole **&#9650;** (icône de triangle) indique qu’il s’agit d’une table Delta.
-
-    ![Capture d’écran de la table sales_silver dans un lakehouse.](./Images/sales-silver-table.png)
 
     > **Note** : si vous ne voyez pas la nouvelle table, attendez quelques secondes, puis sélectionnez **Actualiser** à nouveau ou actualisez l’onglet du navigateur.
 
@@ -598,7 +594,7 @@ Notez que vous ne pouvez pas utiliser le **modèle sémantique par défaut** cr�
    - dimproduct_gold
    - factsales_gold
 
-    Cela ouvre le modèle sémantique dans Fabric, où vous pouvez créer des relations et des mesures.
+    Cela ouvre le modèle sémantique dans Fabric, où vous pouvez créer des relations et des mesures, comme indiqué ici :
 
     ![Capture d’écran d’un modèle sémantique dans Fabric.](./Images/dataset-relationships.png)
 
