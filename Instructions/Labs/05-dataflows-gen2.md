@@ -16,7 +16,7 @@ Ce labo est conçu pour présenter les différents éléments des flux de donné
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Engineering données**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Engineering données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -27,7 +27,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse dans lequel vous ingérerez les données.
 
-1. Dans la page d’accueil d’**Engineering données Synapse**, créez un nouveau **Lakehouse** du nom de votre choix.
+1. Dans la page d’accueil de l’**Engineering données**, créez un nouveau **lakehouse** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouveau lakehouse vide est créé.
 
@@ -37,7 +37,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des données. Pour ce faire, vous pouvez définir un flux de données qui encapsule un processus d’*extraction, transformation et chargement* (ETL).
 
-1. Dans la page d’accueil de votre espace de travail, sélectionnez **Nouveau flux de données Gen2**. Après quelques secondes, l’éditeur Power Query de votre nouveau flux de données s’ouvre comme illustré ici.
+1. Dans la page d’accueil de votre espace de travail, sélectionnez **Obtenir des données** > **Nouveau flux de données Gen2**. Après quelques secondes, l’éditeur Power Query de votre nouveau flux de données s’ouvre comme illustré ici.
 
  ![Nouveau flux de données.](./Images/new-dataflow.png)
 
@@ -97,7 +97,7 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
 
 Vous pouvez inclure un flux de données en tant qu’activité dans un pipeline. Les pipelines sont utilisés pour orchestrer les activités d’ingestion et de traitement des données, ce qui vous permet de combiner des flux de données avec d’autres types d’opérations dans un processus unique, planifié. Les pipelines peuvent être créés dans plusieurs expériences différentes, notamment l’expérience Data Factory.
 
-1. À partir de votre espace de travail Fabric, vérifiez que vous figurez toujours dans l’expérience **Engineering données**. Sélectionnez **Nouveau**, **Pipeline de données**, puis, lorsque vous y êtes invité, créez un nouveau pipeline nommé **Charger des données**.
+1. À partir de votre espace de travail Fabric, vérifiez que vous figurez toujours dans l’expérience **Engineering données**. Sélectionnez **+ Nouvel élément** > **Pipeline de données**, puis, lorsque vous y êtes invité, créez un pipeline nommé **Charger des données**.
 
    L’éditeur de pipeline s’ouvre.
 
@@ -133,5 +133,5 @@ Si vous avez terminé d’explorer les flux de données dans Microsoft Fabric, v
 
 1. Accédez à Microsoft Fabric dans votre navigateur.
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-1. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-1. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Paramètres de l’espace de travail** et, dans la section**Général**, faites défiler vers le bas et sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Supprimer** pour supprimer l’espace de travail.

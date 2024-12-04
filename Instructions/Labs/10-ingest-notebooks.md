@@ -20,7 +20,7 @@ Pour cette expérience, vous allez générer le code sur plusieurs cellules de c
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Engineering données**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Engineering données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -31,7 +31,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Commencez par créer un lakehouse et un dossier de destination dans le lakehouse.
 
-1. Dans votre espace de travail, sélectionnez **+ Nouveau > Lakehouse**, fournissez un nom, puis appuyez sur **Créer**.
+1. Dans votre espace de travail, sélectionnez **+ Nouvel élément > Lakehouse**, fournissez un nom, puis appuyez sur **Créer**.
 
     > **Note :** la création d’un lakehouse sans **tables** ou **fichiers** peut prendre quelques minutes.
 
@@ -85,15 +85,15 @@ Créez un nouveau notebook Fabric et connectez-vous à une source de données ex
 1. Insérez le code suivant dans une **nouvelle cellule de code** :
 
     ```python
-        # Declare file name    
-        file_name = "yellow_taxi"
+    # Declare file name    
+    file_name = "yellow_taxi"
     
-        # Construct destination path
-        output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
-        print(output_parquet_path)
+    # Construct destination path
+    output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
+    print(output_parquet_path)
         
-        # Load the first 1000 rows as a Parquet file
-        blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
+    # Load the first 1000 rows as a Parquet file
+    blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
     ```
 
 1. Ajoutez votre chemin **RawData** ABFS et sélectionnez **&#9655; cellule d’exécution** pour écrire 1000 lignes dans un fichier yellow_taxi.parquet.
@@ -120,7 +120,7 @@ Il est probable que votre tâche d’ingestion de données ne se termine pas par
     filtered_df = raw_df.withColumn("dataload_datetime", current_timestamp())
     
     # Filter columns to exclude any NULL values in storeAndFwdFlag
-    filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
+    filtered_df = filtered_df.filter(col("storeAndFwdFlag").isNotNull())
     
     # Load the filtered data into a Delta table
     table_name = "yellow_taxi"
@@ -177,5 +177,5 @@ Dans cet exercice, vous avez utilisé des notebooks avec PySpark dans Fabric pou
 Une fois que vous avez fini d’explorer, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Paramètres de l’espace de travail** et, dans la section**Général**, faites défiler vers le bas et sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Supprimer** pour supprimer l’espace de travail.

@@ -23,26 +23,26 @@ Avant de pouvoir utiliser des données dans Fabric, vous devez créer un espace 
 1. Nommez le nouvel espace de travail et, dans la section **Avancé**, sélectionnez le mode de licence approprié. Si vous avez démarré une version d’évaluation de Microsoft Fabric, sélectionnez Version d’évaluation.
 1. Sélectionnez **Appliquer** pour créer et ouvrir l’espace de travail.
  
-    ![Image d’écran des fichiers CSV chargés dans un nouvel espace de travail Fabric.](Images/uploaded-files.jpg)
+    ![Image d’écran d’un nouvel espace de travail Fabric.](Images/new-workspace.jpg)
 
 ## Créer un lakehouse et charger des fichiers
 
-Maintenant que vous disposez d’un espace de travail, vous pouvez créer un lakehouse pour vos fichiers de données. Dans votre nouvel espace de travail, sélectionnez **Nouveau** et **Lakehouse**. Nommez le lakehouse, puis sélectionnez **Créer**. Après un court délai, un nouveau lakehouse est créé.
+Maintenant que vous disposez d’un espace de travail, vous pouvez créer un lakehouse pour vos fichiers de données. Dans votre nouvel espace de travail, sélectionnez **+ Nouvel élément** et **Lakehouse**. Nommez le lakehouse, puis sélectionnez **Créer**. Après un court délai, un nouveau lakehouse est créé.
 
 Vous pouvez désormais ingérer des données dans le lakehouse. Il existe plusieurs façons de procéder, mais vous allez pour le moment télécharger un dossier de fichiers texte de votre ordinateur local (ou machine virtuelle de labo le cas échéant), puis les charger dans votre lakehouse.
 
-1. Téléchargez tous les fichiers de données à partir de https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip.
+1. Téléchargez tous les fichiers de données à partir de `https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip`.
 1. Extrayez l’archive compressée et vérifiez que vous disposez d’un dossier nommé *orders* qui contient trois fichiers CSV : 2019.csv, 2020.csv et 2021.csv.
 1. Revenez à votre nouveau lakehouse. Dans le volet **Explorateur**, en regard du dossier **Fichiers**, sélectionnez le menu **…**, puis sélectionnez **Charger** et **Charger le dossier**. Accédez au dossier orders sur votre ordinateur local (ou machine virtuelle de labo le cas échéant) et sélectionnez **Charger**.
 1. Une fois les fichiers chargés, développez **Files** et sélectionnez le dossier **orders**. Vérifiez que les fichiers CSV ont été chargés, comme indiqué ici :
 
-    ![Image d’écran d’un nouvel espace de travail Fabric.](Images/new-workspace.jpg)
+    ![Image d’écran des fichiers CSV chargés dans un nouvel espace de travail Fabric.](Images/uploaded-files.jpg)
 
 ## Créer un notebook
 
 Vous pouvez maintenant créer un notebook Fabric pour utiliser vos données. Les notebooks fournissent un environnement interactif dans lequel vous pouvez écrire et exécuter du code (dans plusieurs langues).
 
-1. Sélectionnez votre espace de travail, puis sélectionnez **Nouveau** et **Notebook**. Après quelques secondes, un nouveau notebook contenant une seule cellule s’ouvre. Les notebooks sont constitués d’une ou plusieurs cellules qui peuvent contenir du code ou du Markdown (texte mis en forme).
+1. Sélectionnez votre espace de travail, puis sélectionnez **+ Nouvel élément** et **Notebook**. Après quelques secondes, un nouveau notebook contenant une seule cellule s’ouvre. Les notebooks sont constitués d’une ou plusieurs cellules qui peuvent contenir du code ou du Markdown (texte mis en forme).
 1. Fabric attribue un nom à chaque notebook que vous créez, tel que Notebook 1, Notebook 2, etc. Cliquez sur le panneau de noms au-dessus de l’onglet **Accueil** du menu pour remplacer le nom par quelque chose de plus descriptif.
 1. Sélectionnez la première cellule (qui est actuellement une cellule de code) puis, dans la barre d’outils en haut à droite, utilisez le bouton **M↓** pour convertir la cellule en cellule Markdown. Le texte contenu dans la cellule s’affiche alors sous forme de texte mis en forme.
 1. Utilisez le bouton 🖉 (Modifier) pour placer la cellule en mode édition, puis modifiez le balisage Markdown comme suit.
@@ -156,7 +156,7 @@ L’objet DataFrame fournit des fonctionnalités supplémentaires, telles que la
 
 ### Filtrer un DataFrame
 
-1. Ajoutez une cellule de code en sélectionnant **+Code** qui apparaît lorsque vous pointez la souris au-dessus ou en dessous de la cellule active ou de sa sortie. Sinon, dans le menu du ruban, sélectionnez **Modifier** et **+Ajouter une cellule de code**.
+1. Ajoutez une cellule de code en sélectionnant **+Code** qui apparaît lorsque vous pointez la souris au-dessus ou en dessous de la cellule active ou de sa sortie. Sinon, dans le menu du ruban, sélectionnez **Modifier** et **+Ajouter une cellule de code ci-dessous**.
 
 2.  Le code suivant filtre les données afin que seules deux colonnes soient retournées. Il utilise également *count* et *distinct* pour résumer le nombre d’enregistrements :
 
@@ -300,7 +300,7 @@ Lorsque vous traitez de gros volumes de données, le partitionnement peut améli
     print ("Transformed data saved!")
     ```
 
-2.  Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet Lakehouses à gauche, dans le menu … du nœud Fichiers, sélectionnez **Actualiser**, puis développez le dossier partitioned_orders pour vérifier qu’il contient une hiérarchie de dossiers nommés *Year=xxxx*, chacun contenant des dossiers nommés *Month=xxxx*. Chaque dossier de mois contient un fichier Parquet avec les commandes de ce mois.
+2.  Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet Lakehouses à gauche, dans le menu … du nœud Fichiers, sélectionnez **Actualiser**, puis développez le dossier partitioned_data pour vérifier qu’il contient une hiérarchie de dossiers nommés *Year=xxxx*, chacun contenant des dossiers nommés *Month=xxxx*. Chaque dossier de mois contient un fichier Parquet avec les commandes de ce mois.
 
     ![Image d’écran montrant les données partitionnés par année et mois.](Images/partitioned-data.jpg)
 

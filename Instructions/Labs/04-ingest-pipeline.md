@@ -18,7 +18,7 @@ Ce labo prend environ **60** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Engineering données**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Engineering données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -29,11 +29,11 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse dans lequel vous ingérerez les données.
 
-1. Dans la page d’accueil d’**Engineering données Synapse**, créez un nouveau **Lakehouse** du nom de votre choix.
+1. Dans la page d’accueil de l’**Engineering données**, créez un nouveau **lakehouse** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouveau lakehouse sans **tables** ou **fichiers** sera créé.
 
-1. Sous l’onglet **Vue du lac** dans le volet de gauche, dans le menu **...** du nœud **Fichiers**, sélectionnez **Nouveau sous-dossier** et créez un sous-dossier nommé **new_data**.
+1. Sous l’onglet **Explorateur** de gauche, dans le menu **...** du nœud **Fichiers**, sélectionnez **Nouveau sous-dossier** et créez un sous-dossier nommé **new_data**.
 
 ## Créer un pipeline
 
@@ -66,8 +66,7 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
     - **Première ligne comme en-tête** : Sélectionné
     - **Type de compression** : Aucune
 7. Sélectionnez **Aperçu des données** pour afficher un échantillon des données qui seront ingérées. Fermez ensuite l’aperçu des données, puis sélectionnez **Suivant**.
-8. Dans la page **Choisir la destination des données**, sélectionnez **Hub de données OneLake**, puis votre lakehouse existant.
-9. Définissez les options de destination des données suivantes, puis sélectionnez **Suivant** :
+8. Dans la page **Se connecter à la destination des données**, définissez les options de destination de données suivantes, puis sélectionnez **Suivant** :
     - **Dossier racine** : Fichiers
     - **Nom du chemin d’accès au dossier** : new_data
     - **Nom du fichier** : sales.csv
@@ -142,7 +141,7 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
 Maintenant que vous avez implémenté un notebook pour transformer des données et les charger dans une table, vous pouvez incorporer le notebook dans un pipeline pour créer un processus ETL réutilisable.
 
 1. Dans la barre de menus du hub à gauche, sélectionnez le pipeline **Ingérer des données de ventes** que vous avez créé.
-2. Sous l’onglet **Activités**, dans la liste **Autres activités**, sélectionnez **Supprimer des données**. Positionnez ensuite la nouvelle activité **Supprimer des données** à gauche de l’activité **Copier des données**, et connectez sa sortie **À l’achèvement** à l’activité **Copier des données**, comme illustré ici :
+2. Sous l’onglet **Activités**, dans la liste **Toutes les activités**, sélectionnez **Supprimer des données**. Positionnez ensuite la nouvelle activité **Supprimer des données** à gauche de l’activité **Copier des données**, et connectez sa sortie **À l’achèvement** à l’activité **Copier des données**, comme illustré ici :
 
     ![Capture d’écran d’un pipeline avec les activités Supprimer des données et Copier des données.](./Images/delete-data-activity.png)
 
@@ -196,5 +195,5 @@ Dans cet exercice, vous avez appris à implémenter un pipeline dans Microsoft F
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Paramètres de l’espace de travail** et, dans la section**Général**, faites défiler vers le bas et sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Supprimer** pour supprimer l’espace de travail.

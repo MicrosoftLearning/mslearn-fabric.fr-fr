@@ -115,14 +115,13 @@ Maintenant que vous disposez d’une table de données dans votre base de donné
     ```
 
 8. Exécutez la requête et passez en revue les résultats, qui doivent contenir le chiffre d’affaires net total de chaque produit entre le 1er janvier et le 31 décembre 2020 par ordre croissant du nom de produit.
-9. Sélectionnez **Enregistrer en tant que jeu de requêtes KQL** et enregistrez la requête sous le nom **Revenue by Product**.
 
 ## Créer un rapport Power BI à partir d’un jeu de requêtes KQL
 
 Vous pouvez utiliser votre jeu de requêtes KQL comme base d’un rapport Power BI.
 
 1. Dans l’éditeur de requête Workbench pour votre jeu de requêtes, exécutez la requête et attendez les résultats.
-2. Sélectionnez **Générer un rapport Power BI** et attendez que l’éditeur de rapport s’ouvre.
+2. Sélectionnez **Power BI** et attendez que l’éditeur de rapport s’ouvre.
 3. Dans l’éditeur de rapport, dans le volet **Données**, développez **Résultat de la requête Kusto** et sélectionnez les champs **Item** et **TotalRevenue**.
 4. Dans le canevas de conception du rapport, sélectionnez la visualisation de table qui a été ajoutée puis, dans le volet **Visualisations**, sélectionnez **Graphique à barres groupées**.
 
