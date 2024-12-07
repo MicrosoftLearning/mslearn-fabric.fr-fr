@@ -18,7 +18,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Engineering données**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Engineering données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence dans la section **Avancé** qui comprend la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -29,7 +29,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse pour vos fichiers de données.
 
-1. Dans la page d’accueil d’**Engineering données Synapse**, créez un nouveau **Lakehouse** du nom de votre choix.
+1. Dans la page d’accueil de l’**Engineering données**, créez un nouveau **lakehouse** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouveau lakehouse est créé :
 
@@ -69,7 +69,7 @@ Dans de nombreux scénarios, les données que vous devez utiliser dans votre lak
 Les données de ventes que vous avez chargées se trouvent dans un fichier, que les ingénieurs et analystes de données peuvent utiliser directement à l’aide de code Apache Spark. Toutefois, dans de nombreux scénarios, vous souhaiterez peut-être charger les données du fichier dans une table afin de pouvoir les interroger à l’aide de SQL.
 
 1. Dans la page **Accueil**, sélectionnez le dossier **Fichiers/Données** pour pouvoir voir le fichier **sales.csv** qu’il contient.
-2. Dans le menu  **...** du fichier **sales.csv**, sélectionnez **Charger dans une table**.
+2. Dans le menu  **...** du fichier **sales.csv**, sélectionnez **Charger dans des tables** > **Nouvelle table**.
 3. Dans la boîte de dialogue **Charger dans une table**, définissez le nom de la table sur **sales** (ventes), puis confirmez l’opération de chargement. Attendez ensuite que la table soit créée et chargée.
 
     > **Conseil** : Si la table **sales** ne s’affiche pas automatiquement, dans le menu  **...** du dossier **Tables**, sélectionnez **Actualiser**.
@@ -108,7 +108,7 @@ Lorsque vous créez un lakehouse et que vous y définissez des tables, un point 
 
 Même si de nombreux professionnels des données connaissent bien SQL, les analystes de données ayant l’expérience de Power BI peuvent appliquer leurs compétences Power Query pour créer des requêtes visuelles.
 
-1. Dans la barre d’outils, sélectionnez **Nouvelle requête visuelle**.
+1. Dans la barre d’outils, développez l’option **Nouvelle requête SQL** et sélectionnez **Nouvelle requête visuelle**.
 2. Faites glisser la table **sales** vers le nouveau volet de l’éditeur de requête visuelle qui s’ouvre pour créer une requête Power Query, comme illustré ici : 
 
     ![Capture d’écran d’une requête visuelle.](./Images/visual-query.png)
@@ -133,9 +133,9 @@ Même si de nombreux professionnels des données connaissent bien SQL, les analy
 Les tables de votre lakehouse sont automatiquement ajoutées à un modèle sémantique par défaut pour la création de rapports avec Power BI.
 
 
-1. En bas de la page Point de terminaison SQL, sélectionnez l’onglet **Modèle**. Le schéma du modèle de données pour le modèle sémantique est affiché.
+1. Dans la barre d’outils, sélectionnez **Dispositions de modèle**. Le schéma du modèle de données pour le modèle sémantique est affiché.
 
-    ![Capture d’écran 2024-04-29 155248](https://github.com/afelix-95/mslearn-fabric/assets/148110824/ba9bd67d-8968-4c46-ac7a-f96a9f697f4c)
+    ![Capture d’écran des dispositions de modèle](./Images/lakehouse-model-layouts.png)
 
     > **Remarque 1** : Dans cet exercice, le modèle sémantique se compose d’une seule table. Dans un scénario réel, vous créeriez probablement plusieurs tables dans votre lakehouse, chacune étant incluse dans le modèle. Vous pourriez ensuite définir des relations entre ces tables dans le modèle.
     
@@ -171,5 +171,5 @@ Dans cet exercice, vous avez créé un lakehouse et importé des données dans c
 Si vous avez terminé d’explorer votre lakehouse, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+2. Dans la barre d’outils, sélectionnez **Paramètres de l’espaces de travail**.
 3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

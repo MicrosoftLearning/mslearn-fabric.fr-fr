@@ -16,7 +16,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Data Warehouse**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Entrepôt de données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -27,7 +27,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Maintenant que vous disposez d’un espace de travail, il est temps de créer un entrepôt de données. La page d’accueil Data Warehouse comprend un raccourci permettant de créer un entrepôt :
 
-1. Dans la page d’accueil **Synapse Data Warehouse**, créez un **entrepôt** avec le nom de votre choix.
+1. Dans la page d’accueil **Entrepôt de données**, créez un **entrepôt** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
@@ -37,7 +37,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 Un entrepôt est une base de données relationnelle dans laquelle vous pouvez définir des tables et d’autres objets.
 
-1. Dans votre nouvel entrepôt, sélectionnez la vignette **Créer des tables avec T-SQL** et remplacez le code SQL par défaut par l’instruction CREATE TABLE suivante :
+1. Dans votre nouvel entrepôt, sélectionnez la vignette **T-SQL** et utilisez l’instruction CREATE TABLE suivante :
 
     ```sql
    CREATE TABLE dbo.DimProduct
@@ -65,9 +65,8 @@ Un entrepôt est une base de données relationnelle dans laquelle vous pouvez d�
     ```
 
 5. Exécutez la nouvelle requête pour insérer trois lignes dans la table **DimProduct**.
-6. Une fois la requête terminée, sélectionnez l’onglet **Données** en bas de la page dans l’entrepôt de données. Dans le volet **Explorateur**, sélectionnez la table **DimProduct** et vérifiez que les trois lignes ont été ajoutées à la table.
+6. Une fois la requête terminée, dans le volet **Explorateur**, sélectionnez la table **DimProduct** et vérifiez que les trois lignes ont été ajoutées à la table.
 7. Sous l’onglet du menu **Accueil**, utilisez le bouton **Nouvelle requête SQL** pour créer une requête. Ensuite, copiez et collez le code Transact-SQL depuis `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt` dans le nouveau volet de requête.
-<!-- I had to remove the GO command in this query as well -->
 8. Exécutez la requête, qui crée un schéma d’entrepôt de données simple et charge des données. L’exécution du script doit prendre environ 30 secondes.
 9. Utilisez le bouton **Actualiser** dans la barre d’outils pour actualiser la vue. Ensuite, dans le volet **Explorateur**, vérifiez que le schéma **dbo** dans l’entrepôt de données contient maintenant les quatre tables suivantes :
     - **DimCustomer**
@@ -81,15 +80,17 @@ Un entrepôt est une base de données relationnelle dans laquelle vous pouvez d�
 
 Un entrepôt de données relationnelles se compose généralement de tables de *faits* et de *dimension*. Les tables de faits contiennent des mesures numériques que vous pouvez agréger pour analyser les performances de l’entreprise (par exemple le chiffre d’affaires), et les tables de dimension contiennent des attributs des entités par lesquelles vous pouvez agréger les données (par exemple produit, client ou temps). Dans un entrepôt de données Microsoft Fabric, vous pouvez utiliser ces clés pour définir un modèle de données qui encapsule les relations entre les tables.
 
-1. En bas de la page de l’entrepôt de données, sélectionnez l’onglet **Modèle**.
+1. Sélectionnez le bouton **Dispositions de modèle** dans la barre d’outils.
 2. Dans le volet du modèle, réorganisez les tables de votre entrepôt de données afin que la table **FactSalesOrder** se trouve au milieu, comme ceci :
 
     ![Capture d’écran de la page du modèle de l’entrepôt de données.](./Images/model-dw.png)
 
+> **Remarque** : les vues **frequently_run_queries**, **long_running_queries**, **exec_sessions_history** et **exec_requests_history** font partie du schéma **queryinsights** créé automatiquement par Fabric. Il s’agit d’une fonctionnalité qui fournit une vue holistique de l’historique de l’activité de requête sur le point de terminaison d’analytique SQL. Étant donné que cette fonctionnalité n’entre pas dans l’étendue de cet exercice, ces vues doivent être ignorées pour l’instant.
+
 3. Faites glisser le champ **ProductKey** de la table **FactSalesOrder** et déposez-le sur le champ **ProductKey** de la table **DimProduct**. Vérifiez ensuite les détails des relations suivantes :
-    - **Table 1** : FactSalesOrder
+    - **À partir de la table** : FactSalesOrder
     - **Colonne** : ProductKey
-    - **Table 2** : DimProduct
+    - **Vers la table** : DimProduct
     - **Colonne** : ProductKey
     - **Cardinalité** : Plusieurs-à-un (*:1)
     - **Direction du filtre croisé** : Unique
@@ -177,7 +178,7 @@ Un entrepôt de données dans Microsoft Fabric offre la plupart des mêmes fonct
 
 Au lieu d’écrire du code SQL, vous pouvez utiliser le concepteur de requêtes graphique pour interroger les tables de votre entrepôt de données. Cette expérience est similaire à Power Query en ligne, où vous pouvez créer des étapes de transformation de données sans code. Pour les tâches plus complexes, vous pouvez utiliser le langage M (Mashup) de Power Query.
 
-1. Dans le menu **Accueil**, sélectionnez **Nouvelle requête visuelle**.
+1. Dans le menu **Accueil**, développez les options sous **Nouvelle requête SQL** et sélectionnez **Nouvelle requête visuelle**.
 
 1. Faites glisser **FactSalesOrder** sur le **canevas**. Notez qu’un aperçu de la table s’affiche dans le volet **Aperçu** en dessous.
 
@@ -200,7 +201,7 @@ Au lieu d’écrire du code SQL, vous pouvez utiliser le concepteur de requêtes
 
 Vous pouvez facilement visualiser les données dans une seule requête ou dans votre entrepôt de données. Avant de visualiser, masquez les colonnes et/ou les tables qui ne sont pas conviviales pour les concepteurs de rapports.
 
-1. Dans le volet **Explorateur**, sélectionnez la vue **Modèle**. 
+1. Sélectionnez le bouton **Dispositions de modèle**. 
 
 1. Masquez les colonnes suivantes dans vos tables de faits et de dimension qui ne sont pas nécessaires pour créer un rapport. Notez que cela ne supprime pas les colonnes du modèle, mais les masque simplement de la vue sur le canevas de rapport.
    1. FactSalesOrder

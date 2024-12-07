@@ -14,7 +14,7 @@ Ce labo est d’une durée de **45** minutes environ.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Data Warehouse**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Entrepôt de données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -27,7 +27,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Ensuite, créez un entrepôt de données dans l’espace de travail que vous avez créé.
 
-1. Dans la page d’accueil Entrepôt de données de Synapse, sélectionnez le raccourci **Échantillon d’entrepôt** pour créer un entrepôt avec le nom de votre choix.  
+1. Dans la page d’accueil Entrepôt de données, sélectionnez le raccourci **Échantillon d’entrepôt** pour créer un entrepôt avec le nom de votre choix.  
 
     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
@@ -38,7 +38,7 @@ Ensuite, créez un lakehouse dans l’espace de travail que vous avez créé.
 
 1. Dans la barre de menu à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à 🗇).
 2. Sélectionnez l’espace de travail que vous avez créé.
-3. Dans l’espace de travail, sélectionnez le bouton **+ Nouveau**, puis sélectionnez **Lakehouse**. Créez un lakehouse avec le nom de votre choix.
+3. Dans l’espace de travail, sélectionnez le bouton **+ Nouvel élément**, puis **Lakehouse**. Créez un lakehouse avec le nom de votre choix.
 
    Au bout d’une minute environ, un nouveau lakehouse est créé :
 
@@ -102,7 +102,7 @@ Les autorisations d’élément contrôlent l’accès à des éléments Fabric 
 
 10. Revenez à la fenêtre du navigateur dans laquelle vous êtes connecté en tant que deuxième utilisateur. Actualisez la vue du navigateur.  
 
-11. Le deuxième utilisateur n’a plus accès à l’espace de travail, mais à l’entrepôt uniquement. Vous ne pouvez plus parcourir les espaces de travail dans le volet de navigation de gauche pour trouver l’entrepôt. Sélectionnez **Hub de données OneLake** dans le menu de navigation de gauche pour rechercher l’entrepôt. 
+11. Le deuxième utilisateur n’a plus accès à l’espace de travail, mais à l’entrepôt uniquement. Vous ne pouvez plus parcourir les espaces de travail dans le volet de navigation de gauche pour trouver l’entrepôt. Sélectionnez **OneLake** dans le menu de navigation de gauche pour rechercher l’entrepôt. 
 
 12. Sélectionnez l’entrepôt. Dans l’écran qui s’affiche, sélectionnez **Ouvrir** dans la barre de menu supérieure.
 
@@ -115,7 +115,7 @@ Les rôles d’accès aux données OneLake vous permettent de créer des rôles 
 Dans cet exercice, vous affectez une autorisation d’élément, créez un rôle d’accès aux données OneLake et expérimentez la façon dont ils fonctionnent ensemble pour restreindre l’accès aux données dans un lakehouse.  
 
 1. Restez dans le navigateur dans lequel vous êtes connecté en tant que deuxième utilisateur.  
-2. Sélectionnez **Hub de données OneLake** dans la barre de navigation sur le côté gauche. Le deuxième utilisateur ne voit pas le lakehouse.  
+2. Sélectionnez **OneLake** dans la barre de navigation de gauche. Le deuxième utilisateur ne voit pas le lakehouse.  
 3. Revenez au navigateur dans lequel vous êtes connecté en tant qu’administrateur de l’espace de travail.
 4. Dans le menu de gauche, sélectionnez **Espaces de travail**, puis sélectionnez votre espace de travail. Pointez sur le nom du lac.  
 5. Sélectionnez l’ellipse (**...**) à droite de l’ellipse, puis sélectionnez **Gérer les autorisations**
@@ -129,7 +129,7 @@ Dans cet exercice, vous affectez une autorisation d’élément, créez un rôle
 
 8. Sélectionner **Accorder**. Le deuxième utilisateur dispose désormais d’autorisations de lecture sur le lakehouse. L’autorisation en lecture permet uniquement à l’utilisateur de voir les métadonnées pour le lakehouse, mais pas les données sous-jacentes. Ensuite, nous validons le résultat.
 9. Revenez au navigateur dans lequel vous êtes connecté en tant que deuxième utilisateur. Actualisez le navigateur.
-10. Dans le volet de navigation à gauche, sélectionnez **Hub de données OneLake**.  
+10. Dans le volet de navigation à gauche, sélectionnez **OneLake**.  
 11. Sélectionnez le lakehouse et ouvrez-le. 
 12. Sélectionnez **Ouvrir** sur la barre de menu supérieure. Vous ne pouvez pas développer les tables ou fichiers, même si l’autorisation de lecture a été accordée. Ensuite, vous accordez au deuxième utilisateur l’accès à un dossier spécifique à l’aide des autorisations d’accès aux données OneLake.
 13. Revenez au navigateur dans lequel vous êtes connecté en tant qu’administrateur de l’espace de travail.
@@ -140,7 +140,7 @@ Dans cet exercice, vous affectez une autorisation d’élément, créez un rôle
 
       ![Capture d’écran de la fonctionnalité Gérer l’accès aux données OneLake (préversion) dans la barre de menu de Fabric.](./Images/manage-onelake-roles.png)
 
-14. Sélectionnez un nouveau rôle sur l’écran **Accès aux données OneLake managé (préversion)** qui s’affiche.
+14. Sélectionnez un nouveau rôle sur l’écran **Gérer l’accès aux données OneLake (préversion)** qui s’affiche.
   
       ![Capture d’écran de la nouvelle fonctionnalité de rôle dans Gérer l’accès aux données OneLake.](./Images/create-onelake-role.png)
 
