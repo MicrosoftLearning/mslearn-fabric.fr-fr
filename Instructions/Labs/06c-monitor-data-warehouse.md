@@ -16,7 +16,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Data Warehouse**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Entrepôt de données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -86,7 +86,7 @@ Les entrepôts de données Microsoft Fabric incluent des vues de gestion dynamiq
 
 1. Laissez la requête en cours d’exécution, revenez à l’onglet contenant le code pour interroger les vues de gestion dynamiques, puis réexécutez-la. Cette fois, les résultats doivent inclure la deuxième requête en cours d’exécution dans l’autre onglet. Notez le temps écoulé pour cette requête.
 1. Attendez quelques secondes, puis réexécutez le code pour interroger à nouveau les vues de gestion dynamiques. Le temps écoulé pour la requête dans l’autre onglet doit avoir augmenté.
-1. Revenez au deuxième onglet de requête où la requête est toujours en cours d’exécution, puis sélectionnez **X Annuler** pour l’annuler.
+1. Revenez au deuxième onglet de requête où la requête est toujours en cours d’exécution, puis sélectionnez **Annuler** pour l’annuler.
 1. De retour sous l’onglet avec le code pour interroger les vues de gestion dynamiques, réexécutez la requête pour vérifier que la deuxième requête n’est plus en cours d’exécution.
 1. Fermez tous les onglets de requête.
 
@@ -129,5 +129,5 @@ Dans cet exercice, vous avez utilisé des vues de gestion dynamiques et des insi
 Si vous avez terminé d’explorer votre entrepôt de données, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Paramètres de l’espace de travail** et, dans la section**Général**, faites défiler vers le bas et sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Supprimer** pour supprimer l’espace de travail.
