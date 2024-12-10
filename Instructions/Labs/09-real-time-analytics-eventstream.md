@@ -3,7 +3,7 @@ lab:
   title: Bien démarrer avec Eventstream dans Microsoft Fabric
   module: Get started with Eventstream in Microsoft Fabric
 ---
-# Bien démarrer avec Eventstream dans Real-Time Intelligence
+# Bien démarrer avec Eventstream dans Microsoft Fabric
 
 Eventstream est une fonctionnalité de Microsoft Fabric qui capture, transforme et route les événements en temps réel vers différentes destinations avec une expérience sans code. Vous pouvez ajouter des sources de données d’événement, des destinations de routage, ainsi que le processeur d’événements lorsque la transformation est nécessaire, au flux d’événements. EventStore de Microsoft Fabric est une option de supervision qui tient à jour les événements du cluster et fournit un moyen de comprendre l’état de votre cluster ou de votre charge de travail à un moment donné. Vous pouvez interroger le service EventStore à propos des événements qui sont disponibles pour chaque entité et type d’entité du cluster. Cela signifie que vous pouvez rechercher des événements à différents niveaux, tels que les clusters, les nœuds, les applications, les services, les partitions et les réplicas de partition. Le service EventStore a également la possibilité de mettre en corrélation les événements du cluster. En examinant les événements écrits en même temps à partir de différentes entités dont les conséquences peuvent être mutuelles, le service EventStore peut lier ces événements pour aider à identifier les causes des activités du cluster. L’agrégation et la collecte d’événements avec EventFlow constituent une autre option pour superviser et diagnostiquer des clusters Microsoft Fabric.
 
@@ -23,220 +23,142 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
    ![Capture d’écran d’un espace de travail vide dans Power BI](./Images/new-workspace.png)
 5. En bas à gauche du portail Power BI, sélectionnez l’icône **Power BI**, puis passez à l’expérience **Real-Time Intelligence**.
 
-## Scénario
-
-Avec les flux d’événements Fabric, vous pouvez gérer facilement vos données d’événement dans un même endroit. Vous pouvez collecter, transformer et envoyer des données d’événement en temps réel dans différentes destinations au format souhaité. Vous pouvez également connecter vos flux d’événements à Azure Event Hubs, à la base de données KQL et à Lakehouse sans aucune difficulté.
-
-Ce labo est basé sur des exemples de données de streaming appelées « Stock Market Data » (Données boursières). L’exemple de données Stock Market est un jeu de données d’une bourse avec une colonne de schéma prédéfini telle que l’heure, le symbole, le prix, le volume, et plus encore. Vous allez utiliser cet exemple de données pour simuler des événements en temps réel des cours des actions et les analyser avec différentes destinations, telles que la base de données KQL.
-
-Utilisez les fonctionnalités de streaming et d’interrogation de Real-Time Intelligence pour répondre à des questions clés sur les statistiques boursières. Dans ce scénario, nous allons tirer pleinement parti de l’Assistant au lieu de créer manuellement certains composants sans aide extérieure, comme la base de données KQL.
-
-Ce didacticiel vous montre comment effectuer les opérations suivantes :
-
-- Créer un Eventhouse
-- Créer une base de données KQL
-- Activer la copie de données vers OneLake
-- Créer un flux d’événements
-- Streamer des données d’un flux d’événements vers votre base de données KQL
-- Explorer des données avec KQL et SQL\
-
 ## Créer un organisateur d’événements Real-Time Intelligence
 
-1. Sélectionnez l’option Real-Time Intelligence dans Microsoft Fabric.
-1. Sélectionnez Organisateur d’événements dans la barre de menus, puis donnez un nom à votre organisateur d’événements.
-    
-    ![Image de la création d’un organisateur d’événements](./Images/create-eventhouse.png)
+1. Sur la page d’accueil de Real-Time Intelligence dans Microsoft Fabric, créez un **Eventhouse** en lui donnant un nom unique de votre choix.
+1. Fermez toutes les invites ou conseils affichés jusqu’à ce que le nouvel eventhouse vide soit visible :
+
+    ![Capture d’écran d’un nouvel eventhouse](./Images/create-eventhouse.png)
 
 ## Créer une base de données KQL
 
 1. Dans le tableau de bord **Organisateur d’événements Real-Time Intelligence**, cochez la case **Base de données KQL +**.
-1. Vous pouvez nommer votre base de données et sélectionner une **Nouvelle base de données (par défaut)**, ou créer un **Nouveau raccourci de base de données (abonné)**.
-1. Sélectionnez **Créer**.
+1. Vous pouvez créer une **Nouvelle base de données (par défaut)**, ou créer un **Nouveau raccourci de base de données (abonné)**.
 
-     >**Remarque :** la fonctionnalité de base de données d’abonné vous permet d’attacher une base de données située dans un cluster différent à votre cluster Azure Data Explorer. La base de données d’abonné est jointe en mode lecture seule, ce qui permet d’afficher les données et d’exécuter des requêtes sur les données ingérées dans la base de données du responsable. La base de données d’abonné synchronise les modifications apportées aux bases de données de responsable. En raison de la synchronisation, il existe un décalage de données de quelques secondes à quelques minutes au niveau de la disponibilité des données. La durée du décalage dépend de la taille globale des métadonnées de la base de données du responsable. Les bases de données de responsable et d’abonné utilisent le même compte de stockage pour extraire les données. Le stockage appartient à la base de données de responsable. La base de données d’abonné affiche les données sans qu’il soit nécessaire de les ingérer. Étant donné que la base de données jointe est une base de données en lecture seule, les données, les tables et les stratégies de la base de données ne peuvent pas être modifiées, à l’exception de la stratégie de mise en cache, des principaux et des autorisations.
+    >**Remarque :** la fonctionnalité de base de données d’abonné vous permet d’attacher une base de données située dans un cluster différent à votre cluster Azure Data Explorer. La base de données d’abonné est jointe en mode lecture seule, ce qui permet d’afficher les données et d’exécuter des requêtes sur les données ingérées dans la base de données du responsable. La base de données d’abonné synchronise les modifications apportées aux bases de données de responsable. En raison de la synchronisation, il existe un décalage de données de quelques secondes à quelques minutes au niveau de la disponibilité des données. La durée du décalage dépend de la taille globale des métadonnées de la base de données du responsable. Les bases de données de responsable et d’abonné utilisent le même compte de stockage pour extraire les données. Le stockage appartient à la base de données de responsable. La base de données d’abonné affiche les données sans qu’il soit nécessaire de les ingérer. Étant donné que la base de données jointe est une base de données en lecture seule, les données, les tables et les stratégies de la base de données ne peuvent pas être modifiées, à l’exception de la stratégie de mise en cache, des principaux et des autorisations.
 
-   ![Image du choix de la base de données kql](./Images/create-kql-database-eventhouse.png)
-
-4. Vous êtes invité à donner un **Nom** à la base de données KQL
-
-   ![Image du nom de la base de données kql](./Images/name-kqldatabase.png)
-
-5. Donnez à la base de données KQL un nom dont vous vous souviendrez, par exemple **Eventhouse-HR**, puis appuyez sur **Créer**.
-
-6. Dans le panneau **Détails de la base de données**, sélectionnez l’icône de crayon pour activer la disponibilité dans OneLake.
-
-   [ ![Image de l’activation d’onlake](./Images/enable-onelake-availability.png) ](./Images/enable-onelake-availability-large.png)
-
-7. Veillez à basculer le bouton sur **Actif**, puis sélectionnez **Terminé**.
-
-   ![Image de l’activation de la touche bascule onelake](./Images/enable-onelake-toggle.png)
+1. Créez une base de données et nommez-la `Eventhouse-DB`.
 
 ## Créer un flux d’événements
 
-1. Dans la barre de menus, sélectionnez **Real-Time Intelligence** (l’icône ressemble au ![logo Real-Time Intelligence](./Images/rta_logo.png))
-2. Sous **Nouveau**, sélectionnez **Eventstream**.
+1. Dans la page principale de votre base de données KQL, sélectionnez **Obtenir des données**.
+2. Pour la source de données, sélectionnez **Eventstream** > **Nouvel evenstream**. Nommez l’eventstream `bicycle-data`.
 
-   ![Image du choix eventstream](./Images/select-eventstream.png)
+    La création de votre flux d’événements dans l’espace de travail ne prend que quelques instants. Une fois l’opération effectuée, vous êtes automatiquement redirigé vers l’éditeur principal, prêt à commencer à intégrer des sources dans votre flux d’événements.
 
-3. Vous êtes invité à **nommer** votre flux d’événements. Donnez à Eventstream un nom dont vous vous souviendrez, par exemple **MyStockES**, puis sélectionnez l’option **Fonctionnalités améliorées (préversion)** et cliquez sur le bouton **Créer**.
-
-   ![Image du nom eventstream](./Images/name-eventstream.png)
-
-     >**Remarque :** la création de votre flux d’événements dans l’espace de travail ne prend que quelques instants. Une fois l’opération effectuée, vous êtes automatiquement redirigé vers l’éditeur principal, prêt à commencer à intégrer des sources dans votre flux d’événements.
+    ![Capture d’écran d’un nouvel eventstream.](./Images//name-eventstream.png)
 
 ## Établir une source d’Eventstream
 
-1. Dans le canevas du flux d’événements, sélectionnez **Nouvelle source** dans la liste déroulante, puis sélectionnez **Exemples de données**.
+1. Dans le canevas d’eventstream, sélectionnez **Utiliser des exemples de données**.
+2. Nommez la source `Bicycles` et sélectionnez **Vélos** comme exemple de données.
 
-    [ ![Image de l’utilisation d’un exemple de données](./Images/eventstream-select-sample-data.png) ](./Images/eventstream-select-sample-data-large.png#lightbox)
+    Votre flux sera mappé et sera automatiquement affiché sur le **canevas d’eventstream**.
 
-2.  Dans **Ajouter une source**, donnez un nom à votre source, puis sélectionnez **Bicycles (Reflex compatible)**.
-3.  Cliquez sur le bouton **Ajouter**.
+   ![Passer en revue le canevas d’eventstream](./Images/real-time-intelligence-eventstream-sourced.png)
 
-    ![Sélectionner et nommer un flux d’événements lié à l’exemple de données](./Images/eventstream-sample-data.png)
+## Ajouter une destination
 
-4. Une fois que vous avez sélectionné le bouton **Ajouter**, votre flux est mappé, et vous êtes automatiquement redirigé vers le **canevas d’Eventstream**.
+1. Dans la liste déroulante **Transformer des événements ou ajouter une destination**, sélectionnez **Eventhouse**.
+1. Dans le volet **Eventhouse**, configurez les options suivantes.
+   - **Mode d’ingestion des données :** traitement des événements avant l’ingestion
+   - **Nom de la destination :**`Bicycle-database`
+   - **Espace de travail :***sélectionnez l’espace de travail que vous avez créé au début de cet exercice.*
+   - **Eventhouse** : *sélectionnez votre eventhouse*
+   - **Base de données KQL :** Eventhouse-DB
+   - **Table de destination :** créez une table nommée `bike-count`
+   - **Format de données d’entrée :** JSON
 
-   [ ![Passer en revue le canevas d’eventstream](./Images/real-time-intelligence-eventstream-sourced.png) ](./Images/real-time-intelligence-eventstream-sourced-large.png#lightbox)
- 
- > **Remarque :** une fois que vous avez créé l’exemple de source de données, vous voyez qu’il est ajouté à votre Eventstream sur le canevas en mode d’édition. Pour implémenter cet exemple de données récemment ajouté, sélectionnez **Publier**.
+   ![Eventstream de base de données KQL avec modes d’ingestion](./Images/kql-database-event-processing-before-ingestion.png)
 
-## Ajouter une activité Transformer des événements ou ajouter une destination
+1. Dans le volet **Eventhouse**, sélectionnez **Enregistrer**. 
+1. Dans la barre d’outils, sélectionnez **Publier**.
+1. Attendez environ une minute que la destination des données devienne active.
 
-1. Après la publication, vous pouvez sélectionner **Transformer des événements ou ajouter une destination**, puis l’option **Base de données KQL**.
+## Afficher les données capturées
 
-   [ ![définir une base de données KQL en tant que destination d’Eventstream](./Images/select-kql-destination.png) ](./Images/select-kql-destination-large.png)
+L’eventstream que vous avez créé prend les données de l’exemple de source de données de vélos et les charge dans la base de données dans votre eventhouse. Vous pouvez afficher les données capturées en interrogeant la table dans la base de données.
 
+1. Dans la barre de menus de gauche, sélectionnez votre base de données **Eventhouse-DB**.
+1. Dans le menu **...** de la base de données KQL **Eventhouse-DB**, sélectionnez **Interroger des données**.
+1. Dans le volet de requête, modifiez le premier exemple de requête, comme illustré ici :
 
-2. Vous voyez un nouveau panneau latéral s’ouvrir, et vous offrir de nombreuses options. Entrez les détails nécessaires de votre base de données KQL.
+    ```kql
+    ['bike-count']
+    | take 100
+    ```
 
-   [ ![Eventstream de base de données KQL avec modes d’ingestion](./Images/kql-database-event-processing-before-ingestion.png) ](./Images/kql-database-event-processing-before-ingestion.png)
+1. Sélectionnez le code de requête et exécutez-le pour afficher 100 lignes de données depuis la table.
 
-    - **Mode d’ingestion des données :** Il existe deux façons d’ingérer des données dans une base de données KQL :
-        - ***Ingestion directe*** : ingestion des données directement dans une table KQL sans transformation.
-        - ***Traitement des événements avant l’ingestion***: transformation des données avec le processeur d’événements avant d’envoyer à une table KQL.      
-        
-        > **Avertissement :** Vous **NE POUVEZ PAS** modifier le mode d’ingestion une fois la destination de la base de données KQL ajoutée à l’Eventstream.     
+    ![Capture d’écran d’une requête KQL.](./Images/kql-query.png)
 
-   - **Nom de la destination :** entrez un nom pour cette destination Evenstream, par exemple « kql-dest ».
-   - **Espace de travail** : l’emplacement où se trouve votre base de données KQL.
-   - **Base de données KQL** : nom de votre base de données KQL.
-   - **Table de destination** : nom de votre table KQL. Vous pouvez également entrer un nom pour créer une table, par exemple « bike-count ».
-   - **Format des données d’entrée :** Choisissez JSON en tant que format de données pour votre table KQL.
+## Transformer des données d’événements
 
+Les données que vous avez capturées ne sont pas modifiées à partir de la source. Dans de nombreux scénarios, vous pouvez transformer les données dans l’eventstream avant de les charger dans une destination.
 
-3. Cliquez sur **Enregistrer**. 
-4. Cliquez sur **Publier**.
+1. Dans la barre de menus de gauche, sélectionnez l’eventstream **Bike-data**.
+1. Dans la barre d’outils, sélectionnez **Modifier** pour modifier l’eventstream.
 
-## Transformer les événements
+1. Dans le menu **Transformer des événements**, sélectionnez **Regrouper par** pour ajouter un nouveau nœud **Regrouper par** à l’eventstream.
+1. Faites glisser une connexion de la sortie du nœud **Bicycle-data** vers l’entrée du nouveau nœud **Regrouper par**, puis utilisez l’icône *crayon* dans le nœud **Regrouper par** pour la modifier.
 
-1. Dans le canevas d’**Eventstream**, sélectionnez **Transformer les événements**.
+   ![Ajoutez Regrouper par à l’événement de transformation.](./Images/eventstream-add-aggregates.png)
 
-    ![Ajoutez Regrouper par à l’événement de transformation.](./Images/eventstream-add-aggregates.png)
+1. Configurez les propriétés de la section de paramètres **Regrouper par** :
+    - **Nom de l’opération :** GroupByStreet
+    - **Type d’agrégat :***sélectionnez* Sum
+    - **Champ :***sélectionnez* No_Bikes *Sélectionnez ensuite **Ajouter** pour créer la fonction* SUM_No_Bikes
+    - **Regrouper les agrégations par (facultatif) :** Street
+    - **Fenêtre temporelle** : bascule
+    - **Durée** : 5 secondes
+    - **Décalage** : 0 seconde
 
-    A. Sélectionnez **Regrouper par**.
-
-    B. Sélectionnez **Modifier**, représenté par l’icône de ***crayon***.
-
-    C. Une fois que vous avez créé l’événement de transformation **Regrouper par**, vous devez le connecter de l’**Eventstream** à **Regrouper par**. Pour ce faire, sans utiliser du code, cliquez sur le point situé à droite de l’**Eventstream**, puis faites-le glisser vers le point situé à gauche de la nouvelle zone **Regrouper par**. 
-
-    ![Ajoutez un lien entre l’Eventstream et Regrouper par.](./Images/group-by-drag-connectors.png)    
-
-2. Renseignez les propriétés de la section de paramètres **Regrouper par** :
-    - **Nom de l’opération :** entrez un nom pour cet événement de transformation
-    - **Type d’agrégat :** Somme
-    - **Champ :** No_Bikes
-    - **Nom :** SUM_No_Bikes
-    - **Regrouper les agrégations par :** Rue
+    > **Remarque** : cette configuration entraîne le calcul par l’eventstream du nombre total de vélos dans chaque rue toutes les 5 secondes.
       
-3. Sélectionnez **Ajouter**, puis sélectionnez **Enregistrer**.
+1. Enregistrez la configuration et revenez au canevas d’Eventstream, où une erreur est indiquée (car vous devez stocker la sortie de la transformation Regrouper par quelque part !).
 
-4. De la même manière, vous pouvez survoler avec le pointeur de la souris la flèche située entre le **flux d’événements** et ***kql-dest***, puis sélectionner la ***poubelle**. Vous pouvez ensuite connecter l’événement **Regrouper par** à **kql-dest**.
+1. Utilisez l’icône **+** à droite du nœud **GroupByStreet** pour ajouter un nouveau nœud **Eventhouse**.
+1. Configurez le nouveau nœud d’eventhouse avec les options suivantes :
+   - **Mode d’ingestion des données :** traitement des événements avant l’ingestion
+   - **Nom de la destination :**`Bicycle-database`
+   - **Espace de travail :***sélectionnez l’espace de travail que vous avez créé au début de cet exercice.*
+   - **Eventhouse** : *sélectionnez votre eventhouse*
+   - **Base de données KQL :** Eventhouse-DB
+   - **Table de destination :** créez une table nommée `bikes-by-street`
+   - **Format de données d’entrée :** JSON
 
-   [ ![Supprimer un lien entre deux événements](./Images/delete-flow-arrows.png) ](./Images/delete-flow-arrows-large.png)
+   ![Capture d’écran d’une table pour les données regroupées.](./Images/group-by-table.png)
 
-    > **Remarque :** chaque fois que vous ajoutez ou supprimez des connecteurs, vous devez reconfigurer les objets de destination.
+1. Dans le volet **Eventhouse**, sélectionnez **Enregistrer**. 
+1. Dans la barre d’outils, sélectionnez **Publier**.
+1. Attendez environ une minute que les modifications deviennent actives.
 
-5. Sélectionnez le crayon sous **kql-dest** et créez une table de destination nommée **Bike_sum** qui recevra la sortie de l’événement **Regrouper par**.
+## Afficher les données transformées
 
-## Requêtes KQL
+Vous pouvez maintenant afficher les données de vélos qui ont été transformées et chargées dans une table par votre eventstream.
 
-Une requête KQL (Kusto Query Language, langage de requête Kusto) est une requête en lecture seule de traitement de données et de retour de résultats. La demande est formulée en texte brut en utilisant un modèle de flux de données facile à lire, à créer et à automatiser. Les requêtes s’exécutent toujours dans le contexte d’une table ou d’une base de données particulière. Une requête se compose au minimum d’une référence de données source et d’un ou de plusieurs opérateurs de requête appliqués de manière séquentielle, indiqués visuellement par l’utilisation d’une barre verticale (|) pour délimiter les opérateurs. Pour plus d’informations sur le langage de requête, consultez la [vue d’ensemble du langage de requête Kusto (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
+1. Dans la barre de menus de gauche, sélectionnez votre base de données **Eventhouse-DB**.
+1. Dans le menu **...** de la base de données KQL **Eventhouse-DB**, sélectionnez **Interroger des données**.
+1. Dans le volet de requête, modifiez un exemple de requête, comme illustré ici :
 
-> **Remarque** : L’éditeur KQL est fourni avec la mise en évidence de la syntaxe et d’Intellisense, ce qui vous permet d’acquérir rapidement des connaissances sur le langage de requête Kusto (KQL).
+    ```kql
+    ['bikes-by-street']
+    | take 100
+    ```
 
-1. Accédez à la base de données KQL qui vient d’être créée et remplie de données :
+1. Sélectionnez le code de requête et exécutez-le pour afficher les 100 premières lignes de la table.
 
-    A.  Sélectionnez la destination **kql-dest**. 
+    ![Capture d’écran d’une requête KQL.](./Images/kql-group-query.png)
 
-    B. Sélectionnez le lien hypertexte **Ouvrir l’élément**, situé sur la ligne **Élément connexe**
-
-   [ ![Supprimer un lien entre deux événements](./Images/navigate-to-data.png) ](./Images/navigate-to-data-large.png)
-
-1. Dans l’arborescence des données, sélectionnez le menu Plus [...] pour la table ***Bike_sum***. Sélectionnez ensuite Interroger la table > Afficher 100 enregistrements.
-
-   [ ![Supprimer un lien entre deux événements](./Images/kql-query-sample.png) ](./Images/kql-query-sample-large.png)
-
-3. L’exemple de requête s’ouvre dans le volet **Explorer vos données** avec le contexte de table déjà renseigné. Cette première requête utilise l’opérateur `take` pour renvoyer un échantillon de nombre d’enregistrements. Elle est utile pour avoir un premier aperçu de la structure des données et des valeurs possibles. Les exemples de requêtes renseignées automatiquement sont exécutés automatiquement. Les résultats de la requête s’affichent dans le volet des résultats.
-
-   ![Image des résultats de la requête KQL](./Images/kql-query-results.png)
-
-4. Retournez à l’arborescence des données afin de sélectionner la requête suivante, **Résumer les ingestions par heure**, qui utilise l’opérateur `summarize` pour compter le nombre d’enregistrements ingérés dans l’intervalle donné.
-
-   ![Image des résultats de la requête KQL](./Images/kql-query-results-15min-intervals.png)
-
-> **Remarque** : Vous pouvez voir un avertissement indiquant que vous avez dépassé les limites de requête. Ce comportement varie en fonction de la quantité de données diffusées en streaming dans votre base de données.
-
-Vous pouvez continuer à naviguer à l’aide des fonctions de requête intégrées pour vous familiariser avec vos données.
-
-## Interroger avec Copilot
-
-L’éditeur de requête prend en charge l’utilisation de T-SQL en plus de son langage KQL (Kusto Query Language) de requête principale. T-SQL peut être utile pour les outils qui ne peuvent pas utiliser KQL. Pour plus d’informations, consultez [Interroger des données à l’aide de T-SQL](https://learn.microsoft.com/en-us/azure/data-explorer/t-sql).
-
-1. De retour dans l’arborescence Données, sélectionnez le **menu Plus** [...] dans la table MyStockData. Sélectionnez **Interroger la table > SQL > Afficher 100 enregistrements**.
-
-   [ ![Image de l’exemple de requête SQL](./Images/sql-query-sample.png) ](./Images/sql-query-sample-large.png)
-
-2. Placez votre curseur n’importe où dans la requête, puis sélectionnez **Exécuter** ou appuyez sur **Maj + Entrée**.
-
-   ![Image des résultats de la requête sql](./Images/sql-query-results.png)
-
-Vous pouvez continuer à naviguer à l’aide des fonctions intégrées et à vous familiariser avec les données à l’aide de SQL ou de KQL. 
-
-## Fonctionnalités utilisant les ensembles de requêtes
-
-Les ensembles de requêtes dans les bases de données KQL (Langage de requête Kusto) sont utilisés à diverses fins, principalement pour l’exécution des requêtes ainsi que pour la visualisation et la personnalisation des résultats des requêtes sur les données d’une base de données KQL. Ils constituent un composant clé des fonctionnalités d’interrogation de données de Microsoft Fabric, car ils permettent aux utilisateurs d’effectuer les tâches suivantes :
-
- - **Exécuter des requêtes :** Exécutez des requêtes KQL pour récupérer des données à partir d’une base de données KQL.
- - **Personnaliser les résultats :** Visualisez et modifiez les résultats des requêtes pour faciliter l’analyse et l’interprétation des données.
- - **Enregistrer et partager des requêtes :** Créez plusieurs onglets au sein d’un ensemble de requêtes afin d’enregistrer les requêtes pour les utiliser plus tard, ou les partager avec d’autres utilisateurs dans le cadre d’une exploration collaborative des données.
- - **Prendre en charge les fonctions SQL :** Parallèlement à l’utilisation de KQL pour la création de requêtes, les ensembles de requêtes prennent également en charge de nombreuses fonctions SQL, ce qui offre une certaine flexibilité dans l’interrogation des données.
- - **Tirer profit de Copilot :** Une fois que vous avez enregistré les requêtes en tant qu’ensemble de requêtes KQL, vous pouvez ensuite visualiser les résultats
-
-L’enregistrement d’un ensemble de requêtes est simple, et comporte plusieurs approches. 
-
-1. Dans votre **base de données KQL**, quand vous utilisez l’outil **Explorer vos données**, il vous suffit de sélectionner **Enregistrer en tant qu’ensemble de requêtes KQL**
-
-   ![Enregistrer l’ensemble de requêtes KQL à partir de Explorer vos données](./Images/save-as-queryset.png)
-
-2. Une autre approche consiste à utiliser la page de destination de Real-Time Intelligence en sélectionnant le bouton **Ensemble de requêtes KQL** de la page, puis en nommant votre **ensemble de requêtes**
-
-   ![Créer un ensemble de requêtes KQL à partir de la page de destination de Real-Time Intelligence](./Images/select-create-new-queryset.png)
-
-3. Une fois que vous êtes sur la **page de destination de l’ensemble de requêtes**, vous pouvez voir un bouton **Copilot** dans la barre d’outils. Sélectionnez-le pour ouvrir le **volet Copilot**, et poser des questions sur les données.
-
-    [ ![Ouvrir Copilot à partir de la barre de menus](./Images/open-copilot-in-queryset.png) ](./Images/open-copilot-in-queryset-large.png)
-
-4. Dans le **volet Copilot**, tapez simplement votre question. **Copilot** génère la requête KQL, et vous permet de ***copier*** ou d’***insérer** cette requête dans la fenêtre de votre ensemble de requêtes. 
-
-    [ ![écrire une requête avec Copilot en posant une question](./Images/copilot-queryset-results.png) ](./Images/copilot-queryset-results-large.png)
-
-5. À ce stade, vous pouvez utiliser des requêtes individuelles dans des tableaux de bord ou des rapports Power BI à l’aide des boutons **Épingler au tableau de bord** ou **Générer un rapport Power BI**.
+    > **Conseil** : vous pouvez également interroger la table à l’aide de la syntaxe SQL. Par exemple, essayez la requête `SELECT TOP 100 * FROM bikes-by-street`.
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé une base de données KQL et configuré un streaming continu avec un flux d’événements. Après cela, vous avez interrogé les données à l’aide de KQL et de SQL. Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
+Dans cet exercice, vous avez créé un eventhouse et rempli des tables dans sa base de données à l’aide d’un eventstream.
+
+Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
+
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail.
-2. Dans le menu **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+2. Dans la barre d’outils, sélectionnez **Paramètres de l’espaces de travail**.
 3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
 .
