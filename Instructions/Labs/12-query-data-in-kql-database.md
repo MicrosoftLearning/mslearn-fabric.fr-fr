@@ -1,18 +1,18 @@
 ---
 lab:
-  title: "Bien démarrer avec l’interrogation d’une base de données KQL dans Microsoft\_Fabric"
-  module: Query data from a KQL database in Microsoft Fabric
+  title: "Utiliser des données dans un eventhouse Microsoft\_Fabric"
+  module: Work with data in a Microsoft Fabric eventhouse
 ---
 
-# Bien démarrer avec l’interrogation d’une base de données KQL dans Microsoft Fabric
+# Utiliser des données dans un eventhouse Microsoft Fabric
 
-KQL Queryset est un outil qui vous permet d’exécuter des requêtes, mais également de modifier et d’afficher les résultats des requêtes à partir d’une base de données KQL. Vous pouvez lier chaque onglet dans KQL Queryset à une base de données KQL différente et enregistrer vos requêtes pour une utilisation ultérieure ou les partager avec d’autres personnes pour l’analyse des données. Vous pouvez également basculer la base de données KQL pour n’importe quel onglet, ce qui vous permet de comparer les résultats de la requête à partir de diverses sources de données.
+Dans Microsoft Fabric, un *eventhouse* est utilisé pour stocker des données en temps réel liées à des événements, souvent capturées à partir d’une source de données de streaming par un *eventstream*.
 
-Dans cet exercice, vous aurez le rôle d’un analyste chargé d’interroger un jeu de données sur les données de courses de taxi à NYC. Vous utilisez KQL pour interroger ces données et collecter des informations afin d’obtenir des insights informatifs sur les données.
+Dans un eventhouse, les données sont stockées dans une ou plusieurs bases de données KQL, chacune contenant des tables et d’autres objets que vous pouvez interroger à l’aide de Langage de requête Kusto (KQL) ou d’un sous-ensemble de langage SQL.
 
-> **Conseil** : pour créer des requêtes, KQL Queryset utilise le langage Kusto Query qui est compatible avec de nombreuses fonctions SQL. Pour en savoir plus sur KQL, consultez [Vue d’ensemble du Langage de requête Kusto (KQL)](https://learn.microsoft.com/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
+Dans cet exercice, vous allez créer et remplir un eventhouse avec des exemples de données liés aux courses de taxi, puis interroger les données à l’aide de KQL et SQL.
 
-Ce labo est d’une durée de **25** minutes environ.
+Cet exercice prend environ **25** minutes.
 
 ## Créer un espace de travail
 
@@ -27,13 +27,20 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec la
 
 ## Créer un Eventhouse
 
+Maintenant que vous disposez d’un espace de travail avec prise en charge d’une capacité Fabric, vous pouvez y créer un eventhouse.
+
 1. Sur la page d’accueil de l’**Intelligence en temps réel**, créez un **eventhouse** avec le nom de votre choix. Lorsque l’eventhouse a été créé, fermez toutes les invites ou conseils affichés jusqu’à ce que la page de l’eventhouse soit visible :
 
    ![Capture d’écran d’un nouvel eventhouse.](./Images/create-eventhouse.png)
-   
-1. Dans le menu **...** de la base de données KQL créée dans l’eventhouse, sélectionnez **Obtenir des données** > **Échantillon**. Ensuite, choisissez l’exemple de données **Analytique des opérations automobiles**.
 
-1. Une fois le chargement des données terminé, vérifiez qu’une table **Automobile** a été créée.
+1. Dans le volet de gauche, notez que votre eventhouse contient une base de données KQL portant le même nom que l’eventhouse.
+1. Sélectionnez la base de données KQL pour l’afficher.
+
+    Actuellement, il n’existe aucune table dans la base de données. Dans la partie restante de cet exercice, vous allez utiliser un eventstream pour charger des données d’une source en temps réel dans une table.
+   
+1. Dans la page de la base de données KQL, sélectionnez **Obtenir des données** > **Exemple**. Ensuite, choisissez l’exemple de données **Analytique des opérations automobiles**.
+
+1. Une fois le chargement des données terminé (ce qui peut prendre un peu de temps), vérifiez qu’une table **Automobile** a été créée.
 
    ![Capture d’écran de la table Automobile dans une base de données eventhouse.](./Images/choose-automotive-operations-analytics.png)
 
@@ -156,7 +163,7 @@ La base de données KQL ne prend pas en charge Transact-SQL de manière native, 
 
 1. Dans votre ensemble de requêtes, ajoutez et exécutez la requête Transact-SQL suivante : 
 
-    ```sql  
+    ```sql
     SELECT TOP 100 * from Automotive
     ```
 

@@ -1,180 +1,285 @@
 ---
 lab:
-  title: Tableaux de bord en temps réel dans Microsoft Fabric
-  module: Get Started with Real-Time Dashboards in Microsoft Fabric
+  title: "Bien démarrer avec les tableaux de bord en temps réel dans Microsoft\_Fabric"
+  module: Get started with Real-Time Dashboards in Microsoft Fabric
 ---
 
 # Bien démarrer avec les tableaux de bord en temps réel dans Microsoft Fabric
 
-Les tableaux de bord en temps réel vous permettent de glaner des insights à partir de Microsoft Fabric en utilisant Langage de requête Kusto (KQL) pour récupérer des données structurées et non structurées et les restituer dans des graphiques, des nuages de points, des tables, etc. dans des panneaux qui permettent de lier des segments similaires à ceux de Power BI. 
+Les tableaux de bord en temps réel dans Microsoft Fabric vous permettent de visualiser et d’explorer les données de streaming à l’aide du Langage de requête Kusto (KQL).  Dans cet exercice, vous allez découvrir comment créer et utiliser un tableau de bord en temps réel basé sur une source de données en temps réel.
 
 Ce labo est d’une durée de **25** minutes environ.
 
-> **Remarque** : vous devez disposer d’un [essai de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Remarque** : pour effectuer cet exercice, vous avez besoin d’un [locataire Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial).
 
 ## Créer un espace de travail
 
-Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
+Avant d’utiliser des données dans Fabric, vous devez créer un espace de travail dans un locataire avec la fonctionnalité Fabric activée.
 
 1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Real-Time Intelligence**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*). Vous pouvez également utiliser un espace de travail existant pour créer un tableau de bord en temps réel.
+1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
-Dans ce labo, vous utilisez Real-Time Intelligence dans Fabric pour créer un tableau de bord en temps réel. Real-Time Intelligence fournit à des fins pratiques un exemple de jeu de données que vous pouvez utiliser pour explorer les fonctionnalités de Real-Time Intelligence. Vous utilisez cet exemple de données pour créer des requêtes et des ensembles de requêtes KQL | SQL qui analysent des données en temps réel et permettent d’autres utilisations dans des processus en aval.
+## Créer un eventhouse
 
-## Créer un tableau de bord en temps réel
+Maintenant que vous disposez d’un espace de travail, vous pouvez commencer à créer les éléments Fabric dont vous aurez besoin pour votre solution d’intelligence en temps réel. Nous allons commencer par créer un eventhouse.
 
-1. Dans **Real-Time Intelligence**, cochez la case **Tableau de bord en temps réel**.
+1. Dans la barre de menus de gauche, sélectionnez **Accueil**, puis, dans la page d’accueil de Real-Time Intelligence, créez un **Eventhouse**, en lui donnant un nom unique de votre choix.
+1. Fermez toutes les invites ou conseils affichés jusqu’à ce que le nouvel eventhouse vide soit visible :
 
-   ![Image montrant la sélection de Tableau de bord en temps réel](./Images/create-real-time-dashboard.png)
+    ![Capture d’écran d’un nouvel eventhouse](./Images/create-eventhouse.png)
 
-2. Vous êtes invité à attribuer un **Nom** au tableau de bord en temps réel.
+1. Dans le volet de gauche, notez que votre eventhouse contient une base de données KQL portant le même nom que l’eventhouse.
+1. Sélectionnez la base de données KQL pour l’afficher.
 
-   ![Image de la zone Nom du tableau de bord en temps réel.](./Images/new-real-time-dashboard.png)
+## Créer un Eventstream
 
-3. Donnez au tableau de bord en temps réel un nom facile à retenir, par exemple un nom basé sur votre source principale, puis appuyez sur **Créer**.
+Actuellement, il n’existe aucune table dans la base de données. Nous allons utiliser un eventstream pour charger des données d’une source en temps réel dans une table.
 
-4. Dans le panneau **Détails de la base de données**, sélectionnez l’icône de crayon pour activer la disponibilité dans OneLake.
+1. Dans la page principale de votre base de données KQL, sélectionnez **Obtenir des données**.
+2. Pour la source de données, sélectionnez **Eventstream** > **Nouvel evenstream**. Nommez l’eventstream `Bicycle-data`.
 
-   [ ![Image de l’activation de OneLake.](./Images/real-time-dashboard-details.png)](./Images/real-time-dashboard-details-large.png#lightbox)
+    ![Capture d’écran d’un nouvel eventstream.](./Images/empty-eventstream.png)
 
-## Ajouter une source de données
+    La création de votre flux d’événements dans l’espace de travail ne prend que quelques instants. Une fois l’opération effectuée, vous êtes automatiquement redirigé afin de sélectionner une source de données pour votre eventstream.
 
-Les sources de données servent de références réutilisables à des bases de données ou à des requêtes spécifiques dans le même espace de travail que le tableau de bord en temps réel, ce qui permet à différentes vignettes d’utiliser des sources de données distinctes pour leurs besoins en données.
+1. Sélectionnez **Utiliser un exemple de données**.
+1. Nommez la source `Bicycles` et sélectionnez **Vélos** comme exemple de données.
 
-1. Sélectionnez l’onglet **Gérer**, puis **Nouvelle source de données** dans la ***barre de menus***.
-1. Sélectionnez le bouton **+ Ajouter** dans le volet **Sources de données**.
+    Votre flux sera mappé et sera automatiquement affiché sur le **canevas d’eventstream**.
 
-    [ ![Ajouter une nouvelle source de données au tableau de bord en temps réel.](./Images/add-data-source-to-real-time-dashboard-large.png) ](./Images/add-data-source-to-real-time-dashboard-large.png#lightbox)
+   ![Passer en revue le canevas d’eventstream](./Images/real-time-intelligence-eventstream-sourced.png)
 
-1. Choisissez l’une des deux options principales : **Hub de données OneLake** ou **Azure Data Explorer**.
+1. Dans la liste déroulante **Ajouter une destination**, sélectionnez **Eventhouse**.
+1. Dans le volet **Eventhouse**, configurez les options suivantes.
+   - **Mode d’ingestion des données :** traitement des événements avant l’ingestion
+   - **Nom de la destination :**`bikes-table`
+   - **Espace de travail :***sélectionnez l’espace de travail que vous avez créé au début de cet exercice.*
+   - **Eventhouse** : *sélectionnez votre eventhouse*
+   - **Base de données KQL :***sélectionnez votre base de données KQL*
+   - **Table de destination :** créez une table nommée `bikes`
+   - **Format de données d’entrée :** JSON
 
-    ![Choisissez une source de données pour le tableau de bord en temps réel.](./Images/data-source-options-real-time-dashboards.png)
+   ![Paramètres de destination Eventstream.](./Images/kql-database-event-processing-before-ingestion.png)
 
-1. Choisissez la **source de données** qui répond aux besoins de votre entreprise, puis sélectionnez le bouton **Connecter**.
+1. Dans le volet **Eventhouse**, sélectionnez **Enregistrer**. 
+1. Connectez la sortie du nœud **Bicycles-data** au nœud **bikes-table**, puis sélectionnez **Publier**.
+1. Attendez environ une minute que la destination des données devienne active. Sélectionnez ensuite le nœud **bike-table** dans le canevas de conception et affichez le volet **Aperçu des données** en dessous pour afficher les données les plus récentes qui ont été ingérées :
 
-    [ ![Sélectionner la source de données appropriée.](./Images/select-onelake-data-hub.png) ](./Images/select-onelake-data-hub-large.png#lightbox)
+   ![Capture d’écran d’une table de destination dans un eventstream.](./Images/stream-data-preview.png)
 
-    > **Remarque** Une fois que vous êtes connecté à une source de données, vous pouvez confirmer et créer des sources de données supplémentaires à l’emplacement sélectionné.
+1. Patientez quelques minutes, puis utilisez le bouton **Actualiser** pour actualiser le volet **Aperçu des données**. Le flux s’exécutant en continu, de nouvelles données ont peut-être été ajoutées à la table.
 
-1. Confirmez votre connexion à la **source de données** dans le volet **Créer une source de données**, puis sélectionnez **Créer**.
+## Créer des tableaux de bord en temps réel
 
-    [ ![Confirmer la base de données dans Créer une source de données.](./Images/conected-now-create-datasource.png) ](./Images/conected-now-create-datasource-large.png#lightbox)
+Maintenant que vous disposez d’un flux de données en temps réel chargé dans une table dans l’eventhouse, vous pouvez le visualiser avec un tableau de bord en temps réel.
 
-1. À ce stade, sélectionnez les points de suspension (**...**) à droite de **Page n**, puis sélectionnez **Renommer la page** pour choisir un nom reflétant l’utilisation de la vignette.
-1. Sélectionnez **+ Ajouter une vignette**.
+1. Dans la barre de menus de gauche, sélectionnez le hub **Accueil**. Dans la page d’accueil, créez ensuite un **Tableau de bord en temps réel** nommé `bikes-dashboard`.
 
-    [ ![Renommer la page et ajouter des vignettes.](./Images/rename-page-add-tile.png) ](./Images/rename-page-add-tile-large.png#lightbox)
+    Un nouveau tableau de bord vide est créé.
 
-1. Vous êtes redirigé vers le **volet de requête de vignette** où vous pouvez ajouter des paramètres et extraire des requêtes de base pour prendre en charge votre vignette. 
 
-    [ ![Fenêtre de requête et ajout d’un nouveau volet de source de données.](./Images/write-query-for-tile.png) ](./Images/write-query-for-tile-large.png#lightbox)
+    ![Capture d’écran d’un nouveau tableau de bord.](./Images/new-dashboard.png)
 
-    > **Remarque** Vous pouvez ajouter une nouvelle source de données dans la fenêtre déroulante de la même fenêtre. Cette source peut se trouver dans votre espace de travail personnel ou dans tout espace de travail dans lequel vous pouvez disposer d’une autre base de données KQL stockée dans un Eventhouse auquel vous avez accès.
+1. Dans la barre d’outils, sélectionnez **Nouvelle source de données** et ajoutez une nouvelle source de données **Hub de données OneLake**. Sélectionnez ensuite votre eventhouse et créez une source de données avec les paramètres suivants :
+    - **Nom d’affichage** : `Bike Rental Data`
+    - **Base de données** : *base de données par défaut dans votre eventhouse.*
+    - **Passthrough d’identité** : *sélectionné*
 
-## Écrire des requêtes
+1. Fermez le volet **Sources de données**, puis, dans le canevas de conception du tableau de bord, sélectionnez **Ajouter une vignette**.
+1. Dans l’éditeur de requête, vérifiez que la source **Données de location de vélos** est sélectionnée et entrez le code KQL suivant :
 
-Les vignettes de tableau de bord en temps réel utilisent des extraits de code en KQL (langage de requête Kusto) pour récupérer les données et afficher des visuels. Chaque vignette/requête peut prendre en charge un seul visuel.
+    ```kql
+    bikes
+        | where ingestion_time() between (ago(30min) .. now())
+        | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
+        | project Neighbourhood, latest_observation, No_Bikes, No_Empty_Docks
+        | order by Neighbourhood asc
+    ```
 
-1. Dans chaque vignette, vous pouvez écrire une requête. Vous pouvez également coller des requêtes à partir de **Copilot** pour les épingler à une vignette, nouvelle ou existante, puis les modifier pour répondre à vos besoins. À partir d’une simple requête, nous pouvons créer une visualisation de carte qui utilise les tailles sur la carte en fonction du nombre de vélos.
+1. Exécutez la requête, qui indique le nombre de vélos et de stations de vélos vides observés dans chaque quartier au cours des 30 dernières minutes.
+1. Appliquez les modifications pour afficher les données affichées dans une table de la vignette sur le tableau de bord.
 
-```kusto
+   ![Capture d’écran d’un tableau de bord avec une vignette contenant une table.](./Images/tile-table.png)
 
-['Bike-count']
-BikepointID, Latitude, Longitude, No_Bikes
+1. Dans la vignette, sélectionnez l’icône **Modifier** (qui ressemble à un crayon). Ensuite, dans le volet **Mise en forme des visuels**, définissez les propriétés suivantes :
+    - **Nom de la vignette** : Vélos et stations
+    - **Type de visuel** : graphique à barres
+    - **Format visuel** : graphique à barres empilées
+    - **Colonnes Y** : No_Bikes, No-Empty_Docks
+    - **Colonne X** : Quartier
+    - **Colonnes de série** : infer
+    - **Emplacement de la légende** : bas
 
-```
+    Le temps modifié doit ressembler à ceci :
 
-## Créer des visualisations
+   ![Capture d’écran d’une vignette en cours de modification pour inclure un graphique à barres.](./Images/tile-bar-chart.png)
 
-Quand vous êtes satisfait de la visualisation, sélectionnez simplement **Appliquer les modifications**, puis ajoutez d’autres visualisations pour prendre en charge votre tableau de bord en temps réel ou effectuez des étapes supplémentaires pour, par exemple, définir des **Paramètres** ou des **Planifications**.
+1. Appliquez les modifications, puis redimensionnez la vignette pour qu’elle occupe toute la hauteur à gauche du tableau de bord.
 
-   [ ![Créer une visualisation à partir d’une requête KQL.](./Images/create-visual-in-tiles.png) ](./Images/create-visual-in-tiles-large.png#lightbox)
+1. Dans la barre d’outils, sélectionnez **Nouvelle vignette**.
+1. Dans l’éditeur de requête, vérifiez que la source **Données de location de vélos** est sélectionnée et entrez le code KQL suivant :
 
-Une fois les modifications appliquées, les données apparaissent. Vous pouvez alors effectuer des ajustements pour que vos utilisateurs puissent plus facilement lire et comprendre les données.
+    ```kql
+    bikes
+        | where ingestion_time() between (ago(30min) .. now())
+        | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
+        | project Neighbourhood, latest_observation, Latitude, Longitude, No_Bikes
+        | order by Neighbourhood asc
+    ```
 
-   [ ![Modifications appliquées à la carte de visualisation des vélos.](./Images/first-published-visual.png) ](./Images/first-published-visual-large.png#lightbox)
+1. Exécutez la requête, qui indique l’emplacement et le nombre de vélos observés dans chaque quartier au cours des 30 dernières minutes.
+1. Appliquez les modifications pour afficher les données affichées dans une table de la vignette sur le tableau de bord.
+1. Dans la vignette, sélectionnez l’icône **Modifier** (qui ressemble à un crayon). Ensuite, dans le volet **Mise en forme des visuels**, définissez les propriétés suivantes :
+    - **Nom de la vignette** : Emplacements de vélos
+    - **Type de visuel** : carte
+    - **Définir l’emplacement par** : latitude et longitude
+    - **Colonne de latitude** : latitude
+    - **Colonne de longitude** : longitude
+    - **Colonne d’étiquette** : Quartier
+    - **Taille** : Afficher
+    - **Colonne de taille** : No_Bikes
 
-Vous pouvez continuer à créer des **vignettes** comprenant des informations sur les tables et les visualisations pour rendre les données plus accessibles à votre communauté d’utilisateurs. Vous pouvez également, comme indiqué précédemment, ajouter une ou plusieurs **pages** ainsi qu’une ou plusieurs **nouvelles sources de données**. Nous allons à présent nous pencher sur l’ajout d’un paramètre pour faciliter la navigation et réduire la quantité d’informations présentées à un utilisateur.
+1. Appliquez les modifications, puis redimensionnez la vignette de carte pour remplir le côté droit de l’espace disponible sur le tableau de bord :
 
-## Ajouter des paramètres
-Les paramètres améliorent l’efficacité du rendu d’un tableau de bord et permettent l’utilisation de valeurs de filtre dès la première phase du processus de requête. L’inclusion de paramètres dans la requête liée à vos vignettes active des fonctionnalités de filtrage. Vous pouvez utiliser un paramètre à l’échelle d’un tableau de bord et plusieurs paramètres pour filtrer les données représentées dans les visualisations sous-jacentes, y compris des tables.
+   ![Capture d’écran d’un tableau de bord avec un graphique et une carte.](./Images/dashboard-chart-map.png)
 
-La création d’un paramètre est un processus simple : 
+## Créer une requête de base
 
-1. Sélectionnez le bouton Nouveaux paramètres dans le menu supérieur. Le volet Paramètres s’ouvre.
-1. Sélectionnez le bouton + Ajouter en haut du panneau droit.
+Votre tableau de bord contient deux visuels basés sur des requêtes similaires. Pour éviter une duplication et rendre votre tableau de bord plus gérable, vous pouvez consolider les données communes dans une *requête de base* unique.
 
-    [ ![Ajouter un nouveau paramètre.](./Images/add-new-parameter.png) ](./Images/add-new-parameter-large.png#lightbox)
+1. Dans la barre d’outils du tableau de bord, sélectionnez **Requêtes de base**. Sélectionnez ensuite **+Add** (+Ajouter).
+1. Dans l’éditeur de requête de base, définissez le **Nom de la variable** sur `base_bike_data` et vérifiez que la source **Données de location de vélos** est sélectionnée. Entrez ensuite la requête suivante :
 
-1. Renseignez les propriétés pertinentes pour votre paramètre.
+    ```kql
+    bikes
+        | where ingestion_time() between (ago(30min) .. now())
+        | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
 
-    [ ![Configurer les paramètres.](./Images/configure-parameter.png) ](./Images/configure-parameter-large.png#lightbox)
+1. Run the query and verify that it returns all of the columns needed for both visuals in the dashboard (and some others).
 
-1. L’une des fonctionnalités les plus importantes d’un paramètre est la possibilité d’**ajouter une requête** pour proposer uniquement à l’utilisateur des options adaptées aux informations sous-jacentes.
+   ![A screenshot of a base query.](./Images/dashboard-base-query.png)
 
-    ![Ajouter une requête à la sélection de paramètres.](./Images/add-lookup-query.png)
+1. Select **Done** and then close the **Base queries** pane.
+1. Edit the **Bikes and Docks** bar chart visual, and change the query to the following code:
 
-1. Sélectionnez Terminé pour créer le paramètre.
+    ```kql
+    base_bike_data
+    | project Neighbourhood, latest_observation, No_Bikes, No_Empty_Docks
+    | order by Neighbourhood asc
+    ```
 
-    [ ![Terminer la configuration et sélectionner Terminer dans les paramètres.](./Images/complete-parameter-settings.png) ](./Images/complete-parameter-settings-large.png#lightbox)
+1. Appliquez les modifications et vérifiez que le graphique à barres affiche toujours les données de tous les quartiers.
 
-### Propriétés de paramètre
+1. Modifiez le visuel de carte **Emplacements de vélos** et remplacez la requête par le code suivant :
 
-| Champ            | Description |
-|------------------|-------------|
-| **Étiquette**        | Nom du paramètre affiché sur le tableau de bord ou la carte de modification. |
-| **Type de paramètre** | Un des types suivants : <ul><li>Sélection unique : une seule valeur peut être sélectionnée dans le filtre comme entrée du paramètre.</li><li>Sélection multiple : une ou plusieurs valeurs peuvent être sélectionnées dans le filtre comme entrées du paramètre.</li><li>Intervalle de temps : permet de créer des paramètres supplémentaires pour filtrer des requêtes et des tableaux de bord en fonction du temps. Chaque tableau de bord a un sélecteur d’intervalle de temps par défaut.</li><li>Texte libre : permet aux utilisateurs de taper ou de coller une valeur dans le champ de filtre sans valeurs préremplies, en conservant les valeurs récentes utilisées.</li></ul> |
-| **Description**  | Description optionnelle du paramètre. |
-| **Nom de la variable** | Nom utilisé pour le paramètre dans la requête. |
-| **Type de données**    | Type de données que représentent les valeurs de paramètre. |
-| **Afficher sur les lignes** | Pages dans lesquelles le paramètre est affiché, avec une option permettant de sélectionner toutes les pages. |
-| **Source**       | Origine des valeurs de paramètre, avec au choix : <ul><li>Valeurs fixes : valeurs de filtre statiques entrées manuellement.</li><li>Requête : valeurs dynamiques introduites à l’aide d’une requête KQL.</li></ul> |
-| **Ajouter une valeur « Tout sélectionner »** | Applicable aux types de paramètres à sélection unique et multiple, cette option récupère les données pour toutes les valeurs de paramètre et doit être intégrée à la requête pour des raisons fonctionnelles. |
-| **Valeur par défaut** | Valeur par défaut du filtre, qui est définie lors du rendu initial du tableau de bord. |
+    ```kql
+    base_bike_data
+    | project Neighbourhood, latest_observation, No_Bikes, Latitude, Longitude
+    | order by Neighbourhood asc
+    ```
 
-6. Veillez à ajouter le paramètre à chacune des requêtes dans les vignettes, puis sélectionnez **Appliquer les modifications**.
+1. Appliquez les modifications et vérifiez que la carte affiche toujours les données de tous les quartiers.
 
-**Avant la requête KQL**
-```kusto
-//Add the street parameter to each tile's query
-['bike-count']
-| where No_Bikes > 0
-| project BikepointID, Latitude, Longitude, No_Bikes
+## Ajouter un paramètre
 
-```
+Votre tableau de bord affiche actuellement les dernières données de vélo, de station et d’emplacement pour tous les quartiers. Ajoutons maintenant un paramètre afin de pouvoir sélectionner un quartier spécifique.
 
-**Après la requête KQL**
-```kusto
-//Add the street parameter to each tile's query
-['bike-count']
-| where No_Bikes > 0 and Street == street
-| project BikepointID, Latitude, Longitude, No_Bikes
+1. Dans la barre d’outils du tableau de bord, sous l’onglet **Gérer**, sélectionnez **Paramètres**.
+1. Notez les paramètres existants qui ont été créés automatiquement (un paramètre *Intervalle de temps* par exemple). **Supprimez-les** ensuite.
+1. Sélectionnez **Ajouter**.
+1. Ajoutez un paramètre avec les paramètres suivants :
+    - **Étiquette :** `Neighbourhood`
+    - **Type de paramètre** : sélection multiple
+    - **Description** : `Choose neighbourhoods`
+    - **Nom de la variable** : `selected_neighbourhoods`
+    - **Type de données** : chaîne
+    - **Afficher sur les pages** : Sélectionner tout
+    - **Source** : requête
+    - **Source de données** : Données de location de vélos
+    - **Modifier la requête** :
 
-```
-   [ ![Mettre à jour chaque requête dans les vignettes pour inclure les paramètres.](./Images/update-each-query.png) ](./Images/update-each-query-large.png#lightbox)
+        ```kql
+        bikes
+        | distinct Neighbourhood
+        | order by Neighbourhood asc
+        ```
 
-## Activer l’actualisation automatique
+    - **Colonne de valeur** : Quartier
+    - **Colonne d’étiquette** : sélection de la valeur de correspondance
+    - **Ajouter une valeur « Tout sélectionner »**  : *sélectionné*
+    - **« Tout sélectionner » envoie une chaîne vide** : *sélectionné*
+    - **Réinitialisation automatique de la valeur par défaut** : sélectionné
+    - **Valeur par défaut** : Tout sélectionner
 
-L’actualisation automatique est une fonctionnalité qui permet de mettre à jour automatiquement les données du tableau de bord sans avoir besoin de recharger manuellement les pages ou d’appuyer sur un bouton d’actualisation. La fréquence d’actualisation automatique initiale est configurable par un éditeur de base de données. Les éditeurs et les viewers peuvent modifier le taux d’actualisation automatique réel lors de l’affichage du tableau de bord. Les éditeurs de base de données peuvent établir un taux d’actualisation minimal pour atténuer toute charge excessive sur le cluster. Une fois ce taux minimum défini, les utilisateurs de la base de données ne peuvent pas sélectionner un taux d’actualisation inférieur au minimum spécifié. De cette façon, les performances du système sont conservées sans surcharger les ressources.
+1. Sélectionnez **Terminé** pour créer le paramètre.
 
-1. Sélectionnez l’onglet Gérer > Actualisation automatique.
+    Maintenant que vous avez ajouté un paramètre, vous devez modifier la requête de base pour filtrer les données en fonction des quartiers choisis.
 
-    [ ![Activer la fonctionnalité d’actualisation automatique.](./Images/enable-auto-refresh.png) ](./Images/enable-auto-refresh-large.png#lightbox)
+1. Dans la barre d’outils, sélectionnez **Requêtes de base**. Sélectionnez ensuite la requête **base_bike_data** et modifiez-la pour ajouter une condition **and** à la condition **where** afin de filtrer en fonction des valeurs de paramètre sélectionnées, comme indiqué dans le code suivant :
 
-1. Activez ou désactivez l’option pour activer l’actualisation automatique.
-1. Sélectionnez des valeurs pour Intervalle de temps minimal et Fréquence d’actualisation par défaut.
-1. Sélectionnez Appliquer et enregistrez le tableau de bord.
+    ```kql
+    bikes
+        | where ingestion_time() between (ago(30min) .. now())
+          and (isempty(['selected_neighbourhoods']) or Neighbourhood  in (['selected_neighbourhoods']))
+        | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
+    ```
 
-    [ ![Activer l’actualisation automatique et définir des intervalles.](./Images/enable-and-configure-refresh-rate.png) ](./Images/enable-and-configure-refresh-rate-large.png#lightbox)
+1. Sélectionnez **Terminé** pour enregistrer la requête de base.
+
+1. Dans le tableau de bord, utilisez le paramètre **Quartier** pour filtrer les données en fonction des quartiers que vous sélectionnez.
+
+   ![Capture d’écran d’un tableau de bord avec des paramètres sélectionnés.](./Images/dashboard-parameters.png)
+
+1. Sélectionnez **Réinitialiser** pour supprimer les filtres de paramètres sélectionnés.
+
+## Ajouter une page
+
+Votre tableau de bord se compose actuellement d’une seule page. Vous pouvez ajouter d’autres pages pour fournir plus de données.
+
+1. À gauche du tableau de bord, développez le volet **Pages**, puis sélectionnez **+ Ajouter une page**.
+1. Nommez la nouvelle page **Page 2**. Puis sélectionnez-la.
+1. Dans la nouvelle page, sélectionnez **+ Ajouter une vignette**.
+1. Dans l’éditeur de requête de la nouvelle vignette, entrez la requête suivante :
+
+    ```kql
+    base_bike_data
+    | project Neighbourhood, latest_observation
+    | order by latest_observation desc
+    ```
+
+1. Appliquez les modifications. Redimensionnez ensuite la vignette pour qu’elle occupe toute la hauteur du tableau de bord.
+
+   ![Capture d’écran d’un tableau de bord avec deux pages.](./Images/dashboard-page-2.png)
+
+## Configurer l’actualisation automatique
+
+Les utilisateurs peuvent actualiser manuellement le tableau de bord, mais il peut être utile d’actualiser automatiquement les données à un intervalle défini.
+
+1. Dans la barre d’outils du tableau de bord, sous l’onglet **Gérer**, sélectionnez **Actualisation automatique**.
+1. Dans le volet **Actualisation automatique**, configurez les paramètres suivants :
+    - **Activé** : *sélectionné*
+    - **Intervalle de temps minimal** : autoriser tous les intervalles d’actualisation
+    - **Fréquence de rafraîchissement par défaut** : 30 minutes
+1. Appliquez les paramètres d’actualisation automatique.
+
+## Enregistrer et partager le tableau de bord
+
+Maintenant que vous disposez d’un tableau de bord utile, vous pouvez l’enregistrer et le partager avec d’autres utilisateurs.
+
+1. Dans la barre d’outils du tableau de bord, sélectionnez **Enregistrer**.
+1. Lorsque le tableau de bord est enregistré, sélectionnez **Partager**.
+1. Dans la boîte de dialogue **Partager**, sélectionnez **Copier le lien** et copiez le lien vers le tableau de bord dans le Presse-papiers.
+1. Ouvrez un nouvel onglet de navigateur et collez le lien copié pour accéder au tableau de bord partagé. Si vous y êtes invité, connectez-vous à nouveau avec vos informations d’identification Fabric.
+1. Explorez le tableau de bord, en l’utilisant pour voir les dernières informations sur les vélos et les stations de vélos vides dans toute la ville.
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé une base de données KQL et configuré un exemple de jeu de données pour un interrogation. Après cela, vous avez interrogé les données à l’aide de KQL et de SQL. Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
-1. Dans la barre de gauche, sélectionnez l’**icône** de votre espace de travail.
-2. Dans le menu ... de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
-3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+Lorsque vous avez terminé d’explorer votre tableau de bord, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
+1. Dans la barre de gauche, sélectionnez l’**icône** de votre espace de travail.
+2. Dans la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
+3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
