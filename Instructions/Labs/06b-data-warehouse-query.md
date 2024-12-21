@@ -16,7 +16,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Data Warehouse**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Entrepôt de données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -183,5 +183,5 @@ Dans cet exercice, vous avez utilisé des requêtes pour obtenir des insights su
 Si vous avez terminé d’explorer votre entrepôt de données, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Paramètres de l’espace de travail** et, dans la section**Général**, faites défiler vers le bas et sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Supprimer** pour supprimer l’espace de travail.

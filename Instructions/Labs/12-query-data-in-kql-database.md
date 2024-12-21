@@ -1,24 +1,22 @@
 ---
 lab:
-  title: Interroger des données dans une base de données KQL
-  module: Query data from a Kusto Query database in Microsoft Fabric
+  title: "Utiliser des données dans un eventhouse Microsoft\_Fabric"
+  module: Work with data in a Microsoft Fabric eventhouse
 ---
 
-# Bien démarrer avec l’interrogation d’une base de données Kusto dans Microsoft Fabric
+# Utiliser des données dans un eventhouse Microsoft Fabric
 
-KQL Queryset est un outil qui vous permet d’exécuter des requêtes, mais également de modifier et d’afficher les résultats des requêtes à partir d’une base de données KQL. Vous pouvez lier chaque onglet dans KQL Queryset à une base de données KQL différente et enregistrer vos requêtes pour une utilisation ultérieure ou les partager avec d’autres personnes pour l’analyse des données. Vous pouvez également basculer la base de données KQL pour n’importe quel onglet, ce qui vous permet de comparer les résultats de la requête à partir de diverses sources de données.
+Dans Microsoft Fabric, un *eventhouse* est utilisé pour stocker des données en temps réel liées à des événements, souvent capturées à partir d’une source de données de streaming par un *eventstream*.
 
-Dans ce scénario, vous jouez le rôle d’un analyste chargé d’interroger un exemple de jeu de données de métriques brutes sur des courses de taxi à NYC pour extraire des statistiques récapitulatives (profilage) des données dans l’environnement Fabric. Vous utilisez KQL pour interroger ces données et collecter des informations afin d’obtenir des insights informatifs sur les données.
+Dans un eventhouse, les données sont stockées dans une ou plusieurs bases de données KQL, chacune contenant des tables et d’autres objets que vous pouvez interroger à l’aide de Langage de requête Kusto (KQL) ou d’un sous-ensemble de langage SQL.
 
-Pour créer des requêtes, KQL Queryset utilise le langage Kusto Query qui est compatible avec de nombreuses fonctions SQL. Pour en savoir plus sur le [langage kusto query (KQL)](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
+Dans cet exercice, vous allez créer et remplir un eventhouse avec des exemples de données liés aux courses de taxi, puis interroger les données à l’aide de KQL et SQL.
 
-Ce labo est d’une durée de **25** minutes environ.
-
-> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+Cet exercice prend environ **25** minutes.
 
 ## Créer un espace de travail
 
-Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
+Avant d’utiliser des données dans Fabric, créez un espace de travail avec la capacité Fabric activée.
 
 1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Real-Time Intelligence**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
@@ -27,282 +25,237 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
-Dans ce labo, vous allez utiliser Real-Time Intelligence dans Fabric pour créer une base de données KQL à partir d’un exemple d’Eventstream. Real-Time Intelligence fournit à des fins pratiques un exemple de jeu de données que vous pouvez utiliser pour explorer les fonctionnalités de Real-Time Intelligence. Vous utilisez cet échantillon de données pour créer des requêtes KQL/SQL et des ensembles de requêtes qui analysent les données en temps réel et permettent d’autres utilisations dans les processus descendants.
+## Créer un Eventhouse
 
-## Créer une base de données KQL
+Maintenant que vous disposez d’un espace de travail avec prise en charge d’une capacité Fabric, vous pouvez y créer un eventhouse.
 
-1. Dans **Real-Time Analytics**, cochez la case **Base de données KQL**.
+1. Sur la page d’accueil de l’**Intelligence en temps réel**, créez un **eventhouse** avec le nom de votre choix. Lorsque l’eventhouse a été créé, fermez toutes les invites ou conseils affichés jusqu’à ce que la page de l’eventhouse soit visible :
 
-   ![Image du choix de base de données KQL](./Images/select-kqldatabase.png)
+   ![Capture d’écran d’un nouvel eventhouse.](./Images/create-eventhouse.png)
 
-1. Vous êtes invité à donner un **Nom** à la base de données KQL
+1. Dans le volet de gauche, notez que votre eventhouse contient une base de données KQL portant le même nom que l’eventhouse.
+1. Sélectionnez la base de données KQL pour l’afficher.
 
-   ![Image du nom de la base de données KQL](./Images/name-kqldatabase.png)
-
-1. Donnez à la base de données KQL un nom dont vous vous souviendrez, comme **TaxiData**, puis cliquez sur **Créer**.
-
-1. Dans le panneau **Détails de la base de données**, sélectionnez l’icône de crayon pour activer la disponibilité dans OneLake.
-
-   ![Image de l’activation de onelake](./Images/enable-onelake-availability.png)
-
-   Utilisez ensuite le curseur pour activer la disponibilité.
-
-   ![Image de la sélection du curseur dans Data Lake](./Images/data-availability-data-lake.png)
+    Actuellement, il n’existe aucune table dans la base de données. Dans la partie restante de cet exercice, vous allez utiliser un eventstream pour charger des données d’une source en temps réel dans une table.
    
-1. Sélectionnez la zone **exemple de données** dans les options ***Commencer par obtenir des données***.
+1. Dans la page de la base de données KQL, sélectionnez **Obtenir des données** > **Exemple**. Ensuite, choisissez l’exemple de données **Analytique des opérations automobiles**.
 
-   ![Image des options de sélection avec exemple de données mis en évidence](./Images/load-sample-data.png)
+1. Une fois le chargement des données terminé (ce qui peut prendre un peu de temps), vérifiez qu’une table **Automobile** a été créée.
 
-   Finalement, dans les options d’échantillons de données, choisissez la zone **Analytique des opérations automobiles**.
+   ![Capture d’écran de la table Automobile dans une base de données eventhouse.](./Images/choose-automotive-operations-analytics.png)
 
-   ![Image du choix des données analytiques pour le labo](./Images/create-sample-data.png)
+## Interroger des données à l’aide de KQL
 
-1. Une fois le chargement des données terminé, nous pouvons vérifier le remplissage de la base de données KQL.
+Le langage de requête Kusto (KQL) est un langage intuitif et complet que vous pouvez utiliser pour interroger une base de données KQL.
 
-   ![Données chargées dans la base de données KQL](./Images/choose-automotive-operations-analytics.png)
+### Récupérer les données d’une table à l’aide de KQL
 
-1. Une fois les données chargées, vérifiez qu’elles sont chargées dans la base de données KQL. Pour effectuer cette opération, sélectionnez les points de suspension à droite de la table, accédez à **Interroger la table** et sélectionnez **Afficher 100 enregistrements**.
+1. Dans le volet gauche de la fenêtre de l’eventhouse, sous votre base de données KQL, sélectionnez le fichier **queryset** par défaut. Ce fichier contient des exemples de requêtes KQL pour vous aider à démarrer.
+1. Modifiez le premier exemple de requête comme suit.
 
-    ![Image de la sélection des 100 premiers fichiers de la table RawServerMetrics](./Images/rawservermetrics-top-100.png)
-
-   > **REMARQUE** : La première fois que vous effectuez cette opération, l’allocation des ressources de calcul peut prendre plusieurs secondes.
-
-
-    ![Image des 100 enregistrements des données](./Images/explore-with-kql-take-100.png)
-
-## Présentation du langage de requête Kusto (KQL) et de sa syntaxe
-
-Le langage de requête Kusto (KQL) est un langage de requête utilisé pour analyser des données dans Microsoft Azure Data Explorer, qui fait partie d’Azure Fabric. KQL est conçu pour être simple et intuitif, ce qui facilite l’apprentissage et l’utilisation pour des débutants. Parallèlement, il est également hautement flexible et personnalisable, ce qui permet aux utilisateurs avancés d’effectuer des requêtes et des analyses complexes.
-
-KQL est basé sur une syntaxe semblable à SQL, mais avec quelques différences clés. Par exemple, KQL utilise un opérateur pipe (|) au lieu d’un point-virgule (;) pour séparer les commandes, ainsi qu’un ensemble différent de fonctions et d’opérateurs pour filtrer et manipuler les données.
-
-L’une des principales caractéristiques de KQL est sa capacité à gérer de grands volumes de données rapidement et efficacement. Cette fonctionnalité est idéale pour analyser des journaux, des données de télémétrie et d’autres types de Big Data. KQL prend également en charge un large éventail de sources de données, dont des données structurées et non structurées, ce qui en fait un outil polyvalent pour l’analyse des données.
-
-Dans le contexte de Microsoft Fabric, KQL peut servir à interroger et à analyser des données provenant de différentes sources, telles que les journaux d’application, les métriques de performances et les événements système. Cela peut vous aider à obtenir des insights sur l’intégrité et les performances de vos applications et de votre infrastructure, mais également à identifier les problèmes et les opportunités d’optimisation.
-
-Dans l’ensemble, KQL est un puissant et flexible langage de requête qui peut vous aider à obtenir des insights sur vos données rapidement et facilement, que vous travailliez avec Microsoft Fabric ou d’autres sources de données. Avec sa syntaxe intuitive et ses puissantes fonctionnalités, KQL vaut la peine d’être davantage exploré.
-
-Dans ce module, nous nous concentrons sur les principes de base des requêtes sur une base de données KQL en utilisant d’abord KQL, puis T-SQL. Nous allons nous concentrer sur les éléments de base de la syntaxe T-SQL utilisés pour les requêtes incluant les éléments suivants :
-
-Requêtes **SELECT** qui sont utilisées pour récupérer des données à partir d’une ou plusieurs tables. Vous pouvez par exemple utiliser une requête SELECT pour obtenir les noms et les salaires de tous les employés d’une entreprise.
-
-Requêtes **WHERE** qui sont utilisées pour filtrer les données en fonction de certaines conditions. Vous pouvez par exemple utiliser une requête WHERE pour obtenir les noms des employés qui travaillent dans un service spécifique ou qui ont un salaire supérieur à un certain montant.
-
-Requêtes **GROUP BY** qui sont utilisées pour regrouper les données par une ou plusieurs colonnes et effectuer des fonctions d’agrégation sur celles-ci. Vous pouvez par exemple utiliser une requête GROUP BY pour obtenir le salaire moyen des employés par service ou par pays.
-
-Requêtes **ORDER BY** qui sont utilisées pour trier les données d’une ou de plusieurs colonnes dans l’ordre croissant ou décroissant. Vous pouvez par exemple utiliser une requête ORDER BY pour obtenir les noms des employés triés par salaire ou par nom de famille.
-
-   > **AVERTISSEMENT :** Vous ne pouvez pas créer de rapports Power BI à partir des ensembles de requêtes avec **T-SQL**, car Power BI ne prend pas en charge T-SQL en tant que source de données. **Power BI ne prend en charge KQL qu’en tant que langage de requête natif pour les ensembles de requêtes**. Pour utiliser T-SQL pour interroger vos données dans Microsoft Fabric, vous devez utiliser le point de terminaison T-SQL qui émule Microsoft SQL Server et vous permet d’exécuter des requêtes T-SQL sur vos données. Le point de terminaison T-SQL présente toutefois certaines limitations et différences par rapport au SQL Server natif et ne prend pas en charge la création ou la publication de rapports dans Power BI.
-
-> **REMARQUE** : En plus de l’approche consistant à extraire une fenêtre de requête, indiquée plus haut, vous pouvez toujours appuyer sur le bouton **Explorer vos données** dans le principal panneau de la base de données KQL...
-
-   ![Image du bouton Explorer vos données](./Images/explore-your-data.png)
-
-## Données `SELECT` de notre exemple de jeu de données à l’aide de KQL
-
-1. Dans cette requête, nous extrayons 100 enregistrements de la table Trajets. Nous utilisons le mot clé `take` pour demander au moteur de retourner 100 enregistrements.
-
-    ```kusto
-    
-    Trips
+    ```kql
+    Automotive
     | take 100
     ```
 
-    > **REMARQUE :** Le caractère trait vertical `|` est utilisé à deux fins dans KQL, notamment pour séparer des opérateurs de requête dans une instruction d’expression tabulaire. Il est également utilisé comme opérateur OR logique entre parenthèses carrées ou rondes pour indiquer que vous pouvez spécifier l’un des éléments séparés par le caractère du canal.
+    > **REMARQUE** : le caractère trait vertical est utilisé à deux fins dans KQL, notamment pour séparer des opérateurs de requête dans une instruction d’expression tabulaire. Il est également utilisé comme opérateur OR logique entre parenthèses carrées ou rondes pour indiquer que vous pouvez spécifier l’un des éléments séparés par le caractère du canal.
 
-1. Nous pouvons être plus précis en ajoutant des attributs spécifiques que nous aimerions interroger à l’aide du mot clé `project`, puis en utilisant le mot clé `take` pour indiquer au moteur le nombre d’enregistrements à renvoyer.
+1. Sélectionnez le code de requête et exécutez-le pour renvoyer 100 lignes depuis la table.
 
-    > **REMARQUE :** l’utilisation de `//` désigne les commentaires utilisés dans l’outil de requête ***Exploration de vos données*** de Microsoft Fabric.
+   ![Capture d’écran de l’éditeur de requête KQL.](./Images/kql-take-100-query.png)
 
-    ```kusto
-    
+    Vous pouvez être plus précis en ajoutant des attributs spécifiques que vous souhaitez interroger à l’aide du mot clé `project`, puis en utilisant le mot clé `take` pour indiquer au moteur le nombre d’enregistrements à renvoyer.
+
+1. Entrez la requête suivante, puis sélectionnez-la et exécutez-la.
+
+    ```kql
     // Use 'project' and 'take' to view a sample number of records in the table and check the data.
-    Trips 
+    Automotive 
     | project vendor_id, trip_distance
     | take 10
     ```
 
-1. Une autre pratique courante dans l’analyse consiste à renommer des colonnes dans notre ensemble de requêtes pour les rendre plus conviviales. Pour ce faire, utilisez le nouveau nom de colonne, suivi du signe égal et de la colonne à renommer.
+    > **REMARQUE :** l’utilisation de // désigne un commentaire.
 
-    ```kusto
-    
-    Trips 
+    Une autre pratique courante dans l’analyse consiste à renommer des colonnes dans notre ensemble de requêtes pour les rendre plus conviviales.
+
+1. Essayez la requête suivante :
+
+    ```kql
+    Automotive 
     | project vendor_id, ["Trip Distance"] = trip_distance
     | take 10
     ```
 
-1. Nous pouvons également résumer les trajets pour voir le nombre de kilomètres parcourus :
+### Résumer les données à l’aide de KQL
 
-    ```kusto
-    
-    Trips
+Vous pouvez utiliser le mot clé *summarize* avec une fonction pour agréger et manipuler des données d’autres façons.
+
+1. Essayez la requête suivante, qui utilise la fonction **sum** pour résumer les données de trajet pour voir combien de kilomètres ont été parcourus au total :
+
+    ```kql
+
+    Automotive
     | summarize ["Total Trip Distance"] = sum(trip_distance)
     ```
 
-## Données `GROUP BY` de notre exemple de jeu de données à l’aide de KQL
+    Vous pouvez regrouper les données résumées selon une colonne ou une expression spécifiée.
 
-1. Nous pouvons ensuite `group by` l’emplacement de prise en charge que nous effectuons avec l’opérateur `summarize`. Nous pouvons également utiliser l’opérateur `project` qui nous permet de sélectionner et de renommer les colonnes que vous souhaitez inclure dans votre sortie. Dans ce cas, nous regroupons par quartier, au sein du système Taxi de NY, pour fournir à nos utilisateurs la distance totale parcourue à partir de chaque quartier.
+1. Exécutez la requête suivante pour regrouper les distances de trajet par quartier, au sein du système Taxi de NY, pour déterminer la distance totale parcourue à partir de chaque quartier.
 
-```kusto
-
-Trips
-| summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-| project Borough = pickup_boroname, ["Total Trip Distance"]
-```
-
-1. Dans ce cas, nous avons une valeur vide, ce qui n’est jamais bon pour les analyses, et nous pouvons utiliser la fonction `case`, ainsi que les fonctions `isempty` et `isnull`, pour les classer dans une catégorie ***Non identifié*** pour le suivi.
-
-```kusto
-
-Trips
-| summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-| project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-```
-
-## Données `ORDER BY` de notre exemple de jeu de données à l’aide de KQL
-
-Pour donner plus de sens à nos données, nous les trions généralement par colonne, et ce processus est effectué dans KQL avec un opérateur `sort by` ou `order by` qui se comporte de la même façon.
- 
-```kusto
-
-// using the sort by operators
-Trips
-| summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-| project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-| sort by Borough asc 
-
-// order by operator has the same result as sort by
-Trips
-| summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-| project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-| sort by Borough asc 
-```
-
-## Clause `WHERE` pour filtrer les données dans notre exemple de requête KQL
-
-Contrairement à SQL, notre clause `WHERE` est immédiatement appelée dans notre requête KQL. Nous pouvons toujours utiliser les opérateurs logiques `and` et `or` au sein de la clause « where » qui prennent la valeur « true » ou « false » par rapport à la table et peuvent être une expression simple ou complexe pouvant impliquer plusieurs colonnes, opérateurs et fonctions.
-
-```kusto
-
-// let's filter our dataset immediately from the source by applying a filter directly after the table.
-Trips
-| where pickup_boroname == "Manhattan"
-| summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
-| project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
-| sort by Borough asc
-
-```
-
-## Utiliser T-SQL pour interroger des informations sur le résumé
-
-La base de données KQL ne prend pas en charge T-SQL de manière native, mais elle fournit un point de terminaison T-SQL qui émule Microsoft SQL Server et vous permet d’exécuter des requêtes T-SQL sur vos données. Le point de terminaison T-SQL présente toutefois certaines limitations et différences par rapport au SQL Server natif. Il ne prend par exemple pas en charge la création, la modification ou la suppression de tables, ni l’insertion, la mise à jour ou la suppression de données. Il ne prend pas non plus en charge certaines fonctions et syntaxe T-SQL non compatibles avec KQL. Il a été créé pour permettre aux systèmes (ne prenant pas en charge KQL) d’utiliser T-SQL pour interroger les données au sein d’une base de données KQL. Il est donc recommandé d’utiliser KQL comme langage de requête principal pour une base de données KQL, car il offre davantage de fonctionnalités et de performances que T-SQL. Vous pouvez également utiliser certaines fonctions SQL prises en charge par KQL, telles que count, sum, avg, min, max, etc. 
-
-## Données `SELECT` de notre exemple de jeu de données à l’aide de T-SQL
-
-1. Dans cette requête, nous extrayons les 100 premiers enregistrements de la table `Trips` en utilisant la clause `TOP`. 
-
-    ```sql
-    // We can use the TOP clause to limit the number of records returned
-    
-    SELECT TOP 100 * from Trips
+    ```kql
+    Automotive
+    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
+    | project Borough = pickup_boroname, ["Total Trip Distance"]
     ```
 
-1. Si vous utilisez le `//`, qui est un commentaire dans l’outil ***Explorer vos données*** de la base de données KQL, vous ne pouvez pas le mettre en surbrillance lors de l’exécution de requêtes T-SQL. Vous devez plutôt utiliser la notation de commentaires SQL standard `--`. ce trait d’union double indique également au moteur KQL d’attendre T-SQL dans Azure Data Explorer.
+    Les résultats incluent une valeur vide, ce qui n’est jamais bon pour les analyses.
+
+1. Modifiez la requête comme indiqué ici pour utiliser la fonction *case* avec les fonctions *isempty* et *isnull* pour regrouper tous les trajets pour lesquels le quartier est inconnu dans une catégorie ***Non identifié*** pour le suivi.
+
+    ```kql
+    Automotive
+    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
+    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
+    ```
+
+### Trier les données à l’aide de KQL
+
+Pour donner plus de sens à nos données, nous les trions généralement par colonne, et ce processus est effectué dans KQL avec un opérateur *sort by* ou *order by* (ils se comportent de la même façon).
+
+1. Essayez la requête suivante :
+
+    ```kql
+    Automotive
+    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
+    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
+    | sort by Borough asc
+    ```
+
+1. Modifiez la requête comme suit et réexécutez-la, et remarquez que l’opérateur *order by* fonctionne de la même façon que *sort by* :
+
+    ```kql
+    Automotive
+    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
+    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
+    | order by Borough asc 
+    ```
+
+### Filtrer les données à l’aide de KQL
+
+Dans KQL, la clause *where* est utilisée pour filtrer les données. Vous pouvez combiner des conditions dans une clause *where* à l’aide des opérateurs logiques *and* et *or*.
+
+1. Exécutez la requête suivante pour filtrer les données de trajets afin d’inclure uniquement ceux qui sont partis de Manhattan :
+
+    ```kql
+    Automotive
+    | where pickup_boroname == "Manhattan"
+    | summarize ["Total Trip Distance"] = sum(trip_distance) by pickup_boroname
+    | project Borough = case(isempty(pickup_boroname) or isnull(pickup_boroname), "Unidentified", pickup_boroname), ["Total Trip Distance"]
+    | sort by Borough asc
+    ```
+
+## Interroger les données à l’aide de Transact-SQL
+
+La base de données KQL ne prend pas en charge Transact-SQL de manière native, mais elle fournit un point de terminaison T-SQL qui émule Microsoft SQL Server et vous permet d’exécuter des requêtes T-SQL sur vos données. Le point de terminaison T-SQL présente certaines limitations et différences par rapport au SQL Server natif. Il ne prend par exemple pas en charge la création, la modification ou la suppression de tables, ni l’insertion, la mise à jour ou la suppression de données. Il ne prend pas non plus en charge certaines fonctions et syntaxe T-SQL non compatibles avec KQL. Il a été créé pour permettre aux systèmes (ne prenant pas en charge KQL) d’utiliser T-SQL pour interroger les données au sein d’une base de données KQL. Il est donc recommandé d’utiliser KQL comme langage de requête principal pour une base de données KQL, car il offre davantage de fonctionnalités et de performances que T-SQL. Vous pouvez également utiliser certaines fonctions SQL prises en charge par KQL, telles que count, sum, avg, min, max, etc.
+
+### Récupérer des données d’une table à l’aide de Transact-SQL
+
+1. Dans votre ensemble de requêtes, ajoutez et exécutez la requête Transact-SQL suivante : 
 
     ```sql
-    -- instead of using the 'project' and 'take' keywords we simply use a standard SQL Query
+    SELECT TOP 100 * from Automotive
+    ```
+
+1. Modifiez la requête comme suit pour récupérer des colonnes spécifiques :
+
+    ```sql
     SELECT TOP 10 vendor_id, trip_distance
-    FROM Trips
+    FROM Automotive
     ```
 
-1. Une fois de plus, vous pouvez voir que les fonctionnalités T-SQL standard fonctionnent parfaitement avec la requête dans laquelle nous renommons trip_distance en un nom plus convivial.
+1. Modifiez la requête pour attribuer un alias qui renomme **trip_distance** en utilisant un nom plus convivial.
 
     ```sql
-    
-    -- No need to use the 'project' or 'take' operators as standard T-SQL Works
     SELECT TOP 10 vendor_id, trip_distance as [Trip Distance]
-    from Trips
+    from Automotive
     ```
 
-1. Nous pouvons également résumer les trajets pour voir le nombre de kilomètres parcourus :
+### Résumer les données à l’aide de Transact-SQL
+
+1. Exécutez la requête suivante pour rechercher la distance totale parcourue :
 
     ```sql
-    Select sum(trip_distance) as [Total Trip Distance]
-    from Trips
+    SELECT sum(trip_distance) AS [Total Trip Distance]
+    FROM Automotive
     ```
-     >**REMARQUE :** l’utilisation des guillemets n’est pas nécessaire dans T-SQL par rapport à la requête KQL. Notez également que les commandes `summarize` et `sort by` ne sont pas disponibles dans T-SQL.
 
-## Données `GROUP BY` de notre exemple de jeu de données à l’aide de T-SQL
-
-1. Nous pouvons ensuite `group by` l’emplacement de prise en charge que nous effectuons avec l’opérateur `GROUP BY`. Nous pouvons également utiliser l’opérateur `AS` qui nous permet de sélectionner et de renommer les colonnes que vous souhaitez inclure dans votre sortie. Dans ce cas, nous regroupons par quartier, au sein du système Taxi de NY, pour fournir à nos utilisateurs la distance totale parcourue à partir de chaque quartier.
+1. Modifiez la requête pour regrouper la distance totale par quartier de départ :
 
     ```sql
     SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
-    FROM Trips
+    FROM Automotive
     GROUP BY pickup_boroname
     ```
 
-1. Dans ce cas, nous avons une valeur vide, ce qui n’est jamais bon pour les analyses, et nous pouvons utiliser la fonction `CASE`, ainsi que la fonction `IS NULL` et la valeur vide `''` pour les classer dans une catégorie ***Non identifié*** pour le suivi. 
+1. Modifiez la requête pour utiliser une instruction *CASE* afin de regrouper les trajets avec une origine inconnue dans une catégorie ***Non identifié*** pour le suivi. 
 
     ```sql
-    
     SELECT CASE
              WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
              ELSE pickup_boroname
            END AS Borough,
            SUM(trip_distance) AS [Total Trip Distance]
-    FROM Trips
+    FROM Automotive
     GROUP BY CASE
                WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'Unidentified'
                ELSE pickup_boroname
              END;
     ```
 
-## Données `ORDER BY` de notre exemple de jeu de données à l’aide de T-SQL
+### Trier les données à l’aide de Transact-SQL
 
-1. Pour mieux comprendre nos données, nous les trions généralement par colonne, et ce processus est effectué dans T-SQL avec un opérateur `ORDER BY`. Il n’existe aucun opérateur ***TRIER PAR*** dans T-SQL
+1. Exécutez la requête suivante pour trier les résultats groupés par quartier :
  
     ```sql
-    -- Group by pickup_boroname and calculate the summary statistics of trip_distance
     SELECT CASE
              WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
              ELSE pickup_boroname
            END AS Borough,
            SUM(trip_distance) AS [Total Trip Distance]
-    FROM Trips
+    FROM Automotive
     GROUP BY CASE
                WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
                ELSE pickup_boroname
              END
-    -- Add an ORDER BY clause to sort by Borough in ascending order
     ORDER BY Borough ASC;
     ```
-    ## Clause `WHERE` pour filtrer les données dans notre exemple de requête T-KQL
+
+### Filtrer les données à l’aide de Transact-SQL
     
-1. Contrairement à KQL, notre clause `WHERE` ira à la fin de l’instruction T-SQL. Toutefois, dans ce cas, nous avons une clause `GROUP BY`, qui nous oblige à utiliser l’instruction `HAVING` et nous utilisons le nouveau nom de la colonne, dans ce cas **Borough** (Quartier) comme nom de colonne à partir de laquelle filtrer.
+1. Exécutez la requête suivante pour filtrer les données groupées afin que seules les lignes avec le quartier « Manhattan » soient incluses dans les résultats :
 
     ```sql
-    -- Group by pickup_boroname and calculate the summary statistics of trip_distance
     SELECT CASE
              WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
              ELSE pickup_boroname
            END AS Borough,
            SUM(trip_distance) AS [Total Trip Distance]
-    FROM Trips
+    FROM Automotive
     GROUP BY CASE
                WHEN pickup_boroname IS NULL OR pickup_boroname = '' THEN 'unidentified'
                ELSE pickup_boroname
              END
-    -- Add a having clause due to the GROUP BY statement
     HAVING Borough = 'Manhattan'
-    -- Add an ORDER BY clause to sort by Borough in ascending order
     ORDER BY Borough ASC;
-    
     ```
 
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé une base de données KQL et configuré un exemple de jeu de données pour un interrogation. Après cela, vous avez interrogé les données à l’aide de KQL et de SQL. Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
-1. Dans la barre de gauche, sélectionnez l’**icône** de votre espace de travail.
-2. Dans le menu ... de la barre d’outils, sélectionnez **Paramètres des espaces de travail**.
+Dans cet exercice, vous avez créé un eventhouse et interrogé les données à l’aide de KQL et SQL.
+
+Lorsque vous avez terminé d’explorer votre base de données KQL, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
+
+1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail.
+2. Dans la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
 3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.

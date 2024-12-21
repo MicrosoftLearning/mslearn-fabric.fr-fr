@@ -16,7 +16,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail dans un locataire avec la fonctionnalité Fabric activée.
 
-1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Engineering données**.
+1. Sur la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Engineering données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence dans la section **Avancé** qui comprend la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -27,7 +27,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail dans un
 
 Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse pour vos données.
 
-1. Dans la page d’accueil d’**Engineering données Synapse**, créez un nouveau **Lakehouse** du nom de votre choix.
+1. Dans la page d’accueil de l’**Engineering données**, créez un nouveau **lakehouse** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouveau lakehouse est créé :
 
@@ -48,7 +48,7 @@ Dans Microsoft Fabric, vous pouvez utiliser un flux de données (Gen2) pour ing
     ![Capture d’écran d’un nouveau flux de données.](./Images/new-data-flow.png)
 
 1. En haut à gauche de la page de flux de données, sélectionnez **Dataflow 1** pour afficher ses détails et renommer le flux de données en **Obtenir des données produit**.
-1. Dans le concepteur de flux de données, sélectionnez **Importer à partir d’un fichier Texte/CSV**. Exécutez l’Assistant Obtenir des données pour créer une connexion de données en vous liant à `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/products.csv` à l’aide de l’authentification anonyme. Après avoir terminé de suivre l’assistant, un aperçu des données s’affiche dans le concepteur de flux de données comme suit :
+1. Dans le concepteur de flux de données, sélectionnez **Importer à partir d’un fichier Texte/CSV**. Exécutez ensuite l’Assistant Obtenir des données pour créer une connexion de données en vous liant à `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/products.csv` à l’aide de l’authentification anonyme. Après avoir terminé de suivre l’assistant, un aperçu des données s’affiche dans le concepteur de flux de données comme suit :
 
     ![Capture d’écran d’une requête de flux de données.](./Images/data-flow-query.png)
 
@@ -113,7 +113,7 @@ Dans cet exercice, vous n’avez exécuté que quelques activités. Il doit donc
     ![Capture d’écran du hub de surveillance avec un filtre appliqué.](./Images/monitor-filter.png)
 
 1. Utilisez le bouton **Options de colonne** pour inclure les colonnes suivantes dans l’affichage (utilisez le bouton **Appliquer** pour appliquer les modifications) :
-    - Heure de l’activité
+    - Nom de l’activité
     - État
     - Type d'élément
     - Heure de début

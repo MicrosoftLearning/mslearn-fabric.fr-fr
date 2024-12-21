@@ -4,7 +4,7 @@ lab:
   module: Load data into a warehouse in Microsoft Fabric
 ---
 
-# Charger des données dans un entrepôt
+# Charger des données dans un entrepôt en utilisant T-SQL
 
 Dans Microsoft Fabric, un entrepôt de données fournit une base de données relationnelle pour l’analytique à grande échelle. Contrairement au point de terminaison SQL en lecture seule par défaut pour les tables définies dans un lakehouse, un entrepôt de données fournit une sémantique SQL complète, y compris la possibilité d’insérer, de mettre à jour et de supprimer des données dans les tables.
 
@@ -16,7 +16,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Data Warehouse**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Entrepôt de données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -27,7 +27,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Dans notre scénario, comme nous n’avons pas de données disponibles, nous devons ingérer des données à utiliser pour le chargement de l’entrepôt. Vous allez créer un data lakehouse pour les fichiers de données que vous allez utiliser pour charger l’entrepôt.
 
-1. Dans la page d’accueil d’**Engineering données Synapse**, créez un nouveau **Lakehouse** du nom de votre choix.
+1. Sélectionnez **+ Nouvel élément** et créez un **lakehouse** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouveau lakehouse vide est créé. Vous devez ingérer certaines données dans le data lakehouse à des fins d’analyse. Il existe plusieurs façons de faire cela, mais dans cet exercice, vous allez télécharger un fichier CSV sur votre ordinateur local (ou le cas échéant, sur votre machine virtuelle de labo), puis le charger dans votre lakehouse.
 
@@ -54,7 +54,7 @@ Dans notre scénario, comme nous n’avons pas de données disponibles, nous dev
 
 Maintenant que vous disposez d’un espace de travail, d’un lakehouse et de la table des ventes avec les données dont vous avez besoin, c’est le moment de créer un entrepôt de données. La page d’accueil Data Warehouse comprend un raccourci permettant de créer un entrepôt :
 
-1. Dans la page d’accueil **Synapse Data Warehouse**, créez un **entrepôt** avec le nom de votre choix.
+1. Dans la page d’accueil **Entrepôt de données**, créez un **entrepôt** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
@@ -66,7 +66,7 @@ Créons les tables de faits et les dimensions pour les données de ventes (Sales
 
 1. Dans votre espace de travail, sélectionnez l’entrepôt que vous avez créé.
 
-1. Dans l’**Explorateur** de l’entrepôt, sélectionnez **Nouvelle requête SQL**, puis copiez et exécutez la requête suivante.
+1. Dans la barre d’outils de l’entrepôt, sélectionnez **Nouvelle requête SQL**, puis copiez et exécutez la requête suivante.
 
     ```sql
     CREATE SCHEMA [Sales]
@@ -248,5 +248,5 @@ Dans cet exercice, vous avez créé un lakehouse et un entrepôt de données ave
 Si vous avez terminé d’explorer votre entrepôt de données, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
 1. Dans la barre de gauche, sélectionnez l’icône de votre espace de travail pour afficher tous les éléments qu’il contient.
-2. Dans le menu  **...** de la barre d’outils, sélectionnez **Paramètres de l’espace de travail**.
-3. Dans la section **Général**, sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Paramètres de l’espace de travail** et, dans la section**Général**, faites défiler vers le bas et sélectionnez **Supprimer cet espace de travail**.
+1. Sélectionnez **Supprimer** pour supprimer l’espace de travail.

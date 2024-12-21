@@ -4,7 +4,7 @@ lab:
   module: Design and build tabular models
 ---
 
-# Appliquer la sécurité des modèles
+# Appliquer la sécurité du modèle sémantique
 
 Dans cet exercice, vous allez mettre à jour un modèle de données prédéfini pour appliquer la sécurité. Plus précisément, les vendeurs de l’entreprise Adventure Works ne doivent être en mesure de voir que les données de vente liées à la région qui leur est affectée.
 
@@ -101,37 +101,30 @@ Dans cette tâche, vous allez créer deux rôles statiques.
 
     ![](Images/enforce-model-security-image13.png)
 
-4. Dans la fenêtre **Gérer les rôles**, sélectionnez **Créer**.
+4. Dans la fenêtre **Gérer les rôles**, sélectionnez **+ Nouveau**.
 
-    ![](Images/enforce-model-security-image14.png)
+5. Pour nommer le rôle, remplacez le texte *Sans titre* sélectionné par **Australia**, puis appuyez sur **Entrée**.
 
-5. Pour nommer le rôle, remplacez le texte sélectionné par **Australia**, puis appuyez sur **Entrée**.
-
-    ![](Images/enforce-model-security-image15.png)
-
-6. Dans la liste **Tables**, pour la table **Sales Territory**, sélectionnez les points de suspension, puis **Ajouter un filtre** > **[Region].**
+6. Dans la liste **Sélectionner des tables**, sélectionnez **Sales Territory**, puis, dans la section **Filtrer les données**, sélectionnez **+ Nouveau**.
+  
+7. Dans la nouvelle ligne de règle, définissez les paramètres suivants :
+    * **Colonne** : Region
+    * **Condition** : Equals
+    * **Valeur** : Australia
 
     ![](Images/enforce-model-security-image16.png)
 
-7. Dans la zone **Expression DAX de filtre de table**, remplacez **Valeur** par **Australia**.
+    *Cette règle filtre la colonne **Region** en fonction de la valeur **Australia**.*
 
-    ![](Images/enforce-model-security-image17.png)
+10. Pour créer un autre rôle, appuyez sur **+ Nouveau** dans la **section Rôles**.
 
-    *Cette expression filtre la colonne **Region** en fonction de la valeur **Australia**.*
-
-8. Pour créer un autre rôle, appuyez sur **Créer**.
-
-    ![](Images/enforce-model-security-image18.png)
-
-9. Répétez les étapes de cette tâche pour créer un rôle nommé **Canada** qui filtre la colonne **Region** par **Canada**.
+11. Répétez les étapes de cette tâche pour créer un rôle nommé **Canada** qui filtre la colonne **Region** par **Canada**.
 
     ![](Images/enforce-model-security-image19.png)
 
     *Dans ce labo, vous allez créer uniquement deux rôles. Toutefois, n’oubliez pas que dans une solution réelle, un rôle doit être créé pour chacune des onze régions d’Adventure Works.*
 
-10. Sélectionnez **Enregistrer**.
-
-    ![](Images/enforce-model-security-image20.png)
+12. Sélectionnez **Enregistrer**.
 
 ### Valider les rôles statiques
 
@@ -247,19 +240,13 @@ Dans cette tâche, vous allez nettoyer la solution en supprimant le modèle sém
 
     ![](Images/enforce-model-security-image39.png)
 
-5. Dans la fenêtre **Gérer les rôles**, pour supprimer le premier rôle, sélectionnez **Supprimer**.
+5. Dans la fenêtre **Gérer les rôles**, pour supprimer le premier rôle, sélectionnez les points de suspension à côté de ce rôle, puis sélectionnez **Supprimer**.
 
     ![](Images/enforce-model-security-image40.png)
 
-6. Lorsque vous êtes invité à confirmer la suppression, sélectionnez **Oui, supprimer**.
+6. Supprimez également le deuxième rôle.
 
-    ![](Images/enforce-model-security-image41.png)
-
-7. Supprimez également le deuxième rôle.
-
-8. Sélectionnez **Enregistrer**.
-
-    ![](Images/enforce-model-security-image42.png)
+7. Sélectionnez **Enregistrer**.
 
 ## Créer un rôle dynamique
 

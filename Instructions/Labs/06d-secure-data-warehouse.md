@@ -4,7 +4,7 @@ lab:
   module: Secure a Microsoft Fabric data warehouse
 ---
 
-# Sécuriser des données dans un entrepôt de données
+# Sécuriser un entrepôt de données Microsoft Fabric
 
 Les autorisations Microsoft Fabric et les autorisations SQL granulaires fonctionnent ensemble pour régir l’accès à l’entrepôt et les autorisations utilisateur. Dans cet exercice, vous allez sécuriser les données en utilisant des autorisations granulaires, la sécurité au niveau des colonnes, la sécurité au niveau des lignes et le masquage dynamique des données.
 
@@ -16,7 +16,7 @@ Ce labo est d’une durée de **45** minutes environ.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Synapse Data Warehouse**.
+1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Entrepôt de données**.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -29,7 +29,7 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Ensuite, créez un entrepôt de données dans l’espace de travail que vous avez créé. La page d’accueil Data Warehouse comprend un raccourci permettant de créer un entrepôt :
 
-1. Dans la page d’accueil **Synapse Data Warehouse**, créez un **entrepôt** avec le nom de votre choix.
+1. Dans la page d’accueil **Data Warehouse**, créez un **entrepôt** avec le nom de votre choix.
 
     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
@@ -39,7 +39,7 @@ Ensuite, créez un entrepôt de données dans l’espace de travail que vous ave
 
 Les règles de masquage dynamique des données sont appliquées sur des colonnes individuelles au niveau de la table afin que toutes les requêtes soient affectées par le masquage. Les utilisateurs qui n’ont pas d’autorisations explicites pour visualiser les données confidentielles voient des valeurs masquées dans les résultats des requêtes, tandis que ceux qui ont l’autorisation explicite de visualiser ces données les voient en clair. Il existe quatre types de masques : par défaut, e-mail, chaîne aléatoire et personnalisée. Dans cet exercice, vous allez appliquer un masque par défaut, un masque de messagerie et un masque de chaîne personnalisé.
 
-1. Dans votre entrepôt, sélectionnez la vignette **T-SQL** et remplacez le code SQL par défaut par les instructions T-SQL suivantes pour créer une table et insérer et afficher des données.  
+1. Dans votre entrepôt, sélectionnez la vignette **T-SQL** et utilisez les instructions T-SQL suivantes pour créer une table, puis insérer et afficher des données.  
 
     ```T-SQL
    CREATE TABLE dbo.Customers
@@ -91,7 +91,7 @@ Les règles de masquage dynamique des données sont appliquées sur des colonnes
 
 La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’accès aux lignes en fonction de l’identité ou du rôle de l’utilisateur exécutant une requête. Dans cet exercice, vous limitez l’accès aux lignes en créant une stratégie de sécurité et un prédicat de sécurité défini comme une TVF inline.
 
-1. Dans l’entrepôt que vous avez créé dans le dernier exercice, sélectionnez la liste déroulante **Nouvelle requête SQL**.  Sous l’en-tête **Vide**, sélectionnez **Nouvelle requête SQL**.
+1. Dans l’entrepôt que vous avez créé dans le dernier exercice, sélectionnez la liste déroulante **Nouvelle requête SQL** et sélectionnez **Nouvelle requête SQL**.
 
 2. Créer une table et y insérer des données. Pour pouvoir tester la sécurité au niveau des lignes dans une étape ultérieure, remplacez `username1@your_domain.com` par un nom d’utilisateur de votre environnement, et remplacez `username2@your_domain.com` par votre nom d’utilisateur.
 
@@ -166,7 +166,7 @@ La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’a
 
 La sécurité au niveau des colonnes vous permet de désigner les utilisateurs qui peuvent accéder à des colonnes spécifiques d’une table. Elle est implémentée en émettant une instruction `GRANT` ou `DENY` sur une table en spécifiant une liste de colonnes et l’utilisateur ou le rôle qui peuvent ou ne peuvent pas les lire. Pour simplifier la gestion des accès, affectez des autorisations aux rôles au lieu de le faire à des utilisateurs individuels. Dans cet exercice, vous allez créer une table, accorder l’accès à un sous-ensemble de colonnes sur la table et tester que les colonnes restreintes ne peuvent pas être visualisées par un utilisateur autre que vous-même.
 
-1. Dans l’entrepôt que vous avez créé dans l’exercice précédent, sélectionnez la liste déroulante **Nouvelle requête SQL**. Sous l’en-tête **Vide**, sélectionnez **Nouvelle requête SQL**.  
+1. Dans l’entrepôt que vous avez créé dans l’exercice précédent, sélectionnez la liste déroulante **Nouvelle requête SQL** et sélectionnez **Nouvelle requête SQL**.  
 
 2. Créez une table et insérez des données dans la table.
 
