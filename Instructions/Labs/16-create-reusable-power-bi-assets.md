@@ -16,7 +16,7 @@ Cet exercice devrait prendre environ **30** minutes.
 
 Afin de commencer cet exercice, vous devez d’abord ouvrir un navigateur web et entrer l’URL suivante pour télécharger le dossier zip :
 
-`https://github.com/MicrosoftLearning/mslearn-fabric/raw/Main/Allfiles/Labs/16b/16-reusable-assets.zip`
+`https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
 Extrayez le dossier dans le dossier **C:\Users\Student\Downloads\16-reusable-assets**.
 

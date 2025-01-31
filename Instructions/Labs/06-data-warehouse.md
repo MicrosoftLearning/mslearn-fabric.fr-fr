@@ -31,7 +31,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
-    ![Capture d’écran d’un nouvel entrepôt.](./Images/new-data-warehouse.png)
+    ![Capture d’écran d’un nouvel entrepôt.](./Images/new-data-warehouse2.png)
 
 ## Créer des tables et insérer des données
 
@@ -195,7 +195,7 @@ Au lieu d’écrire du code SQL, vous pouvez utiliser le concepteur de requêtes
 
 1. Si vous souhaitez examiner les données pour un seul produit, à la demande d’un responsable, vous pouvez maintenant utiliser la colonne **ProductName** pour filtrer les données dans la requête. Filtrez la colonne **ProductName** pour examiner seulement les données de **Cable Lock**.
 
-1. À partir de là, vous pouvez analyser les résultats de cette requête en sélectionnant **Visualiser les résultats** ou **Ouvrir dans Excel**. Vous pouvez maintenant voir exactement ce que le responsable demandait : nous n’avons donc pas besoin d’analyser les résultats plus en détail.
+1. À partir de là, vous pouvez analyser les résultats de cette requête en sélectionnant **Visualiser les résultats** ou **Télécharger le fichier Excel**. Vous pouvez maintenant voir exactement ce que le responsable demandait : nous n’avons donc pas besoin d’analyser les résultats plus en détail.
 
 ### Visualiser vos données
 
@@ -232,7 +232,7 @@ Vous pouvez facilement visualiser les données dans une seule requête ou dans v
 
 1. Dans le menu **Fichier**, sélectionnez **Enregistrer**. Enregistrez ensuite le rapport sous le nom **Rapport des ventes** dans l’espace de travail que vous avez créé précédemment.
 
-1. Dans le hub de menus à gauche, revenez à l’espace de travail. Notez que vous avez maintenant trois éléments enregistrés dans votre espace de travail : votre entrepôt de données, son jeu de données par défaut et le rapport que vous avez créé.
+1. Dans le hub de menus à gauche, revenez à l’espace de travail. Notez que vous avez maintenant trois éléments enregistrés dans votre espace de travail : votre entrepôt de données, son modèle sémantique par défaut et le rapport que vous avez créé.
 
     ![Capture d’écran de l’espace de travail avec les trois éléments listés.](./Images/workspace-items.png)
 
