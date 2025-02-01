@@ -190,7 +190,7 @@ Cette tâche s’appuie sur l’existence d’un groupe de sécurité **Salespeo
 
     ![](Images/enforce-model-security-image32.png)
 
-    *L’option **Sécurité** prend en charge le mappage des principaux de sécurité Microsoft Azure Active Directory (Azure AD), qui incluent des groupes de sécurité et des utilisateurs.*
+    *L’option **Sécurité** prend en charge le mappage des principaux de sécurité Microsoft Entra, qui incluent des groupes de sécurité et des utilisateurs.*
 
 4. À gauche, examinez la liste des rôles ; vous verrez qu’**Australia** est sélectionné.
 
