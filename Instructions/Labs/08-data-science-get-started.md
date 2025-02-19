@@ -18,8 +18,7 @@ Ce labo prend environ **20** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur.
-1. **Science des données Synapse**.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -30,7 +29,9 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Pour exécuter du code, vous pouvez créer un *notebook*. Les notebooks fournissent un environnement interactif dans lequel vous pouvez écrire et exécuter du code (dans plusieurs langues).
 
-1. Sur la page d’accueil de **Synapse Science des données**, créez un **Notebook**.
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Science des données*, sélectionnez **Notebook**. Donnez-lui un nom unique de votre choix.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
 
     Après quelques secondes, un nouveau notebook contenant une seule *cellule* s’ouvre. Les notebooks sont constitués d’une ou plusieurs cellules qui peuvent contenir du *code* ou du *Markdown* (texte mis en forme).
 
@@ -93,13 +94,12 @@ Vous êtes maintenant prêt à exécuter du code pour obtenir des données et fo
 
     La sortie affiche les lignes et les colonnes du jeu de données diabetes.
 
-1. Il existe deux onglets en haut du tableau affiché : **Tableau** et **Graphique**. Sélectionnez un **graphique**.
-1. Sélectionnez l’option **Personnaliser le graphique** en haut à droite du graphique pour modifier la visualisation.
-1. Remplacez le graphique par les paramètres suivants :
+1. Il y a deux onglets en haut du tableau affiché : **Tableau** et **+ Nouveau graphique**. Sélectionnez **+ Nouveau graphique**.
+1. Sélectionnez l’option **Générer ma propre** à droite du graphique pour créer une visualisation.
+1. Sélectionnez les paramètres de graphique suivants :
     * **Type de graphique** : `Box plot`
-    * **Clé** : *laissez ce champ vide*
-    * **Valeurs** : `Y`
-1. Sélectionnez **Appliquer** pour afficher la nouvelle visualisation et explorer la sortie.
+    * **Axe Y** : `Y`
+1. Passez en revue la sortie qui affiche la distribution de la colonne d’étiquette `Y`.
 
 ## Préparer les données
 
@@ -121,8 +121,8 @@ Maintenant que vous avez ingéré et exploré les données, vous pouvez les tran
 1. Créez une colonne avec les paramètres suivants :
     * **Nom de la colonne** : `Risk`
     * **Formule de colonne** : `(df['Y'] > 211.5).astype(int)`
-1. Passez en revue la nouvelle colonne `Risk` qui est ajoutée à l’aperçu. Vérifiez que le nombre de lignes avec une valeur `1` doit être d’environ 25 % de toutes les lignes (car il s’agit du 75e centile de `Y`).
 1. Sélectionnez **Appliquer**.
+1. Passez en revue la nouvelle colonne `Risk` qui est ajoutée à l’aperçu. Vérifiez que le nombre de lignes avec une valeur `1` doit être d’environ 25 % de toutes les lignes (car il s’agit du 75e centile de `Y`).
 1. Sélectionnez **Ajouter du code au notebook**.
 1. Exécutez la cellule avec le code généré par Data Wrangler.
 1. Exécutez le code suivant dans une nouvelle cellule pour vérifier que la colonne `Risk` est mise en forme comme prévu :
@@ -215,7 +215,7 @@ Microsoft Fabric effectue le suivi de toutes vos expériences et vous permet de 
 
     > **Conseil :** Si vous ne voyez aucune exécution d’expérience journalisée, actualisez la page.
 
-1. Passez en revue les **métriques d’exécution** pour explorer la précision de votre modèle de régression.
+1. Passez en revue les **mesures d’exécution** pour explorer la précision de votre modèle de régression.
 1. Revenez à la page d’accueil et sélectionnez l’expérience `diabetes-classification` pour l’ouvrir.
 1. Passez en revue les **métriques d’exécution** pour explorer la précision du modèle de classification. Notez que le type de métriques est différent à mesure que vous avez entraîné un autre type de modèle.
 
