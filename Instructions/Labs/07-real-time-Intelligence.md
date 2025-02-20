@@ -16,14 +16,14 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, vous devez créer un espace de travail dans un locataire avec la fonctionnalité Fabric activée.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Real-Time Intelligence**.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
-## Créer un Eventstream
+## Créer un flux d’événements
 
 Vous êtes maintenant prêt à rechercher et à ingérer des données en temps réel à partir d’une source de diffusion en continu. Pour ce faire, vous allez commencer dans le hub en temps réel Fabric.
 
@@ -48,7 +48,9 @@ Vous êtes maintenant prêt à rechercher et à ingérer des données en temps r
 
 L’eventstream ingère les données boursières en temps réel, mais n’en fait rien actuellement. Nous allons créer un eventhouse dans lequel nous pouvons stocker les données capturées dans une table.
 
-1. Dans la barre de menus de gauche, sélectionnez **Accueil**, puis, dans la page d’accueil de Real-Time Intelligence, créez un **Eventhouse**, en lui donnant un nom unique de votre choix.
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Real-Time Intelligence*, sélectionnez **Eventhouse**. Donnez-lui un nom unique de votre choix.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
 
     Fermez toutes les invites ou conseils affichés jusqu’à ce que le nouvel eventhouse vide soit visible :
 
@@ -61,7 +63,7 @@ L’eventstream ingère les données boursières en temps réel, mais n’en fai
 
 1. Dans la page principale de votre base de données KQL, sélectionnez **Obtenir des données**.
 1. Pour la source de données, sélectionnez **Eventstream** > **Evenstream existant**.
-1. Dans le volet **Sélectionner ou créer une table de destination**, créez une table nommée `stock`. Ensuite, dans le volet **Configurer la source de données**, sélectionnez votre espace de travail et l’eventstream **stock-data**, puis nommez la connexion `stock-data`.
+1. Dans le volet **Sélectionner ou créer une table de destination**, créez une table nommée `stock`. Ensuite, dans le volet **Configurer la source de données**, sélectionnez votre espace de travail et l’eventstream **stock-data**, puis nommez la connexion `stock-table`.
 
    ![Capture d’écran de la configuration du chargement d’une table à partir d’un eventstream.](./Images/configure-destination.png)
 
@@ -71,11 +73,7 @@ L’eventstream ingère les données boursières en temps réel, mais n’en fai
 
     La connexion entre le flux et la table a été créée. Vérifions cela dans l’eventstream.
 
-1. Dans la barre de menus de gauche, sélectionnez le hub **en temps réel**, puis affichez la page **Mes flux de données**. La table **stock** et le flux **stock-data-stream** doivent être répertoriés.
-
-   ![Capture d’écran de la page Mes flux du hub en temps réel.](./Images/my-data-streams.png)
-
-1. Dans le menu **...** du flux **stock-data-stream**, sélectionnez **Ouvrir l’eventstream**.
+1. Dans la barre de menus de gauche, sélectionnez le hub **en temps réel**, puis affichez la page **Mes flux de données**. Dans le menu **...** du flux **stock-data-stream**, sélectionnez **Ouvrir l’eventstream**.
 
     L’eventstream affiche désormais une destination pour le flux :
 
