@@ -16,7 +16,7 @@ Ce labo est d’une durée de **25** minutes environ.
 
 Avant d’utiliser des données dans Fabric, vous devez créer un espace de travail dans un locataire avec la fonctionnalité Fabric activée.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Real-Time Intelligence**.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -27,7 +27,10 @@ Avant d’utiliser des données dans Fabric, vous devez créer un espace de trav
 
 Maintenant que vous disposez d’un espace de travail, vous pouvez commencer à créer les éléments Fabric dont vous aurez besoin pour votre solution d’intelligence en temps réel. Nous allons commencer par créer un eventhouse.
 
-1. Dans la barre de menus de gauche, sélectionnez **Accueil**, puis, dans la page d’accueil de Real-Time Intelligence, créez un **Eventhouse**, en lui donnant un nom unique de votre choix.
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Real-Time Intelligence*, sélectionnez **Eventhouse**. Donnez-lui un nom unique de votre choix.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
+
 1. Fermez toutes les invites ou conseils affichés jusqu’à ce que le nouvel eventhouse vide soit visible :
 
     ![Capture d’écran d’un nouvel eventhouse](./Images/create-eventhouse.png)
@@ -35,7 +38,7 @@ Maintenant que vous disposez d’un espace de travail, vous pouvez commencer à 
 1. Dans le volet de gauche, notez que votre eventhouse contient une base de données KQL portant le même nom que l’eventhouse.
 1. Sélectionnez la base de données KQL pour l’afficher.
 
-## Créer un Eventstream
+## Créer un flux d’événements
 
 Actuellement, il n’existe aucune table dans la base de données. Nous allons utiliser un eventstream pour charger des données d’une source en temps réel dans une table.
 
@@ -158,13 +161,13 @@ Votre tableau de bord contient deux visuels basés sur des requêtes similaires.
     bikes
         | where ingestion_time() between (ago(30min) .. now())
         | summarize latest_observation = arg_max(ingestion_time(), *) by Neighbourhood
+    ```
+1. Exécutez la requête et vérifiez qu’elle retourne toutes les colonnes nécessaires pour les deux visuels du tableau de bord (et autres).
 
-1. Run the query and verify that it returns all of the columns needed for both visuals in the dashboard (and some others).
+   ![Capture d’écran d’une requête de base.](./Images/dashboard-base-query.png)
 
-   ![A screenshot of a base query.](./Images/dashboard-base-query.png)
-
-1. Select **Done** and then close the **Base queries** pane.
-1. Edit the **Bikes and Docks** bar chart visual, and change the query to the following code:
+1. Sélectionnez **Terminé**, puis fermez le volet **Requêtes de base**.
+1. Modifiez l’apparence du graphique à barres **Bikes and Docks** et remplacez la requête par le code suivant :
 
     ```kql
     base_bike_data
