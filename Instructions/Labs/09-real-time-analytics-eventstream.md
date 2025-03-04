@@ -17,7 +17,6 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, vous devez créer un espace de travail dans un locataire avec la fonctionnalité Fabric activée.
 
-1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -58,7 +57,8 @@ Maintenant que vous disposez d’un espace de travail, vous pouvez commencer à 
 
 ## Ajouter une destination
 
-1. Sélectionnez la vignette **Transformer des événements ou ajouter une destination** et recherchez **Eventhouse**.
+1. Utilisez l’icône **+** à droite du nœud **Bicycle-data** pour ajouter un nouveau nœud **Eventhouse**.
+1. Utilisez l’icône en forme de *crayon* dans le nouveau nœud Eventhouse pour le modifier.
 1. Dans le volet **Eventhouse**, configurez les options suivantes.
    - **Mode d’ingestion des données :** traitement des événements avant l’ingestion
    - **Nom de la destination :**`bikes-table`
