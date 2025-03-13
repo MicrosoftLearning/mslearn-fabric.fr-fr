@@ -17,7 +17,7 @@ Cet exercice devrait prendre environ **45** minutes
 
 Tout d’abord, créez un espace de travail avec la *version d’évaluation de Fabric* activée.
 
-1. Sur la page d’accueil de Microsoft Fabric à l’adresse `https://app.fabric.microsoft.com`, sélectionnez l’expérience **Engineering données**.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (🗇).
 1. Créez un **nouvel espace de travail** avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (Essai, Premium ou Fabric).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -28,7 +28,10 @@ Tout d’abord, créez un espace de travail avec la *version d’évaluation de 
 
 Maintenant que vous disposez d’un espace de travail, il est temps de créer un lakehouse et de charger vos données.
 
-1. Dans la page d’accueil de l’**Engineering données**, créez un nouveau **lakehouse** avec le nom de votre choix. 
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Engineering données*, sélectionnez **Lakehouse**. Donnez-lui un nom unique de votre choix.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
+
 1. Il existe plusieurs façons d’ingérer les données, mais dans cet exercice, vous allez télécharger un fichier texte sur votre ordinateur local (ou sur votre machine virtuelle de labo le cas échéant), puis le charger dans votre lakehouse. Téléchargez le [fichier de données](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) à partir de `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv`, en l’enregistrant en tant que *products.csv*.
 1.  Revenez à l’onglet du navigateur web contenant votre lakehouse, puis, dans le volet Explorateur, en regard du dossier **Fichiers**, sélectionnez le menu … .  Créez un **sous-dossier** appelé *produits*.
 1.  Dans le menu … du dossier produits, **chargez** le fichier *products.csv* à partir de votre ordinateur local (ou de votre machine virtuelle de labo le cas échéant).

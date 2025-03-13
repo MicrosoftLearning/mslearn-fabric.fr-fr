@@ -16,7 +16,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Nouvel espace de travail**.
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -27,8 +27,10 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Maintenant que vous disposez d’un espace de travail, vous pouvez créer une base de données SQL.
 
-1. Sur le portail Fabric, sélectionnez **+ Nouvel élément** dans le volet de gauche.
-1. Accédez à la section **Stocker des données**, puis sélectionnez **Base de données SQL**.
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Bases de données*, sélectionnez **Base de données SQL**.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
+
 1. Entrez **AdventureWorksLT** comme nom de base de données, puis sélectionnez **Créer**.
 1. Une fois la base de données créée, vous pouvez y charger des échantillons de données à partir de la carte **Échantillons de données**.
 

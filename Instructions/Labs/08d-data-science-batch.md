@@ -18,8 +18,7 @@ Ce labo prend environ **20** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur.
-1. Sur la page d’accueil de Microsoft Fabric, sélectionnez **Science des données Synapse**
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -30,7 +29,9 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Vous utilisez un *notebook* pour effectuer l’apprentissage et utiliser un modèle dans cet exercice.
 
-1. Sur la page d’accueil de **Synapse Science des données**, créez un **Notebook**.
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Science des données*, sélectionnez **Notebook**. Donnez-lui un nom unique de votre choix.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
 
     Après quelques secondes, un nouveau notebook contenant une seule *cellule* s’ouvre. Les notebooks sont constitués d’une ou plusieurs cellules qui peuvent contenir du *code* ou du *Markdown* (texte mis en forme).
 
