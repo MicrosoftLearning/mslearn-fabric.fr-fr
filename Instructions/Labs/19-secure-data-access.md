@@ -14,7 +14,7 @@ Ce labo est d’une durée de **45** minutes environ.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Entrepôt de données**.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -27,7 +27,9 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
 Ensuite, créez un entrepôt de données dans l’espace de travail que vous avez créé.
 
-1. Dans la page d’accueil Entrepôt de données, sélectionnez le raccourci **Échantillon d’entrepôt** pour créer un entrepôt avec le nom de votre choix.  
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Entrepôt de données*, sélectionnez **Exemple d’entrepôt** et créez un entrepôt de données avec le nom de votre choix.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
 
     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
@@ -127,7 +129,7 @@ Dans cet exercice, vous affectez une autorisation d’élément, créez un rôle
 
       ![Capture d’écran de la fenêtre Accorder l’accès au lakehouse dans Fabric.](./Images/grant-people-access-window.png)
 
-8. Sélectionner **Accorder**. Le deuxième utilisateur dispose désormais d’autorisations de lecture sur le lakehouse. L’autorisation en lecture permet uniquement à l’utilisateur de voir les métadonnées pour le lakehouse, mais pas les données sous-jacentes. Ensuite, nous validons le résultat.
+8. Sélectionner **Octroyer**. Le deuxième utilisateur dispose désormais d’autorisations de lecture sur le lakehouse. L’autorisation en lecture permet uniquement à l’utilisateur de voir les métadonnées pour le lakehouse, mais pas les données sous-jacentes. Ensuite, nous validons le résultat.
 9. Revenez au navigateur dans lequel vous êtes connecté en tant que deuxième utilisateur. Actualisez le navigateur.
 10. Dans le volet de navigation à gauche, sélectionnez **OneLake**.  
 11. Sélectionnez le lakehouse et ouvrez-le. 

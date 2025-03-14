@@ -16,7 +16,7 @@ Ce labo dure environ **20** minutes.
 
 Créez trois espaces de travail avec la version d’évaluation de Fabric activée.
 
-1. Dans la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), à l’adresse `https://app.fabric.microsoft.com/home?experience=fabric`, sélectionnez **Microsoft Fabric**, puis **Engineering données** dans la barre de menu inférieure gauche.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 2. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 3. Créez un nouvel espace de travail nommé Developpement et sélectionnez un mode de licence qui inclut la fonctionnalité Fabric (*Évaluation*, *Premium* ou *Fabric*).
 4. Répétez les étapes 1 et 2, en créant deux espaces de travail supplémentaires nommés Test et Production. Vos espaces de travail sont ainsi : Développement, Test et Production.
