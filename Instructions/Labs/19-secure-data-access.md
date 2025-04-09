@@ -46,7 +46,7 @@ Ensuite, créez un lakehouse dans l’espace de travail que vous avez créé.
 
     ![Capture d’écran d’un nouveau lakehouse dans Fabric.](./Images/new-sample-lakehouse.png)
 
-4. Sélectionnez la vignette **Démarrer avec un échantillon de données**. En une minute environ, le lakehouse est rempli de données.
+4. Sélectionnez la vignette **Démarrer avec l’exemple de données**, puis sélectionnez l’exemple **Jours fériés**. En une minute environ, le lakehouse est rempli de données.
 
 ## Appliquer les contrôles d’accès à l’espace de travail
 
