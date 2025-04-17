@@ -30,20 +30,16 @@ Ensuite, créez un pipeline de déploiement.
 
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail**.
 2. Sélectionnez **Pipelines de déploiement**, puis **Nouveau pipeline**.
-3. Dans la fenêtre **Ajouter un nouveau pipeline de déploiement**, donnez au pipeline un nom unique.
-4. Acceptez les valeurs par défaut dans la fenêtre **Personnaliser vos étapes**.  
-
-   ![Capture d’écran des étapes de pipeline.](./Images/customize-stages.png)
-
-5. Sélectionnez **Créer**.
+3. Dans la fenêtre **Ajouter un nouveau pipeline de déploiement**, donnez au pipeline un nom unique, puis sélectionnez **Suivant**.
+4. Dans la fenêtre du nouveau pipeline, sélectionnez **Créer et continuer**.
 
 ## Attribuer des espaces de travail aux étapes d’un pipeline de déploiement
 
 Attribuez des espaces de travail aux étapes du pipeline de déploiement.
 
 1. Dans la barre de menu de gauche, sélectionnez le pipeline que vous avez créé. 
-2. Dans la fenêtre qui s’affiche, cliquez sur le mot **Sélectionner** sous chaque étape de déploiement, puis sélectionnez le nom de l’espace de travail correspondant au nom de l’étape.
-3. Sélectionnez **Attribuer un espace de travail** pour chaque étape de déploiement.
+2. Dans la fenêtre qui s’affiche, développez les options sous **Attribuer un espace de travail** pour chaque étape de déploiement, puis sélectionnez le nom de l’espace de travail correspondant au nom de l’étape.
+3. Cochez la case **Attribuer** pour chaque étape de déploiement.
 
   ![Capture d'écran du pipeline de déploiement.](./Images/deployment-pipeline.png)
 
@@ -60,9 +56,10 @@ Les éléments Fabric n’ont pas encore été créés dans vos espaces de trava
 
   ![Capture d’écran de l’explorateur de lakehouse.](./Images/lakehouse-explorer.png)
 
+7. Sélectionnez l’exemple **NYCTaxi**.
 8. Dans la barre de menu de gauche, sélectionnez le pipeline que vous avez créé.
-9. Dans l’étape **Développement**, cliquez sur le **>** jusqu’à ce que vous voyiez **Lakehouses**. Le lakehouse s’affiche comme un nouveau contenu dans l’étape Développement. Entre les étapes **Développement** et **Test**, il y a un **X** orange dans un cercle. Le **X** orange indique que les étapes Développement et Test ne sont pas synchronisées.
-10. Sélectionnez la flèche vers le bas sous le **X** orange pour comparer le contenu dans les environnements Développement et Test. Sélectionnez **Comparer**. LabLakehouse existe uniquement dans l’étape Développement.  
+9. Sélectionnez l’étape **Développement**, puis, sous le canevas du pipeline de déploiement, vous verrez le lakehouse que vous avez créé en tant qu’élément d’étape. Dans le bord gauche de l’étape **Test**, il y a un **X** dans un cercle. Le **X** indique que les étapes Développement et Test ne sont pas synchronisées.
+10. Sélectionnez l’étape **Test** et, sous le canevas du pipeline de déploiement, vous verrez que le lakehouse que vous avez créé n’est qu’un élément d’étape dans la source, ce qui, dans ce cas, fait référence à l’étape **Développement**.  
 
   ![Capture d’écran du pipeline de déploiement montrant des disparités de contenu entre les étapes.](./Images/lab-pipeline-compare.png)
 
