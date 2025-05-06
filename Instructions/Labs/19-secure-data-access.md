@@ -21,17 +21,15 @@ Avant d’utiliser des données dans Fabric, créez un espace de travail avec l�
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-empty-workspace.png)
 
-> **Remarque** : Quand vous créez un espace de travail, vous devenez automatiquement membre du rôle Administrateur d’espace de travail. 
+> **Remarque** : Quand vous créez un espace de travail, vous devenez automatiquement membre du rôle Administrateur d’espace de travail.
 
 ## Créer un entrepôt de données
 
 Ensuite, créez un entrepôt de données dans l’espace de travail que vous avez créé.
 
-1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Entrepôt de données*, sélectionnez **Exemple d’entrepôt** et créez un entrepôt de données avec le nom de votre choix.
+1. Cliquez sur **+ Nouvel élément**. Dans la page *Nouvel élément*, sous la section *Stocker des données*, sélectionnez **Exemple d’entrepôt** et créez un entrepôt de données avec le nom de votre choix.
 
-    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
-
-    Au bout d’une minute environ, un nouvel entrepôt est créé :
+     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
     ![Capture d’écran d’un nouvel entrepôt.](./Images/new-sample-warehouse.png)
 
@@ -156,8 +154,6 @@ Dans cet exercice, vous affectez une autorisation d’élément, créez un rôle
 
 17. Revenez au navigateur dans lequel vous êtes connecté en tant que deuxième utilisateur. Assurez-vous que vous êtes toujours sur la page où le lakehouse est ouvert. Actualisez le navigateur.  
 18. Sélectionnez la table **publicholidays** et attendez que les données se chargent. Seules les données de la table publicholidays sont accessibles à l’utilisateur, car l’utilisateur a été affecté au rôle d’accès aux données OneLake personnalisé. Ce rôle permet de voir uniquement les données de la table publicholidays, et non des autres tables, fichiers ou dossiers.
-
-       ![Capture d’écran du rôle d’accès aux données OneLake qui permet à l’utilisateur de voir les données.](./Images/custom-role-view.png)
 
 ## Nettoyer les ressources
 
