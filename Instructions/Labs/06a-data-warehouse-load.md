@@ -60,7 +60,7 @@ Maintenant que vous disposez d’un espace de travail, d’un lakehouse et de la
 
     Au bout d’une minute environ, un nouvel entrepôt est créé :
 
-    ![Capture d’écran d’un nouvel entrepôt.](./Images/new-data-warehouse.png)
+    ![Capture d’écran d’un nouvel entrepôt.](./Images/new-empty-data-warehouse.png)
 
 ## Créer une table de faits, des dimensions et une vue
 
@@ -109,6 +109,8 @@ Créons les tables de faits et les dimensions pour les données de ventes (Sales
     > **Important :** Dans un entrepôt de données, les contraintes de clé étrangère ne sont pas toujours nécessaires au niveau de la table. Bien que les contraintes de clé étrangère aident à garantir l’intégrité des données, elles peuvent aussi ajouter une charge de travail supplémentaire au processus ETL (Extraction, Transformation et Chargement) et ralentir le chargement des données. La décision d’utiliser des contraintes de clé étrangère dans un entrepôt de données doit être basée sur un examen attentif des compromis nécessaires entre l’intégrité des données et les performances.
 
 1. Dans l’**Explorateur**, accédez à **Schémas >> Sales >> Tables.**. Notez la présence des tables *Fact_Sales*, *Dim_Customer*et *Dim_Item* que vous venez de créer.
+
+    > **Note** : si vous ne voyez pas les nouveaux schémas, ouvrez le menu **...** pour les **tables** dans le volet **Explorateur**, puis sélectionnez **Actualiser**.
 
 1. Ouvrez un nouvel éditeur **Nouvelle requête SQL**, puis copiez et exécutez la requête suivante. Mettez à jour *<your lakehouse name>* avec le lakehouse que vous avez créé.
 
