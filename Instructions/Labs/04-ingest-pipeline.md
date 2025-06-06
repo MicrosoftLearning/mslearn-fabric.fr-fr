@@ -12,15 +12,16 @@ Fabric prend également en charge Apache Spark, ce qui vous permet d’écrire e
 
 Ce labo prend environ **45** minutes.
 
-> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> [!Note] 
+> Pour effectuer cet exercice, vous avez besoin d’accéder à un [locataire Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial).
 
 ## Créer un espace de travail
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail avec l’essai gratuit de Fabric activé.
 
-1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric-developer) sur `https://app.fabric.microsoft.com/home?experience=fabric-developer` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
-1. Créez un espace de travail avec le nom de votre choix et sélectionnez un mode de licence qui inclut la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence dans la section **Avancé** qui comprend la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
 
     ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
@@ -41,54 +42,52 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 Un moyen simple d’ingérer des données consiste à utiliser une activité **Copier des données** dans un pipeline afin d’extraire les données d’une source et de les copier dans un fichier dans le lakehouse.
 
-1. Dans la page **Accueil** de votre lakehouse, sélectionnez **Obtenir des données**, puis sélectionnez **Nouveau pipeline de données** et créez un pipeline de données nommé **Ingérer des données de ventes**.
-2. Si l’assistant **Copier des données** ne s’ouvre pas automatiquement, sélectionnez **Copier des données > Utiliser l’assistant de copie** dans la page de l’éditeur de pipeline.
-3. Dans l’assistant **Copier des données**, dans la page **Choisir une source de données**, saisissez HTTP dans la barre de recherche, puis sélectionnez **HTTP** dans la section **Nouvelles sources**.
-
+1. Sur la page **Accueil** de votre lakehouse, sélectionnez **Obtenir des données**, puis **Nouveau pipeline de données** et créez un pipeline de données nommé `Ingest Sales Data`.
+1. Si l’assistant **Copier des données** ne s’ouvre pas automatiquement, sélectionnez **Copier des données > Utiliser l’assistant de copie** dans la page de l’éditeur de pipeline.
+1. Dans l’assistant **Copier des données**, dans la page **Choisir une source de données**, saisissez HTTP dans la barre de recherche, puis sélectionnez **HTTP** dans la section **Nouvelles sources**.
 
     ![Capture d’écran de la page Choisir une source de données](./Images/choose-data-source.png)
 
-4. Dans le volet **Se connecter à la source de données**, saisissez les paramètres suivants pour la connexion à votre source de données :
+1. Dans le volet **Se connecter à la source de données**, saisissez les paramètres suivants pour la connexion à votre source de données :
     - **URL** : `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Connexion** : créez une connexion
     - **Nom de connexion** : *spécifiez un nom unique*
     - **Passerelle de données** : (aucune)
     - **Type d’authentification** : Anonyme
-5. Cliquez sur **Suivant**. Vérifiez ensuite que les paramètres suivants sont sélectionnés :
+1. Cliquez sur **Suivant**. Vérifiez ensuite que les paramètres suivants sont sélectionnés :
     - **URL relative** : *Laissez vide*
     - **Méthode de demande** : GET
     - **En-têtes supplémentaires** : *Laissez vide*
     - **Copie binaire** : <u>Non</u> sélectionné
     - **Expiration du délai de la demande** : *Laissez vide*
     - **Nombre maximal de connexions simultanées** : *Laisser vide*
-6. Sélectionnez **Suivant**, attendez que les données soient échantillonnées, puis vérifiez que les paramètres suivants sont sélectionnés :
+1. Sélectionnez **Suivant**, attendez que les données soient échantillonnées, puis vérifiez que les paramètres suivants sont sélectionnés :
     - **Format de fichier** : DelimitedText
     - **Séparateur de colonne** : virgule (,)
     - **Délimiteur de lignes** : Saut de ligne (\n)
     - **Première ligne comme en-tête** : Sélectionné
     - **Type de compression** : Aucune
-7. Sélectionnez **Aperçu des données** pour afficher un échantillon des données qui seront ingérées. Fermez ensuite l’aperçu des données, puis sélectionnez **Suivant**.
-8. Dans la page **Se connecter à la destination des données**, définissez les options de destination de données suivantes, puis sélectionnez **Suivant** :
+1. Sélectionnez **Aperçu des données** pour afficher un échantillon des données qui seront ingérées. Fermez ensuite l’aperçu des données, puis sélectionnez **Suivant**.
+1. Dans la page **Se connecter à la destination des données**, définissez les options de destination de données suivantes, puis sélectionnez **Suivant** :
     - **Dossier racine** : Fichiers
     - **Nom du chemin d’accès au dossier** : new_data
     - **Nom du fichier** : sales.csv
     - **Comportement de copie** : Aucun
-10. Définissez les options de format de fichier suivantes, puis sélectionnez **Suivant** :
+1. Définissez les options de format de fichier suivantes, puis sélectionnez **Suivant** :
     - **Format de fichier** : DelimitedText
     - **Séparateur de colonne** : virgule (,)
     - **Délimiteur de lignes** : Saut de ligne (\n)
     - **Ajouter un en-tête au fichier** : Sélectionné
     - **Type de compression** : Aucune
-11. Dans la page **Récapitulatif de la copie**, passez en revue les détails de votre opération de copie, puis sélectionnez **Enregistrer + Exécuter**.
+1. Dans la page **Récapitulatif de la copie**, passez en revue les détails de votre opération de copie, puis sélectionnez **Enregistrer + Exécuter**.
 
     Un nouveau pipeline contenant une activité **Copier des données** est créé, comme illustré ici :
 
     ![Capture d’écran d’un pipeline avec une activité Copier des données.](./Images/copy-data-pipeline.png)
 
-12. Lorsque le pipeline commence à s’exécuter, vous pouvez superviser son statut dans le volet **Sortie** sous le concepteur de pipeline. Utilisez l’icône **&#8635;** (*Actualiser*) pour actualiser le statut et attendez qu’il indique une réussite.
-
-13. Dans la barre de menus à gauche, sélectionnez votre lakehouse.
-14. Dans la page **Accueil**, dans le volet **Explorateur de lakehouse**, développez **Fichiers** et sélectionnez le dossier **new_data** pour vérifier que le fichier **sales.csv** a été copié.
+1. Lorsque le pipeline commence à s’exécuter, vous pouvez superviser son statut dans le volet **Sortie** sous le concepteur de pipeline. Utilisez l’icône **&#8635;** (*Actualiser*) pour actualiser le statut et attendez qu’il indique une réussite.
+1. Dans la barre de menus à gauche, sélectionnez votre lakehouse.
+1. Sur la page **Accueil**, dans le volet **Explorateur**, développez **Fichiers** et sélectionnez le dossier **new_data** pour vérifier que le fichier **sales.csv** a été copié.
 
 ## Créer un notebook
 
@@ -133,8 +132,8 @@ Un moyen simple d’ingérer des données consiste à utiliser une activité **C
 
     > **Remarque** : Comme c’est la première fois que vous exécutez du code Spark dans cette session, le pool Spark doit être démarré. Cela signifie que l’exécution de la première cellule peut prendre environ une minute.
 
-6. Une fois l’exécution du notebook terminée, dans le volet **Explorateur de lakehouse** à gauche, dans le menu **...** pour **Tables**, sélectionnez **Actualiser** et vérifiez qu’une table **sales** a été créée.
-7. Dans la barre de menus du notebook, utilisez l’icône ⚙️ **Paramètres** pour afficher les paramètres du notebook. Ensuite, définissez le **nom** du notebook sur **Charger les ventes** et fermez le volet de paramètres.
+6. Une fois l’exécution du notebook terminée, dans le volet **Explorateur** à gauche, dans le menu **...** de **Tables**, sélectionnez **Actualiser** et vérifiez qu’une table **sales** a été créée.
+7. Dans la barre de menus du notebook, utilisez l’icône ⚙️ **Paramètres** pour afficher les paramètres du notebook. Ensuite, définissez le **nom** du notebook sur `Load Sales` et fermez le volet Paramètres.
 8. Dans la barre de menus du hub à gauche, sélectionnez votre lakehouse.
 9. Dans le volet **Explorateur**, actualisez la vue. Développez ensuite **Tables**, puis sélectionnez la table **sales** pour afficher un aperçu des données qu’elle contient.
 
@@ -148,13 +147,13 @@ Maintenant que vous avez implémenté un notebook pour transformer des données 
     ![Capture d’écran d’un pipeline avec les activités Supprimer des données et Copier des données.](./Images/delete-data-activity.png)
 
 3. Sélectionnez l’activité **Supprimer des données** et, dans le volet situé sous le canevas de conception, définissez les propriétés suivantes :
-    - **Général** :
-        - **Nom** : Supprimer les anciens fichiers
+    - **Général :**
+        - **Nom :** `Delete old files`
     - **Source**
         - **Connexion** : *Votre lakehouse*
         - **Type de chemin de fichier** : Chemin de fichier générique
         - **Chemin du dossier** : Files / **new_data**
-        - **Nom du fichier générique** : *.csv        
+        - **Nom du fichier avec des caractères génériques** : `*.csv`        
         - **Récursivement** : *Sélectionné*
     - **Paramètres de journalisation** :
         - **Activer la journalisation** : *<u>Non </u>sélectionné*
@@ -167,8 +166,8 @@ Maintenant que vous avez implémenté un notebook pour transformer des données 
     ![Capture d’écran d’un pipeline avec les activités Copier des données et Notebook.](./Images/pipeline.png)
 
 6. Sélectionnez l’activité **Notebook** puis, dans le volet sous le canevas de conception, définissez les propriétés suivantes :
-    - **Général** :
-        - **Nom** : Notebook Charger les ventes
+    - **Général :**
+        - **Nom :** `Load Sales notebook`
     - **Paramètres**:
         - **Notebook** : Charger les ventes
         - **Paramètres de base** : *Ajoutez un nouveau paramètre avec les propriétés suivantes :*

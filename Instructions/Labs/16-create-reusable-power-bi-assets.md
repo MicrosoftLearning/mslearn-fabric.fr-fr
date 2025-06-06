@@ -58,7 +58,7 @@ Dans cette tâche, vous allez créer un rapport en vous connectant au modèle s�
     ![Capture d’écran des options disponibles dans la catégorie Fonctionnalités en version préliminaire.](./Images/power-bi-enable-tmdl.png)
 
 1. Sélectionnez **Enregistrer sous**, puis choisissez le type de fichier en sélectionnant la flèche dans le menu déroulant lorsque vous nommez le fichier.
-1. Sélectionnez l’extension de fichier **.*.pbip***, choisissez un nom pour votre rapport, puis enregistrez-le dans un dossier dont vous vous rappellerez.
+1. Sélectionnez l’extension de fichier **.pbip**, choisissez un nom pour votre rapport, puis enregistrez-le dans un dossier dont vous vous rappellerez.
 
     ![Capture d’écran de la sélection Enregistrer sous avec le menu déroulant développé.](./Images/power-bi-save-file-types.png)
 
@@ -74,10 +74,10 @@ Dans cette tâche, vous allez créer un rapport en vous connectant au modèle s�
 
 Examinons comment les modifications apportées dans Power BI Desktop sont reflétées dans les fichiers .tmdl.
 
-1. À partir du bureau, utilisez l’Explorateur de fichiers pour accéder au dossier dans lequel vous avez enregistré le fichier *.* pbip**.
+1. À partir du bureau, utilisez l’Explorateur de fichiers pour accéder au dossier dans lequel vous avez enregistré le fichier **.pbip**.
 1. Vous devriez voir les éléments suivants :
 
-    - Fichier YourReport *.pbip*
+    - Fichier YourReport.pbip
     - Dossier YourReport.Report
     - Dossier YourReport.SemanticModel
     - Fichier source Git Ignore .gitignore
@@ -94,7 +94,7 @@ Dans cette tâche, vous allez ajouter une nouvelle table, car le modèle sémant
 
 1. La boîte de dialogue À partir du web s’affiche une fois connecté. Laissez la case d’option De base sélectionnée. Saisissez le chemin d’accès du fichier suivant en tant que chemin de l’URL.
 
-    `"C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html"`
+    `C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html`
 
 1. Sélectionnez la zone **Tables HTML > Table 2**, puis sélectionnez **Transformer les données** pour continuer.
 

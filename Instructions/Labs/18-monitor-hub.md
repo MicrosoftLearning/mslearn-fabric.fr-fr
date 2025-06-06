@@ -16,7 +16,7 @@ Ce labo prend environ **30** minutes.
 
 Avant d’utiliser des données dans Fabric, créez un espace de travail dans un locataire avec la fonctionnalité Fabric activée.
 
-1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric-developer) sur `https://app.fabric.microsoft.com/home?experience=fabric-developer` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
 1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
 1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence dans la section **Avancé** qui comprend la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
 1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
@@ -44,12 +44,10 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 Dans Microsoft Fabric, vous pouvez utiliser un flux de données (Gen2) pour ingérer des données à partir d’un large éventail de sources. Dans cet exercice, vous allez utiliser un flux de données pour obtenir des données à partir d’un fichier CSV et les charger dans une table de votre lakehouse.
 
 1. Dans la **page d’accueil** de votre lakehouse, dans le menu **Obtenir des données**, sélectionnez **Nouveau Dataflow Gen2**.
-
-   Un nouveau flux de donnée nommé **Dataflow 1** est créé et ouvert.
+1. Nommez le nouveau flux de données `Get Product Data`, puis sélectionnez **Créer**.
 
     ![Capture d’écran d’un nouveau flux de données.](./Images/new-data-flow.png)
 
-1. En haut à gauche de la page de flux de données, sélectionnez **Dataflow 1** pour afficher ses détails et renommer le flux de données en **Obtenir des données produit**.
 1. Dans le concepteur de flux de données, sélectionnez **Importer à partir d’un fichier Texte/CSV**. Exécutez ensuite l’Assistant Obtenir des données pour créer une connexion de données en vous liant à `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/products.csv` à l’aide de l’authentification anonyme. Après avoir terminé de suivre l’assistant, un aperçu des données s’affiche dans le concepteur de flux de données comme suit :
 
     ![Capture d’écran d’une requête de flux de données.](./Images/data-flow-query.png)
@@ -68,15 +66,17 @@ Dans Microsoft Fabric, vous pouvez utiliser un flux de données (Gen2) pour ing
 
 Dans Microsoft Fabric, vous pouvez utiliser des notebooks pour exécuter du code Spark.
 
-1. Dans le volet de navigation, sélectionnez **Accueil**. Dans la page d’accueil Ingénieurs de données, créez un **Notebook**.
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Sur la page *Nouveau*, sous la section *Engineering données*, sélectionnez **Notebook**.
 
     Un notebook nommé **Notebook 1** est créé et ouvert.
 
     ![Capture d’écran d’un nouveau notebook.](./Images/new-notebook.png)
 
-1. En haut à gauche du notebook, sélectionnez **Notebook 1** pour afficher ses détails et remplacez son nom par **Demander des produits**.
-1. Dans l’éditeur de notebook, dans le volet **Explorateur**, sélectionnez **Lakehouses** et ajoutez le lakehouse que vous avez créé précédemment.
-1. Dans le menu **...** de la table **Produits**, sélectionnez **Charger des données** > **Spark**. Cela ajoute une cellule de code au notebook, comme illustré ici :
+1. En haut à gauche du notebook, sélectionnez **Notebook 1** pour afficher ses détails et le renommer `Query Products`.
+1. Dans l’éditeur de notebook, dans le volet **Explorateur**, sélectionnez **Ajouter des éléments de données**, puis sélectionnez **Sources de données existantes**.
+1. Ajoutez le lakehouse que vous avez créé précédemment.
+1. Développez l’élément lakehouse jusqu’à atteindre la table **products**.
+1. Dans le menu **...** de la table **products**, sélectionnez **Charger des données** > **Spark**. Cela ajoute une cellule de code au notebook, comme illustré ici :
 
     ![Capture d’écran d’un notebook avec du code pour interroger une table.](./Images/load-spark.png)
 
