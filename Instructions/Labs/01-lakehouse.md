@@ -130,42 +130,6 @@ Même si de nombreux professionnels des données connaissent bien SQL, les analy
 
     ![Capture d’écran d’une requête visuelle avec des résultats.](./Images/visual-query-results.png)
 
-## Créer un rapport
-
-Les tables de votre lakehouse sont automatiquement ajoutées à un modèle sémantique par défaut pour la création de rapports avec Power BI.
-
-
-1. Dans la barre d’outils, sélectionnez **Dispositions de modèle**. Le schéma du modèle de données pour le modèle sémantique est affiché.
-
-    ![Capture d’écran des dispositions de modèle](./Images/lakehouse-model-layouts.png)
-
-    > **Remarque 1** : Dans cet exercice, le modèle sémantique se compose d’une seule table. Dans un scénario réel, vous créeriez probablement plusieurs tables dans votre lakehouse, chacune étant incluse dans le modèle. Vous pourriez ensuite définir des relations entre ces tables dans le modèle.
-    
-    > **Remarque 2** : les vues **frequently_run_queries**, **long_running_queries**, **exec_sessions_history** et **exec_requests_history** font partie du schéma **queryinsights** créé automatiquement par Fabric. Il s’agit d’une fonctionnalité qui fournit une vue holistique de l’historique de l’activité de requête sur le point de terminaison d’analytique SQL. Étant donné que cette fonctionnalité n’entre pas dans l’étendue de cet exercice, ces vues doivent être ignorées pour l’instant.
-
-2. Dans le ruban de menu, sélectionnez l’onglet **Création de rapports**. Sélectionnez ensuite **Nouveau rapport**. Votre page active passe à la vue Concepteur de rapports.
-
-    ![Capture d’écran du concepteur de rapports.](./Images/report-designer.png)
-
-3. Dans le volet **Données** à droite, développez la table **sales**. Sélectionnez ensuite les champs suivants :
-    - **Item**
-    - **Quantité**
-
-    Une visualisation de table est ajoutée au rapport :
-
-    ![Capture d’écran d’un rapport contenant une table.](./Images/table-visualization.png)
-
-4. Masquez les volets **Données** et **Filtres** pour créer plus d’espace. Vérifiez ensuite que la visualisation de la table est sélectionnée et, dans le volet **Visualisations**, remplacez la visualisation par un **graphique à barres groupées** et redimensionnez-la comme illustré ici.
-
-    ![Capture d’écran d’un rapport contenant un graphique à barres groupées.](./Images/clustered-bar-chart.png)
-
-5. Dans le menu **File** (Fichier), sélectionnez **Save** (Enregistrer). Enregistrez ensuite le rapport sous le nom `Item Sales Report` dans l’espace de travail que vous avez créé précédemment.
-6. Maintenant, dans la barre de menus du hub à gauche, sélectionnez votre espace de travail pour vérifier qu’il contient les éléments suivants :
-    - Votre lakehouse.
-    - Le point de terminaison d’analytique SQL de votre lakehouse.
-    - Un modèle sémantique par défaut pour les tables de votre lakehouse.
-    - Le **Rapport des ventes d’articles**.
-
 ## Nettoyer les ressources
 
 Dans cet exercice, vous avez créé un lakehouse et importé des données dans celui-ci. Vous avez vu comment un lakehouse se compose de fichiers et de tables stockés dans un magasin de données OneLake. Les tables managées peuvent être interrogées à l’aide de SQL et sont incluses dans un modèle sémantique par défaut pour prendre en charge les visualisations de données.
