@@ -1,7 +1,7 @@
 ---
 lab:
   title: Appliquer la sécurité du modèle sémantique
-  module: Design and build tabular models
+  module: Enforce semantic model security
 ---
 
 # Appliquer la sécurité du modèle sémantique
@@ -17,9 +17,9 @@ Dans cet exercice, vous apprenez à effectuer les opérations suivantes :
 
 Ce labo est d’une durée de **45** minutes environ.
 
-> **Remarque** : Vous devez disposer d’une [licence d’essai Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) pour effectuer cet exercice.
+> **Note** : vous devez accéder à un environnement Power BI pour effectuer cet exercice.
 
-## Bien démarrer
+## Démarrage
 
 Dans cet exercice, vous allez préparer votre environnement.
 
@@ -33,7 +33,7 @@ Dans cet exercice, vous allez préparer votre environnement.
 
 ### Se connecter au service Power BI
 
-Dans cette tâche, vous allez vous connecter au service Power BI, démarrer une licence d’évaluation et créer un espace de travail.
+Dans cette tâche, vous allez vous connecter au service Power BI, démarrer une licence d’évaluation et accéder à « Mon espace de travail ».
 
 1. Dans un navigateur Web, accédez à `https://app.powerbi.com/`.
 
@@ -43,19 +43,9 @@ Dans cette tâche, vous allez vous connecter au service Power BI, démarrer une
 
     *Conseil : l’expérience du navigateur web de Power BI est appelée **service Power BI**.*
 
-### Créer un espace de travail
+## Créer des rôles statiques
 
-Dans cette tâche, vous allez créer un espace de travail.
-
-1. Dans le service Power BI, pour créer un espace de travail, dans le volet **Navigation** (situé à gauche), sélectionnez **Espaces de travail**, puis **+ Nouvel espace de travail**.
-
-2. Dans le volet **Créer un espace de travail** (situé à droite), dans la zone **Nom**, entrez un nom pour l’espace de travail.
-
-    *Ce nom doit être unique au sein du locataire.*
-
-3. Sélectionnez **Appliquer**.
-
-    *Une fois créé, l’espace de travail est ouvert. Dans un exercice ultérieur, vous allez publier un modèle sémantique dans cet espace de travail.*
+Dans cet exercice, vous allez créer et valider des rôles statiques, puis voir comment mapper des principaux de sécurité aux rôles de modèle sémantique.
 
 ### Examiner le modèle de données
 
@@ -78,10 +68,6 @@ Dans cette tâche, vous allez passer en revue le modèle de données.
 4. Notez que la table inclut une colonne **Region**.
 
     *La colonne **Region** stocke les régions de ventes d’Adventure Works. Au sein de cette organisation, les commerciaux sont autorisés à voir uniquement les données relatives à leur région de vente. Dans ce labo, vous allez implémenter deux techniques de sécurité au niveau des lignes différentes pour appliquer des autorisations de données.*
-
-## Créer des rôles statiques
-
-Dans cet exercice, vous allez créer et valider des rôles statiques, puis voir comment mapper des principaux de sécurité aux rôles de modèle sémantique.
 
 ### Créer des rôles statiques
 
@@ -166,7 +152,7 @@ Dans cette tâche, vous allez publier le rapport.
 
     ![](Images/enforce-model-security-image28.png)
 
-3. Dans la fenêtre **Publier sur Power BI**, sélectionnez votre espace de travail, puis **Sélectionner**.
+3. Dans la fenêtre **Publier sur Power BI**, sélectionnez **Mon espace de travail**, puis **Sélectionner**.
 
     ![](Images/enforce-model-security-image29.png)
 
@@ -174,11 +160,11 @@ Dans cette tâche, vous allez publier le rapport.
 
     ![](Images/enforce-model-security-image30.png)
 
-### Configurer la sécurité au niveau des lignes (*facultatif*)
+#### Configurer la sécurité au niveau des lignes (facultatif)
 
 Dans cette tâche, vous allez voir comment configurer la sécurité au niveau des lignes dans le service Power BI.
 
-Cette tâche s’appuie sur l’existence d’un groupe de sécurité **Salespeople_Australia** dans le locataire dans lequel vous travaillez. Ce groupe de sécurité N’existe PAS automatiquement dans le locataire. Si vous disposez d’autorisations sur votre locataire, vous pouvez suivre les étapes ci-dessous. Si vous utilisez un locataire fourni pour la formation, vous n’avez pas les autorisations appropriées pour créer des groupes de sécurité. Lisez les tâches, mais notez que vous ne pourrez pas les terminer en l’absence du groupe de sécurité. **Après la lecture, passez à la tâche de nettoyage.**
+> Note : cette tâche s’appuie sur l’existence d’un groupe de sécurité **Salespeople_Australia** dans le locataire dans lequel vous travaillez. Ce groupe de sécurité N’existe PAS automatiquement dans le locataire. Si vous disposez d’autorisations sur votre locataire, vous pouvez suivre les étapes ci-dessous. Si vous utilisez un locataire fourni pour la formation, vous n’avez pas les autorisations appropriées pour créer des groupes de sécurité. Lisez les tâches, mais notez que vous ne pourrez pas les terminer en l’absence du groupe de sécurité. **Après la lecture, passez à la tâche de nettoyage.**
 
 1. Basculez vers le service Power BI (navigateur web).
 
@@ -218,7 +204,7 @@ Cette tâche s’appuie sur l’existence d’un groupe de sécurité **Salespeo
 
     *Dans l’exercice suivant, vous allez créer un rôle dynamique piloté par les données. Cette approche de conception peut aider à résoudre ces inconvénients.*
 
-8. Pour revenir à la page d’accueil de l’espace de travail, dans le volet **Navigation**, sélectionnez l’espace de travail.
+8. Pour revenir à la page de destination de l’espace de travail, dans le volet **Navigation**, sélectionnez votre espace de travail.
 
 ### Nettoyer la solution
 
@@ -440,11 +426,11 @@ Dans cette tâche, vous allez valider le rôle dynamique.
 
 Dans cette tâche, vous allez finaliser la conception en publiant le rapport et en mappant un groupe de sécurité au rôle.
 
-*Les étapes décrites dans cette tâche sont délibérément brèves. Pour plus d’informations, reportez-vous aux étapes de tâche de l’exercice précédent.*
+*Les étapes décrites dans cette tâche sont délibérément brèves. Pour retrouver les étapes dans leur intégralité, reportez-vous aux étapes de tâche de l’exercice précédent.*
 
 1. Enregistrez le fichier Power BI Desktop.
 
-2. Publiez le rapport sur l’espace de travail que vous avez créé au début du labo.
+2. Publiez le rapport sur **« Mon espace de travail »**.
 
 3. Fermez Power BI Desktop.
 

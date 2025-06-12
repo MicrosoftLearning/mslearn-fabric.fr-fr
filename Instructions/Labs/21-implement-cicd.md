@@ -66,15 +66,17 @@ Les éléments Fabric n’ont pas encore été créés dans vos espaces de trava
 ## Déployer du contenu entre les étapes
 
 Déployez le lakehouse à partir de l’étape **Développement** vers les étapes **Test** et **Production**.
-1. Sélectionnez le bouton **Déployer** dans l’étape **Développement** du pipeline pour copier le lakehouse dans son état actuel vers l’étape suivante. 
-2. Dans la fenêtre **Déployer vers l’étape suivante**, sélectionnez **Déployer**.
-3. Il y a un X orange entre les étapes Test et Production. Sélectionnez la flèche vers le bas sous le X orange. Le lakehouse existe dans les étapes Développement et Test, mais pas encore dans l’étape Production.
-4. Dans l’étape **Test**, sélectionnez **Déployer**.
-5. Dans la fenêtre **Déployer vers l’étape suivante**, sélectionnez **Déployer**. La coche verte entre les étapes indique que toutes les étapes sont synchronisées et contiennent le même contenu.
-6. L’utilisation de pipelines de déploiement pour déployer entre les étapes met également à jour le contenu dans les espaces de travail qui correspondent à l’étape de déploiement. Nous allons le vérifier.
-7. Dans la barre de menus à gauche, sélectionnez **Espaces de travail**.
-8. Sélectionnez l’espace de travail **Test**. C’est ici que le lakehouse a été copié.
-9. Ouvrez l’espace de travail **Production** via l’icône **Espaces de travail** du menu de gauche. Le lakehouse a également été copié dans l’espace de travail Production.
+1. Sélectionnez l’étape **Test** dans le canevas du pipeline de déploiement.
+1. Sous le canevas du pipeline de déploiement, cochez la case en regard de l’élément Lakehouse. Sélectionnez le bouton **Déployer** pour copier le Lakehouse dans son état actuel dans l’étape **Test**.
+1. Dans la fenêtre **Déployer vers l’étape suivante** qui s’affiche, sélectionnez **Déployer**.
+ Il y a maintenant un X dans un cercle dans la phase de production dans le canevas du pipeline de déploiement. Le lakehouse existe dans les étapes Développement et Test, mais pas encore dans l’étape Production.
+1. Sélectionnez l’étape **Production** dans le canevas de déploiement.
+1. Sous le canevas du pipeline de déploiement, cochez la case en regard de l’élément Lakehouse. Sélectionnez ensuite le bouton **Déployer** pour copier le lakehouse dans son état actuel dans l’étape **Production**.
+1. Dans la fenêtre **Déployer vers l’étape suivante** qui s’affiche, sélectionnez **Déployer**. La coche verte entre les étapes indique que toutes les étapes sont synchronisées et contiennent le même contenu.
+1. L’utilisation de pipelines de déploiement pour déployer entre les étapes met également à jour le contenu dans les espaces de travail qui correspondent à l’étape de déploiement. Nous allons le vérifier.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail**.
+1. Sélectionnez l’espace de travail **Test**. C’est ici que le lakehouse a été copié.
+1. Ouvrez l’espace de travail **Production** via l’icône **Espaces de travail** du menu de gauche. Le lakehouse a également été copié dans l’espace de travail Production.
 
 ## Nettoyage
 
