@@ -6,7 +6,7 @@ lab:
 
 # Créer des ressources Power BI réutilisables
 
-Dans cet exercice, vous allez créer des ressources réutilisables pour le développement de modèles sémantiques et de rapports. Ces ressources incluent les fichiers de projets et de modèles Power BI et les modèles sémantiques partagés. À la fin, vous explorerez la vue de traçabilité pour observer la façon dont ces éléments se rapportent les uns aux autres dans le service Power BI.
+Dans cet exercice, vous allez créer des ressources réutilisables pour prendre en charge le développement de modèles sémantiques et de rapports. Ces ressources incluent les fichiers de projets et de modèles Power BI et les modèles sémantiques partagés. À la fin, la vue de traçabilité affiche la façon dont ces éléments se rapportent les uns aux autres dans le service Power BI.
 
    > Note : cet exercice ne nécessite pas de licence Fabric et peut être effectué dans un environnement Power BI ou Microsoft Fabric.
 
@@ -19,27 +19,6 @@ Afin de commencer cet exercice, vous devez d’abord ouvrir un navigateur web et
 `https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
 Extrayez le dossier dans le dossier **C:\Users\Student\Downloads\16-reusable-assets**.
-
-## Publier un rapport vers le service Power BI
-
-Dans cette tâche, vous allez utiliser un rapport existant pour créer un modèle sémantique partagé à réutiliser pour développer d’autres rapports.
-
-1. Dans un navigateur web, accédez au service Fabric et connectez-vous : [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com)
-1. Accédez à l’expérience Power BI et créez un espace de travail avec le nom unique de votre choix.
-
-    ![Capture d’écran du volet Espaces de travail avec le bouton + Créer un espace de travail mis en évidence.](./Images/power-bi-new-workspace.png)
-
-1. Dans le ruban supérieur de votre nouvel espace de travail, sélectionnez **Charger > Parcourir**.
-1. Dans la boîte de dialogue Explorateur de fichiers, accédez au fichier *.pbix* de démarrage, sélectionnez-le, puis cliquez sur **Ouvrir** pour le charger.
-1. Notez que vous avez maintenant deux éléments différents dans l’espace de travail qui portent le même nom :
-
-    - État
-    - Modèle sémantique
-
-1. Ouvrez le rapport et notez le thème de couleurs utilisé. *Vous le modifierez lors d’une tâche ultérieure.*
-1. Vous pouvez maintenant fermer votre navigateur.
-
-> Les fichiers *.pbix* Power BI contiennent à la fois le modèle sémantique et les visuels de rapports. Lorsque vous publiez des rapports dans le service, ces éléments sont séparés. Vous verrez à nouveau cette séparation plus tard.
 
 ## Créer un projet Power BI
 
@@ -58,7 +37,7 @@ Dans cette tâche, vous allez créer un rapport en vous connectant au modèle s�
     ![Capture d’écran des options disponibles dans la catégorie Fonctionnalités en version préliminaire.](./Images/power-bi-enable-tmdl.png)
 
 1. Sélectionnez **Enregistrer sous**, puis choisissez le type de fichier en sélectionnant la flèche dans le menu déroulant lorsque vous nommez le fichier.
-1. Sélectionnez l’extension de fichier **.*.pbip***, choisissez un nom pour votre rapport, puis enregistrez-le dans un dossier dont vous vous rappellerez.
+1. Sélectionnez l’extension de fichier **.pbip**, choisissez un nom pour votre rapport, puis enregistrez-le dans un dossier dont vous vous rappellerez.
 
     ![Capture d’écran de la sélection Enregistrer sous avec le menu déroulant développé.](./Images/power-bi-save-file-types.png)
 
@@ -74,10 +53,10 @@ Dans cette tâche, vous allez créer un rapport en vous connectant au modèle s�
 
 Examinons comment les modifications apportées dans Power BI Desktop sont reflétées dans les fichiers .tmdl.
 
-1. À partir du bureau, utilisez l’Explorateur de fichiers pour accéder au dossier dans lequel vous avez enregistré le fichier *.* pbip**.
+1. À partir du bureau, utilisez l’Explorateur de fichiers pour accéder au dossier dans lequel vous avez enregistré le fichier **.pbip**.
 1. Vous devriez voir les éléments suivants :
 
-    - Fichier YourReport *.pbip*
+    - Fichier YourReport.pbip
     - Dossier YourReport.Report
     - Dossier YourReport.SemanticModel
     - Fichier source Git Ignore .gitignore
@@ -94,7 +73,7 @@ Dans cette tâche, vous allez ajouter une nouvelle table, car le modèle sémant
 
 1. La boîte de dialogue À partir du web s’affiche une fois connecté. Laissez la case d’option De base sélectionnée. Saisissez le chemin d’accès du fichier suivant en tant que chemin de l’URL.
 
-    `"C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html"`
+    `C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html`
 
 1. Sélectionnez la zone **Tables HTML > Table 2**, puis sélectionnez **Transformer les données** pour continuer.
 
@@ -219,26 +198,23 @@ Dans cette tâche, vous allez créer un fichier de modèle afin de pouvoir parta
 
 > Vous disposez maintenant d’un modèle avec un thème cohérent sans aucune donnée préchargée.
 
-## Publier et explorer vos ressources
+### Passer en revue l’état final
 
-Dans cette tâche, vous allez publier votre fichier de projet Power BI et examiner les éléments associés à l’aide de la vue Traçabilité dans le service.
+Dans la capture d’écran suivante, vous avez créé votre fichier Projet Power BI et l’avez publié dans un espace de travail. Vous avez ensuite accédé à l’espace de travail dans le service Power BI et basculé vers la **vue de traçabilité** pour voir comment votre nouveau rapport dépend d’autres sources de données.
 
-> Important : nous avons créé un modèle DirectQuery local lorsque nous avons ajouté la source de données HTML. Les rapports publiés nécessitent une passerelle pour accéder aux données locales. Vous recevrez donc une erreur. Cela n’affecte pas la valeur de cette tâche, mais peut être déroutant.
+De gauche à droite, les éléments suivants sont visibles :
 
-1. Dans votre fichier de projet Power BI, sélectionnez **Publier**.
-1. **Enregistrez** votre fichier, si vous y êtes invité.
-1. **Ne mettez pas à niveau** la version *PBIR*, si vous y êtes invité.
-1. Sélectionnez l’espace de travail que vous avez créé au début de cet exercice.
-1. Sélectionnez **Ouvrir « YourReport.*. pbip* » dans Power BI** lorsque vous recevez le message indiquant que le fichier a été publié, mais déconnecté.
+- Sources de données : 2 fichiers texte/CSV et une connexion SQL Server.
+- Modèle sémantique 16-Starter-Sales Analysis, qui est connecté aux sources de données.
+- Rapport 16-Starter-Sales Analysis, qui est connecté au modèle sémantique 16-Starter-Sales Analysis.
+- Mon nouveau modèle sémantique de rapport, qui est connecté au modèle sémantique 16-Starter-Sales Analysis.
+- Mon nouveau rapport, qui est connecté à mon nouveau modèle sémantique de rapport.
 
-    ![Capture d’écran du message indiquant que le fichier a été publié, mais déconnecté.](./Images/power-bi-published-disconnected-message.png)
+> Lorsque des modèles sémantiques sont liés à d’autres modèles sémantiques, cela s’appelle un **chaînage**. Dans ce labo, le modèle sémantique de démarrage est chaîné au modèle sémantique nouvellement créé, ce qui permet sa réutilisation dans un but spécifique.
 
-1. Une fois que vous êtes dans votre espace de travail, vous pouvez voir le modèle sémantique précédent et le rapport précédent, ainsi que votre nouveau modèle sémantique et votre nouveau rapport.
-1. Dans le coin à droite, en dessous de Paramètres de l’espace de travail, sélectionnez la **vue Traçabilité** pour observer comment votre nouveau rapport dépend d’autres sources de données.
+![Capture d’écran de la vue Traçabilité avec une base de données et deux fichiers texte se connectant à un modèle sémantique unique à partir de notre fichier de démarrage. Ce même modèle sémantique se connecte au rapport du fichier de démarrage et possède un nouveau modèle sémantique connecté au nouveau rapport.](./Images/power-bi-lineage-view.png)
 
-    ![Capture d’écran de la vue Traçabilité avec une base de données et deux fichiers texte se connectant à un modèle sémantique unique à partir de notre fichier de démarrage. Ce même modèle sémantique se connecte au rapport du fichier de démarrage et possède un nouveau modèle sémantique connecté au nouveau rapport.](./Images/power-bi-lineage-view.png)
 
-> Lorsque des modèles sémantiques sont liés à d’autres modèles sémantiques, cela s’appelle un chaînage. Dans ce labo, le modèle sémantique de démarrage est chaîné au modèle sémantique nouvellement créé, ce qui permet sa réutilisation dans un but spécifique.
 
 ## Nettoyage
 

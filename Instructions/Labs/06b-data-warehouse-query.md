@@ -75,15 +75,6 @@ L’éditeur de requête SQL prend en charge IntelliSense, la complétion de cod
 
     ```sql
     SELECT TOP 10 
-    G.City, 
-    COUNT(*) AS TotalTrips 
-    FROM dbo.Trip AS T
-    JOIN dbo.Geography AS G
-        ON T.PickupGeographyID=G.GeographyID
-    GROUP BY G.City
-    ORDER BY TotalTrips DESC;
-    
-    SELECT TOP 10 
         G.City, 
         COUNT(*) AS TotalTrips 
     FROM dbo.Trip AS T

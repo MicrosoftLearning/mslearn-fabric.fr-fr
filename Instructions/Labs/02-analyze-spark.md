@@ -10,24 +10,33 @@ Dans ce labo, vous allez ingérer des données dans le lakehouse Fabric et utili
 
 Ce labo prend environ 45 minutes.
 
-## Prérequis
-
-* [Version d’évaluation de Microsoft Fabric](https://www.microsoft.com/microsoft-fabric/getting-started)
+> [!Note] 
+> Pour effectuer cet exercice, vous avez besoin d’accéder à un [locataire Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial).
 
 ## Créer un espace de travail
 
-Avant de pouvoir utiliser des données dans Fabric, vous devez créer un espace de travail.
+Avant d’utiliser des données dans Fabric, créez un espace de travail dans un locataire avec la fonctionnalité Fabric activée.
 
-1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) sur `https://app.fabric.microsoft.com/home?experience=fabric` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
-1. Dans la barre de navigation de gauche, sélectionnez **Espaces de travail ** (🗇), puis **Nouvel espace de travail**.
-1. Nommez le nouvel espace de travail et, dans la section **Avancé**, sélectionnez le mode de licence approprié. Si vous avez démarré une version d’évaluation de Microsoft Fabric, sélectionnez Version d’évaluation.
-1. Sélectionnez **Appliquer** pour créer et ouvrir l’espace de travail.
- 
-    ![Image d’écran d’un nouvel espace de travail Fabric.](Images/new-workspace.jpg)
+1. Accédez à la [page d’accueil de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric-developer) sur `https://app.fabric.microsoft.com/home?experience=fabric-developer` dans un navigateur et connectez-vous avec vos informations d’identification Fabric.
+1. Dans la barre de menus à gauche, sélectionnez **Espaces de travail** (l’icône ressemble à &#128455;).
+1. Créez un nouvel espace de travail avec le nom de votre choix et sélectionnez un mode de licence dans la section **Avancé** qui comprend la capacité Fabric (*Essai*, *Premium* ou *Fabric*).
+1. Lorsque votre nouvel espace de travail s’ouvre, il doit être vide.
+
+    ![Capture d’écran d’un espace de travail vide dans Fabric.](./Images/new-workspace.png)
 
 ## Créer un lakehouse et charger des fichiers
 
-Maintenant que vous disposez d’un espace de travail, vous pouvez créer un lakehouse pour vos fichiers de données. Dans votre nouvel espace de travail, sélectionnez **+ Nouvel élément** et **Lakehouse**. Nommez le lakehouse, puis sélectionnez **Créer**. Après un court délai, un nouveau lakehouse est créé.
+Maintenant que vous disposez d’un espace de travail, il est temps de créer un data lakehouse pour vos données.
+
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Engineering données*, sélectionnez **Lakehouse**. Donnez-lui un nom unique de votre choix.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**).
+
+    Au bout d’une minute environ, un nouveau lakehouse est créé :
+
+    ![Capture d’écran d’un nouveau lakehouse.](./Images/new-lakehouse.png)
+
+1. Affichez le nouveau lakehouse et notez que le volet **Explorateur de lakehouse** à gauche vous permet de parcourir les tables et les fichiers présents dans le lakehouse :
 
 Vous pouvez désormais ingérer des données dans le lakehouse. Il existe plusieurs façons de procéder, mais vous allez pour le moment télécharger un dossier de fichiers texte de votre ordinateur local (ou machine virtuelle de labo le cas échéant), puis les charger dans votre lakehouse.
 
@@ -36,13 +45,18 @@ Vous pouvez désormais ingérer des données dans le lakehouse. Il existe plusie
 1. Revenez à votre nouveau lakehouse. Dans le volet **Explorateur**, en regard du dossier **Fichiers**, sélectionnez le menu **…**, puis sélectionnez **Charger** et **Charger le dossier**. Accédez au dossier orders sur votre ordinateur local (ou machine virtuelle de labo le cas échéant) et sélectionnez **Charger**.
 1. Une fois les fichiers chargés, développez **Files** et sélectionnez le dossier **orders**. Vérifiez que les fichiers CSV ont été chargés, comme indiqué ici :
 
-    ![Image d’écran des fichiers CSV chargés dans un nouvel espace de travail Fabric.](Images/uploaded-files.jpg)
+    ![Image d’écran des fichiers CSV chargés dans un nouvel espace de travail Fabric.](Images/uploaded-files.png)
 
 ## Créer un notebook
 
 Vous pouvez maintenant créer un notebook Fabric pour utiliser vos données. Les notebooks fournissent un environnement interactif dans lequel vous pouvez écrire et exécuter du code (dans plusieurs langues).
 
-1. Sélectionnez votre espace de travail, puis sélectionnez **+ Nouvel élément** et **Notebook**. Après quelques secondes, un nouveau notebook contenant une seule cellule s’ouvre. Les notebooks sont constitués d’une ou plusieurs cellules qui peuvent contenir du code ou du Markdown (texte mis en forme).
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Sur la page *Nouveau*, sous la section *Engineering données*, sélectionnez **Notebook**.
+
+    Un notebook nommé **Notebook 1** est créé et ouvert.
+
+    ![Capture d’écran d’un nouveau notebook.](./Images/new-notebook.png)
+
 1. Fabric attribue un nom à chaque notebook que vous créez, tel que Notebook 1, Notebook 2, etc. Cliquez sur le panneau de noms au-dessus de l’onglet **Accueil** du menu pour remplacer le nom par quelque chose de plus descriptif.
 1. Sélectionnez la première cellule (qui est actuellement une cellule de code) puis, dans la barre d’outils en haut à droite, utilisez le bouton **M↓** pour convertir la cellule en cellule Markdown. Le texte contenu dans la cellule s’affiche alors sous forme de texte mis en forme.
 1. Utilisez le bouton 🖉 (Modifier) pour placer la cellule en mode édition, puis modifiez le balisage Markdown comme suit.
@@ -52,9 +66,9 @@ Vous pouvez maintenant créer un notebook Fabric pour utiliser vos données. Les
    Use this notebook to explore sales order data
     ```
 
-    ![Image d’écran d’un notebook Fabric avec une cellule Markdown.](Images/name-notebook-markdown.jpg)
+    ![Image d’écran d’un notebook Fabric avec une cellule Markdown.](Images/name-notebook-markdown.png)
 
-Lorsque vous avez terminé, cliquez n’importe où dans le notebook en dehors de la cellule pour arrêter sa modification et voir le balisage Markdown rendu.
+Lorsque vous avez terminé, cliquez n’importe où dans le notebook en dehors de la cellule pour arrêter la modification.
 
 ## Créer un DataFrame
 
@@ -64,40 +78,66 @@ Maintenant que vous avez créé un espace de travail, un lakehouse et un noteboo
 > Les notebooks Fabric prennent en charge plusieurs langages de programmation, notamment Scala, R et Spark SQL.
 
 1. Sélectionnez votre nouvel espace de travail dans la barre de gauche. Vous verrez une liste d’éléments contenus dans l’espace de travail, y compris votre lakehouse et votre notebook.
-2. Sélectionnez le lakehouse pour afficher le volet Explorateur, y compris le dossier **orders**.
-3. Dans le menu supérieur, sélectionnez **Ouvrir le notebook**, **Notebook existant**, puis ouvrez le notebook que vous avez créé précédemment. Le notebook doit maintenant être ouvert en regard du volet Explorateur. Développez Lakehouses, développez la liste Files et sélectionnez le dossier orders. Les fichiers CSV que vous avez chargés sont répertoriés en regard de l’éditeur de notebook, comme suit :
+1. Sélectionnez le lakehouse pour afficher le volet Explorateur, y compris le dossier **orders**.
+1. Dans le menu supérieur, sélectionnez **Ouvrir le notebook**, **Notebook existant**, puis ouvrez le notebook que vous avez créé précédemment. Le notebook doit maintenant être ouvert en regard du volet Explorateur. Développez Lakehouses, développez la liste Files et sélectionnez le dossier orders. Les fichiers CSV que vous avez chargés sont répertoriés en regard de l’éditeur de notebook, comme suit :
 
-    ![Image d’écran des fichiers CSV en mode Explorateur.](Images/explorer-notebook-view.jpg)
+    ![Image d’écran des fichiers CSV en mode Explorateur.](Images/explorer-notebook-view.png)
 
-4. Dans le menu … pour 2019.csv, sélectionnez **Charger des données** > **Spark**. Le code suivant est automatiquement généré dans une nouvelle cellule de code :
+1. Dans le menu … pour 2019.csv, sélectionnez **Charger des données** > **Spark**. Le code suivant est automatiquement généré dans une nouvelle cellule de code :
 
     ```python
-    df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
-    # df now is a Spark DataFrame containing CSV data from "Files/orders/2019.csv".
-    display(df)
+   df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
+   # df now is a Spark DataFrame containing CSV data from "Files/orders/2019.csv".
+   display(df)
     ```
 
 >[!TIP]
-> Vous pouvez masquer les volets de l’explorateur Lakehouse à gauche à l’aide des icônes «. Cela donne plus d’espace pour le notebook.
+> Vous pouvez masquer les volets de l’explorateur à gauche à l’aide des icônes «. Cela donne plus d’espace pour le notebook.
 
-5. Sélectionnez ▷ **Exécuter la cellule** à gauche de la cellule pour exécuter le code.
+1. Sélectionnez ▷ **Exécuter la cellule** à gauche de la cellule pour exécuter le code.
 
 >[!NOTE]
 > La première fois que vous exécutez du code Spark, une session Spark est démarrée. Cette opération peut prendre quelques secondes, voire plus. Les exécutions suivantes dans la même session seront plus rapides.
 
-6. Une fois le code de la cellule exécuté, examinez la sortie sous la cellule, qui doit ressembler à ceci :
+1. Une fois le code de la cellule exécuté, examinez la sortie sous la cellule, qui doit ressembler à ceci :
  
-    ![Image d’écran montrant le code et les données générés automatiquement.](Images/auto-generated-load.jpg)
+    ![Image d’écran montrant le code et les données générés automatiquement.](Images/auto-generated-load.png)
 
-7. La sortie affiche les données du fichier 2019.csv affichées en lignes et en colonnes.  Notez que les en-têtes de colonne contiennent la première ligne des données. Pour corriger ce problème, vous devez modifier la première ligne du code comme suit :
+1. La sortie affiche les données du fichier 2019.csv affichées en lignes et en colonnes.  Notez que les en-têtes de colonne contiennent la première ligne des données. Pour corriger ce problème, vous devez modifier la première ligne du code comme suit :
 
     ```python
-    df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
+   df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
     ```
 
-8. Réexécutez le code afin que le DataFrame identifie correctement la première ligne en tant que données. Notez que les noms de colonnes sont désormais _c0, _c1, etc.
+1. Réexécutez le code afin que le DataFrame identifie correctement la première ligne en tant que données. Notez que les noms de colonnes sont désormais _c0, _c1, etc.
 
-9. Les noms de colonnes descriptifs vous aident à comprendre les données. Pour créer des noms de colonnes explicites, vous devez définir le schéma et les types de données. Vous devez également importer un ensemble standard de types SPARK SQL pour définir les types de données. Remplacez le code existant par le code ci-dessous :
+1. Les noms de colonnes descriptifs vous aident à comprendre les données. Pour créer des noms de colonnes explicites, vous devez définir le schéma et les types de données. Vous devez également importer un ensemble standard de types SPARK SQL pour définir les types de données. Remplacez le code existant par le code ci-dessous :
+
+    ```python
+   from pyspark.sql.types import *
+
+   orderSchema = StructType([
+       StructField("SalesOrderNumber", StringType()),
+       StructField("SalesOrderLineNumber", IntegerType()),
+       StructField("OrderDate", DateType()),
+       StructField("CustomerName", StringType()),
+       StructField("Email", StringType()),
+       StructField("Item", StringType()),
+       StructField("Quantity", IntegerType()),
+       StructField("UnitPrice", FloatType()),
+       StructField("Tax", FloatType())
+   ])
+
+   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/2019.csv")
+
+   display(df)
+    ```
+
+1. Exécutez la cellule et passez en revue la sortie :
+
+    ![Image d’écran du code avec schéma défini et données.](Images/define-schema.png)
+
+1.  Le DataFrame inclut uniquement les données du fichier 2019.csv. Modifiez le code afin que le chemin de fichier utilise un caractère générique * pour lire toutes les données dans le dossier orders :
 
     ```python
     from pyspark.sql.types import *
@@ -114,38 +154,12 @@ Maintenant que vous avez créé un espace de travail, un lakehouse et un noteboo
         StructField("Tax", FloatType())
     ])
 
-    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/2019.csv")
-
-    display(df)
-    ```
-    
-10. Exécutez la cellule et passez en revue la sortie :
-
-    ![Image d’écran du code avec schéma défini et données.](Images/define-schema.jpg)
-
-11. Le DataFrame inclut uniquement les données du fichier 2019.csv. Modifiez le code afin que le chemin de fichier utilise un caractère générique * pour lire toutes les données dans le dossier orders :
-
-    ```python
-    from pyspark.sql.types import *
-
-    orderSchema = StructType([
-        StructField("SalesOrderNumber", StringType()),
-        StructField("SalesOrderLineNumber", IntegerType()),
-        StructField("OrderDate", DateType()),
-        StructField("CustomerName", StringType()),
-        StructField("Email", StringType()),
-        StructField("Item", StringType()),
-        StructField("Quantity", IntegerType()),
-        StructField("UnitPrice", FloatType()),
-        StructField("Tax", FloatType())
-        ])
-
     df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
 
     display(df)
     ```
 
-12. Lorsque vous exécutez le code modifié, vous devez voir les ventes pour 2019, 2020 et 2021. Seul un sous-ensemble des lignes est affiché. Vous ne pouvez donc pas voir les lignes pour chaque année.
+1.  Lorsque vous exécutez le code modifié, vous devez voir les ventes pour 2019, 2020 et 2021. Seul un sous-ensemble des lignes est affiché. Vous ne pouvez donc pas voir les lignes pour chaque année.
 
 >[!NOTE]
 > Vous pouvez masquer ou afficher la sortie d’une cellule en sélectionnant **…** à côté du résultat. Cela facilite l’utilisation d’un notebook.
@@ -158,7 +172,7 @@ L’objet DataFrame fournit des fonctionnalités supplémentaires, telles que la
 
 1. Ajoutez une cellule de code en sélectionnant **+Code** qui apparaît lorsque vous pointez la souris au-dessus ou en dessous de la cellule active ou de sa sortie. Sinon, dans le menu du ruban, sélectionnez **Modifier** et **+Ajouter une cellule de code ci-dessous**.
 
-2.  Le code suivant filtre les données afin que seules deux colonnes soient retournées. Il utilise également *count* et *distinct* pour résumer le nombre d’enregistrements :
+1.  Le code suivant filtre les données afin que seules deux colonnes soient retournées. Il utilise également *count* et *distinct* pour résumer le nombre d’enregistrements :
 
     ```python
     customers = df['CustomerName', 'Email']
@@ -169,52 +183,52 @@ L’objet DataFrame fournit des fonctionnalités supplémentaires, telles que la
     display(customers.distinct())
     ```
 
-3. Exécutez le code et examinez la sortie.
+1. Exécutez le code et examinez la sortie.
 
     * Le code crée un DataFrame appelé **customers** qui contient un sous-ensemble de colonnes à partir du DataFrame **df** d’origine. Lors de l’exécution d’une transformation DataFrame, vous ne modifiez pas le DataFrame d’origine, mais vous en retournez un nouveau.
     * Une autre façon d’obtenir le même résultat consiste à utiliser la méthode select :
 
     ```
-    customers = df.select("CustomerName", "Email")
+   customers = df.select("CustomerName", "Email")
     ```
 
     * Les fonctions DataFrame * count* et *distinct* sont utilisées pour fournir des totaux pour le nombre de clients et les clients uniques.
 
-4. Modifiez la première ligne du code à l’aide de *select* avec une fonction *where* comme suit :
+1. Modifiez la première ligne du code à l’aide de *select* avec une fonction *where* comme suit :
 
     ```python
-    customers = df.select("CustomerName", "Email").where(df['Item']=='Road-250 Red, 52')
-    print(customers.count())
-    print(customers.distinct().count())
+   customers = df.select("CustomerName", "Email").where(df['Item']=='Road-250 Red, 52')
+   print(customers.count())
+   print(customers.distinct().count())
 
-    display(customers.distinct())
+   display(customers.distinct())
     ```
 
-5. Exécutez ce code modifié pour sélectionner uniquement les clients qui ont acheté le produit Road-250 Red, 52. Notez que vous pouvez « attacher » plusieurs fonctions ensemble afin que la sortie d’une fonction devienne l’entrée de la suivante. Dans ce cas, le DataFrame créé par la méthode *select* est le DataFrame source pour la méthode **where** utilisée pour appliquer des critères de filtrage.
+1. Exécutez ce code modifié pour sélectionner uniquement les clients qui ont acheté le produit Road-250 Red, 52. Notez que vous pouvez « attacher » plusieurs fonctions ensemble afin que la sortie d’une fonction devienne l’entrée de la suivante. Dans ce cas, le DataFrame créé par la méthode *select* est le DataFrame source pour la méthode **where** utilisée pour appliquer des critères de filtrage.
 
 ### Agréger et regrouper des données dans un DataFrame
 
 1. Ajoutez une cellule de code et entrez le code suivant :
 
     ```python
-    productSales = df.select("Item", "Quantity").groupBy("Item").sum()
+   productSales = df.select("Item", "Quantity").groupBy("Item").sum()
 
-    display(productSales)
+   display(productSales)
     ```
 
-2. Exécutez le code. Vous pouvez voir que les résultats affichent la somme des quantités de commandes regroupées par produit. La méthode *groupBy* regroupe les lignes par Item, et la fonction d’agrégation *sum* suivante est appliquée à toutes les colonnes numériques restantes, dans ce cas, *Quantity*.
+1. Exécutez le code. Vous pouvez voir que les résultats affichent la somme des quantités de commandes regroupées par produit. La méthode *groupBy* regroupe les lignes par Item, et la fonction d’agrégation *sum* suivante est appliquée à toutes les colonnes numériques restantes, dans ce cas, *Quantity*.
 
-3. Ajoutez une autre cellule de code au notebook, puis entrez le code suivant :
+1. Ajoutez une autre cellule de code au notebook, puis entrez le code suivant :
 
     ```python
-    from pyspark.sql.functions import *
+   from pyspark.sql.functions import *
 
-    yearlySales = df.select(year(col("OrderDate")).alias("Year")).groupBy("Year").count().orderBy("Year")
+   yearlySales = df.select(year(col("OrderDate")).alias("Year")).groupBy("Year").count().orderBy("Year")
 
-    display(yearlySales)
+   display(yearlySales)
     ```
 
-4. Exécutez la cellule. Examinez le résultat. Cette fois, les résultats indiquent le nombre de commandes client par an.
+1. Exécutez la cellule. Examinez le résultat. Cette fois, les résultats indiquent le nombre de commandes client par an.
 
     * L’instruction *import* vous permet d’utiliser la bibliothèque SPARK SQL.
     * La méthode *select* est utilisée avec une fonction year SQL pour extraire le composant year du champ *OrderDate*.
@@ -222,7 +236,7 @@ L’objet DataFrame fournit des fonctionnalités supplémentaires, telles que la
     * La méthode *groupBy* regroupe les données par la colonne Year dérivée.
     * Le nombre de lignes dans chaque groupe est calculé avant que la méthode *orderBy* soit utilisée pour trier le DataFrame résultant.
 
-    ![Image d’écran montrant les résultats de l’agrégation et du regroupement de données dans un DataFrame.](Images/spark-sql-dataframe.jpg)
+    ![Image d’écran montrant les résultats de l’agrégation et du regroupement de données dans un DataFrame.](Images/spark-sql-dataframe.png)
 
 ## Utiliser Spark pour transformer des fichiers de données
 
@@ -233,28 +247,28 @@ Une tâche courante des ingénieurs et scientifiques des données consiste à tr
 1. Ajoutez une cellule de code au notebook, puis entrez ce qui suit :
 
     ```python
-    from pyspark.sql.functions import *
+   from pyspark.sql.functions import *
 
-    # Create Year and Month columns
-    transformed_df = df.withColumn("Year", year(col("OrderDate"))).withColumn("Month", month(col("OrderDate")))
+   # Create Year and Month columns
+   transformed_df = df.withColumn("Year", year(col("OrderDate"))).withColumn("Month", month(col("OrderDate")))
 
-    # Create the new FirstName and LastName fields
-    transformed_df = transformed_df.withColumn("FirstName", split(col("CustomerName"), " ").getItem(0)).withColumn("LastName", split(col("CustomerName"), " ").getItem(1))
+   # Create the new FirstName and LastName fields
+   transformed_df = transformed_df.withColumn("FirstName", split(col("CustomerName"), " ").getItem(0)).withColumn("LastName", split(col("CustomerName"), " ").getItem(1))
 
-    # Filter and reorder columns
-    transformed_df = transformed_df["SalesOrderNumber", "SalesOrderLineNumber", "OrderDate", "Year", "Month", "FirstName", "LastName", "Email", "Item", "Quantity", "UnitPrice", "Tax"]
+   # Filter and reorder columns
+   transformed_df = transformed_df["SalesOrderNumber", "SalesOrderLineNumber", "OrderDate", "Year", "Month", "FirstName", "LastName", "Email", "Item", "Quantity", "UnitPrice", "Tax"]
 
-    # Display the first five orders
-    display(transformed_df.limit(5))
+   # Display the first five orders
+   display(transformed_df.limit(5))
     ```
 
-2. Exécutez la cellule. Un nouveau DataFrame est créé à partir des données de commandes d’origine avec les transformations suivantes :
+1. Exécutez la cellule. Un nouveau DataFrame est créé à partir des données de commandes d’origine avec les transformations suivantes :
 
     - Colonnes Year et Month ajoutées, basées sur la colonne OrderDate.
     - Colonnes FirstName et LastName ajoutées, basées sur la colonne CustomerName.
     - Les colonnes sont filtrées et réorganisées, et la colonne CustomerName est supprimée.
 
-3. Passez en revue la sortie et vérifiez que les transformations ont été apportées aux données.
+1. Passez en revue la sortie et vérifiez que les transformations ont été apportées aux données.
 
 Vous pouvez utiliser la bibliothèque Spark SQL pour transformer les données en filtrant les lignes, en dérivant, en supprimant et en renommant des colonnes, et en appliquant d’autres modifications de données.
 
@@ -270,23 +284,23 @@ Vous pouvez utiliser la bibliothèque Spark SQL pour transformer les données en
 1. Pour enregistrer le DataFrame transformé au format Parquet, ajoutez une cellule de code et ajoutez le code suivant :  
 
     ```python
-    transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
+   transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
 
-    print ("Transformed data saved!")
+   print ("Transformed data saved!")
     ```
 
-2. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet Lakehouses à gauche, dans le menu … du nœud Fichiers, sélectionnez **Actualiser**. Sélectionnez le dossier transformed_data pour vérifier qu’il contient un nouveau dossier nommé orders, qui contient à son tour un ou plusieurs fichiers Parquet.
+1. Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet Explorateur à gauche, dans le menu … du nœud Fichiers, sélectionnez **Actualiser**. Sélectionnez le dossier transformed_data pour vérifier qu’il contient un nouveau dossier nommé orders, qui contient à son tour un ou plusieurs fichiers Parquet.
 
-3. Ajoutez une cellule avec le code suivant :
+1. Ajoutez une cellule avec le code suivant :
 
     ```python
-    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
-    display(orders_df)
+   orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
+   display(orders_df)
     ```
 
-4. Exécutez la cellule.  Un DataFrame est créé à partir des fichiers Parquet dans le dossier *transformed_data/orders*. Vérifiez que les résultats affichent les données de commandes qui ont été chargées à partir des fichiers Parquet.
+1. Exécutez la cellule.  Un DataFrame est créé à partir des fichiers Parquet dans le dossier *transformed_data/orders*. Vérifiez que les résultats affichent les données de commandes qui ont été chargées à partir des fichiers Parquet.
 
-    ![Image d’écran montrant les fichiers Parquet.](Images/parquet-files.jpg)
+    ![Image d’écran montrant les fichiers Parquet.](Images/parquet-files.png)
 
 ### Enregistrer des données dans des fichiers partitionnés
 
@@ -295,24 +309,24 @@ Lorsque vous traitez de gros volumes de données, le partitionnement peut améli
 1. Ajoutez une cellule avec le code pour enregistrer le DataFrame, en partitionnant les données par année et par mois :
 
     ```python
-    orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
+   orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
 
-    print ("Transformed data saved!")
+   print ("Transformed data saved!")
     ```
 
-2.  Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet Lakehouses à gauche, dans le menu … du nœud Fichiers, sélectionnez **Actualiser**, puis développez le dossier partitioned_data pour vérifier qu’il contient une hiérarchie de dossiers nommés *Year=xxxx*, chacun contenant des dossiers nommés *Month=xxxx*. Chaque dossier de mois contient un fichier Parquet avec les commandes de ce mois.
+1.  Exécutez la cellule et attendez le message indiquant que les données ont été enregistrées. Ensuite, dans le volet Lakehouses à gauche, dans le menu … du nœud Fichiers, sélectionnez **Actualiser**, puis développez le dossier partitioned_data pour vérifier qu’il contient une hiérarchie de dossiers nommés *Year=xxxx*, chacun contenant des dossiers nommés *Month=xxxx*. Chaque dossier de mois contient un fichier Parquet avec les commandes de ce mois.
 
-    ![Image d’écran montrant les données partitionnés par année et mois.](Images/partitioned-data.jpg)
+    ![Image d’écran montrant les données partitionnés par année et mois.](Images/partitioned-data.png)
 
-3. Ajoutez une nouvelle cellule avec le code suivant pour charger un nouveau DataFrame à partir du fichier orders.parquet :
+1. Ajoutez une nouvelle cellule avec le code suivant pour charger un nouveau DataFrame à partir du fichier orders.parquet :
 
     ```python
-    orders_2021_df = spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=*")
+   orders_2021_df = spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=*")
 
-    display(orders_2021_df)
+   display(orders_2021_df)
     ```
 
-4. Exécutez cette cellule et vérifiez que les résultats affichent les données de commandes pour les ventes de 2021. Notez que les colonnes de partitionnement spécifiées dans le chemin (Year et Month) ne sont pas incluses dans le DataFrame.
+1. Exécutez cette cellule et vérifiez que les résultats affichent les données de commandes pour les ventes de 2021. Notez que les colonnes de partitionnement spécifiées dans le chemin (Year et Month) ne sont pas incluses dans le DataFrame.
 
 ## Utiliser des tables et SQL
 
@@ -337,21 +351,21 @@ Les tables d’un metastore Spark sont des abstractions relationnelles sur les f
 >[!NOTE]
 > Dans cet exemple, aucun chemin explicite n’est fourni, de sorte que les fichiers de la table sont managés par le metastore. En outre, la table est enregistrée au format delta, ce qui ajoute des fonctionnalités de base de données relationnelle aux tables. Cela inclut la prise en charge des transactions, du contrôle de version des lignes et d’autres fonctionnalités utiles. La création de tables au format delta est recommandée pour les data lakehouses dans Fabric.
 
-2. Exécutez la cellule de code et passez en revue la sortie, qui décrit la définition de la nouvelle table.
+1. Exécutez la cellule de code et passez en revue la sortie, qui décrit la définition de la nouvelle table.
 
-3. Dans le volet **Lakehouses**, dans le menu … du dossier Tables, sélectionnez **Actualiser**. Développez ensuite le nœud **Tables** et vérifiez que la table **salesorders** a été créée.
+1. Dans le volet **Explorateur**, dans le menu … du dossier Tables, sélectionnez **Actualiser**. Développez ensuite le nœud **Tables** et vérifiez que la table **salesorders** a été créée.
 
-    ![Image d’écran montrant que la table salesorders a été créée.](Images/salesorders-table.jpg)
+    ![Image d’écran montrant que la table salesorders a été créée.](Images/salesorder-table.png)
 
-4. Dans le menu … de la table salesorders, sélectionnez **Charger des données** > **Spark**. Une nouvelle cellule de code contenant du code similaire à l’exemple suivant :
+1. Dans le menu … de la table salesorders, sélectionnez **Charger des données** > **Spark**. Une nouvelle cellule de code contenant du code similaire à l’exemple suivant :
 
     ```pyspark
-    df = spark.sql("SELECT * FROM [your_lakehouse].salesorders LIMIT 1000")
+   df = spark.sql("SELECT * FROM [your_lakehouse].salesorders LIMIT 1000")
 
-    display(df)
+   display(df)
     ```
 
-5. Exécutez le nouveau code, qui utilise la bibliothèque Spark SQL pour incorporer une requête SQL sur la table *salesorder* dans le code PySpark et charger les résultats de la requête dans un DataFrame.
+1. Exécutez le nouveau code, qui utilise la bibliothèque Spark SQL pour incorporer une requête SQL sur la table *salesorder* dans le code PySpark et charger les résultats de la requête dans un DataFrame.
 
 ### Exécuter du code SQL dans une cellule
 
@@ -360,15 +374,15 @@ Bien qu’il soit utile d’incorporer des instructions SQL dans une cellule con
 1. Ajoutez une nouvelle cellule de code au notebook, puis entrez le code suivant :
 
     ```SparkSQL
-    %%sql
-    SELECT YEAR(OrderDate) AS OrderYear,
-           SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue
-    FROM salesorders
-    GROUP BY YEAR(OrderDate)
-    ORDER BY OrderYear;
+   %%sql
+   SELECT YEAR(OrderDate) AS OrderYear,
+          SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue
+   FROM salesorders
+   GROUP BY YEAR(OrderDate)
+   ORDER BY OrderYear;
     ```
 
-7. Exécutez la cellule et passez en revue les résultats. Observez que :
+1. Exécutez la cellule et passez en revue les résultats. Observez que :
 
     * La commande **%%sql** au début de la cellule (appelée magic) change le langage en Spark SQL au lieu de PySpark.
     * Le code SQL fait référence à la table *salesorders* que vous avez créée précédemment.
@@ -386,66 +400,65 @@ Les graphiques vous aident à voir les modèles et les tendances plus rapidement
 1. Ajoutez une nouvelle cellule de code et entrez le code suivant :
 
     ```python
-    %%sql
-    SELECT * FROM salesorders
+   %%sql
+   SELECT * FROM salesorders
     ```
 
-2. Exécutez le code pour afficher les données de la vue salesorders que vous avez créée précédemment. Dans la section des résultats sous la cellule, modifiez l’option **Affichage** de **Tableau** à **Graphique**.
+1. Exécutez le code pour afficher les données de la vue salesorders que vous avez créée précédemment. Dans la section des résultats sous la cellule, sélectionnez **+ Nouveau graphique**.
 
-3.  Utilisez le bouton **Personnaliser le graphique** en haut à droite du graphique pour définir les options suivantes :
+1.  Utilisez le bouton **Créer mon propre graphique** en bas à droite de la section des résultats et définissez les paramètres du graphique :
 
     * Type de graphique : Graphique à barres
-    * Clé : Élément
-    * Valeurs : Quantité
+    * Axe X : élément
+    * Axe Y : quantité
     * Groupe de séries : laissez vide
     * Agrégation : Somme
+    * Valeurs manquantes et NULL : afficher sous la forme 0
     * Empilé : Non sélectionné
 
-Lorsque vous avez terminé, sélectionnez **Appliquer**.
+1. Votre graphique doit ressembler à ceci :
 
-4. Votre graphique doit ressembler à ceci :
-
-    ![Image d’écran de la vue graphique de notebook Fabric.](Images/built-in-chart.jpg) 
+    ![Image d’écran de la vue graphique de notebook Fabric.](Images/built-in-chart.png) 
 
 ### Bien démarrer avec matplotlib
 
 1. Ajoutez une nouvelle cellule de code et entrez le code suivant :
 
     ```python
-    sqlQuery = "SELECT CAST(YEAR(OrderDate) AS CHAR(4)) AS OrderYear, \
-                    SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue, \
-                    COUNT(DISTINCT SalesOrderNumber) AS YearlyCounts \
-                FROM salesorders \
-                GROUP BY CAST(YEAR(OrderDate) AS CHAR(4)) \
-                ORDER BY OrderYear"
-    df_spark = spark.sql(sqlQuery)
-    df_spark.show()
+   sqlQuery = "SELECT CAST(YEAR(OrderDate) AS CHAR(4)) AS OrderYear, \
+                   SUM((UnitPrice * Quantity) + Tax) AS GrossRevenue, \
+                   COUNT(DISTINCT SalesOrderNumber) AS YearlyCounts \
+               FROM salesorders \
+               GROUP BY CAST(YEAR(OrderDate) AS CHAR(4)) \
+               ORDER BY OrderYear"
+   df_spark = spark.sql(sqlQuery)
+   df_spark.show()
     ```
 
-2. Exécutez le code. Il renvoie un DataFrame Spark contenant le chiffre d’affaires annuel et le nombre de commandes. Pour visualiser les données sous forme graphique, nous allons utiliser d’abord la bibliothèque Python matplotlib. Cette bibliothèque est la bibliothèque de traçage principale sur laquelle de nombreuses autres bibliothèques sont basées, et elle offre une grande flexibilité dans la création de graphiques.
+1. Exécutez le code. Il renvoie un DataFrame Spark contenant le chiffre d’affaires annuel et le nombre de commandes. Pour visualiser les données sous forme graphique, nous allons utiliser d’abord la bibliothèque Python matplotlib. Cette bibliothèque est la bibliothèque de traçage principale sur laquelle de nombreuses autres bibliothèques sont basées, et elle offre une grande flexibilité dans la création de graphiques.
 
-3. Ajoutez une nouvelle cellule de code, puis ajoutez le code suivant :
+1. Ajoutez une nouvelle cellule de code, puis ajoutez le code suivant :
 
     ```python
-    from matplotlib import pyplot as plt
+   from matplotlib import pyplot as plt
 
-    # matplotlib requires a Pandas dataframe, not a Spark one
-    df_sales = df_spark.toPandas()
+   # matplotlib requires a Pandas dataframe, not a Spark one
+   df_sales = df_spark.toPandas()
 
-    # Create a bar plot of revenue by year
-    plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'])
+   # Create a bar plot of revenue by year
+   plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'])
 
-    # Display the plot
-    plt.show()
+   # Display the plot
+   plt.show()
     ```
 
-4. Exécutez la cellule et passez en revue les résultats, qui se composent d’un histogramme indiquant le chiffre d’affaires brut total pour chaque année. Passez en revue le code et notez les points suivants :
+1. Exécutez la cellule et passez en revue les résultats, qui se composent d’un histogramme indiquant le chiffre d’affaires brut total pour chaque année. Passez en revue le code et notez les points suivants :
 
     * La bibliothèque matplotlib nécessite un DataFrame Pandas. Vous devez donc convertir le DataFrame Spark retourné par la requête Spark SQL.
     * Au cœur de la bibliothèque matplotlib figure l’objet *pyplot*. Il s’agit de la base de la plupart des fonctionnalités de traçage.
     * Les paramètres par défaut aboutissent à un graphique utilisable, mais il existe de nombreuses façons de le personnaliser.
 
-5.  Modifiez le code pour tracer le graphique comme suit :
+1.  Modifiez le code pour tracer le graphique comme suit :
 
     ```python
     from matplotlib import pyplot as plt
@@ -467,61 +480,61 @@ Lorsque vous avez terminé, sélectionnez **Appliquer**.
     plt.show()
     ```
 
-6. Réexécutez la cellule de code et examinez les résultats. Le graphique est désormais plus facile à comprendre.
-7. Un tracé est contenu dans une figure. Dans les exemples précédents, la figure a été créée implicitement, mais elle peut être créée explicitement. Modifiez le code pour tracer le graphique comme suit :
+1. Réexécutez la cellule de code et examinez les résultats. Le graphique est désormais plus facile à comprendre.
+1. Un tracé est contenu dans une figure. Dans les exemples précédents, la figure a été créée implicitement, mais elle peut être créée explicitement. Modifiez le code pour tracer le graphique comme suit :
 
     ```python
-    from matplotlib import pyplot as plt
+   from matplotlib import pyplot as plt
 
-    # Clear the plot area
-    plt.clf()
+   # Clear the plot area
+   plt.clf()
 
-    # Create a Figure
-    fig = plt.figure(figsize=(8,3))
+   # Create a Figure
+   fig = plt.figure(figsize=(8,3))
 
-    # Create a bar plot of revenue by year
-    plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+   # Create a bar plot of revenue by year
+   plt.bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
 
-    # Customize the chart
-    plt.title('Revenue by Year')
-    plt.xlabel('Year')
-    plt.ylabel('Revenue')
-    plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
-    plt.xticks(rotation=45)
+   # Customize the chart
+   plt.title('Revenue by Year')
+   plt.xlabel('Year')
+   plt.ylabel('Revenue')
+   plt.grid(color='#95a5a6', linestyle='--', linewidth=2, axis='y', alpha=0.7)
+   plt.xticks(rotation=45)
 
-    # Show the figure
-    plt.show()
+   # Show the figure
+   plt.show()
     ```
 
-8. Réexécutez la cellule de code et examinez les résultats. La figure détermine la forme et la taille du tracé.
-9. Une figure peut contenir plusieurs sous-tracés, chacun sur son propre axe. Modifiez le code pour tracer le graphique comme suit :
+1. Réexécutez la cellule de code et examinez les résultats. La figure détermine la forme et la taille du tracé.
+1. Une figure peut contenir plusieurs sous-tracés, chacun sur son propre axe. Modifiez le code pour tracer le graphique comme suit :
 
     ```python
-    from matplotlib import pyplot as plt
+   from matplotlib import pyplot as plt
 
-    # Clear the plot area
-    plt.clf()
+   # Clear the plot area
+   plt.clf()
 
-    # Create a figure for 2 subplots (1 row, 2 columns)
-    fig, ax = plt.subplots(1, 2, figsize = (10,4))
+   # Create a figure for 2 subplots (1 row, 2 columns)
+   fig, ax = plt.subplots(1, 2, figsize = (10,4))
 
-    # Create a bar plot of revenue by year on the first axis
-    ax[0].bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
-    ax[0].set_title('Revenue by Year')
+   # Create a bar plot of revenue by year on the first axis
+   ax[0].bar(x=df_sales['OrderYear'], height=df_sales['GrossRevenue'], color='orange')
+   ax[0].set_title('Revenue by Year')
 
-    # Create a pie chart of yearly order counts on the second axis
-    ax[1].pie(df_sales['YearlyCounts'])
-    ax[1].set_title('Orders per Year')
-    ax[1].legend(df_sales['OrderYear'])
+   # Create a pie chart of yearly order counts on the second axis
+   ax[1].pie(df_sales['YearlyCounts'])
+   ax[1].set_title('Orders per Year')
+   ax[1].legend(df_sales['OrderYear'])
 
-    # Add a title to the Figure
-    fig.suptitle('Sales Data')
+   # Add a title to the Figure
+   fig.suptitle('Sales Data')
 
-    # Show the figure
-    plt.show()
+   # Show the figure
+   plt.show()
     ```
 
-10. Réexécutez la cellule de code et examinez les résultats. 
+1. Réexécutez la cellule de code et examinez les résultats. 
 
 >[!NOTE] 
 > Pour en savoir plus sur le traçage avec matplotlib, consultez la documentation [matplotlib](https://matplotlib.org/).
@@ -533,37 +546,37 @@ Bien que *matplotlib* vous permette de créer des types de graphiques différent
 1. Ajoutez une nouvelle cellule de code au notebook, puis entrez le code suivant : 
 
     ```python
-    import seaborn as sns
+   import seaborn as sns
 
-    # Clear the plot area
-    plt.clf()
+   # Clear the plot area
+   plt.clf()
 
-    # Create a bar chart
-    ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+   # Create a bar chart
+   ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
 
-    plt.show()
+   plt.show()
     ```
 
-2. Exécutez le code pour afficher un graphique à barres créé à l’aide de la bibliothèque seaborn.
-3. Modifiez le code comme suit :
+1. Exécutez le code pour afficher un graphique à barres créé à l’aide de la bibliothèque seaborn.
+1. Modifiez le code comme suit :
 
     ```python
-    import seaborn as sns
+   import seaborn as sns
 
-    # Clear the plot area
-    plt.clf()
+   # Clear the plot area
+   plt.clf()
 
-    # Set the visual theme for seaborn
-    sns.set_theme(style="whitegrid")
+   # Set the visual theme for seaborn
+   sns.set_theme(style="whitegrid")
 
-    # Create a bar chart
-    ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
+   # Create a bar chart
+   ax = sns.barplot(x="OrderYear", y="GrossRevenue", data=df_sales)
 
-    plt.show()
+   plt.show()
     ```
 
-4.  Exécutez le code modifié et notez que seaborn vous permet de définir un thème de couleur pour vos tracés.
-5.  Modifiez à nouveau le code comme suit :
+1.  Exécutez le code modifié et notez que seaborn vous permet de définir un thème de couleur pour vos tracés.
+1.  Modifiez à nouveau le code comme suit :
 
     ```python
     import seaborn as sns
@@ -577,7 +590,7 @@ Bien que *matplotlib* vous permette de créer des types de graphiques différent
     plt.show()
     ```
 
-6.  Exécutez le code modifié pour afficher le chiffre d’affaires annuel sous forme de graphique en courbes.
+1.  Exécutez le code modifié pour afficher le chiffre d’affaires annuel sous forme de graphique en courbes.
 
 >[!NOTE]
 > Pour en savoir plus sur le traçage avec seaborn, consultez la documentation [seaborn](https://seaborn.pydata.org/index.html).

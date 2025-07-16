@@ -176,7 +176,7 @@ Un entrepôt de données dans Microsoft Fabric offre la plupart des mêmes fonct
    ORDER BY CalendarYear, MonthOfYear, SalesRegion;
     ```
 
-### Créer une requête visuelle
+## Créer une requête visuelle
 
 Au lieu d’écrire du code SQL, vous pouvez utiliser le concepteur de requêtes graphique pour interroger les tables de votre entrepôt de données. Cette expérience est similaire à Power Query en ligne, où vous pouvez créer des étapes de transformation de données sans code. Pour les tâches plus complexes, vous pouvez utiliser le langage M (Mashup) de Power Query.
 
@@ -199,48 +199,9 @@ Au lieu d’écrire du code SQL, vous pouvez utiliser le concepteur de requêtes
 
 1. À partir de là, vous pouvez analyser les résultats de cette requête en sélectionnant **Visualiser les résultats** ou **Télécharger le fichier Excel**. Vous pouvez maintenant voir exactement ce que le responsable demandait : nous n’avons donc pas besoin d’analyser les résultats plus en détail.
 
-### Visualiser vos données
-
-Vous pouvez facilement visualiser les données dans une seule requête ou dans votre entrepôt de données. Avant de visualiser, masquez les colonnes et/ou les tables qui ne sont pas conviviales pour les concepteurs de rapports.
-
-1. Sélectionnez le bouton **Dispositions de modèle**. 
-
-1. Masquez les colonnes suivantes dans vos tables de faits et de dimension qui ne sont pas nécessaires pour créer un rapport. Notez que cela ne supprime pas les colonnes du modèle, mais les masque simplement de la vue sur le canevas de rapport.
-   1. FactSalesOrder
-      - **SalesOrderDateKey**
-      - **CustomerKey**
-      - **ProductKey**
-   1. DimCustomer
-      - **CustomerKey**
-      - **CustomerAltKey**
-   1. DimDate
-      - **DateKey**
-      - **DateAltKey**
-   1. DimProduct
-      - **ProductKey**
-      - **ProductAltKey** 
-
-1. Vous êtes maintenant prêt à créer un rapport et à rendre ce jeu de données disponible pour d’autres utilisateurs. Dans le menu Rapports, sélectionnez **Nouveau rapport**. Ceci va ouvrir une nouvelle fenêtre, où vous pouvez créer un rapport Power BI.
-
-1. Dans le volet **Données**, développez **FactSalesOrder**. Notez que les colonnes que vous avez masquées ne sont plus visibles. 
-
-1. Sélectionnez **SalesTotal**. Ceci va ajouter la colonne au **Canevas de rapport**. Comme la colonne est une valeur numérique, le visuel par défaut est un **histogramme**.
-1. Vérifiez que l’histogramme sur le canevas est actif (il doit avoir une bordure grise et des poignées), puis sélectionnez **Category** dans la table **DimProduct** pour ajouter une catégorie à votre histogramme.
-1. Dans le volet **Visualisations**, changez le type de graphique d’histogramme en **graphique à barres groupées**. Ensuite, redimensionnez le graphique si nécessaire pour que les catégories soient lisibles.
-
-    ![Capture d’écran du volet Visualisations avec le graphique à barres sélectionné.](./Images/visualizations-pane.png)
-
-1. Dans le volet **Visualisations**, sélectionnez l’onglet **Mettre en forme votre visuel** et, dans le sous-onglet **Général**, dans la section **Titre**, remplacez **Texte**par **Total Sales by Category** (Ventes totales par catégorie).
-
-1. Dans le menu **Fichier**, sélectionnez **Enregistrer**. Enregistrez ensuite le rapport sous le nom **Rapport des ventes** dans l’espace de travail que vous avez créé précédemment.
-
-1. Dans le hub de menus à gauche, revenez à l’espace de travail. Notez que vous avez maintenant trois éléments enregistrés dans votre espace de travail : votre entrepôt de données, son modèle sémantique par défaut et le rapport que vous avez créé.
-
-    ![Capture d’écran de l’espace de travail avec les trois éléments listés.](./Images/workspace-items.png)
-
 ## Nettoyer les ressources
 
-Dans cet exercice, vous avez créé un entrepôt de données qui contient plusieurs tables. Vous avez utilisé SQL pour insérer des données dans les tables et les interroger. Vous avez aussi utilisé l’outil de requête visuelle. Enfin, vous avez amélioré le modèle de données pour le jeu de données par défaut de l’entrepôt de données et vous l’avez utilisé comme source pour un rapport.
+Dans cet exercice, vous avez créé un entrepôt de données qui contient plusieurs tables. Vous avez utilisé SQL pour insérer des données dans les tables et interroger des tables à l’aide de T-SQL et de l’outil de requête visuelle. Enfin, vous avez amélioré le modèle de données du jeu de données par défaut de l’entrepôt de données pour les analyses et les rapports en aval.
 
 Si vous avez terminé d’explorer votre entrepôt de données, vous pouvez supprimer l’espace de travail que vous avez créé pour cet exercice.
 
