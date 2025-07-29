@@ -39,7 +39,7 @@ Maintenant que vous disposez d’un espace de travail, il est temps de créer un
 
 Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des données. Pour ce faire, vous pouvez définir un flux de données qui encapsule un processus d’*extraction, transformation et chargement* (ETL).
 
-1. Dans la page d’accueil de votre espace de travail, sélectionnez **Obtenir des données** > **Nouveau flux de données Gen2**. Après quelques secondes, l’éditeur Power Query de votre nouveau flux de données s’ouvre comme illustré ici.
+1. Sur la page d’accueil de votre Lakehouse, sélectionnez **Obtenir des données** >  **Nouveau Flux de données Gen2**. Après quelques secondes, l’éditeur Power Query de votre nouveau flux de données s’ouvre comme illustré ici.
 
  ![Nouveau flux de données.](./Images/new-dataflow.png)
 
@@ -74,7 +74,7 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
 
 1. Dans le ruban de la barre d’outils, sélectionnez l’onglet **Accueil**. Ensuite, dans le menu déroulant **Ajouter une destination de données**, sélectionnez **Lakehouse**.
 
-   > **Remarque :** Si cette option est grisée, vous disposez peut-être déjà d’un jeu de destination de données. Vérifiez la destination des données en bas du volet Paramètres de la requête à droite de l’éditeur Power Query. Si une destination est déjà définie, vous pouvez la modifier à l’aide de l’engrenage.
+   > **Remarque :** Si cette option est grisée, vous disposez peut-être déjà d’un jeu de destination de données. Vérifiez la destination des données en bas du volet Paramètres de la requête à droite de l’éditeur Power Query. Si une destination par défaut est déjà définie, vous pouvez la supprimer et en ajouter une nouvelle.
 
 2. Dans la boîte de dialogue **Se connecter à la destination des données**, modifiez la connexion et connectez-vous à l’aide de votre compte d’organisation Power BI pour définir l’identité que le flux de données utilise pour accéder au lakehouse.
 
@@ -93,13 +93,13 @@ Maintenant que vous disposez d’un lakehouse, vous devez y ingérer des donnée
 
    ![Requête avec une destination lakehouse](./Images/lakehouse-destination.png)
 
-6. Sélectionnez **Publier** pour publier le flux de données. Attendez ensuite que le flux de données **Dataflow 1** soit créé dans votre espace de travail.
+6. Dans le ruban de la barre d’outils, sélectionnez l’onglet **Accueil**. Ensuite, sélectionnez **Enregistrer et exécuter** et attendez que le flux de données **Flux de données 1** soit créé dans votre espace de travail.
 
 ## Ajouter un flux de données à un pipeline
 
 Vous pouvez inclure un flux de données en tant qu’activité dans un pipeline. Les pipelines sont utilisés pour orchestrer les activités d’ingestion et de traitement des données, ce qui vous permet de combiner des flux de données avec d’autres types d’opérations dans un processus unique, planifié. Les pipelines peuvent être créés dans plusieurs expériences différentes, notamment l’expérience Data Factory.
 
-1. À partir de votre espace de travail Fabric, vérifiez que vous figurez toujours dans l’expérience **Engineering données**. Sélectionnez **+ Nouvel élément** > **Pipeline de données**, puis, lorsque vous y êtes invité, créez un pipeline nommé **Charger des données**.
+1. Depuis votre espace de travail activé pour Fabric, sélectionnez **+ Nouvel élément**  > **Pipeline de données**, puis, lorsqu’on vous le demande, créez un nouveau pipeline nommé **Charger les données**.
 
    L’éditeur de pipeline s’ouvre.
 
@@ -107,7 +107,7 @@ Vous pouvez inclure un flux de données en tant qu’activité dans un pipeline.
 
    > **Conseil** : Si l’Assistant Copier des données s’ouvre automatiquement, fermez-le.
 
-2. Sélectionnez **Ajouter une activité de pipeline** et ajoutez une activité **Flux de données** au pipeline.
+2. Sélectionnez **Activité du pipeline**, puis ajoutez une activité **flux de données** au pipeline.
 
 3. La nouvelle activité **Dataflow1** étant sélectionnée, sous l’onglet **Paramètres**, dans la liste déroulante **Flux de données**, sélectionnez **Dataflow 1** (le flux de données que vous avez créé précédemment).
 
