@@ -67,6 +67,7 @@ Vous pouvez maintenant créer un notebook Fabric pour utiliser vos données. Les
     ```
 
 1. Cliquez n’importe où dans le notebook en dehors de la cellule pour arrêter la modification.
+1. Dans le volet **Explorateur**, sélectionnez **Ajouter des éléments de données**, puis sélectionnez **Sources de données existantes**. Connectez-vous au lakehouse que vous avez créé précédemment.
 1. Ajoutez une nouvelle cellule de code et ajoutez le code suivant pour lire les données des produits dans un DataFrame à l’aide d’un schéma défini :
 
     ```python
