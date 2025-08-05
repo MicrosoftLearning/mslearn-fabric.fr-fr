@@ -204,6 +204,8 @@ Maintenant que vous avez des données dans la couche bronze de votre lakehouse, 
 
     Vous disposez maintenant dans votre table Delta argent de données qui sont prêtes pour une transformation et une modélisation ultérieures.
 
+1. Après avoir exécuté la dernière cellule, sélectionnez l'onglet **Exécuter** au-dessus du ruban, puis sélectionnez **Arrêter la session** pour arrêter la ressource de calcul utilisée par le bloc-notes.
+
 ## Explorer les données de la couche argent à l’aide du point de terminaison SQL
 
 Maintenant que vous avez des données dans votre couche argent, vous pouvez utiliser le point de terminaison d’analytique SQL pour explorer les données et effectuer une analyse de base. Il s’agit d’une bonne option pour vous si vous êtes familiarisé avec SQL et que vous souhaitez effectuer une exploration de base de vos données. Dans cet exercice, nous utilisons la vue Point de terminaison SQL dans Fabric, mais vous pouvez également utiliser d’autres outils tels que SQL Server Management Studio (SSMS) et Azure Data Explorer.
@@ -260,6 +262,8 @@ Vous auriez pu effectuer toutes ces opérations dans un seul notebook, mais pour
    df = spark.read.table("Sales.sales_silver")
     ```
 
+    > **Remarque** : Si vous recevez une `[TooManyRequestsForCapacity]` erreur lors de l’exécution de la première cellule, veillez à arrêter la session précédemment en cours d’exécution dans le premier bloc-notes.
+ 
 1. **Ajoutez un nouveau bloc de code** et collez le code suivant pour créer votre table de dimension de date, puis exécutez-le :
 
     ```python
