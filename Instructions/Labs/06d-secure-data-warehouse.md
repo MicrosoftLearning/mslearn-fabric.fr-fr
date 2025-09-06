@@ -8,7 +8,7 @@ lab:
 
 Les autorisations Microsoft Fabric et les autorisations SQL granulaires fonctionnent ensemble pour régir l’accès à l’entrepôt et les autorisations utilisateur. Dans cet exercice, vous allez sécuriser les données en utilisant des autorisations granulaires, la sécurité au niveau des colonnes, la sécurité au niveau des lignes et le masquage dynamique des données.
 
-> **Remarque** : Pour effectuer les exercices de ce labo, vous aurez besoin de deux utilisateurs : un utilisateur avec le rôle Administrateur d’espace de travail et un autre avec le rôle Viewer d’espace de travail. Pour attribuer des rôles à des espaces de travail, consultez [ Accorder l’accès à votre espace de travail ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces).
+> **Remarque** : Pour terminer tous les exercices de ce labo, vous aurez besoin de deux utilisateurs : l’un devra se voir attribuer le rôle Administrateur de l’espace de travail, et l’autre devra avoir le rôle Viewer de l’espace de travail. Pour attribuer des rôles à des espaces de travail, consultez [ Accorder l’accès à votre espace de travail ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces). Si vous n’avez pas accès à un deuxième compte dans la même organisation, vous pouvez tout de même réaliser l’exercice en tant qu’Administrateur de l’espace de travail et passer les étapes nécessitant un compte Viewer, en vous référant aux captures d’écran de l’exercice pour voir ce à quoi un compte Viewer a accès.
 
 Ce labo est d’une durée de **45** minutes environ.
 
@@ -67,27 +67,11 @@ Les règles de masquage dynamique des données sont appliquées sur des colonnes
 
 3. Ensuite, dans le volet **Explorateur**, développez **Schémas** > **dbo** > **Tables** et vérifiez que la table **Customers** a été créée. L’instruction `SELECT` retourne des données non masquées pour vous, car en tant que créateur de l’espace de travail, vous êtes membre du rôle Administrateur d’espace de travail, qui peut voir les données non masquées.
 
-4. Connectez-vous en tant qu’utilisateur de test membre du rôle d’espace de travail **Viewer** et exécutez l’instruction T-SQL suivante.
-
-    ```T-SQL
-    SELECT * FROM dbo.Customers;
-    ```
-    
-    L’utilisateur de test n’a pas reçu l’autorisation UNMASK : les données retournées pour les colonnes FirstName, Phone et Email sont donc masquées, car ces colonnes ont été définies avec un masque dans l’instruction `CREATE TABLE`.
-
-5. Reconnectez-vous en tant qu’Administrateur d’espace de travail (vous-même) et exécutez les instructions T-SQL suivantes afin de supprimer le masquage des données pour l’utilisateur de test. Remplacez `<username>@<your_domain>.com` par le nom de l’utilisateur que vous testez, qui est membre du rôle d’espace de travail **Viewer**. 
-
-    ```T-SQL
-    GRANT UNMASK ON dbo.Customers TO [<username>@<your_domain>.com];
-    ```
-
-6. Connectez-vous à nouveau en tant qu’utilisateur de test et exécutez l’instruction T-SQL suivante.
-
-    ```T-SQL
-    SELECT * FROM dbo.Customers;
-    ```
-
-    Les données sont retournées non masquées, car l’utilisateur de test a reçu l’autorisation `UNMASK`.
+    >**Remarque** : Si vous vous connectez en tant qu’utilisateur test membre du rôle **Viewer** de l’espace de travail et que vous exécutez une instruction `SELECT` sur la table **Clients**, vous obtiendrez les résultats suivants pour les données masquées.
+   
+    ![Capture d’écran de la table Clients avec des données masquées.](./Images/masked-table.png)
+ 
+    L’utilisateur test ne dispose pas de l’autorisation UNMASK, les données renvoyées pour les colonnes FirstName, Phone et Email sont donc masquées, car ces colonnes ont été définies avec un masque dans l’instruction `CREATE TABLE`.
 
 ## Appliquer la sécurité au niveau des lignes
 
@@ -151,18 +135,20 @@ La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’a
     ```
 
 6. Utilisez le bouton **&#9655; Exécuter** pour exécuter le script SQL.
-7. Ensuite, dans le volet **Explorateur**, développez **Schémas** > **rls** > **Fonctions** et vérifiez que la fonction a été créée.
+7. Ensuite, dans le volet **Explorateur**, développez **Schémas** > **rls** > **Fonctions** > **Fonctions tabulaires** et vérifiez que la fonction a bien été créée.
 8. Connectez-vous à Fabric en tant qu’utilisateur par lequel vous avez remplacé `<username1>@<your_domain>.com`, dans l’instruction `INSERT` pour la table Sales. Vérifiez que vous êtes connecté en tant que cet utilisateur en exécutant le T-SQL suivant.
 
     ```T-SQL
    SELECT USER_NAME();
     ```
 
-9. Interrogez la table **Sales** pour vérifier que la sécurité au niveau des lignes fonctionne comme prévu. Vous devez voir seulement les données qui répondent aux conditions du prédicat de sécurité défini pour l’utilisateur sous lequel vous êtes connecté.
+9. Interrogez la table **Sales** pour vérifier que la sécurité au niveau des lignes fonctionne comme prévu. Vous ne devriez voir que les données correspondant aux conditions du prédicat de sécurité définies pour l’utilisateur avec lequel vous êtes connecté :
 
     ```T-SQL
    SELECT * FROM dbo.Sales;
     ```
+
+    ![Capture d’écran de la table Ventes avec SNL.](./Images/rls-table.png)
 
 ## Implémenter la sécurité au niveau des colonnes
 
@@ -184,23 +170,25 @@ La sécurité au niveau des colonnes vous permet de désigner les utilisateurs q
    (2341, 6785, '222222222222222'),
    (3412, 7856, '333333333333333');   
    SELECT * FROM dbo.Orders;
-     ```
+    ```
 
-3. Refuser l’autorisation d’afficher une colonne dans la table. L’instruction T-SQL empêche `<username>@<your_domain>.com` de voir la colonne CreditCard de la table Orders. Dans l’instruction `DENY`, remplacez `<username>@<your_domain>.com` par un nom d’utilisateur de votre système qui a des autorisations **Viewer** sur l’espace de travail.
+3. Refuser l’autorisation d’afficher une colonne dans la table. L’instruction T-SQL empêche `<username1>@<your_domain>.com` de voir la colonne CreditCard de la table Orders. Dans l’instruction `DENY`, remplacez `<username1>@<your_domain>.com` par un nom d’utilisateur de votre système qui a des autorisations **Viewer** sur l’espace de travail.
 
-     ```T-SQL
-   DENY SELECT ON dbo.Orders (CreditCard) TO [<username>@<your_domain>.com];
-     ```
+    ```T-SQL
+   DENY SELECT ON dbo.Orders (CreditCard) TO [<username1>@<your_domain>.com];
+    ```
 
 4. Testez la sécurité au niveau des colonnes en vous connectant à Fabric en tant qu’utilisateur auquel vous avez refusé les autorisations de sélection.
 
-5. Interrogez la table Orders pour confirmer que la sécurité au niveau des colonnes fonctionne comme prévu. La requête suivante va retourner seulement les colonnes OrderID et CustomerID, et non pas la colonne CreditCard.  
+5. Interrogez la table Commandes pour vérifier que la sécurité au niveau des colonnes fonctionne comme prévu :
 
     ```T-SQL
    SELECT * FROM dbo.Orders;
     ```
 
-    Vous recevrez une erreur car l’accès à la colonne CreditCard a été restreint.  Essayez en sélectionnant seulement les champs OrderID et CustomerID : la requête va réussir.
+    ![Capture d’écran de la requête sur la table Commandes présentant une erreur.](./Images/cls-table.png)
+
+    Vous recevrez une erreur car l’accès à la colonne CreditCard a été restreint. Essayez en sélectionnant seulement les champs OrderID et CustomerID : la requête va réussir.
 
     ```T-SQL
    SELECT OrderID, CustomerID from dbo.Orders
@@ -210,11 +198,11 @@ La sécurité au niveau des colonnes vous permet de désigner les utilisateurs q
 
 Fabric a un modèle d’autorisations qui vous permet de contrôler l’accès aux données au niveau de l’espace de travail et au niveau de l’élément. Quand vous avez besoin d’un contrôle plus précis de ce que les utilisateurs peuvent faire avec des éléments sécurisables dans un entrepôt Fabric, vous pouvez utiliser les commandes du langage de contrôle de données SQL standard (DCL) `GRANT`, `DENY` et `REVOKE`. Dans cet exercice, vous allez créer des objets, les sécuriser avec `GRANT` et `DENY` puis exécuter des requêtes pour afficher l’effet de l’application d’autorisations granulaires.
 
-1. Dans l’entrepôt que vous avez créé dans l’exercice précédent, sélectionnez la liste déroulante **Nouvelle requête SQL**. Sous l’en-tête **Vide**, sélectionnez **Nouvelle requête SQL**.  
+1. Dans l’entrepôt que vous avez créé dans l’exercice précédent, sélectionnez la liste déroulante **Nouvelle requête SQL**. Sélectionnez **Nouvelle requête SQL**.  
 
 2. Créez une procédure stockée et une table. Exécutez ensuite la procédure et interrogez la table.
 
-     ```T-SQL
+    ```T-SQL
    CREATE PROCEDURE dbo.sp_PrintMessage
    AS
    PRINT 'Hello World.';
@@ -236,24 +224,26 @@ Fabric a un modèle d’autorisations qui vous permet de contrôler l’accès a
    EXEC dbo.sp_PrintMessage;
    GO   
    SELECT * FROM dbo.Parts
-     ```
+    ```
 
-3. Ensuite, appliquez `DENY SELECT` sur la table à un utilisateur membre du rôle **Viewer d’espace de travail** et `GRANT EXECUTE` sur la procédure pour le même utilisateur. Remplacez `<username>@<your_domain>.com` par un nom d’utilisateur de votre environnement membre du rôle **Viewer d’espace de travail**.
+3. Ensuite, appliquez `DENY SELECT` sur la table à un utilisateur membre du rôle **Viewer d’espace de travail** et `GRANT EXECUTE` sur la procédure pour le même utilisateur. Remplacez `<username1>@<your_domain>.com` par un nom d’utilisateur de votre environnement membre du rôle **Viewer d’espace de travail**.
 
-     ```T-SQL
-   DENY SELECT on dbo.Parts to [<username>@<your_domain>.com];
+    ```T-SQL
+   DENY SELECT on dbo.Parts to [<username1>@<your_domain>.com];
 
-   GRANT EXECUTE on dbo.sp_PrintMessage to [<username>@<your_domain>.com];
-     ```
+   GRANT EXECUTE on dbo.sp_PrintMessage to [<username1>@<your_domain>.com];
+    ```
 
-4. Connectez-vous à Fabric en tant que l’utilisateur que vous avez spécifié dans les instructions `DENY` et `GRANT` à la place de `<username>@<your_domain>.com`. Testez ensuite les autorisations granulaires que vous avez appliquées en exécutant la procédure stockée et en interrogeant la table.  
+4. Connectez-vous à Fabric en tant que l’utilisateur que vous avez spécifié dans les instructions `DENY` et `GRANT` à la place de `<username1>@<your_domain>.com`. Testez ensuite les autorisations granulaires que vous avez appliquées en exécutant la procédure stockée et en interrogeant la table :
 
-     ```T-SQL
+    ```T-SQL
    EXEC dbo.sp_PrintMessage;
    GO
    
    SELECT * FROM dbo.Parts;
-     ```
+    ```
+
+    ![Capture d’écran de la requête sur la table Pièces présentant une erreur.](./Images/grant-deny-table.png)
 
 ## Nettoyer les ressources
 
