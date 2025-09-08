@@ -80,19 +80,22 @@ Actuellement, il n’existe aucune table dans la base de données. Nous allons u
 
 Maintenant que vous disposez d’un flux de données en temps réel chargé dans une table dans l’eventhouse, vous pouvez le visualiser avec un tableau de bord en temps réel.
 
-1. Dans la barre de menus de gauche, sélectionnez le hub **Accueil**. Dans la page d’accueil, créez ensuite un **Tableau de bord en temps réel** nommé `bikes-dashboard`.
+1. Sélectionnez **Créer** dans la barre de menus de gauche. Dans la page *Nouveau*, sous la section *Inteligence en temps réel*, sélectionnez **Tableau de bord en temps réel** et nommez-le `bikes-dashboard`.
+
+    >**Note** : si l’option **Créer** n’est pas épinglée à la barre latérale, vous devez d’abord sélectionner l’option avec des points de suspension (**...**). 
 
     Un nouveau tableau de bord vide est créé.
 
 
     ![Capture d’écran d’un nouveau tableau de bord.](./Images/new-dashboard.png)
 
-1. Dans la barre d’outils, sélectionnez **Nouvelle source de données** et ajoutez une nouvelle source de données **Hub de données OneLake**. Sélectionnez ensuite votre eventhouse et créez une source de données avec les paramètres suivants :
+1. Dans la barre d’outils, sélectionnez **Nouvelle source de données**, puis sélectionnez **Eventhouse/Base de données KQL**. Sélectionnez ensuite votre eventhouse et créez une source de données avec les paramètres suivants :
     - **Nom d’affichage** : `Bike Rental Data`
     - **Base de données** : *base de données par défaut dans votre eventhouse.*
     - **Passthrough d’identité** : *sélectionné*
 
-1. Fermez le volet **Sources de données**, puis, dans le canevas de conception du tableau de bord, sélectionnez **Ajouter une vignette**.
+1. Sélectionnez **Ajouter**.
+1. Dans le canevas de conception du tableau de bord, sélectionnez **Ajouter une vignette**.
 1. Dans l’éditeur de requête, vérifiez que la source **Données de location de vélos** est sélectionnée et entrez le code KQL suivant :
 
     ```kql

@@ -40,7 +40,7 @@ Vous êtes maintenant prêt à rechercher et à ingérer des données en temps r
 
     ![Capture d’écran d’un nouvel eventstream.](./Images/name-eventstream.png)
 
-1. Sélectionnez **Suivant** et attendez que la source et l’eventstream soient créés, puis sélectionnez **Ouvrir l’eventstream**. L’eventstream affiche la source **stock** et **stock-data-stream** sur le canevas de conception :
+1. Sélectionnez **Suivant**, puis **Se connecter** et attendez que la source et le flux d’événements soient créés. Ensuite, sélectionnez **Ouvrir le flux d’événements**. L’eventstream affiche la source **stock** et **stock-data-stream** sur le canevas de conception :
 
    ![Capture d’écran du canevas d’eventstream.](./Images/new-stock-stream.png)
 
@@ -73,7 +73,7 @@ L’eventstream ingère les données boursières en temps réel, mais n’en fai
 
     La connexion entre le flux et la table a été créée. Vérifions cela dans l’eventstream.
 
-1. Dans la barre de menus de gauche, sélectionnez le hub **en temps réel**, puis affichez la page **Mes flux de données**. Dans le menu **...** du flux **stock-data-stream**, sélectionnez **Ouvrir l’eventstream**.
+1. Dans la barre de menus de gauche, sélectionnez le **hub en temps réel**. Dans le menu **...** du flux **stock-data-stream**, sélectionnez **Ouvrir l’eventstream**.
 
     L’eventstream affiche désormais une destination pour le flux :
 
@@ -119,14 +119,14 @@ L’eventstream capture les données boursières en temps réel et les charge da
 Maintenant que vous disposez d’une table remplie par le flux de données, vous pouvez utiliser un tableau de bord en temps réel pour visualiser les données.
 
 1. Dans l’éditeur de requête, sélectionnez la requête KQL que vous avez utilisée pour récupérer les prix moyens des actions pendant les cinq dernières minutes.
-1. Sélectionnez **Épingler au tableau de bord** dans la barre d’outils. Épinglez ensuite la requête **dans un nouveau tableau de bord** avec les paramètres suivants :
+1. Dans la barre d’outils, sélectionnez **Enregistrer dans le tableau de bord**. Épinglez ensuite la requête **dans un nouveau tableau de bord** avec les paramètres suivants :
     - **Nom du tableau de bord** : `Stock Dashboard`
     - **Nom de la vignette** : `Average Prices`
 1. Créez le tableau de bord et ouvrez-le. Il doit se présenter comme suit :
 
     ![Capture d’écran d’un nouveau tableau de bord.](./Images/stock-dashboard-table.png)
 
-1. En haut du tableau de bord, passez du mode **Affichage** au mode **Édition**.
+1. En haut à droite du tableau de bord, passez du mode **Affichage** au mode **Modification**.
 1. Sélectionnez l’icône **Modifier** (*crayon*) pour la vignette **Prix moyens**.
 1. Dans le volet **Mise en forme visuelle**, remplacez le **visuel** *Table* par *Histogramme* :
 
