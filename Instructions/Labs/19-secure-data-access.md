@@ -67,7 +67,7 @@ Dans cet exercice, vous ajoutez un utilisateur à un rôle d’espace de travail
 7. Ensuite, vous attribuez le rôle **Lecteur de l’espace de travail** au deuxième utilisateur et voyez que le rôle accorde l’accès en lecture à l’entrepôt dans l’espace de travail.  
 8. Revenez à la fenêtre du navigateur dans laquelle vous êtes connecté en tant qu’administrateur de l’espace de travail. Vérifiez que vous êtes toujours sur la page qui affiche l’espace de travail que vous avez créé. Vous devez voir vos nouveaux éléments d’espace de travail et l’échantillon d’entrepôt et de lakehouse, répertoriés en bas de la page.
 9. Sélectionnez **Gérer l’accès** en haut à droite de l’écran.
-10. Sélectionnez **Ajouter des personnes ou des groupes**. Entrez l’e-mail du deuxième utilisateur avec lequel vous effectuez des tests. Sélectionnez **Ajouter** pour affecter l’utilisateur au rôle **Lecteur** de l’espace de travail. 
+10. Sélectionnez **Ajouter des personnes ou des groupes**. Entrez l’e-mail du deuxième utilisateur avec lequel vous effectuez des tests. Sélectionnez **Ajouter** pour affecter l’utilisateur au rôle **Lecteur** de l’espace de travail.
 11. Revenez à la fenêtre du navigateur InPrivate dans laquelle vous êtes connecté en tant que deuxième utilisateur et sélectionnez le bouton Actualiser sur le navigateur pour actualiser les autorisations de session affectées au deuxième utilisateur.
 12. Sélectionnez l’icône **Espaces de travail** dans la barre de menu de gauche (l’icône ressemble à &#128455 ;) et sélectionnez le nom de l’espace de travail que vous avez créé en tant qu’utilisateur Administrateur de l’espace de travail. Le deuxième utilisateur peut désormais voir tous les éléments de l’espace de travail, car ils ont été affectés au rôle **Lecteur de l’espace de travail**.
 
@@ -100,7 +100,7 @@ Les autorisations d’élément contrôlent l’accès à des éléments Fabric 
 
 9. Sélectionner **Accorder**.
 
-10. Revenez à la fenêtre du navigateur dans laquelle vous êtes connecté en tant que deuxième utilisateur. Actualisez la vue du navigateur.  
+10. Revenez à la fenêtre du navigateur dans laquelle vous êtes connecté en tant que deuxième utilisateur. Actualisez la vue du navigateur.
 
 11. Le deuxième utilisateur n’a plus accès à l’espace de travail, mais à l’entrepôt uniquement. Vous ne pouvez plus parcourir les espaces de travail dans le volet de navigation de gauche pour trouver l’entrepôt. Sélectionnez **OneLake** dans le menu de navigation de gauche pour rechercher l’entrepôt. 
 
