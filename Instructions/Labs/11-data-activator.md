@@ -1,6 +1,11 @@
-# Utiliser Data Activator dans Fabric
+---
+lab:
+  title: Utilisez Activator dans Microsoft Fabric
+  module: Use Activator in Microsoft Fabric
+---
+# Utiliser Activator dans Fabric
 
-Data Activator dans Microsoft Fabric prend des mesures en fonction de ce qui se passe dans vos données. Un Activator vous permet de surveiller vos données et de créer des déclencheurs pour réagir aux changements de vos données.
+Activator dans Microsoft Fabric prend des mesures en fonction de ce qui se passe dans vos données. Un Activator vous permet de surveiller vos données et de créer des déclencheurs pour réagir aux changements de vos données.
 
 Ce labo prend environ **30** minutes.
 
@@ -35,7 +40,7 @@ Ensuite, créez un Activator dans l’espace de travail que vous avez créé :
 
     Après une minute, un nouvel Activator est créé :
 
-    ![Capture d’écran de l’écran d’accueil de Data Activator.](./Images/activator-home-screen.png)
+    ![Capture d’écran de l’écran d’accueil d’Activator.](./Images/activator-home-screen.png)
 
     Dans un environnement de production réel, vous utiliseriez vos propres données. Toutefois, pour ce laboratoire, vous allez utiliser les exemples de données fournis par Activator. 
 
@@ -45,7 +50,7 @@ Ensuite, créez un Activator dans l’espace de travail que vous avez créé :
 
 1. Sélectionnez le menu déroulant situé à côté du nom de l’Activator actuel dans le coin supérieur gauche et modifiez le nom en ***Contoso Shipping Activator*** pour notre exemple.
 
-    ![Capture d’écran de l’écran d’accueil du reflex de Data Activator.](./Images/activator-reflex-home-screen.png)
+    ![Capture d’écran de l’écran d’accueil d’Activator.](./Images/activator-reflex-home-screen.png)
 
 Notre projet Activator est désormais créé et nous pouvons commencer à parcourir ses objets, ses propriétés et ses règles.
 
@@ -104,7 +109,7 @@ Examinons ce que vous souhaitez que votre règle fasse : *Vous voulez créer un
 1. Sélectionnez **Créer**.
 1. Une nouvelle règle est créée avec le nom par défaut de l’*alerte température*. Remplacez le nom par ***Température du médicament en dehors de la plage*** en sélectionnant l’icône de crayon en regard du nom de la règle dans le volet central.
 
-    ![Capture d’écran de la nouvelle règle de Data Activator.](./Images/activator-new-rule.png)
+    ![Capture d’écran de la nouvelle règle Activator.](./Images/activator-new-rule.png)
 
     Jusqu’à présent, vous avez défini la propriété et la condition sur lesquelles vous souhaitez que la règle soit activée, mais cette définition n’inclut pas encore tous les paramètres dont vous avez besoin. Vous devez toujours vous assurer que le déclencheur ne s’active que pour la *Ville* de **Redmond** et pour le type de *Soins particuliers* de **Médicament**. Nous allons maintenant ajouter quelques filtres pour ces conditions.  
 
@@ -124,7 +129,7 @@ Examinons ce que vous souhaitez que votre règle fasse : *Vous voulez créer un
     - **Titre** : *Température trop élevée*
     - **Contexte** : Sélectionnez la propriété *Temperature* dans la liste des cases à cocher.
 
-    ![Capture d’écran de définition d’action Data Activator.](./Images/activator-define-action.png)
+    ![Capture d’écran de l’action de définition Activator.](./Images/activator-define-action.png)
 
 1. Sélectionnez **Enregistrer et démarrer**.
 
