@@ -28,7 +28,7 @@ En suivant ce labo, vous serez capable de :
 
 Vous devez disposer d’une [capacité Microsoft Fabric (F2 ou supérieure)](https://learn.microsoft.com/fabric/fundamentals/copilot-enable-fabric) avec Copilot activé pour effectuer cet exercice.
 
-> **Remarque** : Pour vous faciliter la tâche, un cahier contenant tous les prompts relatifs à cet exercice est disponible en téléchargement à l’adresse suivante :
+> **Remarque** : Pour votre commodité, un bloc-notes avec toutes les invites pour cet exercice est disponible pour le téléchargement à l’adresse suivante :
 
 `https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/22b/Starter/eurostat-notebook.ipynb`
 

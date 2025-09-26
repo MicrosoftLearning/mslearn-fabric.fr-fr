@@ -8,7 +8,7 @@ lab:
 
 Les autorisations Microsoft Fabric et les autorisations SQL granulaires fonctionnent ensemble pour régir l’accès à l’entrepôt et les autorisations utilisateur. Dans cet exercice, vous allez sécuriser les données en utilisant des autorisations granulaires, la sécurité au niveau des colonnes, la sécurité au niveau des lignes et le masquage dynamique des données.
 
-> **Remarque** : Pour terminer tous les exercices de ce labo, vous aurez besoin de deux utilisateurs : l’un devra se voir attribuer le rôle Administrateur de l’espace de travail, et l’autre devra avoir le rôle Viewer de l’espace de travail. Pour attribuer des rôles à des espaces de travail, consultez [ Accorder l’accès à votre espace de travail ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces). Si vous n’avez pas accès à un deuxième compte dans la même organisation, vous pouvez tout de même réaliser l’exercice en tant qu’Administrateur de l’espace de travail et passer les étapes nécessitant un compte Viewer, en vous référant aux captures d’écran de l’exercice pour voir ce à quoi un compte Viewer a accès.
+> **Remarque** : Il existe des étapes facultatives dans cet exercice, qui nécessitent un deuxième compte d’utilisateur pour la validation des résultats : un utilisateur doit être affecté au rôle Administrateur de l’espace de travail et l’autre doit avoir le rôle Visionneuse d’espace de travail. Pour attribuer des rôles à des espaces de travail, consultez [ Accorder l’accès à votre espace de travail ](https://learn.microsoft.com/fabric/get-started/give-access-workspaces). Si vous n’avez pas accès à un deuxième compte dans la même organisation, vous pouvez tout de même réaliser l’exercice en tant qu’Administrateur de l’espace de travail, en vous référant aux captures d’écran de l’exercice pour voir ce à quoi un compte Viewer a accès.
 
 Ce labo est d’une durée de **45** minutes environ.
 
@@ -79,7 +79,7 @@ La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’a
 
 1. Dans l’entrepôt que vous avez créé dans le dernier exercice, sélectionnez la liste déroulante **Nouvelle requête SQL** et sélectionnez **Nouvelle requête SQL**.
 
-2. Créer une table et y insérer des données. Pour pouvoir tester la sécurité au niveau des lignes dans une étape ultérieure, remplacez `username1@your_domain.com` par un nom d’utilisateur de votre environnement, et remplacez `username2@your_domain.com` par votre nom d’utilisateur.
+2. Créer une table et y insérer des données. Pour implémenter la sécurité au niveau des lignes dans une étape ultérieure, remplacez `<username1>@<your_domain>.com` par un nom d’utilisateur fictif ou un vrai nom d’utilisateur de votre environnement (**rôle Visionneuse**), puis remplacez `<username2>@<your_domain>.com` par votre nom d’utilisateur (**rôle d’administrateur**).
 
     ```T-SQL
    CREATE TABLE dbo.Sales  
@@ -136,17 +136,8 @@ La sécurité au niveau des lignes (RLS) peut être utilisée pour limiter l’a
 
 6. Utilisez le bouton **&#9655; Exécuter** pour exécuter le script SQL.
 7. Ensuite, dans le volet **Explorateur**, développez **Schémas** > **rls** > **Fonctions** > **Fonctions tabulaires** et vérifiez que la fonction a bien été créée.
-8. Connectez-vous à Fabric en tant qu’utilisateur par lequel vous avez remplacé `<username1>@<your_domain>.com`, dans l’instruction `INSERT` pour la table Sales. Vérifiez que vous êtes connecté en tant que cet utilisateur en exécutant le T-SQL suivant.
 
-    ```T-SQL
-   SELECT USER_NAME();
-    ```
-
-9. Interrogez la table **Sales** pour vérifier que la sécurité au niveau des lignes fonctionne comme prévu. Vous ne devriez voir que les données correspondant aux conditions du prédicat de sécurité définies pour l’utilisateur avec lequel vous êtes connecté :
-
-    ```T-SQL
-   SELECT * FROM dbo.Sales;
-    ```
+    > **Remarque** : Si vous vous connectez en tant qu’utilisateur que vous avez remplacé `<username1>@<your_domain>.com` et exécutez une `SELECT` instruction sur la **table Sales**, vous verrez les résultats suivants pour la sécurité au niveau des lignes.
 
     ![Capture d’écran de la table Ventes avec SNL.](./Images/rls-table.png)
 
@@ -172,27 +163,17 @@ La sécurité au niveau des colonnes vous permet de désigner les utilisateurs q
    SELECT * FROM dbo.Orders;
     ```
 
-3. Refuser l’autorisation d’afficher une colonne dans la table. L’instruction T-SQL empêche `<username1>@<your_domain>.com` de voir la colonne CreditCard de la table Orders. Dans l’instruction `DENY`, remplacez `<username1>@<your_domain>.com` par un nom d’utilisateur de votre système qui a des autorisations **Viewer** sur l’espace de travail.
+3. Refuser l’autorisation d’afficher une colonne dans la table. L’instruction T-SQL empêche `<username1>@<your_domain>.com` de voir la colonne CreditCard de la table Orders. Dans l’instruction `DENY`, remplacez `<username1>@<your_domain>.com` par le nom d’utilisateur d’un utilisateur disposant des autorisations Visionneuse sur l’espace de travail.
 
     ```T-SQL
    DENY SELECT ON dbo.Orders (CreditCard) TO [<username1>@<your_domain>.com];
     ```
 
-4. Testez la sécurité au niveau des colonnes en vous connectant à Fabric en tant qu’utilisateur auquel vous avez refusé les autorisations de sélection.
-
-5. Interrogez la table Commandes pour vérifier que la sécurité au niveau des colonnes fonctionne comme prévu :
-
-    ```T-SQL
-   SELECT * FROM dbo.Orders;
-    ```
+    > **Remarque** : Si vous vous connectez en tant qu’utilisateur que vous avez remplacé `<username1>@<your_domain>.com` et exécutez une `SELECT` instruction sur la **table Orders**, vous obtiendrez les résultats suivants pour la sécurité au niveau des colonnes.
 
     ![Capture d’écran de la requête sur la table Commandes présentant une erreur.](./Images/cls-table.png)
 
-    Vous recevrez une erreur car l’accès à la colonne CreditCard a été restreint. Essayez en sélectionnant seulement les champs OrderID et CustomerID : la requête va réussir.
-
-    ```T-SQL
-   SELECT OrderID, CustomerID from dbo.Orders
-    ```
+    L’erreur indiquée dans la capture d’écran se produit, car l’accès à la colonne `CreditCard` a été restreint. Si vous sélectionnez uniquement les colonnes `OrderID` et `CustomerID`, la requête s’exécute correctement.
 
 ## Configurer des autorisations granulaires SQL à l’aide de T-SQL
 
@@ -226,7 +207,7 @@ Fabric a un modèle d’autorisations qui vous permet de contrôler l’accès a
    SELECT * FROM dbo.Parts
     ```
 
-3. Ensuite, appliquez `DENY SELECT` sur la table à un utilisateur membre du rôle **Viewer d’espace de travail** et `GRANT EXECUTE` sur la procédure pour le même utilisateur. Remplacez `<username1>@<your_domain>.com` par un nom d’utilisateur de votre environnement membre du rôle **Viewer d’espace de travail**.
+3. Ensuite, appliquez `DENY SELECT` sur la table à un utilisateur membre du rôle **Viewer d’espace de travail** et `GRANT EXECUTE` sur la procédure pour le même utilisateur. Remplacez `<username1>@<your_domain>.com` par le nom d’utilisateur d’un utilisateur disposant **d’autorisations Visionneuse** sur l’espace de travail.
 
     ```T-SQL
    DENY SELECT on dbo.Parts to [<username1>@<your_domain>.com];
@@ -234,14 +215,7 @@ Fabric a un modèle d’autorisations qui vous permet de contrôler l’accès a
    GRANT EXECUTE on dbo.sp_PrintMessage to [<username1>@<your_domain>.com];
     ```
 
-4. Connectez-vous à Fabric en tant que l’utilisateur que vous avez spécifié dans les instructions `DENY` et `GRANT` à la place de `<username1>@<your_domain>.com`. Testez ensuite les autorisations granulaires que vous avez appliquées en exécutant la procédure stockée et en interrogeant la table :
-
-    ```T-SQL
-   EXEC dbo.sp_PrintMessage;
-   GO
-   
-   SELECT * FROM dbo.Parts;
-    ```
+    > **Remarque** : Si vous vous connectez en tant qu’utilisateur que vous avez remplacé par `<username1>@<your_domain>.com`, exécutez la procédure stockée et exécutez une `SELECT` instruction dans la **table Composants**, vous verrez les résultats suivants pour obtenir des autorisations granulaires.
 
     ![Capture d’écran de la requête sur la table Pièces présentant une erreur.](./Images/grant-deny-table.png)
 
